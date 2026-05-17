@@ -1,5 +1,6 @@
 import ambassadors from '../data/ambassadors.json'
 import styles from './Ambassador.module.css'
+import { Link2 } from 'lucide-react'
 
 function getInitials(name) {
   return name
@@ -31,8 +32,22 @@ function AmbassadorCard({ ambassador }) {
         {getInitials(ambassador.name)}
       </div>
       <div className={styles.ambassadorBody}>
-        <div className={styles.ambassadorName}>{ambassador.name}</div>
-        <div className={styles.ambassadorCountry}>{ambassador.country}</div>
+        <div className={styles.ambassadorHeader}>
+          <div>
+            <div className={styles.ambassadorName}>{ambassador.name}</div>
+            <div className={styles.ambassadorCountry}>{ambassador.country}</div>
+          </div>
+          {ambassador.linkedin && (
+            <a
+              href={ambassador.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.ambassadorLinkedin}
+            >
+              <Link2 size={16} />
+            </a>
+          )}
+        </div>
         <div className={styles.ambassadorBio}>{ambassador.bio}</div>
       </div>
     </div>
@@ -137,14 +152,22 @@ export default function Ambassador() {
         <p>
           Applications for the next OY4C Ambassador cohort will open soon. Follow our socials to be the first to know.
         </p>
-        <a
-          href="https://www.instagram.com/ouryouth4theclimate/"
-          target="_blank"
-          rel="noreferrer"
-          className={styles.ctaBtn}
-        >
-          Follow us for updates →
-        </a>
+        <div className={styles.ctaBtns}>
+          <a
+            href="https://www.linkedin.com/posts/our-youth-4-the-climate_meet-the-oy4c-ambassadors-our-first-activity-7460657900710092821-GOSV"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.ctaBtn}
+          >
+            Meet the cohort on LinkedIn →
+          </a>
+          <a
+            href="mailto:community@oy4c.org"
+            className={styles.ctaBtnOutline}
+          >
+            community@oy4c.org
+          </a>
+        </div>
       </section>
     </>
   )
