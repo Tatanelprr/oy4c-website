@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Team from './pages/Team'
+import CCiC from './pages/CCiC'
 import Ambassador from './pages/Ambassador'
 
 const ComingSoon = ({ page }) => (
@@ -23,7 +24,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/team" element={<Team />} />
           <Route path="/curriculum" element={<ComingSoon page="OY4C Curriculum" />} />
-          <Route path="/ccic" element={<ComingSoon page="CCiC" />} />
+          <Route path="/ccic" element={<CCiC />} />
           <Route path="/ambassador" element={<Ambassador />} />
           <Route path="/last-push" element={<ComingSoon page="The Last Push" />} />
           <Route path="/impact" element={<ComingSoon page="Impact" />} />
