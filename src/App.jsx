@@ -7,6 +7,7 @@ import Team from './pages/Team'
 import CCiC from './pages/CCiC'
 import Ambassador from './pages/Ambassador'
 import Contact from './pages/Contact'
+import Impact from './pages/Impact'
 
 const ComingSoon = ({ page }) => (
   <div style={{ padding: '120px 5vw', textAlign: 'center' }}>
@@ -28,7 +29,7 @@ export default function App() {
           <Route path="/ccic" element={<CCiC />} />
           <Route path="/ambassador" element={<Ambassador />} />
           <Route path="/last-push" element={<ComingSoon page="The Last Push" />} />
-          <Route path="/impact" element={<ComingSoon page="Impact" />} />
+          <Route path="/impact" element={<Impact />} />
           <Route path="/blog" element={<ComingSoon page="Blog" />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/partnerships" element={<ComingSoon page="Partnerships" />} />
