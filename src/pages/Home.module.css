@@ -7,13 +7,46 @@
   display: flex;
   align-items: center;
 }
-.heroBg {
+/* Remplace .heroBg par : */
+.slideshowBg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG');
+}
+.slide {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.28;
+  transition: opacity 1.2s ease-in-out;
+}
+.slideshowOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+.slideshowDots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+.dotActive {
+  background: var(--white);
+  width: 24px;
+  border-radius: 4px;
 }
 .heroContent {
   position: relative;

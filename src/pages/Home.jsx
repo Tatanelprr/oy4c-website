@@ -4,29 +4,72 @@ import {
   Flag, Heart, Newspaper, Mic2
 } from 'lucide-react'
 import styles from './Home.module.css'
+import { useState, useEffect } from 'react'
+
+const SLIDES = [
+  'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG',
+  'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/26ec6b1b-f5cb-4282-b5ce-68bbd7825f4f/CongoBrazza-credit-Bobulix-Flickr.jpg',
+  'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/1629890527917-3FKQWQZQZQZQZQZQZQZQ/OY4C-team.jpg',
+]
+
+function HeroSlideshow() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % SLIDES.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className={styles.slideshowBg}>
+      {SLIDES.map((src, i) => (
+        <div
+          key={src}
+          className={styles.slide}
+          style={{
+            backgroundImage: `url('${src}')`,
+            opacity: i === current ? 1 : 0,
+          }}
+        />
+      ))}
+      <div className={styles.slideshowOverlay} />
+      <div className={styles.slideshowDots}>
+        {SLIDES.map((_, i) => (
+          <button
+            key={i}
+            className={`${styles.dot} ${i === current ? styles.dotActive : ''}`}
+            onClick={() => setCurrent(i)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className={styles.hero}>
-        <div className={styles.heroBg} />
-        <div className={styles.heroContent}>
-          <span className={styles.heroEyebrow}>Youth-led climate education</span>
-          <h1>
-			Education for Youth.<br />
-			<em>By Youth.</em>
-			Together for the Climate.
-		  </h1>
-          <p className={styles.heroSub}>
-            To create widespread awareness and action towards a sustainable future, OY4C empowers the next generation with high-quality, accessible, youth-led climate change education.
-          </p>
-          <div className={styles.heroBtns}>
-            <Link to="/about" className="btn-pill btn-pill-primary">Learn about OY4C</Link>
-            <Link to="/takeaction" className="btn-pill btn-pill-outline">Take Action</Link>
-          </div>
-        </div>
-      </section>
+<section className={styles.hero}>
+  <HeroSlideshow />
+  <div className={styles.heroContent}>
+    <span className={styles.heroEyebrow}>Youth-led climate education</span>
+    <h1>
+      Education for Youth.<br />
+      <em>By Youth.</em>
+      Together for the Climate.
+    </h1>
+    <p className={styles.heroSub}>
+      To create widespread awareness and action towards a sustainable future, OY4C empowers the next generation with high-quality, accessible, youth-led climate change education.
+    </p>
+    <div className={styles.heroBtns}>
+      <Link to="/about" className="btn-pill btn-pill-primary">Learn about OY4C</Link>
+      <Link to="/takeaction" className="btn-pill btn-pill-outline">Take Action</Link>
+    </div>
+  </div>
+</section>
 
       {/* IMPACT REPORT — au dessus des metrics */}
       <section className={styles.impactTop}>
