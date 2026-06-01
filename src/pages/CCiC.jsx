@@ -202,6 +202,21 @@ export default function CCiC() {
         </div>
       </section>
 
+      {/* MAP */}
+      <section className={styles.map}>
+        <div className={styles.mapInner}>
+          <span className="section-eyebrow">Where we've been</span>
+          <h2 className="section-title">CCiC around the world</h2>
+          <div className={styles.mapFrame}>
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=19lCUg7zsVuQmOAlSUS59yObBwLDHZiM"
+              title="CCiC Map"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
       {/* FOUNDER QUOTE */}
       <section className={styles.founderQuote}>
         <div className={styles.founderQuoteInner}>
