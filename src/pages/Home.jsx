@@ -19,7 +19,7 @@ export default function Home() {
 			Together for the Climate.
 		  </h1>
           <p className={styles.heroSub}>
-            OY4C is a global youth-led organisation bringing climate education to classrooms worldwide — through curriculum, community, and collective action.
+            To create widespread awareness and action towards a sustainable future, OY4C empowers the next generation with high-quality, accessible, youth-led climate change education.
           </p>
           <div className={styles.heroBtns}>
             <Link to="/about" className="btn-pill btn-pill-primary">Learn about OY4C</Link>
@@ -80,6 +80,19 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+	  {/* PARTNERS */}
+      <section className={styles.partners}>
+        <div className={styles.partnersHead}>
+          <span className="section-eyebrow">Our partners</span>
+          <h2 className="section-title">Trusted by organisations worldwide</h2>
+        </div>
+        <div className={styles.partnersRow}>
+          {['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4', 'Partner 5', 'Partner 6'].map((p) => (
+            <div key={p} className={styles.partnerLogo}>{p}</div>
+          ))}
+        </div>
+      </section>
 
       {/* WHAT WE DO */}
       <section className={styles.what}>
@@ -166,19 +179,6 @@ export default function Home() {
               </a>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* PARTNERS */}
-      <section className={styles.partners}>
-        <div className={styles.partnersHead}>
-          <span className="section-eyebrow">Our partners</span>
-          <h2 className="section-title">Trusted by organisations worldwide</h2>
-        </div>
-        <div className={styles.partnersRow}>
-          {['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4', 'Partner 5', 'Partner 6'].map((p) => (
-            <div key={p} className={styles.partnerLogo}>{p}</div>
-          ))}
         </div>
       </section>
 
