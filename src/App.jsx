@@ -6,6 +6,7 @@ import About from './pages/About'
 import Team from './pages/Team'
 import CCiC from './pages/CCiC'
 import Ambassador from './pages/Ambassador'
+import Contact from './pages/Contact'
 
 const ComingSoon = ({ page }) => (
   <div style={{ padding: '120px 5vw', textAlign: 'center' }}>
@@ -29,7 +30,7 @@ export default function App() {
           <Route path="/last-push" element={<ComingSoon page="The Last Push" />} />
           <Route path="/impact" element={<ComingSoon page="Impact" />} />
           <Route path="/blog" element={<ComingSoon page="Blog" />} />
-          <Route path="/contact" element={<ComingSoon page="Contact Us" />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/partnerships" element={<ComingSoon page="Partnerships" />} />
           <Route path="*" element={<ComingSoon page="404 — Page introuvable" />} />
         </Routes>
