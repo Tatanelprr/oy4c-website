@@ -152,31 +152,35 @@
 
 /* AVATARS */
 .avatar {
-  width: 72px;
-  height: 72px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--teal), var(--lavender));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 18px;
   flex-shrink: 0;
+  overflow: hidden;
 }
+
 .avatarSm {
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--lavender), var(--teal));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 12px;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 /* MEMBER CARD */

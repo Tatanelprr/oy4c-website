@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react'
 const SLIDES = [
   'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG',
   'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/26ec6b1b-f5cb-4282-b5ce-68bbd7825f4f/CongoBrazza-credit-Bobulix-Flickr.jpg',
-  'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/1629890527917-3FKQWQZQZQZQZQZQZQZQ/OY4C-team.jpg',
 ]
 
 function HeroSlideshow() {
