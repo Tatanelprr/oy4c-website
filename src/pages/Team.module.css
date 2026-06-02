@@ -168,14 +168,14 @@
 }
 
 .avatarSm {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--lavender), var(--teal));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 12px;
@@ -297,6 +297,14 @@
   transition: opacity 0.2s;
 }
 .recruitBtn:hover { opacity: 0.85; }
+
+.sectionToggle:focus {
+  outline: none;
+}
+
+.quoteToggle:focus {
+  outline: none;
+}
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
