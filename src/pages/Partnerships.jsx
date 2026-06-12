@@ -9,7 +9,7 @@ const PARTNERS = [
   },
   {
     name: 'Climate Cardinals',
-    logo: '/partners/climate-cardinals.avif',
+    logo: '/partners/climate-cardinals.png',
     desc: 'Breaking language barriers in the climate movement so every community can take action. With over 19k volunteers across 145 countries, OY4C partners with Climate Cardinals to connect the OY4C Curriculum to their vast chapter network, 89% of which are in the Global South.',
   },
   {

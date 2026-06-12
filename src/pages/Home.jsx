@@ -132,7 +132,7 @@ export default function Home() {
         <div className={styles.partnersRow}>
           {[
             { name: 'Feel Good Action', logo: '/partners/feel-good-action.webp' },
-            { name: 'Climate Cardinals', logo: '/partners/climate-cardinals.avif' },
+            { name: 'Climate Cardinals', logo: '/partners/climate-cardinals.png' },
             { name: 'Force of Nature', logo: '/partners/force-of-nature.webp' },
             { name: 'Climate Majority Project', logo: '/partners/climate-majority-project.webp' },
             { name: 'Climate Quilt', logo: '/partners/climate-quilt.png' },
