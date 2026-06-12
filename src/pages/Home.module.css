@@ -364,18 +364,22 @@
   margin: 0 auto;
 }
 .partnerLogo {
-  background: var(--cream);
+  background: var(--white);
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 12px;
   padding: 16px 28px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--mid);
   min-width: 140px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s;
 }
-.partnerLogo:hover { border-color: var(--teal); color: var(--teal); }
+.partnerLogo img {
+  max-height: 48px;
+  max-width: 140px;
+  object-fit: contain;
+}
+.partnerLogo:hover { border-color: var(--teal); }
 
 /* TAKE ACTION */
 .takeAction {

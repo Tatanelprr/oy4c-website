@@ -127,11 +127,20 @@ export default function Home() {
       <section className={styles.partners}>
         <div className={styles.partnersHead}>
           <span className="section-eyebrow">Our partners</span>
-          <h2 className="section-title">Trusted by organisations worldwide</h2>
+          <h2 className="section-title">Organisations we work with</h2>
         </div>
         <div className={styles.partnersRow}>
-          {['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4', 'Partner 5', 'Partner 6'].map((p) => (
-            <div key={p} className={styles.partnerLogo}>{p}</div>
+          {[
+            { name: 'Feel Good Action', logo: '/partners/feel-good-action.webp' },
+            { name: 'Climate Cardinals', logo: '/partners/climate-cardinals.avif' },
+            { name: 'Force of Nature', logo: '/partners/force-of-nature.webp' },
+            { name: 'Climate Majority Project', logo: '/partners/climate-majority-project.webp' },
+            { name: 'Climate Quilt', logo: '/partners/climate-quilt.png' },
+            { name: 'Energy for Refugees', logo: '/partners/energy-for-refugees.jpg' },
+          ].map((p) => (
+            <div key={p.name} className={styles.partnerLogo}>
+              <img src={p.logo} alt={p.name} />
+            </div>
           ))}
         </div>
       </section>
