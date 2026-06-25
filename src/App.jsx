@@ -9,6 +9,8 @@ import Ambassador from './pages/Ambassador'
 import Contact from './pages/Contact'
 import Impact from './pages/Impact'
 import Partnerships from './pages/Partnerships'
+import Curriculum from './pages/Curriculum'
+import LastPush from './pages/LastPush'
 
 const ComingSoon = ({ page }) => (
   <div style={{ padding: '120px 5vw', textAlign: 'center' }}>
@@ -26,10 +28,10 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/curriculum" element={<ComingSoon page="OY4C Curriculum" />} />
+          <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/ccic" element={<CCiC />} />
           <Route path="/ambassador" element={<Ambassador />} />
-          <Route path="/last-push" element={<ComingSoon page="The Last Push" />} />
+          <Route path="/last-push" element={<LastPush />} />
           <Route path="/impact" element={<Impact />} />
           <Route path="/blog" element={<ComingSoon page="Blog" />} />
           <Route path="/contact" element={<Contact />} />
