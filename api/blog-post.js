@@ -45,7 +45,8 @@ async function fetchAllBlocks(blockId) {
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300')
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
+  res.setHeader('Pragma', 'no-cache')
 
   const { id } = req.query
   if (!id) return res.status(400).json({ error: 'Missing id parameter' })

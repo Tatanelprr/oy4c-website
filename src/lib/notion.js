@@ -1,11 +1,11 @@
 export async function fetchBlogPosts() {
-  const res = await fetch('/api/blog-posts')
+  const res = await fetch(`/api/blog-posts?t=${Date.now()}`)
   if (!res.ok) throw new Error(`Failed to fetch posts (${res.status})`)
   return res.json()
 }
 
 export async function fetchBlogPost(id) {
-  const res = await fetch(`/api/blog-post?id=${encodeURIComponent(id)}`)
+  const res = await fetch(`/api/blog-post?id=${encodeURIComponent(id)}&t=${Date.now()}`)
   if (!res.ok) throw new Error(`Failed to fetch post (${res.status})`)
   return res.json()
 }
