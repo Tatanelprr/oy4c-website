@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { FileText, Globe, Users, BookOpen, GraduationCap } from 'lucide-react'
 import styles from './Impact.module.css'
 
 export default function Impact() {

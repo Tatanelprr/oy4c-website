@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { Clock, GraduationCap, DollarSign, Users } from 'lucide-react'
 import styles from './CCiC.module.css'
 
