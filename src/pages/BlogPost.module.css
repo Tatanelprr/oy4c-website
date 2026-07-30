@@ -76,7 +76,7 @@
 .content {
   max-width: 900px;
   margin: 0 auto;
-  padding: 52px 10vw 100px;
+  padding: 52px 40px 100px;
 }
 
 /* BLOCK TYPES */
@@ -225,5 +225,5 @@
   .back    { padding: 20px 5vw 0; }
   .hero    { padding: 24px 5vw 40px; }
   .divider { margin: 0 5vw; }
-  .content { padding: 40px 5vw 80px; }
+  .content { padding: 40px 20px 80px; }
 }
