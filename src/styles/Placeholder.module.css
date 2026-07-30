@@ -1,0 +1,109 @@
+/* Shared styles for placeholder/coming-soon pages */
+
+/* HERO */
+.hero {
+  min-height: 60vh;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--dark) 0%, hsl(133, 25%, 15%) 100%);
+}
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 80px 10vw;
+  max-width: 800px;
+}
+.heroEyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 16px;
+  border-radius: var(--pill-radius);
+  margin-bottom: 28px;
+}
+.heroContent h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.heroSub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 500px;
+  line-height: 1.75;
+}
+
+/* PLACEHOLDER SECTION */
+.placeholder {
+  padding: 100px 5vw;
+  background: var(--cream);
+  text-align: center;
+}
+.placeholderInner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.placeholderIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teal);
+  margin: 0 auto 32px;
+}
+.comingSoon {
+  display: inline-block;
+  background: var(--lavender);
+  color: hsl(263, 38%, 35%);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: var(--pill-radius);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.placeholderInner p {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+.ctaBtn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: var(--pill-radius);
+  background: var(--green);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: opacity 0.2s;
+}
+.ctaBtn:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    padding: 64px 6vw;
+  }
+}

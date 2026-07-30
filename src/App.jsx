@@ -11,13 +11,12 @@ import Impact from './pages/Impact'
 import Partnerships from './pages/Partnerships'
 import Curriculum from './pages/Curriculum'
 import LastPush from './pages/LastPush'
-
-const ComingSoon = ({ page }) => (
-  <div style={{ padding: '120px 5vw', textAlign: 'center' }}>
-    <h1 style={{ fontWeight: 700, marginBottom: 16 }}>{page}</h1>
-    <p style={{ color: 'var(--mid)' }}>Page en construction</p>
-  </div>
-)
+import Blog from './pages/Blog'
+import TakeAction from './pages/TakeAction'
+import AdvisoryBoard from './pages/AdvisoryBoard'
+import Speaker from './pages/Speaker'
+import Consultancy from './pages/Consultancy'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -33,10 +32,14 @@ export default function App() {
           <Route path="/ambassador" element={<Ambassador />} />
           <Route path="/last-push" element={<LastPush />} />
           <Route path="/impact" element={<Impact />} />
-          <Route path="/blog" element={<ComingSoon page="Blog" />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
-		  <Route path="/partnerships" element={<Partnerships />} />
-		  <Route path="*" element={<ComingSoon page="404 — Page introuvable" />} />
+          <Route path="/partnerships" element={<Partnerships />} />
+          <Route path="/advisory-board" element={<AdvisoryBoard />} />
+          <Route path="/speaker" element={<Speaker />} />
+          <Route path="/consultancy" element={<Consultancy />} />
+          <Route path="/takeaction" element={<TakeAction />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
