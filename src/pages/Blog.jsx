@@ -1,11 +1,12 @@
 import { useState, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { Calendar, User, Tag, Mail, Loader } from 'lucide-react'
 import { fetchBlogPosts } from '../lib/notion'
 import styles from './Blog.module.css'
 
 function ArticleCard({ article }) {
   return (
-    <article className={styles.card}>
+    <Link to={`/blog/${article.id}`} className={styles.card}>
       {article.image && (
         <div className={styles.cardImg}>
           <img src={article.image} alt={article.title} />
@@ -42,7 +43,7 @@ function ArticleCard({ article }) {
           )}
         </div>
       </div>
-    </article>
+    </Link>
   )
 }
 

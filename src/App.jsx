@@ -12,6 +12,7 @@ import Partnerships from './pages/Partnerships'
 import Curriculum from './pages/Curriculum'
 import LastPush from './pages/LastPush'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import TakeAction from './pages/TakeAction'
 import AdvisoryBoard from './pages/AdvisoryBoard'
 import Speaker from './pages/Speaker'
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/last-push" element={<LastPush />} />
           <Route path="/impact" element={<Impact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/partnerships" element={<Partnerships />} />
           <Route path="/advisory-board" element={<AdvisoryBoard />} />
