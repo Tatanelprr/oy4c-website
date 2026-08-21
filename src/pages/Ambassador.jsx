@@ -16,7 +16,7 @@ function AmbassadorCard({ ambassador }) {
     <div className={styles.ambassadorCard}>
       {ambassador.photo ? (
         <img
-          src={`/ambassadors/${ambassador.photo}`}
+          src={ambassador.photo}
           alt={ambassador.name}
           className={styles.ambassadorPhoto}
           onError={(e) => {

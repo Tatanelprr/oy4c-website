@@ -18,7 +18,7 @@ function Avatar({ member, size = 'lg' }) {
     return (
       <div className={cls}>
         <img
-          src={`/team/${member.photo}`}
+          src={member.photo}
           alt={member.name}
           style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
           onError={(e) => { e.target.style.display = 'none' }}
