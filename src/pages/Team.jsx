@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react'
 import { Loader } from 'lucide-react'
 import styles from './Team.module.css'
 
+function LinkedinIcon({ size = 12 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+  )
+}
+
 function getInitials(name) {
   return name
     .split(' ')
@@ -36,16 +44,18 @@ function SeniorCard({ member }) {
   return (
     <div className={styles.seniorCard}>
       <Avatar member={member} size="lg" />
-      {member.linkedin ? (
-        <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.memberNameLink}>
-          {member.name}
-        </a>
-      ) : (
-        <div className={styles.memberName}>{member.name}</div>
-      )}
+      <div className={styles.memberName}>{member.name}</div>
       <div className={styles.memberRole}>{member.role}</div>
-      {member.pronouns && (
-        <div className={styles.memberPronouns}>{member.pronouns}</div>
+      {(member.pronouns || member.linkedin) && (
+        <div className={styles.memberPronouns}>
+          {member.pronouns}
+          {member.pronouns && member.linkedin && <span> · </span>}
+          {member.linkedin && (
+            <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.linkedinIcon}>
+              <LinkedinIcon size={12} />
+            </a>
+          )}
+        </div>
       )}
       {member.quote && (
         <>
@@ -66,16 +76,18 @@ function MemberCard({ member }) {
     <div className={styles.memberCard}>
       <Avatar member={member} size="sm" />
       <span className={styles.teamBadge}>{member.team}</span>
-      {member.linkedin ? (
-        <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.memberNameLink}>
-          {member.name}
-        </a>
-      ) : (
-        <div className={styles.memberName}>{member.name}</div>
-      )}
+      <div className={styles.memberName}>{member.name}</div>
       <div className={styles.memberRole}>{member.role}</div>
-      {member.pronouns && (
-        <div className={styles.memberPronouns}>{member.pronouns}</div>
+      {(member.pronouns || member.linkedin) && (
+        <div className={styles.memberPronouns}>
+          {member.pronouns}
+          {member.pronouns && member.linkedin && <span> · </span>}
+          {member.linkedin && (
+            <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.linkedinIcon}>
+              <LinkedinIcon size={12} />
+            </a>
+          )}
+        </div>
       )}
       {member.quote && (
         <>

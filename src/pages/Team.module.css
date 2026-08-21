@@ -226,6 +226,18 @@
   font-size: 0.72rem;
   color: var(--mid);
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.linkedinIcon {
+  color: var(--mid);
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+.linkedinIcon:hover {
+  color: #0a66c2;
 }
 .memberQuote {
   font-size: 0.8rem;
