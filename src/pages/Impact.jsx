@@ -42,6 +42,18 @@ export default function Impact() {
     </div>
   </section>
 
+  {/* CASE STUDIES */}
+  <section className={styles.caseStudies}>
+    <div className={styles.caseStudiesInner}>
+      <span className="section-eyebrow">Impact stories</span>
+      <h2 className="section-title">Case studies & stories</h2>
+      <div className={styles.comingSoonBox}>
+        <p>Our case studies and impact stories are being compiled. Check back soon to read about the real-world change OY4C is making in classrooms and communities worldwide.</p>
+        <span className={styles.comingSoon}>Coming Soon</span>
+      </div>
+    </div>
+  </section>
+
   {/* IMPACT REPORT */}
   <section className={styles.report}>
     <div className={styles.reportInner}>
@@ -62,18 +74,6 @@ export default function Impact() {
         <p>
           Every year, we publish an Impact Report documenting our reach, our programmes, and the stories behind the numbers. Because accountability matters — and so does transparency.
         </p>
-      </div>
-    </div>
-  </section>
-
-  {/* CASE STUDIES */}
-  <section className={styles.caseStudies}>
-    <div className={styles.caseStudiesInner}>
-      <span className="section-eyebrow">Impact stories</span>
-      <h2 className="section-title">Case studies & stories</h2>
-      <div className={styles.comingSoonBox}>
-        <p>Our case studies and impact stories are being compiled. Check back soon to read about the real-world change OY4C is making in classrooms and communities worldwide.</p>
-        <span className={styles.comingSoon}>Coming Soon</span>
       </div>
     </div>
   </section>
