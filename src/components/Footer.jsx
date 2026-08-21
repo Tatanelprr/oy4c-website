@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Camera, Link2, Music2 } from 'lucide-react'
+import { InstagramIcon, LinkedinIcon, TiktokIcon } from './SocialIcons'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -11,13 +11,13 @@ export default function Footer() {
           <p>A global youth-led organisation bringing climate education to classrooms worldwide.</p>
           <div className={styles.socials}>
             <a href="https://www.instagram.com/ouryouth4theclimate/" target="_blank" rel="noreferrer">
-              <Camera size={14} /> Instagram
+              <InstagramIcon size={14} /> Instagram
             </a>
             <a href="https://www.linkedin.com/company/our-youth-4-the-climate/" target="_blank" rel="noreferrer">
-              <Link2 size={14} /> LinkedIn
+              <LinkedinIcon size={14} /> LinkedIn
             </a>
             <a href="https://www.tiktok.com/@ouryouth4theclimate" target="_blank" rel="noreferrer">
-              <Music2 size={14} /> TikTok
+              <TiktokIcon size={14} /> TikTok
             </a>
           </div>
         </div>

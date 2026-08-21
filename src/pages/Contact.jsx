@@ -1,4 +1,5 @@
-import { Mail, BookOpen, Users, DollarSign, Newspaper, Camera, Link2, Music2 } from 'lucide-react'
+import { Mail, BookOpen, Users, DollarSign, Newspaper } from 'lucide-react'
+import { InstagramIcon, LinkedinIcon, TiktokIcon } from '../components/SocialIcons'
 import styles from './Contact.module.css'
 
 export default function Contact() {
@@ -84,13 +85,13 @@ export default function Contact() {
           </p>
           <div className={styles.socialLinks}>
             <a href="https://www.instagram.com/ouryouth4theclimate/" target="_blank" rel="noreferrer" className={styles.socialLink}>
-              <Camera size={16} /> Instagram
+              <InstagramIcon size={16} /> Instagram
             </a>
             <a href="https://www.linkedin.com/company/our-youth-4-the-climate/" target="_blank" rel="noreferrer" className={styles.socialLink}>
-              <Link2 size={16} /> LinkedIn
+              <LinkedinIcon size={16} /> LinkedIn
             </a>
             <a href="https://www.tiktok.com/@ouryouth4theclimate" target="_blank" rel="noreferrer" className={styles.socialLink}>
-              <Music2 size={16} /> TikTok
+              <TiktokIcon size={16} /> TikTok
             </a>
           </div>
         </div>
