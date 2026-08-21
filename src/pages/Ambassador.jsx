@@ -1,6 +1,6 @@
-import ambassadors from '../data/ambassadors.json'
+import { useState, useEffect } from 'react'
+import { Link2, Loader } from 'lucide-react'
 import styles from './Ambassador.module.css'
-import { Link2 } from 'lucide-react'
 
 function getInitials(name) {
   return name
@@ -55,6 +55,18 @@ function AmbassadorCard({ ambassador }) {
 }
 
 export default function Ambassador() {
+  const [ambassadors, setAmbassadors] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetch(`/api/ambassadors?t=${Date.now()}`)
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
+      .then(setAmbassadors)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false))
+  }, [])
+
   return (
     <>
       {/* HERO */}
@@ -139,11 +151,27 @@ export default function Ambassador() {
           <span className="section-eyebrow">2026 Cohort</span>
           <h2 className="section-title">Meet our Ambassadors</h2>
         </div>
-        <div className={styles.ambassadorsGrid}>
-          {ambassadors.map((a) => (
-            <AmbassadorCard key={a.name} ambassador={a} />
-          ))}
-        </div>
+
+        {loading && (
+          <div className={styles.loading}>
+            <Loader size={28} className={styles.spinner} />
+            <p>Loading ambassadors…</p>
+          </div>
+        )}
+
+        {error && !loading && (
+          <div className={styles.loadError}>
+            <p>Could not load ambassador data. Please try again later.</p>
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className={styles.ambassadorsGrid}>
+            {ambassadors.map((a) => (
+              <AmbassadorCard key={a.name} ambassador={a} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* CTA */}

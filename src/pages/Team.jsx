@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import teamData from '../data/team.json'
+import { useState, useEffect } from 'react'
+import { Loader } from 'lucide-react'
 import styles from './Team.module.css'
 
 function getInitials(name) {
@@ -115,6 +115,18 @@ function CollapsibleSection({ title, children }) {
 }
 
 export default function Team() {
+  const [teamData, setTeamData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetch(`/api/team?t=${Date.now()}`)
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
+      .then(setTeamData)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false))
+  }, [])
+
   return (
     <>
       {/* HERO */}
@@ -129,49 +141,62 @@ export default function Team() {
         </div>
       </section>
 
-      {/* SENIOR LEADERSHIP — pas de dropdown */}
-      <section className={styles.sectionStatic}>
-        <div className={styles.sectionStaticHead}>
-          <h2>Senior Leadership</h2>
+      {loading && (
+        <div className={styles.loading}>
+          <Loader size={28} className={styles.spinner} />
+          <p>Loading team…</p>
         </div>
-        <div className={styles.seniorGrid}>
-          {teamData.seniorLeadership.map((m) => (
-            <SeniorCard key={m.name} member={m} />
-          ))}
+      )}
+
+      {error && !loading && (
+        <div className={styles.loadError}>
+          <p>Could not load team data. Please try again later.</p>
         </div>
-      </section>
+      )}
 
-      {/* OPERATIONS — collapsible */}
-      <CollapsibleSection title="Operations">
-        {teamData.operations
-          .filter(m => m.team !== 'People and Culture')
-          .map((m) => (
-            <MemberCard key={m.name} member={m} />
-          ))}
-      </CollapsibleSection>
+      {!loading && !error && teamData && (
+        <>
+          {/* SENIOR LEADERSHIP — pas de dropdown */}
+          <section className={styles.sectionStatic}>
+            <div className={styles.sectionStaticHead}>
+              <h2>Senior Leadership</h2>
+            </div>
+            <div className={styles.seniorGrid}>
+              {teamData.seniorLeadership.map((m) => (
+                <SeniorCard key={m.name} member={m} />
+              ))}
+            </div>
+          </section>
 
-      {/* PEOPLE & CULTURE — collapsible */}
-      <CollapsibleSection title="People & Culture">
-        {teamData.operations
-          .filter(m => m.team === 'People and Culture')
-          .map((m) => (
-            <MemberCard key={m.name} member={m} />
-          ))}
-      </CollapsibleSection>
+          {/* OPERATIONS — collapsible */}
+          <CollapsibleSection title="Operations">
+            {teamData.operations.map((m) => (
+              <MemberCard key={m.name} member={m} />
+            ))}
+          </CollapsibleSection>
 
-      {/* EXECUTIVE TEAM — collapsible */}
-      <CollapsibleSection title="Executive Team">
-        {teamData.executiveTeam.map((m) => (
-          <MemberCard key={m.name} member={m} />
-        ))}
-      </CollapsibleSection>
+          {/* PEOPLE & CULTURE — collapsible */}
+          <CollapsibleSection title="People & Culture">
+            {teamData.peopleAndCulture.map((m) => (
+              <MemberCard key={m.name} member={m} />
+            ))}
+          </CollapsibleSection>
 
-      {/* FUNCTIONS — collapsible */}
-      <CollapsibleSection title="Function Members">
-        {teamData.functions.map((m) => (
-          <MemberCard key={m.name} member={m} />
-        ))}
-      </CollapsibleSection>
+          {/* EXECUTIVE TEAM — collapsible */}
+          <CollapsibleSection title="Executive Team">
+            {teamData.executiveTeam.map((m) => (
+              <MemberCard key={m.name} member={m} />
+            ))}
+          </CollapsibleSection>
+
+          {/* FUNCTIONS — collapsible */}
+          <CollapsibleSection title="Function Members">
+            {teamData.functions.map((m) => (
+              <MemberCard key={m.name} member={m} />
+            ))}
+          </CollapsibleSection>
+        </>
+      )}
 
       {/* RECRUTEMENT */}
       <div className={styles.recruitNote}>
@@ -179,7 +204,6 @@ export default function Team() {
         <p>
           Applications open periodically. Follow our socials or check back here to know when we're recruiting.
         </p>
-        
         <a
           href="https://www.instagram.com/ouryouth4theclimate/"
           target="_blank"
