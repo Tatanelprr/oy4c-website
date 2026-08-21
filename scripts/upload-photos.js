@@ -45,6 +45,7 @@ const TEAM_DB_ID         = process.env.VITE_NOTION_TEAM_DB_ID
 const AMBASSADORS_DB_ID  = process.env.VITE_NOTION_AMBASSADORS_DB_ID
 const NOTION_VERSION     = '2022-06-28'
 const SLEEP_MS           = 500
+const IMAGE_EXTS = new Set(['.webp', '.jpg', '.jpeg', '.png', '.gif', '.avif'])
 
 const missing = ['IMGBB_API_KEY', 'VITE_NOTION_TOKEN', 'VITE_NOTION_TEAM_DB_ID', 'VITE_NOTION_AMBASSADORS_DB_ID']
   .filter((k) => !process.env[k])
