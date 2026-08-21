@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { readFileSync, existsSync } from 'fs'
 import { resolve } from 'path'
-import { pathToFileURL } from 'url'
 
 function loadEnvFile(path) {
   if (!existsSync(path)) return
@@ -34,20 +33,19 @@ function devApiPlugin() {
         // Shim Express-like methods expected by handlers
         res.status = (code) => { res.statusCode = code; return res }
         res.json = (data) => {
-          if (!res.getHeader('Content-Type'))
-            res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Content-Type', 'application/json')
           res.end(JSON.stringify(data))
         }
 
-        // Parse query string for handlers that use req.query
+        // Parse query string for handlers that use req.query (e.g. blog-post)
         const qs = new URLSearchParams((req.url ?? '').split('?')[1] ?? '')
         req.query = Object.fromEntries(qs)
 
         try {
-          const url = pathToFileURL(resolve(process.cwd(), `api/${route}.js`)).href
-          const mod = await import(url)
+          const mod = await server.ssrLoadModule(`/api/${route}.js`)
           await mod.default(req, res)
         } catch (err) {
+          console.error(`[dev-api] /api/${route}:`, err.message)
           if (!res.headersSent) {
             res.statusCode = 500
             res.end(JSON.stringify({ error: err.message }))
