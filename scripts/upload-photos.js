@@ -68,8 +68,9 @@ function normalize(str) {
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
     .replace(/\(.*?\)/g, '')
+    .replace(/-/g, ' ')
     .toLowerCase()
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z\s]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -166,7 +167,8 @@ async function uploadToImgbb(filePath) {
  * @param {Function} toKey      - filename stem → string to normalize for lookup
  */
 async function processDir(dir, lookup, toKey) {
-  const files = (await readdir(dir)).sort()
+  const ext = (f) => f.slice(f.lastIndexOf('.')).toLowerCase()
+  const files = (await readdir(dir)).filter((f) => IMAGE_EXTS.has(ext(f))).sort()
   const stats = { ok: 0, skipped: 0, failed: 0 }
 
   for (const file of files) {
