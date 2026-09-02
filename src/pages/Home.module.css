@@ -480,6 +480,54 @@
 .actionTitle { font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
 .actionDesc { font-size: 0.8rem; color: rgba(255,255,255,0.58); line-height: 1.6; }
 
+/* AS SEEN IN */
+.seenIn {
+  background: var(--white);
+  padding: 28px 0 32px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.seenInLabel {
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  opacity: 0.45;
+  margin-bottom: 18px;
+}
+.seenInTrack { overflow: hidden; }
+.seenInInner {
+  display: inline-flex;
+  animation: seenInScroll 36s linear infinite;
+  will-change: transform;
+}
+.seenInInner:hover { animation-play-state: paused; }
+.seenInSet {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.seenInLogo {
+  height: 36px;
+  max-width: 140px;
+  object-fit: contain;
+  padding: 0 36px;
+  flex-shrink: 0;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.seenInLogo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+@keyframes seenInScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .metricsGrid, .pathsGrid, .actionCards { grid-template-columns: 1fr 1fr; }

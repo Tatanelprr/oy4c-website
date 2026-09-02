@@ -6,6 +6,21 @@ import {
 import styles from './Home.module.css'
 import { useState, useEffect } from 'react'
 
+const SEEN_IN = [
+  { name: 'National Geographic', src: '/seen-in/national-geographic.svg' },
+  { name: 'DoSomething.org',     src: '/seen-in/dosomething.png' },
+  { name: 'TEDx',                src: '/seen-in/tedx.png' },
+  { name: 'Euronews',            src: '/seen-in/euronews.svg' },
+  { name: 'Environmental Media Association', src: '/seen-in/ema.png' },
+  { name: 'Global Heroes',       src: '/seen-in/global-heroes.png' },
+  { name: 'Sierra Club',         src: '/seen-in/sierra-club.png' },
+  { name: 'QS Impact',           src: '/seen-in/qs.svg' },
+  { name: 'UCL',                 src: '/seen-in/ucl.svg' },
+  { name: 'Turner Contemporary', src: '/seen-in/turner-contemporary.png' },
+  { name: 'Digital Camp',        src: '/seen-in/digital-camp.png' },
+  { name: 'Climate Fresk',       src: '/seen-in/climate-fresk.png' },
+]
+
 const SLIDES = [
   'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG',
   'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/26ec6b1b-f5cb-4282-b5ce-68bbd7825f4f/CongoBrazza-credit-Bobulix-Flickr.jpg',
@@ -69,6 +84,28 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+      {/* AS SEEN IN */}
+      <section className={styles.seenIn}>
+        <p className={styles.seenInLabel}>As Seen In</p>
+        <div className={styles.seenInTrack}>
+          <div className={styles.seenInInner}>
+            {[0, 1].map((i) => (
+              <span key={i} className={styles.seenInSet}>
+                {SEEN_IN.map((logo) => (
+                  <img
+                    key={logo.name}
+                    src={logo.src}
+                    alt={logo.name}
+                    className={styles.seenInLogo}
+                    draggable={false}
+                  />
+                ))}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* IMPACT REPORT — au dessus des metrics */}
       <section className={styles.impactTop}>
