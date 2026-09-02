@@ -1,4 +1,4 @@
-/* BACK */
+﻿/* BACK */
 .back {
   display: inline-flex;
   align-items: center;
@@ -38,7 +38,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--teal);
-  background: hsl(192, 40%, 93%);
+  background: #e0f3f8;
   padding: 4px 12px;
   border-radius: var(--pill-radius);
 }
@@ -134,7 +134,7 @@
   border-left: 4px solid var(--teal);
   padding: 12px 20px;
   margin: 28px 0;
-  background: hsl(192, 40%, 96%);
+  background: #f0f9fb;
   border-radius: 0 10px 10px 0;
   font-style: italic;
   font-size: 1rem;
@@ -177,8 +177,8 @@
 .calloutIcon { flex-shrink: 0; font-size: 1.2rem; }
 
 .code {
-  background: hsl(133, 20%, 12%);
-  color: hsl(92, 43%, 75%);
+  background: #182619;
+  color: #aad97a;
   border-radius: 10px;
   padding: 20px 24px;
   font-family: 'Courier New', monospace;

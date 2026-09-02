@@ -1,4 +1,4 @@
-/* HERO */
+﻿/* HERO */
 .hero {
   min-height: 60vh;
   background: var(--dark);
@@ -10,7 +10,7 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--dark) 0%, hsl(133, 25%, 15%) 100%);
+  background: linear-gradient(135deg, var(--dark) 0%, #1d3021 100%);
 }
 .heroContent {
   position: relative;
@@ -235,7 +235,7 @@
 .comingSoon {
   display: inline-block;
   background: var(--lavender);
-  color: hsl(263, 38%, 35%);
+  color: var(--purple);
   font-size: 0.8rem;
   font-weight: 700;
   padding: 8px 20px;

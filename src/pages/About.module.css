@@ -1,4 +1,4 @@
-/* HERO */
+﻿/* HERO */
 .hero {
   min-height: 60vh;
   background: var(--dark);
@@ -233,7 +233,7 @@
 .onwardIcon {
   width: 44px;
   height: 44px;
-  background: hsl(263, 38%, 92%);
+  background: #ede9f6;
   color: var(--lavender);
   border-radius: 12px;
   display: flex;
