@@ -16,7 +16,7 @@ const SEEN_IN = [
   { name: 'Sierra Club',         src: '/seen-in/sierra-club.png' },
   { name: 'QS Impact',           src: '/seen-in/qs.svg' },
   { name: 'UCL',                 src: '/seen-in/ucl.svg' },
-  { name: 'Turner Contemporary', src: '/seen-in/turner-contemporary.png' },
+  { name: 'Turner Contemporary', src: '/seen-in/turner-contemporary.png', invert: true },
   { name: 'Digital Camp',        src: '/seen-in/digital-camp.png' },
   { name: 'Climate Fresk',       src: '/seen-in/climate-fresk.png' },
 ]
@@ -97,7 +97,7 @@ export default function Home() {
                     key={logo.name}
                     src={logo.src}
                     alt={logo.name}
-                    className={styles.seenInLogo}
+                    className={`${styles.seenInLogo}${logo.invert ? ' ' + styles.seenInLogoInvert : ''}`}
                     draggable={false}
                   />
                 ))}

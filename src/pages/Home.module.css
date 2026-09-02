@@ -523,6 +523,14 @@
   filter: grayscale(0%);
   opacity: 1;
 }
+.seenInLogoInvert {
+  filter: invert(1) grayscale(100%);
+  opacity: 0.5;
+}
+.seenInLogoInvert:hover {
+  filter: invert(1) grayscale(0%);
+  opacity: 1;
+}
 @keyframes seenInScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
