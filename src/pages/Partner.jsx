@@ -34,7 +34,7 @@ const PARTNERS = [
   },
 ]
 
-export default function Partnerships() {
+export default function Partner() {
   return (
     <>
       {/* HERO */}

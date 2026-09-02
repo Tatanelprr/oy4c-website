@@ -17,6 +17,7 @@ import TakeAction from './pages/TakeAction'
 import AdvisoryBoard from './pages/AdvisoryBoard'
 import Speaker from './pages/Speaker'
 import Consultancy from './pages/Consultancy'
+import Partner from './pages/Partner'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/speaker" element={<Speaker />} />
           <Route path="/consultancy" element={<Consultancy />} />
           <Route path="/takeaction" element={<TakeAction />} />
+          <Route path="/partner" element={<Partner />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

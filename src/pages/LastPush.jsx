@@ -18,7 +18,7 @@ export default function LastPush() {
         <div className={styles.placeholderInner}>
           <span className={styles.comingSoon}>Coming Soon</span>
           <p>
-            We're putting together everything you need to know about The Last Push campaign — its goals, how to get involved, and the impact we're aiming for. Check back soon!
+            We're putting together everything you need to know about The Last Push campaign, its goals, how to get involved, and the impact we're aiming for. Check back soon!
           </p>
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>
             Get in touch →

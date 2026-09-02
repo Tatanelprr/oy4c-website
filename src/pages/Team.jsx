@@ -148,7 +148,7 @@ export default function Team() {
           <span className={styles.heroEyebrow}>The people behind OY4C</span>
           <h1>Meet the Team</h1>
           <p className={styles.heroSub}>
-            OY4C is powered by a global community of passionate young people — educators, researchers, designers, and advocates — united by a common mission.
+            OY4C is powered by a global community of passionate young people: educators, researchers, designers, and advocates, united by a common mission.
           </p>
         </div>
       </section>

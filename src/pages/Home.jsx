@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
-  BookOpen, Mic, School, Briefcase, Handshake, Sprout, Users,
-  Flag, Heart, Newspaper, Mic2
+  BookOpen, Mic, School, Briefcase, Handshake, Sprout,
+  Newspaper, Mic2
 } from 'lucide-react'
 import styles from './Home.module.css'
 import { useState, useEffect } from 'react'
@@ -77,7 +77,7 @@ export default function Home() {
             <span className="section-eyebrow">2025</span>
             <h2 className="section-title">Impact Report</h2>
             <p className="section-body">
-              A transformative year of growth, innovation and global reach. Discover what OY4C accomplished in 2025 — by the numbers and beyond.
+              A transformative year of growth, innovation and global reach. Discover what OY4C accomplished in 2025, by the numbers and beyond.
             </p>
             <a href="/s/2025-Impact-Report-576j.pdf" target="_blank" rel="noreferrer" className={styles.btnAccent}>
               Download the report →
@@ -89,15 +89,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className={styles.testimonials}>
+        <div className={styles.testimonialsInner}>
+          <h2 className={`section-title ${styles.testimonialsTitle}`}>What students say</h2>
+          <div className={styles.testimonialGrid}>
+            <blockquote className={styles.testimonialCard}>
+              <p>"I felt really educated because I had no idea that things like this existed"</p>
+              <cite>Student, 13, Nadi, Fiji</cite>
+            </blockquote>
+            <blockquote className={styles.testimonialCard}>
+              <p>"Liberated and inspired. Showed me some insight to what I can do better to help the climate crisis."</p>
+              <cite>Student, 16, Rotorua, New Zealand</cite>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
       {/* KEY METRICS */}
       <section className={styles.metrics}>
         <p className={styles.metricsLabel}>Our impact in numbers</p>
         <div className={styles.metricsGrid}>
           {[
-            { num: '500+', label: 'Volunteers worldwide' },
-            { num: '40+', label: 'Countries represented' },
-            { num: '10k+', label: 'Students reached' },
-            { num: '200+', label: 'Curricula integrated' },
+            { num: '133', label: 'Volunteers worldwide' },
+            { num: '43', label: 'Countries represented' },
+            { num: '10,000', label: 'Students reached' },
+            { num: '80,000', label: 'Across social media' },
           ].map((m) => (
             <div key={m.label} className={styles.metric}>
               <div className={styles.metricNum}>{m.num}</div>
@@ -114,16 +131,16 @@ export default function Home() {
             <span key={i} className={styles.marqueeInner}>
               <a href="https://validaid.org/fundraiser/174" target="_blank" rel="noreferrer">Donate Today!</a>
               <span className={styles.sep}>✦</span>
-              <Link to="/curriculum">Integrate the OY4C Curriculum →</Link>
+              <Link to="/curriculum">Integrate the OY4CCurriculum →</Link>
               <span className={styles.sep}>✦</span>
-              <Link to="/takeaction">Take the OY4C Pledge →</Link>
+              <Link to="/blog">Stay up to date! →</Link>
               <span className={styles.sep}>✦</span>
             </span>
           ))}
         </div>
       </div>
 
-	  {/* PARTNERS */}
+      {/* PARTNERS */}
       <section className={styles.partners}>
         <div className={styles.partnersHead}>
           <span className="section-eyebrow">Our partners</span>
@@ -143,6 +160,9 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <div className={styles.partnersViewAll}>
+          <Link to="/partnerships" className={styles.partnersViewAllLink}>View all partners →</Link>
+        </div>
       </section>
 
       {/* WHAT WE DO */}
@@ -150,24 +170,25 @@ export default function Home() {
         <div className={styles.whatInner}>
           <div>
             <span className="section-eyebrow">What we do</span>
-            <h2 className="section-title">Bringing climate education to every classroom</h2>
+            <h2 className="section-title">Climate change education built by youth, for youth</h2>
             <p className="section-body">
-              We believe young people shouldn't just learn about the climate crisis — they should lead the response. OY4C builds, trains, and empowers a global network of youth educators.
+              Almost half of national curricula don't even mention climate change. The generation inheriting the crisis isn't being equipped for it, so we are equipping ourselves. OY4C is a global team of young people designing and delivering free, interdisciplinary, action-driven climate change education, in classrooms across six continents.
             </p>
-            <Link to="/about" className="btn-pill btn-pill-primary">Learn about our approach →</Link>
+            <Link to="/about" className="btn-pill btn-pill-primary">Learn about OY4C →</Link>
           </div>
           <div className={styles.pillars}>
-            {[
-              { icon: <BookOpen />, title: 'OY4C Curriculum', desc: 'Climate modules designed by youth, for classrooms worldwide.', cta: 'Integrate now →', to: '/curriculum' },
-              { icon: <Mic />, title: 'CCiC', desc: 'Climate conversations in classrooms — our flagship programme.', cta: 'Learn more →', to: '/ccic' },
-            ].map((p) => (
-              <Link key={p.title} to={p.to} className={styles.pillar}>
-                <span className={styles.pillarIcon}>{p.icon}</span>
-                <div className={styles.pillarTitle}>{p.title}</div>
-                <div className={styles.pillarDesc}>{p.desc}</div>
-                <span className={styles.pillarArrow}>{p.cta}</span>
-              </Link>
-            ))}
+            <Link to="/curriculum" className={styles.pillar}>
+              <span className={styles.pillarIcon}><BookOpen /></span>
+              <div className={styles.pillarTitle}>OY4CCurriculum</div>
+              <div className={styles.pillarDesc}>Ready-to-use, youth-developed, interdisciplinary climate change curriculum. Free for schools and educators worldwide.</div>
+              <span className={styles.pillarArrow}>Get the OY4CCurriculum →</span>
+            </Link>
+            <Link to="/ccic" className={styles.pillar}>
+              <span className={styles.pillarIcon}><Mic /></span>
+              <div className={styles.pillarTitle}>CCiC: Climate Curriculum into Classrooms</div>
+              <div className={styles.pillarDesc}>Our workshop programme, delivered across six continents, now an open resource anyone can run, with everything you need to bring climate conversations into your classroom.</div>
+              <span className={styles.pillarArrow}>Learn more →</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -180,10 +201,10 @@ export default function Home() {
         </div>
         <div className={styles.pathsGrid}>
           {[
-            { icon: <Sprout />, who: "I'm a Young Person", desc: 'Join the movement, take the pledge, and become a climate educator.', cta: 'Take action →', to: '/takeaction' },
-            { icon: <School />, who: "I'm an Educator", desc: "Integrate OY4C's climate curriculum into your school or programme.", cta: 'Explore curriculum →', to: '/curriculum' },
-            { icon: <Handshake />, who: "I'm a Partner", desc: 'Explore how your organisation can collaborate with OY4C globally.', cta: 'Get in touch →', to: '/partnerships' },
-            { icon: <Briefcase />, who: "I'm a Funder", desc: 'Support our mission and see the measurable impact of your investment.', cta: 'See our impact →', to: '/impact' },
+            { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction' },
+            { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum' },
+            { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partner' },
+            { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact' },
           ].map((p) => (
             <Link key={p.who} to={p.to} className={styles.pathCard}>
               <span className={styles.pathIcon}>{p.icon}</span>
@@ -210,7 +231,7 @@ export default function Home() {
             <div className={styles.newsBody}>
               <span className={styles.newsTag}>Blog · Featured</span>
               <div className={styles.newsTitle}>When No Trees Are Left</div>
-              <div className={styles.newsExcerpt}>What happens when no trees are left? Deforestation around the world is not just a problem — it's a crisis.</div>
+              <div className={styles.newsExcerpt}>What happens when no trees are left? Deforestation around the world is not just a problem, it's a crisis.</div>
               <span className={styles.newsRead}>Read more →</span>
             </div>
           </a>
@@ -233,34 +254,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TAKE ACTION */}
-	  <section className={styles.takeAction}>
-		<span className="section-eyebrow" style={{ color: 'var(--white)' }}>Get involved</span>
-		<h2>Ready to make a difference?</h2>
-		<p>Whether you're a student, teacher, funder or ally — there's a place for you in the OY4C movement.</p>
-		<div className={styles.actionCards}>
-			{[
-			{ icon: <BookOpen />, title: 'Integrate the Curriculum', desc: 'Bring OY4C climate education to your school or classroom.', to: '/curriculum' },
-			{ icon: <Users />, title: 'Join the Team', desc: 'Become part of our global community of youth climate educators.', to: '/team' },
-			{ icon: <Flag />, title: 'Take the OY4C Pledge', desc: 'Commit to climate action and join thousands of young advocates globally.', to: '/takeaction' },
-			{ icon: <Heart />, title: 'Donate Today', desc: 'Your contribution funds youth climate educators in schools worldwide.', href: 'https://validaid.org/fundraiser/174' },
-			].map((a) =>
-			a.href ? (
-				<a key={a.title} href={a.href} target="_blank" rel="noreferrer" className={styles.actionCard}>
-				<span className={styles.actionIcon}>{a.icon}</span>
-				<div className={styles.actionTitle}>{a.title}</div>
-				<div className={styles.actionDesc}>{a.desc}</div>
-				</a>
-			) : (
-				<Link key={a.title} to={a.to} className={styles.actionCard}>
-				<span className={styles.actionIcon}>{a.icon}</span>
-				<div className={styles.actionTitle}>{a.title}</div>
-				<div className={styles.actionDesc}>{a.desc}</div>
-				</Link>
-			)
-			)}
-		</div>
-	  </section>
     </>
   )
 }

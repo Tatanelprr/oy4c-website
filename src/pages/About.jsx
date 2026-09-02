@@ -16,7 +16,7 @@ export default function About() {
             Globally connected.
           </h1>
           <p className={styles.heroSub}>
-            OY4C is a global youth-led organisation on a mission to bring quality climate education to every classroom — designed by young people, for young people.
+            OY4C is a global youth-led organisation on a mission to bring quality climate change education to every classroom, designed by young people, for young people.
           </p>
         </div>
       </section>
@@ -39,12 +39,12 @@ export default function About() {
               {
                 icon: <Lightbulb size={20} />,
                 title: 'Accessible Education',
-                desc: 'Empowering younger generations with high-quality climate education regardless of background or location.',
+                desc: 'Empowering younger generations with high-quality climate change education regardless of background or location.',
               },
               {
                 icon: <Heart size={20} />,
                 title: 'Inclusive and Welcoming',
-                desc: 'All backgrounds and experiences are valued — diversity is our strength.',
+                desc: 'All backgrounds and experiences are valued, diversity is our strength.',
               },
               {
                 icon: <Users size={20} />,
@@ -88,7 +88,7 @@ export default function About() {
           </div>
           <div className={styles.videoWrapper}>
             <div className={styles.videoPlaceholder}>
-              <p>Video to be updated — placeholder</p>
+              <p>Video to be updated - placeholder</p>
             </div>
           </div>
         </div>
@@ -100,18 +100,18 @@ export default function About() {
           <span className="section-eyebrow">Our story</span>
           <h2 className="section-title">How it all started</h2>
           <p>
-            OY4C was born from a simple but powerful question: why aren't young people leading the conversation on climate education? In 2021, a group of passionate young advocates came together to change that — and OY4C was founded.
+            OY4C was born from a simple but powerful question: why aren't young people leading the conversation on climate change education? In 2021, a group of passionate young advocates came together to change that, and OY4C was founded.
           </p>
           <p>
             What started as a small initiative quickly grew into a global movement. Today, OY4C spans 40+ countries, with hundreds of volunteer educators bringing our curriculum to classrooms worldwide.
           </p>
           <p>
-            We are proudly youth-led at every level — from our founder and executive director to our volunteers on the ground. This isn't just something we say. It's who we are.
+            We are proudly youth-led at every level, from our founder and executive director to our volunteers on the ground. This isn't just something we say. It's who we are.
           </p>
           <p style={{ color: 'var(--mid)', fontStyle: 'italic', borderLeft: '3px solid var(--green)', paddingLeft: '20px', marginTop: '32px' }}>
-            "Climate education shouldn't be a privilege. Every young person deserves to understand the crisis they will inherit — and the power they have to shape its outcome."
+            "Climate change education shouldn't be a privilege. Every young person deserves to understand the crisis they will inherit, and the power they have to shape its outcome."
             <br /><br />
-            <strong style={{ color: 'var(--black)', fontStyle: 'normal' }}>— Ava Langridge, Founder & Executive Director</strong>
+            <strong style={{ color: 'var(--black)', fontStyle: 'normal' }}>- Ava Langridge, Founder & Executive Director</strong>
           </p>
         </div>
       </section>
@@ -142,7 +142,7 @@ export default function About() {
         <div className={styles.onwardGrid}>
           {[
             { icon: <Users size={22} />, title: 'Meet the Team', desc: 'Discover the passionate young people behind OY4C.', to: '/team' },
-            { icon: <BookOpen size={22} />, title: 'Our Curriculum', desc: 'Explore our climate education modules for classrooms.', to: '/curriculum' },
+            { icon: <BookOpen size={22} />, title: 'Our Curriculum', desc: 'Explore our climate change education modules for classrooms.', to: '/curriculum' },
             { icon: <Globe size={22} />, title: 'Our Partners', desc: 'See the organisations we work with around the world.', to: '/partnerships' },
           ].map((c) => (
             <Link key={c.title} to={c.to} className={styles.onwardCard}>

@@ -22,7 +22,7 @@ export default function AdvisoryBoard() {
           </div>
           <span className={styles.comingSoon}>Coming Soon</span>
           <p>
-            Meet the advisors who help shape OY4C's direction and amplify our global impact. Full profiles and bios are coming soon — we're excited to introduce this remarkable group of people.
+            Meet the advisors who help shape OY4C's direction and amplify our global impact. Full profiles and bios are coming soon, we're excited to introduce this remarkable group of people.
           </p>
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>
             Get in touch →

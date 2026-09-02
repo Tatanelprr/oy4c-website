@@ -7,7 +7,7 @@ export default function Curriculum() {
         <div className={styles.heroBg} />
         <div className={styles.heroContent}>
           <span className={styles.heroEyebrow}>Programme</span>
-          <h1>OY4C Curriculum</h1>
+          <h1>OY4CCurriculum</h1>
           <p className={styles.heroSub}>
             Climate modules designed by youth, for classrooms worldwide. Full details coming soon.
           </p>
@@ -18,7 +18,7 @@ export default function Curriculum() {
         <div className={styles.placeholderInner}>
           <span className={styles.comingSoon}>Coming Soon</span>
           <p>
-            We're putting together everything you need to know about the OY4C Curriculum — what it covers, how to integrate it into your school, and the impact it's already making. Check back soon!
+            We're putting together everything you need to know about the OY4CCurriculum - what it covers, how to integrate it into your school, and the impact it's already making. Check back soon!
           </p>
           <a href="mailto:curriculum@oy4c.org" className={styles.ctaBtn}>
             Get in touch →

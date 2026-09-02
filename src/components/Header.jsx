@@ -21,13 +21,7 @@ const NAV = [
       { label: 'Ambassador Programme', to: '/ambassador' },
     ],
   },
-  {
-    label: 'Services',
-    children: [
-      { label: 'Speaker', to: '/speaker' },
-      { label: 'Consultancy', to: '/consultancy' },
-    ],
-  },
+  { label: 'Partner with Us', to: '/partner' },
   { label: 'Impact', to: '/impact' },
   {
     label: 'Resources',

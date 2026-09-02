@@ -8,7 +8,7 @@ export default function Footer() {
       <div className={styles.grid}>
         <div className={styles.brand}>
           <Link to="/" className={styles.logo}>Our Youth 4 The Climate</Link>
-          <p>A global youth-led organisation bringing climate education to classrooms worldwide.</p>
+          <p>A global youth-led organisation building and scaling climate change education to the next generations</p>
           <div className={styles.socials}>
             <a href="https://www.instagram.com/ouryouth4theclimate/" target="_blank" rel="noreferrer">
               <InstagramIcon size={14} /> Instagram
@@ -35,7 +35,7 @@ export default function Footer() {
         <div className={styles.col}>
           <h4>Programmes</h4>
           <ul>
-            <li><Link to="/curriculum">OY4C Curriculum</Link></li>
+            <li><Link to="/curriculum">OY4CCurriculum</Link></li>
             <li><Link to="/ccic">CCiC</Link></li>
             <li><Link to="/ambassador">Ambassador Programme</Link></li>
           </ul>
@@ -45,13 +45,14 @@ export default function Footer() {
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:hello@oy4c.org">hello@oy4c.org</a></li>
+            <li><a href="mailto:partnerships@oy4c.org">partnerships@oy4c.org</a></li>
             <li><Link to="/contact">Contact Us →</Link></li>
           </ul>
         </div>
       </div>
 
       <div className={styles.bottom}>
-        <span>© 2025 Our Youth 4 The Climate. All rights reserved.</span>
+        <span>© 2026 Our Youth 4 The Climate, a fiscally hosted project of Host (formerly Climate 2025), a company registered in England and Wales, no. [XXXXXXXX]</span>
         <span>oy4c.org</span>
       </div>
     </footer>

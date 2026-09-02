@@ -22,7 +22,7 @@ export default function Speaker() {
           </div>
           <span className={styles.comingSoon}>Coming Soon</span>
           <p>
-            We're formalising our speaker request process. In the meantime, get in touch to invite an OY4C speaker to your event — we'd love to bring youth-led climate education to your audience.
+            We're formalising our speaker request process. In the meantime, get in touch to invite an OY4C speaker to your event - we'd love to bring youth-led climate change education to your audience.
           </p>
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>
             Request a speaker →

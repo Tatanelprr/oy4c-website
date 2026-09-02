@@ -14,7 +14,7 @@ export default function Impact() {
         <em>matters.</em>
       </h1>
       <p className={styles.heroSub}>
-        From classrooms in Fiji to communities in Nigeria — here's what OY4C has built, reached, and changed since day one.
+        From classrooms in Fiji to communities in Nigeria, here's what OY4C has built, reached, and changed since day one.
       </p>
     </div>
   </section>
@@ -60,7 +60,7 @@ export default function Impact() {
       <div className={styles.reportCard}>
         <div className={styles.reportYear}>2025</div>
         <h3>Impact Report</h3>
-        <p>A transformative year of growth, innovation and global reach. Discover what OY4C accomplished in 2025 — by the numbers and beyond.</p>
+        <p>A transformative year of growth, innovation and global reach. Discover what OY4C accomplished in 2025, by the numbers and beyond.</p>
         <a href="/s/2025-Impact-Report-576j.pdf" target="_blank" rel="noreferrer" className={styles.btnAccent}>
           Download the report →
         </a>
@@ -72,7 +72,7 @@ export default function Impact() {
           OY4C started with a simple belief: young people understand the climate crisis better than anyone. We turned that belief into a global education movement, spanning 40+ countries and reaching hundreds of thousands of students.
         </p>
         <p>
-          Every year, we publish an Impact Report documenting our reach, our programmes, and the stories behind the numbers. Because accountability matters — and so does transparency.
+          Every year, we publish an Impact Report documenting our reach, our programmes, and the stories behind the numbers. Because accountability matters, and so does transparency.
         </p>
       </div>
     </div>
@@ -84,15 +84,15 @@ export default function Impact() {
       <span className="section-eyebrow">Global goals</span>
       <h2 className="section-title">Supporting the UN SDGs</h2>
       <p>
-        OY4C's work directly contributes to several United Nations Sustainable Development Goals — because climate education isn't just about the environment. It's about equity, access, and the future we all share.
+        OY4C's work directly contributes to several United Nations Sustainable Development Goals - because climate change education isn't just about the environment. It's about equity, access, and the future we all share.
       </p>
       <div className={styles.sdgsList}>
         {[
-          'SDG 4 — Quality Education',
-          'SDG 10 — Reduced Inequalities',
-          'SDG 13 — Climate Action',
-          'SDG 16 — Peace, Justice & Strong Institutions',
-          'SDG 17 — Partnerships for the Goals',
+          'SDG 4 - Quality Education',
+          'SDG 10 - Reduced Inequalities',
+          'SDG 13 - Climate Action',
+          'SDG 16 - Peace, Justice & Strong Institutions',
+          'SDG 17 - Partnerships for the Goals',
         ].map((s) => (
           <span key={s} className={styles.sdgBadge}>{s}</span>
         ))}

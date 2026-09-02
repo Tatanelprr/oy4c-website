@@ -139,7 +139,7 @@ export default function Blog() {
                     </svg>
                   </div>
                   <p className={styles.emptyTitle}>No articles yet</p>
-                  <p className={styles.emptyDesc}>Check back soon — stories from our global network are on their way.</p>
+                  <p className={styles.emptyDesc}>Check back soon, stories from our global network are on their way.</p>
                 </div>
               )}
             </>

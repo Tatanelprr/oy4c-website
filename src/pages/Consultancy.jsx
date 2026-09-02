@@ -10,7 +10,7 @@ export default function Consultancy() {
           <span className={styles.heroEyebrow}>Services</span>
           <h1>Consultancy</h1>
           <p className={styles.heroSub}>
-            Expert guidance from OY4C's global network to help your organisation embed high-quality climate education.
+            Expert guidance from OY4C's global network to help your organisation embed high-quality climate change education.
           </p>
         </div>
       </section>
@@ -22,7 +22,7 @@ export default function Consultancy() {
           </div>
           <span className={styles.comingSoon}>Coming Soon</span>
           <p>
-            Our consultancy offer is being developed. Get in touch to discuss how OY4C can support your organisation's climate education strategy — from curriculum design to training and implementation.
+            Our consultancy offer is being developed. Get in touch to discuss how OY4C can support your organisation's climate change education strategy - from curriculum design to training and implementation.
           </p>
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>
             Start a conversation →

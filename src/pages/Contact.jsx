@@ -35,7 +35,7 @@ export default function Contact() {
                 icon: <BookOpen size={24} />,
                 category: 'Curriculum',
                 title: 'Curriculum Questions',
-                desc: 'Interested in integrating the OY4C Curriculum into your school or programme?',
+                desc: 'Interested in integrating the OY4CCurriculum into your school or programme?',
                 email: 'curriculum@oy4c.org',
               },
               {
@@ -81,7 +81,7 @@ export default function Contact() {
           <span className="section-eyebrow">Follow us</span>
           <h2 className="section-title">Stay connected</h2>
           <p>
-            Follow OY4C on social media for daily climate education content, updates on our programmes, and stories from our global community.
+            Follow OY4C on social media for daily climate change education content, updates on our programmes, and stories from our global community.
           </p>
           <div className={styles.socialLinks}>
             <a href="https://www.instagram.com/ouryouth4theclimate/" target="_blank" rel="noreferrer" className={styles.socialLink}>

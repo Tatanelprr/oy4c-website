@@ -15,7 +15,7 @@ export default function CCiC() {
             <em>Now it's your turn.</em>
           </h1>
           <p className={styles.heroSub}>
-            The CCiC Project brought free, youth-led climate workshops to students across 5 continents in 3.5 months. Now we're making everything open access — so anyone, anywhere can do the same.
+            The CCiC Project brought free, youth-led climate workshops to students across 5 continents in 3.5 months. Now we're making everything open access, so anyone, anywhere can do the same.
           </p>
           <div className={styles.heroStats}>
             {[
@@ -29,8 +29,7 @@ export default function CCiC() {
             ))}
           </div>
           <div className={styles.heroBtns}>
-            <a href="mailto:hello@oy4c.org" className={styles.btnPrimary}>Bring CCiC to Your School →</a>
-            <a href="mailto:hello@oy4c.org" className={styles.btnOutline}>Run a Workshop in Your Community →</a>
+            <a href="mailto:hello@oy4c.org" className={styles.btnPrimary}>Run a Free, Open Resource Workshop in Your Community →</a>
           </div>
         </div>
       </section>
@@ -48,15 +47,15 @@ export default function CCiC() {
               But we needed to go further. We needed to show up in person, to plant seeds, have real conversations, and prove that youth-to-youth climate education works on the ground, not just behind a screen.
             </p>
             <p>
-              That's what CCiC is: a free, in-person workshop designed and delivered by young people for students aged 14–18. We come to you. We bring everything. You just open the door.
+              That's what CCiC is: a free, in-person workshop designed and delivered by young people for students aged 14-18. We come to you. We bring everything. You just open the door.
             </p>
           </div>
           <div className={styles.tiles}>
             {[
               { icon: <Clock size={28} />, title: '1h30 session', desc: '45 mins of learning + 45 mins of hands-on activity' },
-              { icon: <GraduationCap size={28} />, title: 'Ages 14–18', desc: 'Flexible for one class, a year group, or a whole assembly' },
+              { icon: <GraduationCap size={28} />, title: 'Ages 14-18', desc: 'Flexible for one class, a year group, or a whole assembly' },
               { icon: <DollarSign size={28} />, title: 'Zero cost. Zero prep.', desc: 'We bring all materials directly to your school' },
-              { icon: <Users size={28} />, title: 'Youth-to-youth', desc: 'Students learn from their peers — not another adult at the front' },
+              { icon: <Users size={28} />, title: 'Youth-to-youth', desc: 'Students learn from their peers, not another adult at the front' },
             ].map((t) => (
               <div key={t.title} className={styles.tile}>
                 <div className={styles.tileIcon}>{t.icon}</div>
@@ -74,24 +73,24 @@ export default function CCiC() {
           <span className="section-eyebrow">The Workshop</span>
           <h2 className="section-title">What happens in a CCiC workshop?</h2>
           <p className={styles.workshopIntro}>
-            The CCiC workshop uses the fashion industry as a lens into the bigger climate picture — because everyone in the room is wearing clothes, and every one of those clothes has a story worth following.
+            The CCiC workshop uses the fashion industry as a lens into the bigger climate picture - because everyone in the room is wearing clothes, and every one of those clothes has a story worth following.
           </p>
           <div className={styles.workshopParts}>
             <div className={styles.workshopPart}>
               <div className={styles.workshopPartNum}>Part 1</div>
-              <div className={styles.workshopPartTitle}>Learning — 45 mins</div>
+              <div className={styles.workshopPartTitle}>Learning - 45 mins</div>
               <p>
-                Students start by tracing a piece of clothing they're wearing — what it's made of, where it came from, how long they've had it. From there, we explore how the fashion industry touches five interconnected systems: Environmental, Social, Economic, Institutional, and Cultural.
+                Students start by tracing a piece of clothing they're wearing: what it's made of, where it came from, how long they've had it. From there, we explore how the fashion industry touches five interconnected systems: Environmental, Social, Economic, Institutional, and Cultural.
               </p>
               <p style={{ marginTop: 12 }}>
-                We follow a single T-shirt from raw material to disposal and ask: does it have to end here? Students compare the linear economy with a circular one and meet real-world models making it work — from Kantamanto Market in Accra to the global Repair Café Network.
+                We follow a single T-shirt from raw material to disposal and ask: does it have to end here? Students compare the linear economy with a circular one and meet real-world models making it work, from Kantamanto Market in Accra to the global Repair Café Network.
               </p>
             </div>
             <div className={styles.workshopPart}>
               <div className={styles.workshopPartNum}>Part 2</div>
-              <div className={styles.workshopPartTitle}>Activity — 45 mins</div>
+              <div className={styles.workshopPartTitle}>Activity - 45 mins</div>
               <p>
-                In teams of 4–5, students take on the Design It Better! Challenge — choosing a real fast fashion problem in their community and designing a response. A poster, a campaign, a roleplay, a mock ad. Then they present.
+                In teams of 4-5, students take on the Design It Better! Challenge - choosing a real fast fashion problem in their community and designing a response. A poster, a campaign, a roleplay, a mock ad. Then they present.
               </p>
               <p style={{ marginTop: 12 }}>
                 The goal isn't a perfect answer. It's realising they already have what it takes to imagine one.
@@ -111,13 +110,13 @@ export default function CCiC() {
           </p>
           <div className={styles.timeline}>
             {[
-              { flag: '🌏 Canada', title: 'Where it started — Online', body: 'In good OY4C fashion, the first CCiC session was held online. Ava in London, students in Ontario, Canada. But it was time to go for real.' },
+              { flag: '🌏 Canada', title: 'Where it started - Online', body: 'In good OY4C fashion, the first CCiC session was held online. Ava in London, students in Ontario, Canada. But it was time to go for real.' },
               { flag: '🌴 Fiji', title: 'The first classroom', body: 'First stop: Fiji. Walking into a classroom for the first time, with real students looking back and engaging with materials we had built together. It was the first moment the tangible impact of OY4C became real.' },
               { flag: '🪡 Auckland, New Zealand', title: 'Community, no script', body: 'At New Lynn Memorial Square, CCiC took a different shape: a community-based event, hands-on, with participants embroidering cloth and talking openly about the fashion industry\'s impact on people, planet, and economy.' },
               { flag: '🏫 Rotorua, New Zealand', title: '60 students', body: 'Everyone in that room was there for the same reason: the need for young people to come together, empower each other, and be reminded that they are not alone in this. By youth. For youth.' },
-              { flag: '🌿 Bali, Indonesia', title: 'SD Bali Public School — 72 students', body: 'Students at Green School Bali, who had received climate change education, were notably less reactive to the material — not because they didn\'t care, but because this knowledge was already part of how they moved through the world. That\'s the goal.' },
-              { flag: '🧵 Philippines, Cebu', title: 'Earth Day, April 22nd — 14 students', body: 'Students already skilled at repairing clothes and extending the life of what they owned — not because they\'d been taught sustainability, but because they\'d been shaped by necessity. This was a real exchange of knowledge: we brought the framework; they brought the practice.' },
-              { flag: '🌍 Across the World', title: 'At the same time', body: 'Muhammad ran a workshop in Nigeria and integrated the full OY4C Curriculum into his school. Deanna stood in front of 140 students in Pontianak, Indonesia. Alexandra brought it back to the school she attended in Bratislava, Slovakia.' },
+              { flag: '🌿 Bali, Indonesia', title: 'SD Bali Public School - 72 students', body: 'Students at Green School Bali, who had received climate change education, were notably less reactive to the material, not because they didn\'t care, but because this knowledge was already part of how they moved through the world. That\'s the goal.' },
+              { flag: '🧵 Philippines, Cebu', title: 'Earth Day, April 22nd - 14 students', body: 'Students already skilled at repairing clothes and extending the life of what they owned, not because they\'d been taught sustainability, but because they\'d been shaped by necessity. This was a real exchange of knowledge: we brought the framework; they brought the practice.' },
+              { flag: '🌍 Across the World', title: 'At the same time', body: 'Muhammad ran a workshop in Nigeria and integrated the full OY4CCurriculum into his school. Deanna stood in front of 140 students in Pontianak, Indonesia. Alexandra brought it back to the school she attended in Bratislava, Slovakia.' },
             ].map((item) => (
               <div key={item.title} className={styles.timelineItem}>
                 <div className={styles.timelineDot}>
@@ -142,8 +141,8 @@ export default function CCiC() {
           <h2 className="section-title">What 3.5 months on the road taught us</h2>
           <div className={styles.insightsGrid}>
             {[
-              { num: '01', title: 'Access to climate education shapes everything', body: 'The contrast between students who had received deep climate change education and those who hadn\'t was impossible to ignore. Engagement, agency, and the ability to imagine solutions all correlated directly with exposure.' },
-              { num: '02', title: 'Sustainability can be lived without being named', body: 'In the Philippines, students were already practising circularity. The most powerful moments weren\'t when we taught something new — they were when we helped students recognise what they already knew.' },
+              { num: '01', title: 'Access to climate change education shapes everything', body: 'The contrast between students who had received deep climate change education and those who hadn\'t was impossible to ignore. Engagement, agency, and the ability to imagine solutions all correlated directly with exposure.' },
+              { num: '02', title: 'Sustainability can be lived without being named', body: 'In the Philippines, students were already practising circularity. The most powerful moments weren\'t when we taught something new, they were when we helped students recognise what they already knew.' },
               { num: '03', title: 'Peer-to-peer is different', body: 'Students listen differently when the person at the front is their age. There\'s less distance. More permission to speak, question, push back. Youth-to-youth education isn\'t just a nice idea. It works.' },
               { num: '04', title: 'This doesn\'t have to be founder-dependent', body: 'Muhammad, Deanna, and Alexandra ran sessions on the other side of the world while Ava was in transit. The model holds without the founder in the room. That means it can scale. And it will.' },
               { num: '05', title: 'Community is the infrastructure', body: 'In a world pulling people apart, in-person connection does something online cannot replicate. Students don\'t just learn in CCiC workshops. They meet each other. They find their people.' },
@@ -179,7 +178,7 @@ export default function CCiC() {
             ))}
           </div>
           <div className={styles.sdgs}>
-            {['SDG 4 — Quality Education', 'SDG 10 — Reduced Inequalities', 'SDG 13 — Climate Action'].map((s) => (
+            {['SDG 4 - Quality Education', 'SDG 10 - Reduced Inequalities', 'SDG 13 - Climate Action'].map((s) => (
               <span key={s} className={styles.sdgBadge}>{s}</span>
             ))}
           </div>
@@ -223,7 +222,7 @@ export default function CCiC() {
           <p className={styles.quoteText}>
             "The most beautiful 3.5 months a Founder could have asked for. Connecting, really connecting, with people from across the world, across backgrounds, across generations. This is what community looks like, especially in a world that's so desperate for it. This is what equipping a generation looks like. This is what scaling climate change education looks like. We were just planting seeds across the world. But seeds, eventually, sprout."
           </p>
-          <div className={styles.quoteAuthor}>— Ava Langridge, Founder & Executive Director, OY4C</div>
+          <div className={styles.quoteAuthor}>- Ava Langridge, Founder & Executive Director, OY4C</div>
         </div>
       </section>
 
@@ -231,7 +230,7 @@ export default function CCiC() {
       <section className={styles.cta}>
         <span className="section-eyebrow">Get involved</span>
         <h2 className="section-title">Ready to bring CCiC to your community?</h2>
-        <p>Whether you're a teacher, a student, a youth advocate, or an organisation — there's a way for you to be part of this.</p>
+        <p>Whether you're a teacher, a student, a youth advocate, or an organisation, there's a way for you to be part of this.</p>
         <div className={styles.ctaBtns}>
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>Bring CCiC to Your School →</a>
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>Run It Yourself →</a>
