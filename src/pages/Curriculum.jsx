@@ -6,6 +6,7 @@ export default function Curriculum() {
       <section className={styles.hero}>
         <div className={styles.heroBg} />
         <div className={styles.heroContent}>
+          <img src="/curriculum-logo.png" alt="OY4CCurriculum" className={styles.heroLogo} />
           <span className={styles.heroEyebrow}>Programme</span>
           <h1>OY4CCurriculum</h1>
           <p className={styles.heroSub}>

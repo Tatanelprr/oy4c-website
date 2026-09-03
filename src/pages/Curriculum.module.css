@@ -17,6 +17,13 @@
   padding: 80px 10vw;
   max-width: 800px;
 }
+.heroLogo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 24px;
+}
 .heroEyebrow {
   display: inline-block;
   font-size: 0.72rem;
