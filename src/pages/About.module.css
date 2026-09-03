@@ -265,4 +265,13 @@
 }
 @media (max-width: 600px) {
   .statsGrid, .onwardGrid { grid-template-columns: 1fr; }
+  .heroContent { padding: 48px 6vw; }
+  .mission, .story, .onward { padding: 60px 5vw; }
+  .video { padding: 60px 5vw; }
+  .stats { padding: 60px 5vw; }
+  .missionInner { gap: 40px; }
+}
+@media (max-width: 480px) {
+  .statsGrid { grid-template-columns: 1fr 1fr; }
+  .heroBtns { flex-direction: column; }
 }

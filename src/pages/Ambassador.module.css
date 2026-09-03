@@ -275,9 +275,19 @@
   .overviewInner { grid-template-columns: 1fr; }
   .metricsGrid { grid-template-columns: repeat(2, 1fr); }
   .ambassadorsGrid { grid-template-columns: repeat(2, 1fr); }
+  .overviewInner { gap: 48px; }
+}
+@media (max-width: 600px) {
+  .heroContent { padding: 48px 6vw; }
+  .overview, .whoFor, .ambassadors, .cta { padding: 60px 5vw; }
+  .metrics { padding: 52px 5vw; }
+  .heroBtns { flex-direction: column; }
 }
 @media (max-width: 480px) {
   .ambassadorsGrid { grid-template-columns: 1fr; }
+  .metricsGrid { grid-template-columns: 1fr 1fr; }
+  .ctaBtns { flex-direction: column; align-items: stretch; }
+  .ctaBtn, .ctaBtnOutline { text-align: center; }
 }
 
 /* LOADING / ERROR */

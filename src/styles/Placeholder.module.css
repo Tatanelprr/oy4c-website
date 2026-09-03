@@ -103,7 +103,9 @@
 }
 
 @media (max-width: 768px) {
-  .heroContent {
-    padding: 64px 6vw;
-  }
+  .heroContent { padding: 64px 6vw; }
+}
+@media (max-width: 480px) {
+  .heroContent { padding: 48px 6vw; }
+  .placeholder { padding: 64px 5vw; }
 }
