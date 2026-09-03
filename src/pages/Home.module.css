@@ -134,6 +134,7 @@
 .metrics {
   background: var(--cream);
   padding: 0 5vw 80px;
+  overflow-x: hidden;
 }
 .metricsLabel {
   text-align: center;
@@ -561,7 +562,6 @@
   .seenInLabel { font-size: 0.68rem; margin-bottom: 18px; }
 }
 @media (max-width: 480px) {
-  .metricsGrid { grid-template-columns: 1fr 1fr; }
   .pillar { padding: 20px; gap: 12px; }
   .pillarArrow { display: none; }
   .heroBtns { flex-direction: column; }
