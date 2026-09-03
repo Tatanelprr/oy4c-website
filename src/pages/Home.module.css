@@ -228,7 +228,7 @@
 .pillar:hover .pillarIcon { color: var(--white); }
 .pillarTitle { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
 .pillarDesc { font-size: 0.82rem; line-height: 1.55; opacity: 0.7; }
-.pillarArrow { font-size: 0.78rem; font-weight: 600; color: var(--green); margin-left: auto; flex-shrink: 0; }
+.pillarArrow { font-size: 0.78rem; font-weight: 600; color: var(--green); margin-left: auto; white-space: nowrap; }
 .pillar:hover .pillarArrow { color: var(--white); }
 
 /* PATHS */
