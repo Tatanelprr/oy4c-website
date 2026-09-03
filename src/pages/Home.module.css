@@ -109,14 +109,7 @@
 .impactTopVisual {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.impactYear {
-  font-size: clamp(6rem, 15vw, 12rem);
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1;
-  opacity: 0.2;
+  min-width: 0;
 }
 .btnAccent {
   display: inline-block;

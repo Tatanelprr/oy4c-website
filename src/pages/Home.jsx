@@ -5,6 +5,7 @@ import {
   Newspaper, Mic2
 } from 'lucide-react'
 import styles from './Home.module.css'
+import VolunteerMap from '../components/VolunteerMap'
 
 // Local logo fallbacks until CDN URLs are set in Notion
 const LOGO_LOCAL = {
@@ -150,7 +151,7 @@ export default function Home() {
             </a>
           </div>
           <div className={styles.impactTopVisual}>
-            <div className={styles.impactYear}>2025</div>
+            <VolunteerMap />
           </div>
         </div>
       </section>
