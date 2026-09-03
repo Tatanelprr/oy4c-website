@@ -244,7 +244,6 @@ export default function Home() {
           <div className={styles.pillars}>
             <Link to="/curriculum" className={styles.pillar}>
               <img src="/curriculum-logo.png" alt="OY4CCurriculum" className={styles.pillarCurriculumLogo} />
-              <div className={styles.pillarTitle}>OY4CCurriculum</div>
               <div className={styles.pillarDesc}>Ready-to-use, youth-developed, interdisciplinary climate change curriculum. Free for schools and educators worldwide.</div>
               <span className={styles.pillarArrow}>Get the OY4CCurriculum →</span>
             </Link>
