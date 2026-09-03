@@ -1,25 +1,34 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   BookOpen, Mic, School, Briefcase, Handshake, Sprout,
   Newspaper, Mic2
 } from 'lucide-react'
 import styles from './Home.module.css'
-import { useState, useEffect } from 'react'
 
-const SEEN_IN = [
-  { name: 'National Geographic', src: '/seen-in/national-geographic.svg' },
-  { name: 'DoSomething.org',     src: '/seen-in/dosomething.png' },
-  { name: 'TEDx',                src: '/seen-in/tedx.png' },
-  { name: 'Euronews',            src: '/seen-in/euronews.svg' },
-  { name: 'Environmental Media Association', src: '/seen-in/ema.png' },
-  { name: 'Global Heroes',       src: '/seen-in/global-heroes.png' },
-  { name: 'Sierra Club',         src: '/seen-in/sierra-club.png' },
-  { name: 'QS Impact',           src: '/seen-in/qs.svg' },
-  { name: 'UCL',                 src: '/seen-in/ucl.svg' },
-  { name: 'Turner Contemporary', src: '/seen-in/turner-contemporary.png', invert: true },
-  { name: 'Digital Camp',        src: '/seen-in/digital-camp.png' },
-  { name: 'Climate Fresk',       src: '/seen-in/climate-fresk.png' },
-]
+// Local logo fallbacks until CDN URLs are set in Notion
+const LOGO_LOCAL = {
+  'National Geographic':             '/seen-in/national-geographic.svg',
+  'DoSomething.org':                 '/seen-in/dosomething.png',
+  'TedX':                            '/seen-in/tedx.png',
+  'Euronews':                        '/seen-in/euronews.svg',
+  'Environmental Media Association': '/seen-in/ema.png',
+  'Global Heroes':                   '/seen-in/global-heroes.png',
+  'Sierra Club':                     '/seen-in/sierra-club.png',
+  'QS Impact':                       '/seen-in/qs.svg',
+  'UCL':                             '/seen-in/ucl.svg',
+  'Turner Contemporary':             '/seen-in/turner-contemporary.png',
+  'Digital Camp':                    '/seen-in/digital-camp.png',
+  'Climate Fresk':                   '/seen-in/climate-fresk.png',
+  'Feel Good Action':                '/partners/feel-good-action.webp',
+  'Climate Cardinals':               '/partners/climate-cardinals.png',
+  'Force of Nature':                 '/partners/force-of-nature.webp',
+  'Climate Majority Project':        '/partners/climate-majority-project.webp',
+  'Climate Quilt':                   '/partners/climate-quilt.png',
+  'Energy for Refugees Amsterdam':   '/partners/energy-for-refugees.jpg',
+}
+
+const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
   'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG',
@@ -63,6 +72,19 @@ function HeroSlideshow() {
 }
 
 export default function Home() {
+  const [seenIn, setSeenIn]         = useState([])
+  const [partnersList, setPartners] = useState([])
+
+  useEffect(() => {
+    fetch('/api/partners')
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.statusText)))
+      .then((data) => {
+        setSeenIn(data.seenIn)
+        setPartners(data.partners)
+      })
+      .catch(() => {}) // fail silently — sections stay empty
+  }, [])
+
   return (
     <>
       {/* HERO */}
@@ -86,26 +108,33 @@ export default function Home() {
 </section>
 
       {/* AS SEEN IN */}
-      <section className={styles.seenIn}>
-        <p className={styles.seenInLabel}>As Seen In</p>
-        <div className={styles.seenInTrack}>
-          <div className={styles.seenInInner}>
-            {[0, 1].map((i) => (
-              <span key={i} className={styles.seenInSet}>
-                {SEEN_IN.map((logo) => (
-                  <img
-                    key={logo.name}
-                    src={logo.src}
-                    alt={logo.name}
-                    className={`${styles.seenInLogo}${logo.invert ? ' ' + styles.seenInLogoInvert : ''}`}
-                    draggable={false}
-                  />
-                ))}
-              </span>
-            ))}
+      {seenIn.length > 0 && (
+        <section className={styles.seenIn}>
+          <p className={styles.seenInLabel}>As Seen In</p>
+          <div className={styles.seenInTrack}>
+            <div className={styles.seenInInner}>
+              {[0, 1].map((i) => (
+                <span key={i} className={styles.seenInSet}>
+                  {seenIn.map((item) => {
+                    const src = item.logo || LOGO_LOCAL[item.name]
+                    if (!src) return null
+                    const invert = INVERT_LOGOS.has(item.name)
+                    return (
+                      <img
+                        key={item.name}
+                        src={src}
+                        alt={item.name}
+                        className={`${styles.seenInLogo}${invert ? ' ' + styles.seenInLogoInvert : ''}`}
+                        draggable={false}
+                      />
+                    )
+                  })}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* IMPACT REPORT — au dessus des metrics */}
       <section className={styles.impactTop}>
@@ -178,29 +207,27 @@ export default function Home() {
       </div>
 
       {/* PARTNERS */}
-      <section className={styles.partners}>
-        <div className={styles.partnersHead}>
-          <span className="section-eyebrow">Our partners</span>
-          <h2 className="section-title">Organisations we work with</h2>
-        </div>
-        <div className={styles.partnersRow}>
-          {[
-            { name: 'Feel Good Action', logo: '/partners/feel-good-action.webp' },
-            { name: 'Climate Cardinals', logo: '/partners/climate-cardinals.png' },
-            { name: 'Force of Nature', logo: '/partners/force-of-nature.webp' },
-            { name: 'Climate Majority Project', logo: '/partners/climate-majority-project.webp' },
-            { name: 'Climate Quilt', logo: '/partners/climate-quilt.png' },
-            { name: 'Energy for Refugees', logo: '/partners/energy-for-refugees.jpg' },
-          ].map((p) => (
-            <div key={p.name} className={styles.partnerLogo}>
-              <img src={p.logo} alt={p.name} />
-            </div>
-          ))}
-        </div>
-        <div className={styles.partnersViewAll}>
-          <Link to="/partnerships" className={styles.partnersViewAllLink}>View all partners →</Link>
-        </div>
-      </section>
+      {partnersList.length > 0 && (
+        <section className={styles.partners}>
+          <div className={styles.partnersHead}>
+            <span className="section-eyebrow">Our partners</span>
+            <h2 className="section-title">Organisations we work with</h2>
+          </div>
+          <div className={styles.partnersRow}>
+            {partnersList.map((p) => {
+              const logo = p.logo || LOGO_LOCAL[p.name]
+              return (
+                <div key={p.name} className={styles.partnerLogo}>
+                  {logo && <img src={logo} alt={p.name} />}
+                </div>
+              )
+            })}
+          </div>
+          <div className={styles.partnersViewAll}>
+            <Link to="/partnerships" className={styles.partnersViewAllLink}>View all partners →</Link>
+          </div>
+        </section>
+      )}
 
       {/* WHAT WE DO */}
       <section className={styles.what}>

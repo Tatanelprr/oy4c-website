@@ -110,6 +110,13 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.partnersLoading,
+.partnersError {
+  margin-top: 52px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--mid);
+}
 .partnersGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

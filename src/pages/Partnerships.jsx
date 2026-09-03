@@ -1,40 +1,29 @@
+import { useState, useEffect } from 'react'
 import { Globe, Heart, Users, Handshake } from 'lucide-react'
 import styles from './Partnerships.module.css'
 
-const PARTNERS = [
-  {
-    name: 'Feel Good Action',
-    logo: '/partners/feel-good-action.webp',
-    desc: 'An advocacy organization dedicated to using social networks and digital media to create collective action that protects communities and the planet. OY4C has partnered with FGA on youth voter registration campaigns and raising awareness about the intersection between voting and climate action.',
-  },
-  {
-    name: 'Climate Cardinals',
-    logo: '/partners/climate-cardinals.png',
-    desc: 'Breaking language barriers in the climate movement so every community can take action. With over 19k volunteers across 145 countries, OY4C partners with Climate Cardinals to connect the OY4CCurriculum to their vast chapter network, 89% of which are in the Global South.',
-  },
-  {
-    name: 'Force of Nature',
-    logo: '/partners/force-of-nature.webp',
-    desc: 'Helping young people translate climate anxiety into action, and enabling educators to support them in their journey.',
-  },
-  {
-    name: 'Climate Majority Project',
-    logo: '/partners/climate-majority-project.webp',
-    desc: 'Based in the UK, the Climate Majority Project aims to catalyze the silent majority to take action in their communities, schools, and businesses. OY4C is proud to be an organizational partner for their Climate Courage Schools Campaign.',
-  },
-  {
-    name: 'Climate Quilt',
-    logo: '/partners/climate-quilt.png',
-    desc: 'A global youth climate and art initiative empowering young people to make art around climate themes. OY4C partners with Climate Quilt to join a network of youth climate organizations and embed art into our climate action.',
-  },
-  {
-    name: 'Energy for Refugees Amsterdam',
-    logo: '/partners/energy-for-refugees.jpg',
-    desc: 'A student-driven Dutch NGO committed to addressing energy poverty in refugee camps and communities worldwide. OY4C recently partnered with EfR to host a pub quiz fundraiser.',
-  },
-]
+// Local logo paths until CDN URLs are set in Notion
+const LOGO_LOCAL = {
+  'Feel Good Action':              '/partners/feel-good-action.webp',
+  'Climate Cardinals':             '/partners/climate-cardinals.png',
+  'Force of Nature':               '/partners/force-of-nature.webp',
+  'Climate Majority Project':      '/partners/climate-majority-project.webp',
+  'Climate Quilt':                 '/partners/climate-quilt.png',
+  'Energy for Refugees Amsterdam': '/partners/energy-for-refugees.jpg',
+}
 
 export default function Partnerships() {
+  const [partners, setPartners] = useState([])
+  const [loading, setLoading]   = useState(true)
+  const [error, setError]       = useState(null)
+
+  useEffect(() => {
+    fetch('/api/partners')
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.statusText)))
+      .then((data) => { setPartners(data.partners); setLoading(false) })
+      .catch((err) => { setError(String(err)); setLoading(false) })
+  }, [])
+
   return (
     <>
       {/* HERO */}
@@ -89,21 +78,32 @@ export default function Partnerships() {
         <div className={styles.partnersInner}>
           <span className="section-eyebrow">Our partners</span>
           <h2 className="section-title">Organisations we work with</h2>
-          <div className={styles.partnersGrid}>
-            {PARTNERS.map((p) => (
-              <div key={p.name} className={styles.partnerCard}>
-                <div className={styles.partnerLogo}>
-                  {p.logo ? (
-                    <img src={p.logo} alt={p.name} />
-                  ) : (
-                    <div className={styles.partnerLogoPlaceholder}>{p.name}</div>
-                  )}
-                </div>
-                <div className={styles.partnerName}>{p.name}</div>
-                <div className={styles.partnerDesc}>{p.desc}</div>
-              </div>
-            ))}
-          </div>
+
+          {loading && <p className={styles.partnersLoading}>Loading partners…</p>}
+          {error   && <p className={styles.partnersError}>Unable to load partners.</p>}
+
+          {!loading && !error && (
+            <div className={styles.partnersGrid}>
+              {partners.map((p) => {
+                const logo = p.logo || LOGO_LOCAL[p.name]
+                return (
+                  <div key={p.name} className={styles.partnerCard}>
+                    <div className={styles.partnerLogo}>
+                      {logo ? (
+                        <img src={logo} alt={p.name} />
+                      ) : (
+                        <div className={styles.partnerLogoPlaceholder}>{p.name}</div>
+                      )}
+                    </div>
+                    <div className={styles.partnerName}>{p.name}</div>
+                    {p.description && (
+                      <div className={styles.partnerDesc}>{p.description}</div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
       </section>
 
