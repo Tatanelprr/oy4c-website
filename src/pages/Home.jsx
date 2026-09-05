@@ -244,13 +244,17 @@ export default function Home() {
           </div>
           <div className={styles.pillars}>
             <Link to="/curriculum" className={styles.pillar}>
-              <img src="/curriculum-logo.png" alt="OY4CCurriculum" className={styles.pillarCurriculumLogo} />
+              <div className={styles.pillarHead}>
+                <img src="/curriculum-logo.png" alt="OY4CCurriculum" className={styles.pillarCurriculumLogo} />
+              </div>
               <div className={styles.pillarDesc}>Ready-to-use, youth-developed, interdisciplinary climate change curriculum. Free for schools and educators worldwide.</div>
               <span className={styles.pillarArrow}>Get the OY4CCurriculum →</span>
             </Link>
             <Link to="/ccic" className={styles.pillar}>
-              <span className={styles.pillarIcon}><Mic /></span>
-              <div className={styles.pillarTitle}>CCiC: Climate Curriculum into Classrooms</div>
+              <div className={styles.pillarHead}>
+                <span className={styles.pillarIcon}><Mic /></span>
+                <div className={styles.pillarTitle}>CCiC: Climate Curriculum into Classrooms</div>
+              </div>
               <div className={styles.pillarDesc}>Our workshop programme, delivered across six continents, now an open resource anyone can run, with everything you need to bring climate conversations into your classroom.</div>
               <span className={styles.pillarArrow}>Learn more →</span>
             </Link>

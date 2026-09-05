@@ -205,28 +205,42 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: stretch;
   max-width: 1200px;
   margin: 0 auto;
 }
-.pillars { display: flex; flex-direction: column; gap: 14px; }
+.whatInner > div:first-child {
+  align-self: center;
+}
+.pillars { display: flex; flex-direction: column; gap: 14px; height: 100%; }
 .pillar {
   background: var(--cream);
   border-radius: 16px;
   padding: 28px 32px;
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
   transition: all 0.2s;
   color: var(--black);
 }
 .pillar:hover { background: var(--teal); color: var(--white); }
+/* PART 1 — header (logo OR icon + title), même hauteur sur les deux cartes */
+.pillarHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+}
 .pillarIcon {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--green);
-  width: 32px; height: 32px;
+  width: 48px; height: 48px;
   flex-shrink: 0;
 }
+.pillarIcon svg { width: 32px; height: 32px; }
 .pillarCurriculumLogo {
   height: 48px;
   width: auto;
@@ -234,9 +248,17 @@
   flex-shrink: 0;
 }
 .pillar:hover .pillarIcon { color: var(--white); }
-.pillarTitle { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+.pillarTitle { font-size: 1rem; font-weight: 600; }
+/* PART 2 — description */
 .pillarDesc { font-size: 0.82rem; line-height: 1.55; opacity: 0.7; }
-.pillarArrow { font-size: 0.78rem; font-weight: 600; color: var(--green); margin-left: auto; white-space: nowrap; }
+/* PART 3 — bouton vert, poussé en bas pour aligner les deux cartes */
+.pillarArrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green);
+  white-space: nowrap;
+  margin-top: auto;
+}
 .pillar:hover .pillarArrow { color: var(--white); }
 
 /* PATHS */
