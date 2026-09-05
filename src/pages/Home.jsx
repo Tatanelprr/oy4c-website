@@ -9,7 +9,7 @@ import VolunteerMap from '../components/VolunteerMap'
 
 // Local logo fallbacks until CDN URLs are set in Notion
 const LOGO_LOCAL = {
-  'National Geographic':             '/seen-in/national-geographic.svg',
+  'National Geographic':             '/seen-in/national-geographic.png',
   'DoSomething.org':                 '/seen-in/dosomething.png',
   'TedX':                            '/seen-in/tedx.png',
   'Euronews':                        '/seen-in/euronews.svg',
@@ -17,7 +17,7 @@ const LOGO_LOCAL = {
   'Global Heroes':                   '/seen-in/global-heroes.png',
   'Sierra Club':                     '/seen-in/sierra-club.png',
   'QS Impact':                       '/seen-in/qs.svg',
-  'UCL':                             '/seen-in/ucl.svg',
+  'UCL':                             '/seen-in/ucl.png',
   'Turner Contemporary':             '/seen-in/turner-contemporary.png',
   'Digital Camp':                    '/seen-in/digital-camp.png',
   'Climate Fresk':                   '/seen-in/climate-fresk.png',
