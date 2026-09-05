@@ -92,7 +92,7 @@ export default function Home() {
 <section className={styles.hero}>
   <HeroSlideshow />
   <div className={styles.heroContent}>
-    <span className={styles.heroEyebrow}>Youth-led climate education</span>
+    <span className={styles.heroEyebrow}>Youth-led climate change education</span>
     <h1>
       Education for Youth.<br />
       <em>By Youth.</em>
@@ -152,6 +152,7 @@ export default function Home() {
           </div>
           <div className={styles.impactTopVisual}>
             <VolunteerMap />
+            <p className={styles.mapCaption}>🌍 Countries where OY4C volunteers are active</p>
           </div>
         </div>
       </section>

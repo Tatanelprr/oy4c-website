@@ -44,7 +44,7 @@ export default function CCiC() {
               OY4C has spent 4.5 years building a global, youth-led climate change education movement online. We've reached over 100,000 people monthly, built a team of 133 volunteers across 43 countries, and brought our curriculum into classrooms in over 20 countries.
             </p>
             <p>
-              But we needed to go further. We needed to show up in person, to plant seeds, have real conversations, and prove that youth-to-youth climate education works on the ground, not just behind a screen.
+              But we needed to go further. We needed to show up in person, to plant seeds, have real conversations, and prove that youth-to-youth climate change education works on the ground, not just behind a screen.
             </p>
             <p>
               That's what CCiC is: a free, in-person workshop designed and delivered by young people for students aged 14-18. We come to you. We bring everything. You just open the door.

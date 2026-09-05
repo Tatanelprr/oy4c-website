@@ -52,7 +52,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <span>© 2026 Our Youth 4 The Climate, a fiscally hosted project of Host (formerly Climate 2025), a company registered in England and Wales, no. [XXXXXXXX]</span>
+        <span>© 2026 Our Youth 4 The Climate, a fiscally hosted project of Host (formerly Climate 2025), a company registered in England and Wales, no. GB454839164</span>
         <span>oy4c.org</span>
       </div>
     </footer>
