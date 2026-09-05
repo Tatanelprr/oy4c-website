@@ -1,8 +1,3 @@
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
 const NOTION_VERSION = '2022-06-28'
 const PARENT_PAGE_ID = '3adf5206396380e18649c6fc50b9b5ce'
