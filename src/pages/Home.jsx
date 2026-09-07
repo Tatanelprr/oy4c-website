@@ -33,7 +33,8 @@ const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
   'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG',
-  'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/26ec6b1b-f5cb-4282-b5ce-68bbd7825f4f/CongoBrazza-credit-Bobulix-Flickr.jpg',
+  '/hero/hero-young-person.jpg',
+  '/hero/hero-classroom.jpg',
 ]
 
 function HeroSlideshow() {
@@ -270,12 +271,13 @@ export default function Home() {
         </div>
         <div className={styles.pathsGrid}>
           {[
-            { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction' },
+            { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-young-person.jpg' },
             { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum' },
             { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partner' },
             { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact' },
           ].map((p) => (
             <Link key={p.who} to={p.to} className={styles.pathCard}>
+              {p.img && <img src={p.img} alt={p.who} className={styles.pathImg} />}
               <span className={styles.pathIcon}>{p.icon}</span>
               <div className={styles.pathWho}>{p.who}</div>
               <div className={styles.pathDesc}>{p.desc}</div>
