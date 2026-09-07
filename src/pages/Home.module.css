@@ -279,10 +279,19 @@
   border-radius: 18px;
   padding: 32px 22px;
   display: block;
+  overflow: hidden;
   transition: background 0.2s;
   color: var(--white);
 }
 .pathCard:hover { background: rgba(255,255,255,0.15); }
+.pathImg {
+  display: block;
+  width: calc(100% + 44px);
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  margin: -32px -22px 20px;
+}
 .pathIcon {
   display: block;
   margin-bottom: 14px;
