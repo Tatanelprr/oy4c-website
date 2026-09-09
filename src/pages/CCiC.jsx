@@ -29,7 +29,7 @@ export default function CCiC() {
             ))}
           </div>
           <div className={styles.heroBtns}>
-            <a href="mailto:hello@oy4c.org" className={styles.btnPrimary}>Run a Free, Open Resource Workshop in Your Community →</a>
+            <a href="mailto:hello@oy4c.org" className={styles.btnPrimary}>Run a Free Workshop in Your Community →</a>
           </div>
         </div>
       </section>

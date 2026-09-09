@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  Mic, School, Briefcase, Handshake, Sprout,
+  School, Briefcase, Handshake, Sprout,
   Newspaper, Mic2
 } from 'lucide-react'
 import styles from './Home.module.css'
@@ -32,9 +32,10 @@ const LOGO_LOCAL = {
 const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
-  'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG',
   '/hero/hero-1.jpg',
+  '/hero/hero-2.jpg',
   '/hero/hero-3.jpg',
+  '/hero/hero-4.jpg',
 ]
 
 function HeroSlideshow() {
@@ -253,7 +254,7 @@ export default function Home() {
             </Link>
             <Link to="/ccic" className={styles.pillar}>
               <div className={styles.pillarHead}>
-                <span className={styles.pillarIcon}><Mic /></span>
+                <img src="/ccic-logo.jpg" alt="CCiC" style={{ height: '48px', objectFit: 'contain' }} />
                 <div className={styles.pillarTitle}>CCiC: Climate Curriculum into Classrooms</div>
               </div>
               <div className={styles.pillarDesc}>Our workshop programme, delivered across six continents, now an open resource anyone can run, with everything you need to bring climate conversations into your classroom.</div>
@@ -272,16 +273,20 @@ export default function Home() {
         <div className={styles.pathsGrid}>
           {[
             { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-1.jpg' },
-            { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum' },
-            { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partner' },
-            { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact' },
+            { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum', img: '/paths/path-educator.jpg' },
+            { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partner', img: null },
+            { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact', img: '/paths/path-funder.jpg' },
           ].map((p) => (
             <Link key={p.who} to={p.to} className={styles.pathCard}>
-              {p.img && <img src={p.img} alt={p.who} className={styles.pathImg} />}
-              <span className={styles.pathIcon}>{p.icon}</span>
-              <div className={styles.pathWho}>{p.who}</div>
-              <div className={styles.pathDesc}>{p.desc}</div>
-              <span className={styles.pathCta}>{p.cta}</span>
+              {p.img
+                ? <img src={p.img} alt={p.who} className={styles.pathImg} />
+                : <div className={`${styles.pathImg} ${styles.pathImgPlaceholder}`} />}
+              <div className={styles.pathBody}>
+                <span className={styles.pathIcon}>{p.icon}</span>
+                <div className={styles.pathWho}>{p.who}</div>
+                <div className={styles.pathDesc}>{p.desc}</div>
+                <span className={styles.pathCta}>{p.cta}</span>
+              </div>
             </Link>
           ))}
         </div>
