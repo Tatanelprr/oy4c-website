@@ -33,8 +33,8 @@ const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
   'https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG',
-  '/hero/hero-young-person.jpg',
-  '/hero/hero-classroom.jpg',
+  '/hero/hero-1.jpg',
+  '/hero/hero-3.jpg',
 ]
 
 function HeroSlideshow() {
@@ -271,7 +271,7 @@ export default function Home() {
         </div>
         <div className={styles.pathsGrid}>
           {[
-            { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-young-person.jpg' },
+            { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-1.jpg' },
             { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum' },
             { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partner' },
             { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact' },
