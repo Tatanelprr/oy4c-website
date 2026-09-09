@@ -255,7 +255,8 @@ export default function Home() {
             </Link>
             <Link to="/ccic" className={styles.pillar}>
               <div className={styles.pillarHead}>
-                <img src="/ccic-logo.jpg" alt="CCiC: Climate Curriculum into Classrooms" style={{ height: '48px', objectFit: 'contain' }} />
+                <img src="/ccic-logo.jpg" alt="CCiC" style={{ height: '48px', objectFit: 'contain' }} />
+                <div className={styles.pillarTitle}>CCiC: Climate Curriculum into Classrooms</div>
               </div>
               <div className={styles.pillarDesc}>Our workshop programme, delivered across six continents, now an open resource anyone can run, with everything you need to bring climate conversations into your classroom.</div>
               <span className={styles.pillarArrow}>Learn more →</span>
