@@ -185,6 +185,20 @@ export default function CCiC() {
         </div>
       </section>
 
+      {/* CCiC REPORT */}
+      <section className={styles.report}>
+        <div className={styles.reportInner}>
+          <span className="section-eyebrow">The Report</span>
+          <h2 className="section-title">The CCiC Report</h2>
+          <p className={styles.reportText}>
+            Read the full report on our first CCiC project — everything we did, what we learned, and where we're going next.
+          </p>
+          <a href="/ccic-report-2025.pdf" target="_blank" className={styles.reportBtn}>
+            Download the Report →
+          </a>
+        </div>
+      </section>
+
       {/* OPEN RESOURCE */}
       <section className={styles.openResource}>
         <div className={styles.openResourceInner}>
@@ -212,20 +226,6 @@ export default function CCiC() {
               allowFullScreen
             />
           </div>
-        </div>
-      </section>
-
-      {/* CCiC REPORT */}
-      <section className={styles.report}>
-        <div className={styles.reportInner}>
-          <span className="section-eyebrow">The Report</span>
-          <h2 className="section-title">The CCiC Report</h2>
-          <p className={styles.reportText}>
-            Read the full report on our first CCiC project — everything we did, what we learned, and where we're going next.
-          </p>
-          <a href="/ccic-report-2025.pdf" target="_blank" className={styles.reportBtn}>
-            Download the Report →
-          </a>
         </div>
       </section>
 
