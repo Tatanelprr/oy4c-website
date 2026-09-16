@@ -215,6 +215,38 @@ export default function CCiC() {
         </div>
       </section>
 
+      {/* CCiC REPORT */}
+      <section className={styles.report}>
+        <div className={styles.reportInner}>
+          <span className="section-eyebrow">The Report</span>
+          <h2 className="section-title">The CCiC Report</h2>
+          <p className={styles.reportText}>
+            Read the full report on our first CCiC project — everything we did, what we learned, and where we're going next.
+          </p>
+          <a href="/ccic-report-2025.pdf" target="_blank" className={styles.reportBtn}>
+            Download the Report →
+          </a>
+        </div>
+      </section>
+
+      {/* OPEN RESOURCE KIT */}
+      <section className={styles.resourceKit}>
+        <div className={styles.resourceKitInner}>
+          <span className="section-eyebrow">Open Resource</span>
+          <h2 className="section-title">Run CCiC in Your Community</h2>
+          <p className={styles.resourceKitText}>
+            Everything you need to bring climate change conversations into your classroom or community — for free. Fill in the form and we'll send you the full open resource kit.
+          </p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSctj_EUvSibc60u7Jmho1httPdZDaPleKCEuh0iiWXItqY6uQ/viewform"
+            target="_blank"
+            className={styles.resourceKitBtn}
+          >
+            Get the Open Resource →
+          </a>
+        </div>
+      </section>
+
       {/* FOUNDER QUOTE */}
       <section className={styles.founderQuote}>
         <div className={styles.founderQuoteInner}>

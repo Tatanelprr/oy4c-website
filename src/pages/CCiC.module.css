@@ -403,6 +403,62 @@
   text-transform: uppercase;
 }
 
+/* CCiC REPORT */
+.report {
+  padding: 90px 5vw;
+  background: var(--cream);
+}
+.reportInner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.reportText {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+.reportBtn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: var(--pill-radius);
+  background: var(--green);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: opacity 0.2s;
+}
+.reportBtn:hover { opacity: 0.85; }
+
+/* OPEN RESOURCE KIT */
+.resourceKit {
+  padding: 90px 5vw;
+  background: var(--white);
+}
+.resourceKitInner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.resourceKitText {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+.resourceKitBtn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: var(--pill-radius);
+  background: var(--teal);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: opacity 0.2s;
+}
+.resourceKitBtn:hover { opacity: 0.85; }
+
 /* FOUNDER QUOTE */
 .founderQuote {
   padding: 90px 5vw;
@@ -503,7 +559,7 @@
   .insightsGrid { grid-template-columns: 1fr; }
   .impactGrid { grid-template-columns: 1fr; }
   .heroContent { padding: 48px 6vw; }
-  .what, .workshop, .journey, .insights, .openResource, .founderQuote, .cta, .map { padding: 60px 5vw; }
+  .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .cta, .map { padding: 60px 5vw; }
   .workshopPart { padding: 24px 20px; }
   .heroBtns { flex-direction: column; }
 }
