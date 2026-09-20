@@ -66,13 +66,19 @@ export default function Header() {
           </li>
         </ul>
 
-        <button className={styles.burger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <button
+          className={styles.burger}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+        >
           <span /><span /><span />
         </button>
       </nav>
 
       {menuOpen && (
-        <div className={styles.mobileMenu}>
+        <div className={styles.mobileMenu} id="mobile-menu">
           {NAV.map((item) =>
             item.children ? (
               <div key={item.label}>
