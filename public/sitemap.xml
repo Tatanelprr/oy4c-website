@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://oy4c.org/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://oy4c.org/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oy4c.org/team</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://oy4c.org/advisory-board</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://oy4c.org/curriculum</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oy4c.org/ccic</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oy4c.org/ambassador</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://oy4c.org/impact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oy4c.org/partnerships</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://oy4c.org/partner</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://oy4c.org/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oy4c.org/takeaction</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://oy4c.org/consultancy</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://oy4c.org/contact</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://oy4c.org/legal</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://oy4c.org/privacy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://oy4c.org/cookies</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+</urlset>
