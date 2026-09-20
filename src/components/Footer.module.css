@@ -69,9 +69,24 @@
 }
 .col ul li a:hover { color: var(--white); }
 
-.bottom {
+.legalLinks {
   border-top: 1px solid rgba(255,255,255,0.22);
   padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  max-width: 1200px;
+  margin: 0 auto 16px;
+}
+.legalLinks a {
+  color: rgba(255,255,255,0.82);
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.legalLinks a:hover { color: var(--white); text-decoration: underline; }
+
+.bottom {
   display: flex;
   justify-content: space-between;
   font-size: 0.75rem;

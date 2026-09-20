@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 
-const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
+// Self-hosted (RGPD/PECR) : le fond de carte est servi depuis notre propre
+// domaine, plus aucun appel au CDN jsDelivr, donc aucune IP visiteur transmise
+// à un tiers. Fichier téléchargé dans /public.
+const GEO_URL = '/world-atlas-countries-110m.json'
 
 // ISO 3166-1 numeric → display name for the 43 OY4C countries
 const VOLUNTEER_COUNTRIES = new Map([
