@@ -1,0 +1,33 @@
+# Our Youth 4 The Climate (OY4C)
+
+> Our Youth 4 The Climate (OY4C) is a global, youth-led non-profit that builds and scales free, high-quality climate change education for the next generation. Its volunteers design and deliver interdisciplinary, action-driven climate lessons in classrooms across six continents.
+
+OY4C is a fiscally hosted project of a company registered in England and Wales. The website is a client-rendered React application; it collects no personal data directly, uses no analytics or advertising trackers, and sets no cookies of its own.
+
+## Key facts
+- Mission: make climate change education accessible, high-quality and youth-led.
+- Reach: 133 volunteers, 43 countries, ~10,000 students reached (2025 figures).
+- Everything OY4C offers to schools and young people is free.
+- Programmes: the OY4CCurriculum (ready-to-teach curriculum) and CCiC (Climate Curriculum into Classrooms workshops, now an open resource).
+
+## Main pages
+- [Home](https://oy4c.org/): overview of OY4C, impact and programmes.
+- [About](https://oy4c.org/about): who OY4C is and its mission.
+- [OY4CCurriculum](https://oy4c.org/curriculum): free, youth-developed climate curriculum for schools.
+- [CCiC](https://oy4c.org/ccic): Climate Curriculum into Classrooms workshop programme and open resource kit.
+- [Ambassador Programme](https://oy4c.org/ambassador): the OY4C ambassador network.
+- [Impact](https://oy4c.org/impact): impact figures and the 2025 Impact Report.
+- [Team](https://oy4c.org/team): the global volunteer team.
+- [Advisory Board](https://oy4c.org/advisory-board): advisors supporting OY4C.
+- [Partnerships](https://oy4c.org/partnerships): partner organisations.
+- [Blog](https://oy4c.org/blog): articles on climate education and OY4C news.
+- [Contact](https://oy4c.org/contact): who to contact, by topic.
+
+## Get involved
+- Bring OY4C to a school or run a CCiC workshop: email hello@oy4c.org
+- Donations: https://validaid.org/fundraiser/174
+
+## Legal
+- [Legal Notice](https://oy4c.org/legal)
+- [Privacy Policy](https://oy4c.org/privacy)
+- [Cookies Policy](https://oy4c.org/cookies)

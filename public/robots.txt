@@ -1,0 +1,29 @@
+# Our Youth 4 The Climate — https://oy4c.org
+# All crawlers, including AI/LLM crawlers, are welcome to read the site.
+
+User-agent: *
+Allow: /
+
+# Named AI crawlers (explicitly allowed for citation/readability)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://oy4c.org/sitemap.xml

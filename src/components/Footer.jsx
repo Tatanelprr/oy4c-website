@@ -51,8 +51,14 @@ export default function Footer() {
         </div>
       </div>
 
+      <nav className={styles.legalLinks} aria-label="Legal">
+        <Link to="/legal">Legal Notice</Link>
+        <Link to="/privacy">Privacy Policy</Link>
+        <Link to="/cookies">Cookies</Link>
+      </nav>
+
       <div className={styles.bottom}>
-        <span>© 2026 Our Youth 4 The Climate, a fiscally hosted project of Host (formerly Climate 2025), a company registered in England and Wales, no. GB454839164</span>
+        <span>© 2026 Our Youth 4 The Climate, a fiscally hosted project of Host (formerly Climate 2025), a company registered in England and Wales. VAT no. GB454839164.</span>
         <span>oy4c.org</span>
       </div>
     </footer>
