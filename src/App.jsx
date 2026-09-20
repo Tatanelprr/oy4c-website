@@ -18,6 +18,9 @@ import AdvisoryBoard from './pages/AdvisoryBoard'
 import Speaker from './pages/Speaker'
 import Consultancy from './pages/Consultancy'
 import Partner from './pages/Partner'
+import Legal from './pages/Legal'
+import Privacy from './pages/Privacy'
+import Cookies from './pages/Cookies'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -43,6 +46,9 @@ export default function App() {
           <Route path="/consultancy" element={<Consultancy />} />
           <Route path="/takeaction" element={<TakeAction />} />
           <Route path="/partner" element={<Partner />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/cookies" element={<Cookies />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
