@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Camera, Link2, Music2 } from 'lucide-react'
+import { InstagramIcon, LinkedinIcon, TiktokIcon } from './SocialIcons'
 import styles from './Header.module.css'
 
 const NAV = [
@@ -92,9 +92,9 @@ export default function Header() {
             )
           )}
           <div className={styles.mobileSocials}>
-            <a href="https://www.instagram.com/ouryouth4theclimate/" target="_blank" rel="noreferrer"><Camera size={20} /></a>
-            <a href="https://www.linkedin.com/company/our-youth-4-the-climate/" target="_blank" rel="noreferrer"><Link2 size={20} /></a>
-            <a href="https://www.tiktok.com/@ouryouth4theclimate" target="_blank" rel="noreferrer"><Music2 size={20} /></a>
+            <a href="https://www.instagram.com/ouryouth4theclimate/" target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon size={20} /></a>
+            <a href="https://www.linkedin.com/company/our-youth-4-the-climate/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedinIcon size={20} /></a>
+            <a href="https://www.tiktok.com/@ouryouth4theclimate" target="_blank" rel="noreferrer" aria-label="TikTok"><TiktokIcon size={20} /></a>
           </div>
         </div>
       )}
