@@ -18,6 +18,7 @@ const NAV = [
     children: [
       { label: 'OY4CCurriculum', to: '/curriculum' },
       { label: 'CCiC', to: '/ccic' },
+      { label: 'Ambassador Programme', to: '/ambassador' },
     ],
   },
   {
