@@ -426,15 +426,6 @@
   object-fit: contain;
   margin: auto;
 }
-.partnerPlaceholder {
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  color: var(--mid);
-  border: 1.5px dashed rgba(0,0,0,0.2);
-  border-radius: 8px;
-  padding: 8px 18px;
-}
 .partnersViewAll {
   text-align: center;
   margin-top: 32px;
