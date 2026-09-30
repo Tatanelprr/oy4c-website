@@ -10,7 +10,12 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--dark) 0%, #1d3021 100%);
+  /* Placeholder image — swap /hero/hero-classroom.jpg for Ava's Bali/Rotorua photo later */
+  background-image:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('/hero/hero-classroom.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .heroContent {
   position: relative;
@@ -570,6 +575,8 @@
   .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .cta, .map { padding: 60px 5vw; }
   .workshopPart { padding: 24px 20px; }
   .heroBtns { flex-direction: column; }
+  /* Keep all 6 stat pills wrapping cleanly (no horizontal scroll) */
+  .heroStats { justify-content: center; }
 }
 @media (max-width: 480px) {
   .mapFrame { height: 280px; }

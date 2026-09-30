@@ -11,27 +11,27 @@ export default function CCiC() {
         <div className={styles.heroContent}>
           <span className={styles.heroEyebrow}>Climate Curriculum into Classrooms</span>
           <h1>
-            We took climate change education<br />
-            to the world.<br />
-            <em>Now it's your turn.</em>
+            670 students. 5 continents. 3 months.<br />
+            <em>Now it's yours.</em>
           </h1>
           <p className={styles.heroSub}>
-            The CCiC Project brought free, youth-led climate workshops to students across 5 continents in 3 months. Now we're making everything open access, so anyone, anywhere can do the same.
+            We ran free climate workshops for 670 students across 6 countries. Everything we used is becoming open access.
           </p>
           <p className={styles.heroDateline}>February to April 2026</p>
           <div className={styles.heroStats}>
             {[
               '670 students taught live',
+              '70 teachers in the room',
               '10 schools',
-              '6 countries in the pilot',
+              '6 countries',
               '5 continents',
-              '4.63/5 rating',
+              '4.63/5',
             ].map((s) => (
               <span key={s} className={styles.heroStat}>{s}</span>
             ))}
           </div>
           <div className={styles.heroBtns}>
-            <a href="mailto:hello@oy4c.org" className={styles.btnPrimary}>Run a Free Workshop in Your Community →</a>
+            <a href="mailto:hello@oy4c.org" className={styles.btnPrimary}>Bring CCiC to Your School →</a>
           </div>
         </div>
       </section>
