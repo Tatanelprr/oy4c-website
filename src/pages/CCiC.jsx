@@ -326,9 +326,20 @@ export default function CCiC() {
         <div className={styles.founderQuoteInner}>
           <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>From Ava, OY4C Founder</span>
           <p className={styles.quoteText}>
-            "The most beautiful 3 months a Founder could have asked for. Connecting, really connecting, with people from across the world, across backgrounds, across generations. This is what community looks like, especially in a world that's so desperate for it. This is what equipping a generation looks like. This is what scaling climate change education looks like. We were just planting seeds across the world. But seeds, eventually, sprout."
+            "The most beautiful 3 months a Founder could have asked for — connecting, really connecting, with people across the world, across backgrounds, across generations. We were just planting seeds. But I've seen what they grow into."
           </p>
-          <div className={styles.quoteAuthor}>- Ava Langridge, Founder & Executive Director, OY4C</div>
+          <div className={styles.quoteAuthorRow}>
+            <div className={styles.quoteAvatar} aria-hidden="true">
+              <span className={styles.quoteInitials}>AL</span>
+              <img
+                src="/team/ava-langridge.webp"
+                alt=""
+                className={styles.quoteAvatarImg}
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
+              />
+            </div>
+            <div className={styles.quoteAuthor}>Ava Langridge, Founder &amp; Executive Director, OY4C</div>
+          </div>
         </div>
       </section>
 
