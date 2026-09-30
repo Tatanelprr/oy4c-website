@@ -2,29 +2,56 @@
   "seniorLeadership": [
     {
       "name": "Ava Langridge",
-	  "photo": "ava-langridge.webp",
+      "photo": "ava-langridge.webp",
       "pronouns": "she/her",
       "role": "Founder & Executive Director",
       "team": "Senior Leadership",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I started this movement because I believed in the power of our youth's voices and knew the impact we could have. Systemic change needs to happen, and we are taking the necessary steps."
     },
     {
+      "name": "Eloise Lopez",
+      "photo": "",
+      "pronouns": "",
+      "role": "Chief of Staff",
+      "team": "Senior Leadership",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
       "name": "Caitlin McLean",
-	  "photo": "caitlin-mclean.webp",
+      "photo": "caitlin-mclean.webp",
       "pronouns": "she/her",
       "role": "Director of Operations",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "Education is essential for equipping people with the tools required to address climate-related issues facing them today, but also for empowering and uniting communities to build a better and more sustainable future."
     },
     {
-      "name": "Deanna Gracia",
-	  "photo": "deanna-gracia.webp",
+      "name": "Yumna Ramsingh",
+      "photo": "yumna-ramsingh.webp",
+      "pronouns": "she/her",
+      "role": "Co-Director of Operations",
+      "team": "Operations",
+      "linkedin": "",
+      "quote": "Understanding a problem is the first step to dismantling it. OY4C's mission equips our youth with the context and knowledge they need to combat a problem as complex as the climate crisis."
+    },
+    {
+      "name": "Michelle Alinndra Annabeth Chandra",
+      "photo": "michelle-alinndra-annabeth-chandra.webp",
       "pronouns": "she/her",
       "role": "Director of Community",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "https://linkedin.com/in/michelleannabeth/",
+      "quote": "Environmental problems are daily life problems, and awareness alone doesn't change anything."
+    },
+    {
+      "name": "Deanna Gracia",
+      "photo": "deanna-gracia.webp",
+      "pronouns": "she/her",
+      "role": "Co-Director of Community",
+      "team": "Community",
+      "linkedin": "",
       "quote": "Communities are the heartbeat of climate action. I believe in OY4C's mission to harness the power of climate education to inspire collective leadership and action in local communities to create a future that's both sustainable and just."
     },
     {
@@ -33,7 +60,7 @@
       "pronouns": "she/her",
       "role": "Director of Curriculum",
       "team": "Curriculum",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "Climate education is for everyone, and is fundamental in shaping future generations that care for our planet and conserve its resources. I joined OY4C because I am proud to promote its important message and drive change for a healthy planet and people!"
     },
     {
@@ -42,7 +69,7 @@
       "pronouns": "she/her",
       "role": "Director of Partnerships",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I wanted to work with other young people to educate our community about environmental issues. As climate change will inevitably affect our generation the most, I believe broadcasting youth voices and contributing to youth-led activist organizations are crucial in moving towards a more sustainable future."
     },
     {
@@ -51,45 +78,18 @@
       "pronouns": "she/her",
       "role": "Director of Media",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I believe that climate education is key to real climate action, and OY4C's mission speaks to that. Getting to support it through storytelling and media strategy feels like the perfect meeting point of two things I really care about."
-    },
-    {
-      "name": "Emily Anne",
-      "photo": "emily-anne.webp",
-      "pronouns": "she/they",
-      "role": "Director of People and Culture",
-      "team": "People and Culture",
-	  "linkedin": "",
-      "quote": ""
     }
   ],
   "operations": [
-    {
-      "name": "Yumna Ramsingh",
-      "photo": "yumna-ramsingh.webp",
-      "pronouns": "she/her",
-      "role": "Co-Head of Operations",
-      "team": "Operations",
-	  "linkedin": "",
-      "quote": "Understanding a problem is the first step to dismantling it. OY4C's mission equips our youth with the context and knowledge they need to combat a problem as complex as the climate crisis."
-    },
-    {
-      "name": "Caspian Leeb",
-      "photo": "caspian-leeb.webp",
-      "pronouns": "he/they",
-      "role": "Administrative Coordinator",
-      "team": "Operations",
-	  "linkedin": "",
-      "quote": "I believe that change comes from ordinary people, and OY4C provides a great platform for exactly that. I want to help in spreading climate education wherever possible."
-    },
     {
       "name": "Evdoxia (Eva) Arvanitaki",
       "photo": "evdoxia-arvanitaki.webp",
       "pronouns": "she/her",
       "role": "Digital Infrastructure Lead",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -98,7 +98,7 @@
       "pronouns": "she/her",
       "role": "Head of Recruitment",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/maria-elisa-vizvary-61a447246",
       "quote": "I joined OY4C because I believe in raising awareness about the climate and providing accessible education."
     },
     {
@@ -107,17 +107,8 @@
       "pronouns": "she/her",
       "role": "Recruitment Coordinator",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I want to take action on climate change while meeting different people and inspire those around me."
-    },
-    {
-      "name": "Nancy Nosiku Nyambe",
-      "photo": "nancy-nosiku-nyambe.webp",
-      "pronouns": "she/her",
-      "role": "Recruitment Coordinator",
-      "team": "Operations",
-	  "linkedin": "",
-      "quote": ""
     },
     {
       "name": "Ilaria Valenti",
@@ -125,17 +116,8 @@
       "pronouns": "she/her",
       "role": "Recruitment Coordinator",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I love seeing young people come together to make a real difference."
-    },
-    {
-      "name": "Salma Elgohary",
-      "photo": "salma-elgohary.webp",
-      "pronouns": "she/her",
-      "role": "Fundraising Coordinator",
-      "team": "Operations",
-	  "linkedin": "",
-      "quote": "I joined OY4C to help spread awareness on climate change and intersectional environmentalism."
     },
     {
       "name": "Arina Kozak",
@@ -143,7 +125,7 @@
       "pronouns": "she/her",
       "role": "Fundraising Coordinator",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -152,7 +134,7 @@
       "pronouns": "she/her",
       "role": "Fundraising Coordinator",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -161,7 +143,7 @@
       "pronouns": "she/her",
       "role": "Grants Writer",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/delaneym-foster/",
       "quote": "I joined OY4C to help support the creation of accessible, current, and accurate educational materials that can support our schools on a global scale."
     },
     {
@@ -170,7 +152,7 @@
       "pronouns": "she/her",
       "role": "Grants Writer",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C to contribute to this inspiring movement, fostering education, collaboration, and collective change on a global scale."
     },
     {
@@ -179,7 +161,7 @@
       "pronouns": "she/her",
       "role": "Grants Writer",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -188,17 +170,8 @@
       "pronouns": "she/her",
       "role": "Grants Writer",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
-    },
-    {
-      "name": "Amer El Fallah Idrissi",
-      "photo": "amer-el-fallah-idrissi.webp",
-      "pronouns": "he/him",
-      "role": "Data Analyst",
-      "team": "Operations",
-	  "linkedin": "",
-      "quote": "I joined OY4C to be part of a dynamic community of young leaders committed to creating meaningful and lasting social impact."
     },
     {
       "name": "Nana Adwoa Oforiwa Anti",
@@ -206,7 +179,7 @@
       "pronouns": "she/her",
       "role": "Data Analyst",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined to team up with young people from around the world to help protect our future through climate education."
     },
     {
@@ -215,8 +188,17 @@
       "pronouns": "she/her",
       "role": "Data Analyst",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I believe young people have the power to drive bold and transformative change."
+    },
+    {
+      "name": "Katie Porter",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Head of Communications",
+      "team": "Media",
+      "linkedin": "",
+      "quote": ""
     },
     {
       "name": "Aryan Gupta",
@@ -224,17 +206,8 @@
       "pronouns": "he/him",
       "role": "Data Analyst",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
-    },
-    {
-      "name": "Maxime Derydt",
-      "photo": "maxime-derydt.webp",
-      "pronouns": "he/him",
-      "role": "Data Analyst",
-      "team": "Operations",
-	  "linkedin": "",
-      "quote": "I joined OY4C because I think it's important to actively engage with the climate change issue and volunteer rather than just talk about it."
     },
     {
       "name": "Amber Faull",
@@ -242,72 +215,38 @@
       "pronouns": "she/her",
       "role": "Data Analyst",
       "team": "Operations",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/amber-faull",
       "quote": "After finishing my degree in Conservation Biology & Ecology I wanted to continue working in the climate/environment space."
-    },
+    }
+  ],
+  "peopleAndCulture": [
     {
       "name": "Thabiso Dlamini",
       "photo": "thabiso-dlamini.webp",
       "pronouns": "he/him",
       "role": "Volunteer Coordinator",
-      "team": "People and Culture",
-	  "linkedin": "",
+      "team": "Operations",
+      "linkedin": "",
       "quote": "I joined OY4C because I believe young people have a powerful role to play in addressing the climate crisis when equipped with the right knowledge and skills."
-    },
-    {
-      "name": "Casper Griffin",
-      "photo": "casper-griffin.webp",
-      "pronouns": "they/them",
-      "role": "Head of Safeguarding",
-      "team": "People and Culture",
-	  "linkedin": "",
-      "quote": ""
     }
   ],
   "executiveTeam": [
-    {
-      "name": "Juno Hassan",
-      "photo": "juno-hassan.webp",
-      "pronouns": "they/them",
-      "role": "Head of Intersectional Environmentalism",
-      "team": "Community",
-	  "linkedin": "",
-      "quote": "Rooted in intersectional activism, it seemed natural to join a network of like-minded activists. The sense of community and passion appealed to me."
-    },
     {
       "name": "Barbara Féret",
       "photo": "barbara-feret.webp",
       "pronouns": "she/her",
       "role": "Head of Outreach",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I wanted to do a real job that made the world a better place and was in line with my values."
-    },
-    {
-      "name": "Montserrat (Montse) Tamayo Matus",
-      "photo": "montserrat-tamayo-matus.webp",
-      "pronouns": "she/her",
-      "role": "Function Head of Community",
-      "team": "Community",
-	  "linkedin": "",
-      "quote": "I've always been interested in the environment, and as I grew, I wanted to be part of something that helps shape young minds."
-    },
-    {
-      "name": "Brandon Gerosa",
-      "photo": "brandon-gerosa.webp",
-      "pronouns": "he/him",
-      "role": "Director of Community",
-      "team": "Community",
-	  "linkedin": "",
-      "quote": ""
     },
     {
       "name": "Sureesa Boodoo",
       "photo": "sureesa-boodoo.webp",
       "pronouns": "she/her",
-      "role": "Head of Community Research & Community Organiser",
+      "role": "Head of Community Research and Community Organiser",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/sureesa-boodoo-0450b7220",
       "quote": ""
     },
     {
@@ -316,17 +255,8 @@
       "pronouns": "he/him",
       "role": "Function Head of Partnerships",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because, after graduating, I felt motivated to be part of a productive movement for change and the greater good of the planet."
-    },
-    {
-      "name": "Erica Russell Merino",
-      "photo": "erica-russell-merino.webp",
-      "pronouns": "she/her",
-      "role": "Function Head of Media",
-      "team": "Media",
-	  "linkedin": "",
-      "quote": "Joining OY4C finally gave me a meaningful, fulfilling, and impactful way to improve the current climate situation and combat climate disinformation."
     },
     {
       "name": "Emma Faraco",
@@ -334,7 +264,7 @@
       "pronouns": "she/her",
       "role": "Function Head of Research",
       "team": "Research",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined because I wanted to work with like-minded people my age to make a difference."
     },
     {
@@ -343,16 +273,7 @@
       "pronouns": "she/her",
       "role": "Function Head of Curriculum",
       "team": "Curriculum",
-	  "linkedin": "",
-      "quote": ""
-    },
-    {
-      "name": "Melanie Thompson",
-      "photo": "melanie-thompson.webp",
-      "pronouns": "she/her",
-      "role": "Head of Curriculum Development",
-      "team": "Curriculum",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -361,16 +282,16 @@
       "pronouns": "she/her",
       "role": "Function Head of Writing",
       "team": "Writers",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/beatrice-bos-849347381",
       "quote": "I joined OY4C because I wanted to be part of something. Eco-anxiety was making me feel more stressed every day, and I knew that to feel better I had to stand up for my beliefs and take action."
     },
     {
       "name": "Ailin Bogers",
       "photo": "ailin-bogers.webp",
       "pronouns": "she/her",
-      "role": "Head of Content & Writer",
+      "role": "FH of Media",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/ailin-bogers137",
       "quote": "I joined OY4C as I felt it was time to move beyond what I can do as an individual to address the climate crisis and push for changes on collective levels."
     },
     {
@@ -379,36 +300,27 @@
       "pronouns": "she/her",
       "role": "Head of Video",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/martina-pérez-corominas-b1843b325",
       "quote": "I joined OY4C to meet new people with the same goal: take action about climate change."
     },
     {
-      "name": "Kerollayn Kemylly Gonçalves",
-      "photo": "kerollayn-kemylly-goncalves.webp",
-      "pronouns": "she/her",
-      "role": "Head of Design & Content Creator & Assistant Teacher",
-      "team": "Media",
-	  "linkedin": "",
-      "quote": "I joined OY4C to advocate for climate action and help bridge the gap between scientific knowledge and public understanding."
+      "name": "Mariia Lozhkina",
+      "photo": "mariia-lozhkina.webp",
+      "pronouns": "she/they",
+      "role": "Head of Curriculum Development & Intersectional Environmentalist",
+      "team": "Curriculum",
+      "linkedin": "https://www.linkedin.com/in/mariia-lozhkina-11161638b/",
+      "quote": "I joined OY4C because I wanted to make a meaningful contribution to the global climate action and be a part of something vibrant and collaborative."
     }
   ],
   "functions": [
-    {
-      "name": "Fola Thalya",
-      "photo": "fola-thalya.webp",
-      "pronouns": "",
-      "role": "Integration Coordinator",
-      "team": "Curriculum",
-	  "linkedin": "",
-      "quote": ""
-    },
     {
       "name": "Halle Unsworth",
       "photo": "halle-unsworth.webp",
       "pronouns": "she/her",
       "role": "Integration Coordinator",
       "team": "Curriculum",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "Raising awareness and helping provide education to better the future of our planet is extremely important to me."
     },
     {
@@ -417,44 +329,26 @@
       "pronouns": "she/her",
       "role": "Integration Coordinator",
       "team": "Curriculum",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/beth-kidson",
       "quote": "I joined OY4C because I believe that any impact toward climate action is meaningful, no matter how small."
-    },
-    {
-      "name": "Abigail (Abi) Hannah",
-      "photo": "abigail-hannah.webp",
-      "pronouns": "she/her",
-      "role": "Integration Coordinator",
-      "team": "Curriculum",
-	  "linkedin": "",
-      "quote": "I joined OY4C to be a part of, and help to expand, what I believe to be an extraordinary program."
     },
     {
       "name": "Aleksej Gubka",
       "photo": "aleksej-gubka.webp",
       "pronouns": "he/him",
-      "role": "Integration & Outreach Coordinator",
+      "role": "Integration Coordinator and Outreach Coordinator",
       "team": "Curriculum + Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "My interest in joining the OY4C team stems from a belief in youth empowerment and knowledge."
     },
     {
-      "name": "Priscila González",
-      "photo": "priscila-gonzalez.webp",
+      "name": "Alyson Westfall",
+      "photo": "",
       "pronouns": "she/her",
-      "role": "Confirmed Curriculum Manager",
+      "role": "Integration Coordinator",
       "team": "Curriculum",
-	  "linkedin": "",
-      "quote": "I am a firm believer that education is what drives change."
-    },
-    {
-      "name": "Poppy Roberts",
-      "photo": "poppy-roberts.webp",
-      "pronouns": "she/her",
-      "role": "Confirmed Curriculum Manager",
-      "team": "Curriculum",
-	  "linkedin": "",
-      "quote": "I joined OY4C because I really believe climate education is one of the most powerful tools for change."
+      "linkedin": "",
+      "quote": ""
     },
     {
       "name": "Julia McCarthy",
@@ -462,16 +356,7 @@
       "pronouns": "she/her",
       "role": "Confirmed Curriculum Manager",
       "team": "Curriculum",
-	  "linkedin": "",
-      "quote": ""
-    },
-    {
-      "name": "Elemenouar Abdessamad",
-      "photo": "elemenouar-abdessamad.webp",
-      "pronouns": "they/them",
-      "role": "Curriculum Developer and Educator",
-      "team": "Curriculum",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/julia-mccarthy-5bab6339a",
       "quote": ""
     },
     {
@@ -480,44 +365,71 @@
       "pronouns": "she/her",
       "role": "Curriculum Developer",
       "team": "Curriculum",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I want to go beyond individual action and empower other young people with the knowledge and tools they need to take action too."
     },
     {
-      "name": "Mariia Lozhkina",
-      "photo": "mariia-lozhkina.webp",
+      "name": "Akia Estepa",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Curriculum Developer",
+      "team": "Curriculum",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Keara Cooney",
+      "photo": "",
       "pronouns": "she/they",
       "role": "Curriculum Developer",
       "team": "Curriculum",
-	  "linkedin": "",
-      "quote": "I joined OY4C because I wanted to make a meaningful contribution to the global climate action and be a part of something vibrant and collaborative."
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Jasmine Bigaouette",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Curriculum Developer",
+      "team": "Curriculum",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Katelyn Liu",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Curriculum Developer",
+      "team": "Curriculum",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Madison Hendrickson",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Curriculum Resource Developer",
+      "team": "Curriculum",
+      "linkedin": "",
+      "quote": ""
     },
     {
       "name": "Carolina Maria de Oliveira Gonçalves",
       "photo": "carolina-maria-de-oliveira-goncalves.webp",
       "pronouns": "she/her",
-      "role": "Curriculum Content Creator & Designer",
+      "role": "Curriculum Content Creator and Curriculum Designer",
       "team": "Curriculum + Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I believe that education is the main driver of systemic change."
     },
     {
       "name": "Olivia Lang",
       "photo": "olivia-lang.webp",
-      "pronouns": "she/her",
+      "pronouns": "",
       "role": "Assistant Curriculum Teacher",
       "team": "Curriculum",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C to empower the next generation to take transformative action to tackle climate change."
-    },
-    {
-      "name": "Sophia Hernandez",
-      "photo": "sophia-hernandez.webp",
-      "pronouns": "she/her",
-      "role": "Writer & Curriculum & Community Researcher",
-      "team": "Curriculum & Writers & Community",
-	  "linkedin": "",
-      "quote": "Environmentalism has a role in every conversation, and I joined OY4C in order to get the education I need to bring this awareness to my community."
     },
     {
       "name": "Sloane Lum",
@@ -525,17 +437,8 @@
       "pronouns": "she/her",
       "role": "Community Researcher",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
-    },
-    {
-      "name": "Stijn Schellings",
-      "photo": "stijn-schellings.webp",
-      "pronouns": "he/him",
-      "role": "Community & Curriculum Researcher",
-      "team": "Community & Curriculum",
-	  "linkedin": "",
-      "quote": "I joined OY4C because I want to be part of a solution where we will save the Earth before it's too late."
     },
     {
       "name": "Louise Ferreira de Araujo Ulivieri",
@@ -543,7 +446,7 @@
       "pronouns": "she/her",
       "role": "Community Organiser",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I believe that education is one of the strongest tools we have to inspire real climate action."
     },
     {
@@ -552,26 +455,53 @@
       "pronouns": "she/her",
       "role": "Community Organiser",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I want to advocate for accessible climate education and empower other young people to take action."
     },
     {
-      "name": "Dennis Taban Okeny",
-      "photo": "dennis-taban-okeny.webp",
-      "pronouns": "he/him",
+      "name": "Maria Luiza Almeida Nunes Leal",
+      "photo": "",
+      "pronouns": "she/her",
       "role": "Community Organiser",
       "team": "Community",
-	  "linkedin": "",
-      "quote": "I joined to inspire young people to fight climate change and build a sustainable future."
+      "linkedin": "",
+      "quote": ""
     },
     {
-      "name": "Polly (Polina) Dynyak",
+      "name": "Polina Dynyak",
       "photo": "polly-dynyak.webp",
       "pronouns": "she/her",
-      "role": "Intersectional Environmentalist Leader",
+      "role": "Function Head of Community & Head of Intersectional Environmentalist",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/polina-d-407ab12a4",
       "quote": "Passionate about community, education and climate action, I always dreamed of joining a collective such as OY4C."
+    },
+    {
+      "name": "Samah K",
+      "photo": "",
+      "pronouns": "he/they",
+      "role": "Intersectional Environmentalist",
+      "team": "Community",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Moira Zobel",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Intersectional Environmentalist",
+      "team": "Community",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Yena Choi",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Intersectional Environmentalist",
+      "team": "Community",
+      "linkedin": "",
+      "quote": ""
     },
     {
       "name": "Astrid Spay",
@@ -579,26 +509,26 @@
       "pronouns": "she/her",
       "role": "Campaign Manager",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C to be part of a community that is dedicated to climate action and education."
+    },
+    {
+      "name": "Dylan Cruet-Ghosh",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Campaign Manager",
+      "team": "Community",
+      "linkedin": "",
+      "quote": ""
     },
     {
       "name": "Abigail Ndekei",
       "photo": "abigail-ndekei.webp",
       "pronouns": "she/her",
-      "role": "Campaign Manager & Story Creator",
+      "role": "Campaign Manager and Story Creator",
       "team": "Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "Climate education is something that is often overlooked in school curriculums all over the world and that is what drew me to OY4C."
-    },
-    {
-      "name": "Michelle Alinndra Annabeth Chandra",
-      "photo": "michelle-alinndra-annabeth-chandra.webp",
-      "pronouns": "she/her",
-      "role": "Head of Campaigns & Community Communications Coordinator",
-      "team": "Community",
-	  "linkedin": "",
-      "quote": "Environmental problems are daily life problems, and awareness alone doesn't change anything."
     },
     {
       "name": "Michaela Kotalova",
@@ -606,7 +536,7 @@
       "pronouns": "she/her",
       "role": "Partnerships Coordinator",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I am happy to join OY4C to help raise awareness about climate change, especially among young people."
     },
     {
@@ -615,7 +545,7 @@
       "pronouns": "she/her",
       "role": "Partnerships Coordinator",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I am passionate about climate justice, and have always contributed to the climate fight in different ways."
     },
     {
@@ -624,7 +554,7 @@
       "pronouns": "she/her",
       "role": "Partnerships Coordinator",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -633,26 +563,17 @@
       "pronouns": "she/her",
       "role": "Partnerships Coordinator",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
-      "name": "Samkelisiwe Maphalala",
-      "photo": "samkelisiwe-maphalala.webp",
+      "name": "Nara Mas",
+      "photo": "",
       "pronouns": "she/her",
-      "role": "Partnerships Coordinator",
+      "role": "Partnership Coordinator",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
-    },
-    {
-      "name": "Eva Morisot",
-      "photo": "eva-morisot.webp",
-      "pronouns": "she/her",
-      "role": "Partnerships Research Analyst",
-      "team": "Partnerships",
-	  "linkedin": "",
-      "quote": "I joined OY4C because I believe climate education should be accessible to everyone and rooted in collaboration."
     },
     {
       "name": "Isabel Giorgioni",
@@ -660,7 +581,7 @@
       "pronouns": "she/her",
       "role": "Partnerships Research Analyst",
       "team": "Partnerships",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I understood that meaningful change begins with personal action."
     },
     {
@@ -669,26 +590,8 @@
       "pronouns": "she/her",
       "role": "Videographer",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C as I believe that education can help change the biggest issues of today."
-    },
-    {
-      "name": "Anuja Deshmukh",
-      "photo": "anuja-deshmukh.webp",
-      "pronouns": "she/her",
-      "role": "Video Creator",
-      "team": "Media",
-	  "linkedin": "",
-      "quote": "I decided it would be good to help prevent global warming by educating more people in the matter."
-    },
-    {
-      "name": "Jerry (Miaofu) Tian",
-      "photo": "jerry-tian.webp",
-      "pronouns": "he/they",
-      "role": "Video Creator",
-      "team": "Media",
-	  "linkedin": "",
-      "quote": "I joined OY4C because I wanted to actively raise awareness about the importance of climate justice."
     },
     {
       "name": "Andrea Yiakoumi",
@@ -696,7 +599,16 @@
       "pronouns": "she/her",
       "role": "Video Creator",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Xenia Laurence Fausak",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Video Creator",
+      "team": "Media",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -705,35 +617,26 @@
       "pronouns": "he/him",
       "role": "Video Editor",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Tiara De Silvanita",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Video Editor",
+      "team": "Media",
+      "linkedin": "",
       "quote": ""
     },
     {
       "name": "Muhammad Goni",
       "photo": "muhammad-goni.webp",
       "pronouns": "he/him",
-      "role": "Story Creator",
+      "role": "Content Creator",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I'm incredibly inspired by OY4C's mission to empower young people to be at the forefront of the climate movement."
-    },
-    {
-      "name": "Eesha Mishra",
-      "photo": "eesha-mishra.webp",
-      "pronouns": "she/her",
-      "role": "Story Creator",
-      "team": "Media",
-	  "linkedin": "",
-      "quote": "I joined OY4C to advance climate education and strengthen the communication of scientific research for meaningful public engagement."
-    },
-    {
-      "name": "Bankole Nusaybah Toluwalope",
-      "photo": "bankole-nusaybah-toluwalope.webp",
-      "pronouns": "she/her",
-      "role": "Story Creator",
-      "team": "Media",
-	  "linkedin": "",
-      "quote": ""
     },
     {
       "name": "Anna Tringale",
@@ -741,7 +644,7 @@
       "pronouns": "they/them",
       "role": "Story Creator",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -750,8 +653,17 @@
       "pronouns": "she/her",
       "role": "Curriculum Content Creator",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I believe creativity and youth voices are essential in raising climate awareness and driving change."
+    },
+    {
+      "name": "Olivia Lang",
+      "photo": "olivia-lang.webp",
+      "pronouns": "she/her",
+      "role": "Curriculum Teacher",
+      "team": "Curriculum",
+      "linkedin": "",
+      "quote": "I joined OY4C to empower the next generation to take transformative action to tackle climate change."
     },
     {
       "name": "Georgie Pandolfo",
@@ -759,7 +671,7 @@
       "pronouns": "she/her",
       "role": "Content Creator & Editor",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because education is the first step towards activism."
     },
     {
@@ -768,26 +680,26 @@
       "pronouns": "she/her",
       "role": "Content Creator",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I wanted to grow as an activist and make a meaningful difference in our fight against climate change."
+    },
+    {
+      "name": "Nur Zahirah Zawana Binti Mohd Zakri",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Content Creator",
+      "team": "Media",
+      "linkedin": "",
+      "quote": ""
     },
     {
       "name": "Aneisha Sammy",
       "photo": "aneisha-sammy.webp",
       "pronouns": "she/her",
-      "role": "Content Creator & Community Researcher",
+      "role": "Content Creator and Community Researcher",
       "team": "Media + Community",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
-    },
-    {
-      "name": "Cristina Galhofo",
-      "photo": "cristina-galhofo.webp",
-      "pronouns": "she/her",
-      "role": "Designer",
-      "team": "Media",
-	  "linkedin": "",
-      "quote": "I joined OY4C to continue promoting environmental awareness. We only have one Earth!"
     },
     {
       "name": "Analiz Martins de Souza",
@@ -795,7 +707,7 @@
       "pronouns": "she/her",
       "role": "Designer",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I want to help make a difference globally and locally."
     },
     {
@@ -804,25 +716,25 @@
       "pronouns": "he/him",
       "role": "Website Designer",
       "team": "Media",
-	  "linkedin": "https://www.linkedin.com/in/ethan-lepareur-dev/",
+      "linkedin": "",
       "quote": "I joined OY4C because I wanted to put my skills to good use for a cause that matters. Being able to contribute to climate education through design and development felt like the perfect way to make a real difference."
     },
     {
-      "name": "Harumi Satake Cepeda",
-      "photo": "harumi-satake-cepeda.webp",
+      "name": "Princia Brior Zafinandriamanalina",
+      "photo": "",
       "pronouns": "she/her",
-      "role": "Website Designer",
+      "role": "Graphic Designer & Video Creator",
       "team": "Media",
-	  "linkedin": "",
-      "quote": "Inspired by the verse 'Give as freely as you have received,' I joined OY4C to contribute to environmental education through my passion for design."
+      "linkedin": "",
+      "quote": ""
     },
     {
-      "name": "Aditi Chalise",
-      "photo": "aditi-chalise.webp",
-      "pronouns": "she/her",
-      "role": "Website Designer",
+      "name": "Vicky Chen",
+      "photo": "",
+      "pronouns": "she/they",
+      "role": "Graphic Designer",
       "team": "Media",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -831,7 +743,7 @@
       "pronouns": "she/her",
       "role": "Researcher",
       "team": "Research",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C to raise awareness about the impact of climate change on neurological and mental illnesses."
     },
     {
@@ -840,7 +752,7 @@
       "pronouns": "she/her",
       "role": "Researcher",
       "team": "Research",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": ""
     },
     {
@@ -849,8 +761,26 @@
       "pronouns": "she/her",
       "role": "Researcher",
       "team": "Research",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I believe that education is the first and most vital step to creating wide-scale change."
+    },
+    {
+      "name": "Lauren Edwards",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Media Researcher",
+      "team": "Research",
+      "linkedin": "",
+      "quote": ""
+    },
+    {
+      "name": "Olivia Poissant",
+      "photo": "",
+      "pronouns": "she/her",
+      "role": "Media Researcher",
+      "team": "Research",
+      "linkedin": "",
+      "quote": ""
     },
     {
       "name": "Nithya Rao",
@@ -858,16 +788,16 @@
       "pronouns": "she/her",
       "role": "Writer & Researcher",
       "team": "Research",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C to do my part and spread information to ensure we can make an impact before it's too late."
     },
     {
       "name": "Lalla Masondo",
       "photo": "lalla-masondo.webp",
       "pronouns": "they/them",
-      "role": "Writer & Media Researcher",
+      "role": "Writer",
       "team": "Research",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/lalla-masondo-297704303",
       "quote": "OY4C presented various ways to make a difference in the climate world, and I resonated with the diverse roles and approaches to climate education."
     },
     {
@@ -876,7 +806,7 @@
       "pronouns": "she/her",
       "role": "Writer",
       "team": "Writers",
-	  "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/gianna-hector-19706a276",
       "quote": "I joined OY4C because I wanted my concern for the environment to be taken seriously and I wanted a voice as a young person."
     },
     {
@@ -885,26 +815,26 @@
       "pronouns": "she/her",
       "role": "Writer",
       "team": "Writers",
-	  "linkedin": "",
+      "linkedin": "",
       "quote": "I joined OY4C because I am passionate about climate justice, and OY4C is a viable platform to contribute my expertise."
     },
     {
-      "name": "Zoé Stylios",
-      "photo": "zoe-stylios.webp",
+      "name": "Minnie Bosworth",
+      "photo": "",
       "pronouns": "she/her",
       "role": "Writer",
       "team": "Writers",
-	  "linkedin": "",
-      "quote": "Education is one of the most powerful tools we can use to fight climate inaction."
+      "linkedin": "",
+      "quote": ""
     },
     {
-      "name": "Nicole Bowen",
-      "photo": "nicole-bowen.webp",
+      "name": "Lucy Gowling",
+      "photo": "",
       "pronouns": "she/her",
       "role": "Writer",
       "team": "Writers",
-	  "linkedin": "",
-      "quote": "I joined OY4C because I love how committed everyone on the team is. Education about climate change is such a powerful tool."
+      "linkedin": "",
+      "quote": ""
     }
   ]
 }
