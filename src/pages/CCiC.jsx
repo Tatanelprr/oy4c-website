@@ -1,4 +1,4 @@
-import { Clock, GraduationCap, DollarSign, Users } from 'lucide-react'
+import { Clock, GraduationCap, DollarSign, Users, ShieldCheck } from 'lucide-react'
 import MapEmbed from '../components/MapEmbed'
 import styles from './CCiC.module.css'
 
@@ -41,23 +41,37 @@ export default function CCiC() {
         <div className={styles.whatInner}>
           <span className="section-eyebrow">What is CCiC?</span>
           <h2 className="section-title">Climate Curriculum into Classrooms</h2>
+
+          <p className={styles.whatDefinition}>
+            CCiC is a free, 1h30 in-person climate workshop, designed and delivered by young people, for students aged 12-18. We bring everything. You open the door.
+          </p>
+
+          <div className={styles.credibilityStrip}>
+            {['4.5 years', '133 volunteers', '43 countries', '100,000 reached monthly'].map((s) => (
+              <span key={s} className={styles.credStat}>{s}</span>
+            ))}
+          </div>
+
           <div className={styles.whatText}>
             <p>
               OY4C has spent 4.5 years building a global, youth-led climate change education movement online. We've reached over 100,000 people monthly, built a team of 133 volunteers across 43 countries, and brought our curriculum into classrooms in over 20 countries.
             </p>
             <p>
-              But we needed to go further. We needed to show up in person, to plant seeds, have real conversations, and prove that youth-to-youth climate change education works on the ground, not just behind a screen.
-            </p>
-            <p>
-              That's what CCiC is: a free, in-person workshop designed and delivered by young people for students aged 12-18. We come to you. We bring everything. You just open the door.
+              But we needed to go further. We needed to show up in person, to have real conversations, and prove that youth-to-youth climate change education works on the ground.
             </p>
           </div>
+
+          <p className={styles.pullQuote}>
+            "Is our work making a difference on the ground?"
+          </p>
+
           <div className={styles.tiles}>
             {[
+              { icon: <DollarSign size={28} />, title: 'Zero cost. Zero prep.', desc: 'We bring all materials directly to your school' },
               { icon: <Clock size={28} />, title: '1h30 session', desc: '45 mins of learning + 45 mins of hands-on activity' },
               { icon: <GraduationCap size={28} />, title: 'Ages 12-18', desc: 'Flexible for one class, a year group, or a whole assembly' },
-              { icon: <DollarSign size={28} />, title: 'Zero cost. Zero prep.', desc: 'We bring all materials directly to your school' },
-              { icon: <Users size={28} />, title: 'Youth-to-youth', desc: 'Students learn from their peers, not another adult at the front' },
+              { icon: <Users size={28} />, title: 'Youth-to-youth', desc: 'Students learn from their peers, not another adult at the front of the room.' },
+              { icon: <ShieldCheck size={28} />, title: 'Teachers stay in the room', desc: 'Teachers stay present the whole time, so schools keep full oversight and students feel safe.' },
             ].map((t) => (
               <div key={t.title} className={styles.tile}>
                 <div className={styles.tileIcon}>{t.icon}</div>
