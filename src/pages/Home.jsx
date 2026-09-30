@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   School, Briefcase, Handshake, Sprout,
-  Newspaper, Mic2
+  Newspaper, Mic2, GraduationCap
 } from 'lucide-react'
 import styles from './Home.module.css'
 import VolunteerMap from '../components/VolunteerMap'
@@ -165,11 +165,13 @@ export default function Home() {
           <h2 className={`section-title ${styles.testimonialsTitle}`}>What students say</h2>
           <div className={styles.testimonialGrid}>
             <blockquote className={styles.testimonialCard}>
-              <p>"I felt really educated because I had no idea that things like this existed"</p>
+              <GraduationCap className={styles.testimonialIcon} size={32} strokeWidth={1.75} />
+              <p>"I felt really <span className={styles.highlight}>educated</span> because I had no idea that things like this existed"</p>
               <cite>Student, 13, Nadi, Fiji</cite>
             </blockquote>
             <blockquote className={styles.testimonialCard}>
-              <p>"Liberated and inspired. Showed me some insight to what I can do better to help the climate crisis."</p>
+              <GraduationCap className={styles.testimonialIcon} size={32} strokeWidth={1.75} />
+              <p>"<span className={styles.highlight}>Liberated and inspired</span>. Showed me some insight to what I can do better to help the climate crisis."</p>
               <cite>Student, 16, Rotorua, New Zealand</cite>
             </blockquote>
           </div>
@@ -226,6 +228,10 @@ export default function Home() {
                 </div>
               )
             })}
+            {/* TODO: replace with real GEP logo file once Ava provides it */}
+            <div className={styles.partnerLogo}>
+              <span className={styles.partnerPlaceholder}>GEP</span>
+            </div>
           </div>
           <div className={styles.partnersViewAll}>
             <Link to="/partnerships" className={styles.partnersViewAllLink}>View all partners →</Link>
