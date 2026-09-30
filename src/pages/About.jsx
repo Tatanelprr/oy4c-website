@@ -98,21 +98,33 @@ export default function About() {
       <section className={styles.story}>
         <div className={styles.storyInner}>
           <span className="section-eyebrow">Our story</span>
-          <h2 className="section-title">How it all started</h2>
+          <h2 className="section-title">How it All Started</h2>
           <p>
-            OY4C was born from a simple but powerful question: why aren't young people leading the conversation on climate change education? In 2021, a group of passionate young advocates came together to change that, and OY4C was founded.
+            OY4C was born from a simple but powerful question: <span className={styles.highlight}>why aren't young people leading the conversation on climate change education?</span> In 2021, a group of passionate young advocates came together to change that, and OY4C was founded.
           </p>
           <p>
-            What started as a small initiative quickly grew into a global movement. Today, OY4C spans 40+ countries, with hundreds of volunteer educators bringing our curriculum to classrooms worldwide.
+            What started as a small initiative quickly grew into a global movement. Today, OY4C spans 43 countries, with hundreds of volunteer educators bringing our curriculum to classrooms worldwide.
           </p>
           <p>
             We are proudly youth-led at every level, from our founder and executive director to our volunteers on the ground. This isn't just something we say. It's who we are.
           </p>
-          <p style={{ color: 'var(--mid)', fontStyle: 'italic', borderLeft: '3px solid var(--green)', paddingLeft: '20px', marginTop: '32px' }}>
-            "Climate change education shouldn't be a privilege. Every young person deserves to understand the crisis they will inherit, and the power they have to shape its outcome."
-            <br /><br />
-            <strong style={{ color: 'var(--black)', fontStyle: 'normal' }}>- Ava Langridge, Founder & Executive Director</strong>
-          </p>
+          <blockquote className={styles.quote}>
+            <p className={styles.quoteText}>
+              "Climate change education shouldn't be a privilege. Every young person deserves to understand the crisis they will inherit, and the power they have to shape its outcome."
+            </p>
+            <div className={styles.quoteAuthor}>
+              <span className={styles.avatar} aria-hidden="true">
+                <span className={styles.avatarInitials}>AL</span>
+                <img
+                  src="/team/ava-langridge-profile.jpg"
+                  alt=""
+                  className={styles.avatarImg}
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+              </span>
+              <strong>Ava Langridge, Founder &amp; Executive Director</strong>
+            </div>
+          </blockquote>
         </div>
       </section>
 
@@ -121,7 +133,7 @@ export default function About() {
         <div className={styles.statsGrid}>
           {[
             { num: '500+', label: 'Volunteers worldwide' },
-            { num: '40+', label: 'Countries represented' },
+            { num: '43', label: 'Countries represented' },
             { num: '10k+', label: 'Students reached' },
             { num: '200+', label: 'Curricula integrated' },
           ].map((s) => (
@@ -141,9 +153,9 @@ export default function About() {
         </div>
         <div className={styles.onwardGrid}>
           {[
-            { icon: <Users size={22} />, title: 'Meet the Team', desc: 'Discover the passionate young people behind OY4C.', to: '/team' },
-            { icon: <BookOpen size={22} />, title: 'Our Curriculum', desc: 'Explore our climate change education modules for classrooms.', to: '/curriculum' },
-            { icon: <Globe size={22} />, title: 'Our Partners', desc: 'See the organisations we work with around the world.', to: '/partnerships' },
+            { icon: <Users size={22} />, title: 'Meet Our People', desc: 'Meet the team closing the climate change education gap they inherited', to: '/team' },
+            { icon: <BookOpen size={22} />, title: 'Our OY4CCurriculum', desc: 'Explore our climate change education modules for classrooms', to: '/curriculum' },
+            { icon: <Globe size={22} />, title: 'Our Partners', desc: 'See the organisations we work with around the world', to: '/partnerships' },
           ].map((c) => (
             <Link key={c.title} to={c.to} className={styles.onwardCard}>
               <div className={styles.onwardIcon}>{c.icon}</div>
