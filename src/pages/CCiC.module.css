@@ -307,72 +307,171 @@
   margin-bottom: 52px;
   max-width: 700px;
 }
-.timeline {
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-  overflow-x: auto;
-  padding-bottom: 24px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--lavender) transparent;
+/* Journey stops — 2 x 4 grid */
+.stopGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
-.timeline::-webkit-scrollbar {
-  height: 4px;
+.stop {
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 26px 28px;
 }
-.timeline::-webkit-scrollbar-track {
-  background: transparent;
-}
-.timeline::-webkit-scrollbar-thumb {
-  background: var(--lavender);
-  border-radius: 4px;
-}
-.timelineItem {
-  display: flex;
-  flex-direction: column;
-  min-width: 260px;
-  max-width: 260px;
-  position: relative;
-  padding-right: 32px;
-}
-.timelineItem:last-child { padding-right: 0; }
-.timelineDot {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 16px;
-}
-.timelineDotCircle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--green);
-  flex-shrink: 0;
-}
-.timelineLine {
-  flex: 1;
-  height: 2px;
-  background: var(--lavender);
-  margin-left: 6px;
-}
-.timelineItem:last-child .timelineLine { display: none; }
-.timelineFlag {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.stopNum {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   color: var(--teal);
-  margin-bottom: 6px;
-}
-.timelineTitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--black);
   margin-bottom: 10px;
 }
-.timelineBody {
-  font-size: 0.82rem;
+.stopHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.stopPlace {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black);
+}
+.stopTag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: var(--pill-radius);
+  padding: 3px 10px;
+}
+.stopBody {
+  font-size: 0.85rem;
   color: var(--mid);
   line-height: 1.8;
+}
+
+/* Proof it scales — highlighted dark panel */
+.proof {
+  padding: 90px 5vw;
+  background: var(--dark);
+}
+.proofInner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.proofLede {
+  font-size: 0.98rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto 44px;
+}
+.proofGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.proofCard {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 32px 24px;
+}
+.proofAvatar {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 16px;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proofInitials {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.proofAvatarImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.proofName {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.proofRole {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin-top: 2px;
+}
+.proofPlace {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.55);
+  margin-top: 6px;
+}
+.proofNote {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+/* ReGen26 — full-width feature with background image */
+.regen {
+  position: relative;
+  padding: 110px 5vw;
+  overflow: hidden;
+  background: var(--dark);
+}
+.regenBg {
+  position: absolute;
+  inset: 0;
+  /* Placeholder image — swap /hero/hero-1.jpg for the real ReGen26 photo later */
+  background-image:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('/hero/hero-1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.regenContent {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+.regenText {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+.regenQuote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.35;
+  color: var(--white);
 }
 
 /* INSIGHTS */
@@ -673,13 +772,15 @@
   .scrollHint { display: block; }
   .insightsGrid { grid-template-columns: 1fr 1fr; }
   .impactGrid { grid-template-columns: repeat(2, 1fr); }
+  .proofGrid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .tiles { grid-template-columns: 1fr; }
   .insightsGrid { grid-template-columns: 1fr; }
   .impactGrid { grid-template-columns: 1fr; }
+  .stopGrid { grid-template-columns: 1fr; }
   .heroContent { padding: 48px 6vw; }
-  .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .cta, .map { padding: 60px 5vw; }
+  .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .cta, .map, .proof, .regen { padding: 60px 5vw; }
   .stage { flex-basis: 85%; padding: 22px 20px; }
   .heroBtns { flex-direction: column; }
   /* Keep all 6 stat pills wrapping cleanly (no horizontal scroll) */

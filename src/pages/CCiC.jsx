@@ -131,29 +131,76 @@ export default function CCiC() {
           <p className={styles.journeyIntro}>
             OY4C has been online since its founding during the pandemic. Social media and youth drive are powerful things. They scaled us globally. But at some point, you have to show up. So Ava, OY4C's Founder and Executive Director, set off.
           </p>
-          <div className={styles.timeline}>
+          <div className={styles.stopGrid}>
             {[
-              { flag: '🌏 Canada', title: 'Where it started - Online', body: 'In good OY4C fashion, the first CCiC session was held online. Ava in London, students in Ontario, Canada. But it was time to go for real.' },
-              { flag: '🌴 Fiji', title: 'The first classroom', body: 'First stop: Fiji. Walking into a classroom for the first time, with real students looking back and engaging with materials we had built together. It was the first moment the tangible impact of OY4C became real.' },
-              { flag: '🪡 Auckland, New Zealand', title: 'Community, no script', body: 'At New Lynn Memorial Square, CCiC took a different shape: a community-based event, hands-on, with participants embroidering cloth and talking openly about the fashion industry\'s impact on people, planet, and economy.' },
-              { flag: '🏫 Rotorua, New Zealand', title: '60 students', body: 'Everyone in that room was there for the same reason: the need for young people to come together, empower each other, and be reminded that they are not alone in this. By youth. For youth.' },
-              { flag: '🌿 Bali, Indonesia', title: 'SD Bali Public School - 72 students', body: 'Students at Green School Bali, who had received climate change education, were notably less reactive to the material, not because they didn\'t care, but because this knowledge was already part of how they moved through the world. That\'s the goal.' },
-              { flag: '🧵 Philippines, Cebu', title: 'Earth Day, April 22nd - 14 students', body: 'Students already skilled at repairing clothes and extending the life of what they owned, not because they\'d been taught sustainability, but because they\'d been shaped by necessity. This was a real exchange of knowledge: we brought the framework; they brought the practice.' },
-              { flag: '🌍 Across the World', title: 'At the same time', body: 'Muhammad ran a workshop in Nigeria and integrated the full OY4CCurriculum into his school. Deanna stood in front of 140 students in Pontianak, Indonesia. Alexandra brought it back to the school she attended in Bratislava, Slovakia.' },
-            ].map((item) => (
-              <div key={item.title} className={styles.timelineItem}>
-                <div className={styles.timelineDot}>
-                  <div className={styles.timelineDotCircle} />
-                  <div className={styles.timelineLine} />
+              { place: 'Canada (Online)', body: 'Where it started, online. Ava in London, students in Ontario, Canada. The first CCiC session, before going in person.' },
+              { place: 'Fiji', body: "The first classroom. First real students, first real conversation. The moment OY4C's impact became tangible." },
+              { place: 'Auckland, New Zealand', body: "A community event at New Lynn Memorial Square — participants embroidering cloth while discussing fashion's impact on people, planet and economy. No formal structure, just community." },
+              { place: 'Rotorua, New Zealand', body: "60 students. Everyone there for the same reason: young people coming together, empowering each other, realising they're not alone. By youth. For youth." },
+              { place: 'Bali, Indonesia', body: "72 students at SD Bali Public School. Green School Bali students, who'd already had climate education, were notably less reactive — not because they didn't care, but because the knowledge was already part of how they moved through the world." },
+              { place: 'Cebu, Philippines', body: 'Earth Day, 14 students. Already skilled at repairing and extending the life of their clothes — not from classroom sustainability lessons, but from necessity and community. We brought the framework. They brought the practice.' },
+              { place: 'Maiduguri, Nigeria', tag: 'Team-run', body: 'Run by Muhammad, Story Creator. He went on to integrate the full OY4C Curriculum into his school.' },
+              { place: 'Pontianak, Indonesia', tag: 'Team-run', body: 'Run by Deanna, Director of Community. 140 students, eager and ready. Similar sessions were run independently by Alexandra (Bratislava, Slovakia).' },
+            ].map((s, i) => (
+              <div key={s.place} className={styles.stop}>
+                <div className={styles.stopNum}>{String(i + 1).padStart(2, '0')}</div>
+                <div className={styles.stopHead}>
+                  <span className={styles.stopPlace}>{s.place}</span>
+                  {s.tag && <span className={styles.stopTag}>{s.tag}</span>}
                 </div>
-                <div>
-                  <div className={styles.timelineFlag}>{item.flag}</div>
-                  <div className={styles.timelineTitle}>{item.title}</div>
-                  <div className={styles.timelineBody}>{item.body}</div>
-                </div>
+                <p className={styles.stopBody}>{s.body}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* PROOF IT SCALES */}
+      <section className={styles.proof}>
+        <div className={styles.proofInner}>
+          <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>Proof it scales</span>
+          <h2 className="section-title" style={{ color: 'var(--white)' }}>The model doesn't depend on one founder</h2>
+          <p className={styles.proofLede}>
+            While Ava was in transit, three team members ran full CCiC sessions on their own, on the other side of the world.
+          </p>
+          <div className={styles.proofGrid}>
+            {[
+              { name: 'Muhammad', role: 'Story Creator', place: 'Maiduguri, Nigeria', photo: '/team/muhammad-goni.webp', note: 'Integrated the full OY4C Curriculum into his school.' },
+              { name: 'Deanna', role: 'Director of Community', place: 'Pontianak, Indonesia', photo: '/team/deanna-gracia.webp', note: 'Led a session for 140 students, eager and ready.' },
+              { name: 'Alexandra', role: 'Director of Curriculum', place: 'Bratislava, Slovakia', photo: '/team/sasha-kristofovicova.webp', note: 'Brought CCiC back to her own former school.' },
+            ].map((m) => (
+              <div key={m.name} className={styles.proofCard}>
+                <div className={styles.proofAvatar} aria-hidden="true">
+                  <span className={styles.proofInitials}>{m.name[0]}</span>
+                  <img
+                    src={m.photo}
+                    alt=""
+                    className={styles.proofAvatarImg}
+                    onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  />
+                </div>
+                <div className={styles.proofName}>{m.name}</div>
+                <div className={styles.proofRole}>{m.role}</div>
+                <div className={styles.proofPlace}>{m.place}</div>
+                <p className={styles.proofNote}>{m.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* REGEN26 FEATURE */}
+      <section className={styles.regen}>
+        <div className={styles.regenBg} />
+        <div className={styles.regenContent}>
+          <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>ReGen26</span>
+          <h2 className="section-title" style={{ color: 'var(--white)' }}>250 students. One day. Green School Bali.</h2>
+          <p className={styles.regenText}>
+            ReGen26 was the first event of its kind for CCiC: two full workshops delivered on site at Green School Bali, reaching 250 students in a single day.
+          </p>
+          <blockquote className={styles.regenQuote}>
+            "Green School students were less shocked, not less committed."
+          </blockquote>
         </div>
       </section>
 
