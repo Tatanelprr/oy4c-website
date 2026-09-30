@@ -8,8 +8,8 @@ const NAV = [
     label: 'About',
     children: [
       { label: 'Who Are We?', to: '/about' },
-      { label: 'Meet the Team', to: '/team' },
-      { label: 'Advisory Board', to: '/advisory-board' },
+      { label: 'Meet Our People', to: '/team' },
+      { label: 'Impact', to: '/impact' },
       { label: 'Partnerships', to: '/partnerships' },
     ],
   },
@@ -18,15 +18,13 @@ const NAV = [
     children: [
       { label: 'OY4CCurriculum', to: '/curriculum' },
       { label: 'CCiC', to: '/ccic' },
-      { label: 'Ambassador Programme', to: '/ambassador' },
     ],
   },
-  { label: 'Partner with Us', to: '/partner' },
-  { label: 'Impact', to: '/impact' },
   {
     label: 'Resources',
     children: [{ label: 'OY4C Blog', to: '/blog' }],
   },
+  { label: 'Services', to: '/services' },
   { label: 'Contact Us', to: '/contact' },
 ]
 

@@ -10,6 +10,7 @@ import Contact from './pages/Contact'
 import Impact from './pages/Impact'
 import Partnerships from './pages/Partnerships'
 import Curriculum from './pages/Curriculum'
+import Services from './pages/Services'
 import LastPush from './pages/LastPush'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/team" element={<Team />} />
           <Route path="/curriculum" element={<Curriculum />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/ccic" element={<CCiC />} />
           <Route path="/ambassador" element={<Ambassador />} />
           <Route path="/last-push" element={<LastPush />} />
