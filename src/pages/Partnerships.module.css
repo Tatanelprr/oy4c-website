@@ -10,8 +10,29 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--dark) 0%, #1d3021 100%);
+  background-image:
+    linear-gradient(135deg, rgba(11,26,18,0.82) 0%, rgba(29,48,33,0.78) 100%),
+    url('/paths/path-partner.png');
+  background-size: cover;
+  background-position: center;
 }
+
+/* NOTE strip below the hero */
+.note {
+  background: var(--dark);
+  padding: 18px 5vw;
+  text-align: center;
+}
+.note p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+}
+.note a {
+  color: var(--teal);
+  font-weight: 600;
+}
+.note a:hover { text-decoration: underline; }
 .heroContent {
   position: relative;
   z-index: 2;

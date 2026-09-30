@@ -26,7 +26,7 @@ export default function Partnerships() {
 
   return (
     <>
-      {/* HERO */}
+      {/* HERO — image background with dark overlay */}
       <section className={styles.hero}>
         <div className={styles.heroBg} />
         <div className={styles.heroContent}>
@@ -41,39 +41,15 @@ export default function Partnerships() {
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className={styles.intro}>
-        <div className={styles.introInner}>
-          <div className={styles.introText}>
-            <span className="section-eyebrow">Why partner with OY4C?</span>
-            <h2 className="section-title">Stronger together</h2>
-            <p>
-              Partnerships are at the heart of how OY4C scales its mission. We believe that closing the global climate change education gap requires collective action - and that means building bridges between youth organisations, schools, NGOs, and businesses that share our values.
-            </p>
-            <p>
-              Whether you're looking to co-create educational content, reach a global youth audience, or amplify your climate initiatives, we'd love to explore how we can work together.
-            </p>
-            <a href="mailto:partnerships@oy4c.org" className="btn-pill btn-pill-primary" style={{ marginTop: 8 }}>
-              Get in touch →
-            </a>
-          </div>
-          <div className={styles.introValues}>
-            {[
-              { icon: <Globe size={20} />, text: 'Global reach across 43 countries' },
-              { icon: <Users size={20} />, text: '133 passionate youth volunteers' },
-              { icon: <Heart size={20} />, text: 'Mission-aligned, values-driven collaboration' },
-              { icon: <Handshake size={20} />, text: 'Flexible partnership models' },
-            ].map((v) => (
-              <div key={v.text} className={styles.introValue}>
-                <div className={styles.introValueIcon}>{v.icon}</div>
-                <div className={styles.introValueText}>{v.text}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* NOTE — points to the "how to partner" section further down */}
+      <div className={styles.note}>
+        <p>
+          Meet the organisations we already work with below — and if you'd like to join them,{' '}
+          <a href="#partner-with-us">scroll down to learn how to partner with us ↓</a>
+        </p>
+      </div>
 
-      {/* PARTNERS */}
+      {/* CURRENT PARTNERS — loaded from /api/partners */}
       <section className={styles.partners}>
         <div className={styles.partnersInner}>
           <span className="section-eyebrow">Our partners</span>
@@ -104,6 +80,38 @@ export default function Partnerships() {
               })}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* PARTNER WITH US — how it works */}
+      <section id="partner-with-us" className={styles.intro}>
+        <div className={styles.introInner}>
+          <div className={styles.introText}>
+            <span className="section-eyebrow">Partner with us</span>
+            <h2 className="section-title">Stronger together</h2>
+            <p>
+              Partnerships are at the heart of how OY4C scales its mission. We believe that closing the global climate change education gap requires collective action - and that means building bridges between youth organisations, schools, NGOs, and businesses that share our values.
+            </p>
+            <p>
+              Whether you're looking to co-create educational content, reach a global youth audience, or amplify your climate initiatives, we'd love to explore how we can work together.
+            </p>
+            <a href="mailto:partnerships@oy4c.org" className="btn-pill btn-pill-primary" style={{ marginTop: 8 }}>
+              Get in touch →
+            </a>
+          </div>
+          <div className={styles.introValues}>
+            {[
+              { icon: <Globe size={20} />, text: 'Global reach across 43 countries' },
+              { icon: <Users size={20} />, text: '133 passionate youth volunteers' },
+              { icon: <Heart size={20} />, text: 'Mission-aligned, values-driven collaboration' },
+              { icon: <Handshake size={20} />, text: 'Flexible partnership models' },
+            ].map((v) => (
+              <div key={v.text} className={styles.introValue}>
+                <div className={styles.introValueIcon}>{v.icon}</div>
+                <div className={styles.introValueText}>{v.text}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

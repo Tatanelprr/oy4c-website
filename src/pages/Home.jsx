@@ -280,7 +280,7 @@ export default function Home() {
           {[
             { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-1.jpg' },
             { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum', img: '/paths/path-educator.jpg' },
-            { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partner', img: '/paths/path-partner.png' },
+            { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partnerships', img: '/paths/path-partner.png' },
             { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact', img: '/paths/path-funder.jpg' },
           ].map((p) => (
             <Link key={p.who} to={p.to} className={styles.pathCard}>
