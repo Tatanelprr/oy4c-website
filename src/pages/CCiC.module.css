@@ -442,10 +442,10 @@
 .regenBg {
   position: absolute;
   inset: 0;
-  /* Placeholder image — swap /hero/hero-1.jpg for the real ReGen26 photo later */
+  /* Placeholder — replace public/hero/hero-regen26.jpg with the real ReGen26 photo later */
   background-image:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('/hero/hero-1.jpg');
+    url('/hero/hero-regen26.jpg');
   background-size: cover;
   background-position: center;
 }
