@@ -147,7 +147,7 @@ export default function CCiC() {
           <span className="section-eyebrow">The Journey</span>
           <h2 className="section-title">3 months. 6 countries. 5 continents. Not one person.</h2>
           <p className={styles.journeyIntro}>
-            OY4C has been online since its founding during the pandemic. Social media and youth drive are powerful things. They scaled us globally. But at some point, you have to show up. So Ava, OY4C's Founder and Executive Director, set off.
+            OY4C has been online since its founding during the pandemic. Social media and youth drive scaled us globally. But at some point, you have to show up. So Ava, OY4C's Founder and Executive Director, set off.
           </p>
           <div className={styles.stopGrid}>
             {[
@@ -329,7 +329,7 @@ export default function CCiC() {
           <span className="section-eyebrow">What's next</span>
           <h2 className="section-title">CCiC is yours now.</h2>
           <p>
-            This project doesn't end with one founder and one journey. Everything we used is becoming an open resource.
+            CCiC doesn't end with one founder and one journey. Everything we used is becoming an open resource.
           </p>
           <p>
             We are making CCiC freely available to any young person, educator, or community group who wants to bring quality, youth-led climate change education to their school or community.
@@ -391,7 +391,7 @@ export default function CCiC() {
         <div className={styles.founderQuoteInner}>
           <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>From Ava, OY4C Founder</span>
           <p className={styles.quoteText}>
-            "The most beautiful 3 months a Founder could have asked for — connecting, really connecting, with people across the world, across backgrounds, across generations. We were just planting seeds. But I've seen what they grow into."
+            "The best 3 months a Founder could have asked for — connecting, really connecting, with people across the world, across backgrounds, across generations. We were just planting seeds. But I've seen what they grow into."
           </p>
           <div className={styles.quoteAuthorRow}>
             <div className={styles.quoteAvatar} aria-hidden="true">
@@ -411,13 +411,15 @@ export default function CCiC() {
       {/* CTA */}
       <section className={styles.cta}>
         <span className="section-eyebrow">Get involved</span>
-        <h2 className="section-title">Ready to bring CCiC to your community?</h2>
+        <h2 className="section-title">Where should CCiC go next?</h2>
         <p>Whether you're a teacher, a student, a youth advocate, or an organisation, there's a way for you to be part of this.</p>
         <div className={styles.ctaBtns}>
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>Bring CCiC to Your School →</a>
-          <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>Run It Yourself →</a>
-          <a href="mailto:hello@oy4c.org" className={styles.ctaBtnOutline}>Get in Touch</a>
+          <a href="mailto:hello@oy4c.org" className={styles.ctaBtnOutline}>Run It Yourself →</a>
         </div>
+        <p className={styles.ctaPartner}>
+          Funding or partnering on the next round? <a href="mailto:hello@oy4c.org">hello@oy4c.org</a>
+        </p>
       </section>
     </>
   )
