@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -43,6 +43,8 @@ export default function App() {
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/partnerships" element={<Partnerships />} />
+          {/* Legacy route — /partner was merged into /partnerships */}
+          <Route path="/partner" element={<Navigate to="/partnerships" replace />} />
           {/* Temporarily hidden per Ava's request — falls through to the 404 route below. */}
           {/* <Route path="/advisory-board" element={<AdvisoryBoard />} /> */}
           <Route path="/speaker" element={<Speaker />} />
