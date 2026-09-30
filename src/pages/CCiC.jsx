@@ -233,6 +233,7 @@ export default function CCiC() {
         <div className={styles.impactInner}>
           <span className="section-eyebrow" style={{ color: 'rgba(255,255,255,0.75)' }}>Impact</span>
           <h2 className="section-title" style={{ color: 'var(--white)' }}>The numbers, so far</h2>
+          <div className={styles.impactDateline}>February–April 2026</div>
           <div className={styles.impactGrid}>
             {[
               { num: '670', label: 'Students taught live' },
@@ -248,6 +249,11 @@ export default function CCiC() {
               </div>
             ))}
           </div>
+          <p className={styles.impactFootnote}>Plus 250 students at ReGen26.</p>
+          <figure className={styles.impactQuote}>
+            <blockquote>&ldquo;Liberated and inspired. Showed me some insight to what I can do better to help the climate crisis.&rdquo;</blockquote>
+            <figcaption>— Student, 16, Rotorua, New Zealand</figcaption>
+          </figure>
           <div className={styles.sdgs}>
             {['SDG 4 - Quality Education', 'SDG 10 - Reduced Inequalities', 'SDG 13 - Climate Action'].map((s) => (
               <span key={s} className={styles.sdgBadge}>{s}</span>

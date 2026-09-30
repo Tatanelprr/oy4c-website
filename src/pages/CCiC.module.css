@@ -534,11 +534,20 @@
   color: var(--white);
   margin-bottom: 52px;
 }
+.impactDateline {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  margin-top: -32px;
+  margin-bottom: 32px;
+}
 .impactGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 .impactStat {
   background: rgba(255,255,255,0.15);
@@ -555,7 +564,13 @@
 }
 .impactStatLbl {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.8);
+  color: var(--white);
+}
+.impactFootnote {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 44px;
 }
 .impactRating {
   font-size: 1.2rem;
@@ -563,20 +578,36 @@
   color: var(--white);
   margin-top: 24px;
 }
+.impactQuote {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.impactQuote blockquote {
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--white);
+  margin: 0 0 14px;
+}
+.impactQuote figcaption {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
 .sdgs {
-  margin-top: 32px;
+  margin-top: 36px;
   display: flex;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
 }
 .sdgBadge {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.12);
   border-radius: var(--pill-radius);
-  padding: 6px 14px;
-  font-size: 0.75rem;
+  padding: 5px 12px;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: var(--white);
+  color: rgba(255,255,255,0.7);
 }
 
 /* OPEN RESOURCE */
