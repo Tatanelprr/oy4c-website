@@ -211,11 +211,12 @@ export default function CCiC() {
           <h2 className="section-title">What 3 months on the road taught us</h2>
           <div className={styles.insightsGrid}>
             {[
-              { num: '01', title: 'Access to climate change education shapes everything', body: 'The contrast between students who had received deep climate change education and those who hadn\'t was impossible to ignore. Engagement, agency, and the ability to imagine solutions all correlated directly with exposure.' },
+              { num: '01', title: 'Access to climate change education shapes everything', body: 'The difference between students who\'d had deep climate education and those who hadn\'t was impossible to miss. Engagement, agency, and the ability to imagine solutions all seemed to move with it.' },
               { num: '02', title: 'Sustainability can be lived without being named', body: 'In the Philippines, students were already practising circularity. The most powerful moments weren\'t when we taught something new, they were when we helped students recognise what they already knew.' },
-              { num: '03', title: 'Peer-to-peer is different', body: 'Students listen differently when the person at the front is their age. There\'s less distance. More permission to speak, question, push back. Youth-to-youth education isn\'t just a nice idea. It works.' },
-              { num: '04', title: 'This doesn\'t have to be founder-dependent', body: 'Muhammad, Deanna, and Alexandra ran sessions on the other side of the world while Ava was in transit. The model holds without the founder in the room. That means it can scale. And it will.' },
+              { num: '03', title: 'Peer-to-peer learning is categorically different', body: 'Students listen differently when the person at the front is their age. There\'s less distance. More permission to speak, question, push back. Youth-to-youth education isn\'t just a nice idea. It works.' },
+              { num: '04', title: 'The model runs without the founder in the room', body: 'Muhammad, Deanna, and Alexandra ran sessions on the other side of the world while Ava was in transit, and the workshops held. That\'s what tells us this can scale: it lives in the model and the team, not in any one person.' },
               { num: '05', title: 'Community is the infrastructure', body: 'In a world pulling people apart, in-person connection does something online cannot replicate. Students don\'t just learn in CCiC workshops. They meet each other. They find their people.' },
+              { num: '06', title: 'It goes both ways', body: 'In Cebu, they already knew how to repair and extend the life of their clothes. We brought the framework. They brought the practice. The best workshops were an exchange, not a lecture.' },
             ].map((i) => (
               <div key={i.num} className={styles.insightCard}>
                 <div className={styles.insightNum}>{i.num}</div>
