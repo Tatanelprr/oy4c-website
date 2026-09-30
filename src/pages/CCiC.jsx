@@ -88,31 +88,38 @@ export default function CCiC() {
         <div className={styles.workshopInner}>
           <span className="section-eyebrow">The Workshop</span>
           <h2 className="section-title">What happens in a CCiC workshop?</h2>
-          <p className={styles.workshopIntro}>
-            The CCiC workshop uses the fashion industry as a lens into the bigger climate picture - because everyone in the room is wearing clothes, and every one of those clothes has a story worth following.
+          <p className={styles.workshopLede}>
+            Everyone in the room is wearing clothes, and every one of those clothes has a story worth following.
           </p>
-          <div className={styles.workshopParts}>
-            <div className={styles.workshopPart}>
-              <div className={styles.workshopPartNum}>Part 1</div>
-              <div className={styles.workshopPartTitle}>Learning - 45 mins</div>
-              <p>
-                Students start by tracing a piece of clothing they're wearing: what it's made of, where it came from, how long they've had it. From there, we explore how the fashion industry touches five interconnected systems: Environmental, Social, Economic, Institutional, and Cultural.
-              </p>
-              <p style={{ marginTop: 12 }}>
-                We follow a single T-shirt from raw material to disposal and ask: does it have to end here? Students compare the linear economy with a circular one and meet real-world models making it work, from Kantamanto Market in Accra to the global Repair Café Network.
-              </p>
-            </div>
-            <div className={styles.workshopPart}>
-              <div className={styles.workshopPartNum}>Part 2</div>
-              <div className={styles.workshopPartTitle}>Activity - 45 mins</div>
-              <p>
-                In teams of 4-5, students take on the Design It Better! Challenge - choosing a real fast fashion problem in their community and designing a response. A poster, a campaign, a roleplay, a mock ad. Then they present.
-              </p>
-              <p style={{ marginTop: 12 }}>
-                The goal isn't a perfect answer. It's realising they already have what it takes to imagine one.
-              </p>
+
+          <div className={styles.stageScroll}>
+            <div className={styles.stageTrack}>
+              {[
+                { title: 'Our Map', duration: '5 min', desc: "Students trace a piece of clothing they're wearing — what it's made of, where it came from, how long they've had it." },
+                { title: 'Life of a T-Shirt', duration: '15 min', desc: 'We follow a single T-shirt from raw material to disposal, and ask a simple question: does it have to end here?', journey: true },
+                { title: 'Impacts', duration: '10 min', desc: 'We explore how the fashion industry touches five interconnected systems: environmental, social, economic, institutional, and cultural.' },
+                { title: 'Sustainable Actions', duration: '15 min', desc: 'Students compare the linear economy with a circular one and meet real-world models making it work, from Kantamanto Market in Accra to the global Repair Café Network.' },
+                { title: 'Activity: Design It Better!', duration: '45 min', desc: 'In teams of 4-5, students choose a real fast fashion problem in their community and design a response — a poster, a campaign, a roleplay, a mock ad. Then they present.', closing: "The goal isn't a perfect answer. It's realising they already have what it takes to imagine one." },
+              ].map((s, i) => (
+                <div key={s.title} className={styles.stage}>
+                  <div className={`${styles.stageNum} ${i % 2 === 0 ? styles.stageNumTeal : styles.stageNumGreen}`}>{i + 1}</div>
+                  <div className={styles.stageDuration}>{s.duration}</div>
+                  <div className={styles.stageTitle}>{s.title}</div>
+                  <p className={styles.stageDesc}>{s.desc}</p>
+                  {s.journey && (
+                    <div className={styles.tshirtJourney}>
+                      {['Raw material', 'Manufacture', 'Shipping', 'Wear', 'Disposal'].map((step) => (
+                        <span key={step} className={styles.tjStep}>{step}</span>
+                      ))}
+                      <span className={styles.tjQuestion}>Does it have to end here?</span>
+                    </div>
+                  )}
+                  {s.closing && <p className={styles.stageClosing}>{s.closing}</p>}
+                </div>
+              ))}
             </div>
           </div>
+          <p className={styles.scrollHint}>← scroll to explore all 5 stages →</p>
         </div>
       </section>
 

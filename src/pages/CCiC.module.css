@@ -190,45 +190,105 @@
   background: var(--cream);
 }
 .workshopInner {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
-.workshopIntro {
-  font-size: 1rem;
-  color: var(--mid);
-  line-height: 1.85;
-  margin-bottom: 52px;
-  font-style: italic;
+.workshopLede {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.7;
+  max-width: 760px;
+  margin-bottom: 48px;
 }
-.workshopParts {
+.stageTrack {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
-.workshopPart {
+.stage {
   background: var(--white);
-  border-radius: 18px;
-  padding: 36px;
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 16px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.workshopPartNum {
-  font-size: 0.7rem;
+.stageNum {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.stageNumTeal  { background: var(--teal); }
+.stageNumGreen { background: var(--green); }
+.stageDuration {
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--teal);
-  margin-bottom: 8px;
-}
-.workshopPartTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: var(--black);
-}
-.workshopPart p {
-  font-size: 0.85rem;
+  letter-spacing: 0.1em;
   color: var(--mid);
-  line-height: 1.8;
+}
+.stageTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.25;
+}
+.stageDesc {
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.7;
+}
+.stageClosing {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--dark);
+  line-height: 1.6;
+  margin-top: 2px;
+}
+/* T-shirt journey mini-timeline (inside stage 2) */
+.tshirtJourney {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 4px;
+  margin-top: 4px;
+  padding: 12px;
+  background: var(--cream);
+  border-radius: 10px;
+}
+.tjStep {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+.tjStep:not(:first-child)::before,
+.tjQuestion::before {
+  content: '→';
+  margin: 0 6px;
+  color: var(--teal);
+}
+.tjQuestion {
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--teal);
+}
+.scrollHint {
+  display: none;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--mid);
+  margin-top: 16px;
 }
 
 /* JOURNEY */
@@ -596,7 +656,21 @@
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .tiles { grid-template-columns: repeat(2, 1fr); }
-  .workshopParts { grid-template-columns: 1fr; }
+  /* Workshop timeline becomes a horizontal snap-scroll strip */
+  .stageTrack {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stage {
+    flex: 0 0 80%;
+    max-width: 300px;
+    scroll-snap-align: start;
+  }
+  .scrollHint { display: block; }
   .insightsGrid { grid-template-columns: 1fr 1fr; }
   .impactGrid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -606,7 +680,7 @@
   .impactGrid { grid-template-columns: 1fr; }
   .heroContent { padding: 48px 6vw; }
   .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .cta, .map { padding: 60px 5vw; }
-  .workshopPart { padding: 24px 20px; }
+  .stage { flex-basis: 85%; padding: 22px 20px; }
   .heroBtns { flex-direction: column; }
   /* Keep all 6 stat pills wrapping cleanly (no horizontal scroll) */
   .heroStats { justify-content: center; }
