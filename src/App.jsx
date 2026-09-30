@@ -15,7 +15,8 @@ import LastPush from './pages/LastPush'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import TakeAction from './pages/TakeAction'
-import AdvisoryBoard from './pages/AdvisoryBoard'
+// Temporarily hidden per Ava's request — to be reworked in ~3 months. Keep the file.
+// import AdvisoryBoard from './pages/AdvisoryBoard'
 import Speaker from './pages/Speaker'
 import Consultancy from './pages/Consultancy'
 import Partner from './pages/Partner'
@@ -43,7 +44,8 @@ export default function App() {
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/partnerships" element={<Partnerships />} />
-          <Route path="/advisory-board" element={<AdvisoryBoard />} />
+          {/* Temporarily hidden per Ava's request — falls through to the 404 route below. */}
+          {/* <Route path="/advisory-board" element={<AdvisoryBoard />} /> */}
           <Route path="/speaker" element={<Speaker />} />
           <Route path="/consultancy" element={<Consultancy />} />
           <Route path="/takeaction" element={<TakeAction />} />

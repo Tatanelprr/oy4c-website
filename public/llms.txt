@@ -18,7 +18,6 @@ OY4C is a fiscally hosted project of a company registered in England and Wales. 
 - [Ambassador Programme](https://oy4c.org/ambassador): the OY4C ambassador network.
 - [Impact](https://oy4c.org/impact): impact figures and the 2025 Impact Report.
 - [Team](https://oy4c.org/team): the global volunteer team.
-- [Advisory Board](https://oy4c.org/advisory-board): advisors supporting OY4C.
 - [Partnerships](https://oy4c.org/partnerships): partner organisations.
 - [Blog](https://oy4c.org/blog): articles on climate education and OY4C news.
 - [Contact](https://oy4c.org/contact): who to contact, by topic.

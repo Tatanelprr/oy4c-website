@@ -27,7 +27,6 @@ export default function Footer() {
           <ul>
             <li><Link to="/about">Who Are We?</Link></li>
             <li><Link to="/team">Meet the Team</Link></li>
-            <li><Link to="/advisory-board">Advisory Board</Link></li>
             <li><Link to="/partnerships">Partnerships</Link></li>
           </ul>
         </div>
