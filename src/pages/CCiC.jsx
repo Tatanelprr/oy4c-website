@@ -1,5 +1,5 @@
 import { Clock, GraduationCap, DollarSign, Users, ShieldCheck } from 'lucide-react'
-import MapEmbed from '../components/MapEmbed'
+import CCiCLocationsMap from '../components/CCiCLocationsMap'
 import styles from './CCiC.module.css'
 
 export default function CCiC() {
@@ -296,12 +296,10 @@ export default function CCiC() {
         <div className={styles.mapInner}>
           <span className="section-eyebrow">Where we've been</span>
           <h2 className="section-title">CCiC around the world</h2>
-          <div className={styles.mapFrame}>
-            <MapEmbed
-              src="https://www.google.com/maps/d/embed?mid=19lCUg7zsVuQmOAlSUS59yObBwLDHZiM"
-              title="CCiC around the world"
-            />
-          </div>
+          <CCiCLocationsMap
+            src="https://www.google.com/maps/d/embed?mid=19lCUg7zsVuQmOAlSUS59yObBwLDHZiM"
+            title="CCiC around the world"
+          />
         </div>
       </section>
 
