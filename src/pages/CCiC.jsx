@@ -16,15 +16,16 @@ export default function CCiC() {
             <em>Now it's your turn.</em>
           </h1>
           <p className={styles.heroSub}>
-            The CCiC Project brought free, youth-led climate workshops to students across 5 continents in 3.5 months. Now we're making everything open access, so anyone, anywhere can do the same.
+            The CCiC Project brought free, youth-led climate workshops to students across 5 continents in 3 months. Now we're making everything open access, so anyone, anywhere can do the same.
           </p>
+          <p className={styles.heroDateline}>February to April 2026</p>
           <div className={styles.heroStats}>
             {[
               '670 students taught live',
               '10 schools',
-              '6 countries',
+              '6 countries in the pilot',
               '5 continents',
-              '4.63 / 5 rating',
+              '4.63/5 rating',
             ].map((s) => (
               <span key={s} className={styles.heroStat}>{s}</span>
             ))}
@@ -48,13 +49,13 @@ export default function CCiC() {
               But we needed to go further. We needed to show up in person, to plant seeds, have real conversations, and prove that youth-to-youth climate change education works on the ground, not just behind a screen.
             </p>
             <p>
-              That's what CCiC is: a free, in-person workshop designed and delivered by young people for students aged 14-18. We come to you. We bring everything. You just open the door.
+              That's what CCiC is: a free, in-person workshop designed and delivered by young people for students aged 12-18. We come to you. We bring everything. You just open the door.
             </p>
           </div>
           <div className={styles.tiles}>
             {[
               { icon: <Clock size={28} />, title: '1h30 session', desc: '45 mins of learning + 45 mins of hands-on activity' },
-              { icon: <GraduationCap size={28} />, title: 'Ages 14-18', desc: 'Flexible for one class, a year group, or a whole assembly' },
+              { icon: <GraduationCap size={28} />, title: 'Ages 12-18', desc: 'Flexible for one class, a year group, or a whole assembly' },
               { icon: <DollarSign size={28} />, title: 'Zero cost. Zero prep.', desc: 'We bring all materials directly to your school' },
               { icon: <Users size={28} />, title: 'Youth-to-youth', desc: 'Students learn from their peers, not another adult at the front' },
             ].map((t) => (
@@ -105,7 +106,7 @@ export default function CCiC() {
       <section className={styles.journey}>
         <div className={styles.journeyInner}>
           <span className="section-eyebrow">The Journey</span>
-          <h2 className="section-title">3.5 months. One founder. 5 continents.</h2>
+          <h2 className="section-title">3 months. 6 countries. 5 continents. Not one person.</h2>
           <p className={styles.journeyIntro}>
             OY4C has been online since its founding during the pandemic. Social media and youth drive are powerful things. They scaled us globally. But at some point, you have to show up. So Ava, OY4C's Founder and Executive Director, set off.
           </p>
@@ -139,7 +140,7 @@ export default function CCiC() {
       <section className={styles.insights}>
         <div className={styles.insightsInner}>
           <span className="section-eyebrow">What we learned</span>
-          <h2 className="section-title">What 3.5 months on the road taught us</h2>
+          <h2 className="section-title">What 3 months on the road taught us</h2>
           <div className={styles.insightsGrid}>
             {[
               { num: '01', title: 'Access to climate change education shapes everything', body: 'The contrast between students who had received deep climate change education and those who hadn\'t was impossible to ignore. Engagement, agency, and the ability to imagine solutions all correlated directly with exposure.' },
@@ -166,11 +167,11 @@ export default function CCiC() {
           <div className={styles.impactGrid}>
             {[
               { num: '670', label: 'Students taught live' },
-              { num: '70', label: 'Teachers reached' },
+              { num: '70', label: 'Teachers in the room' },
               { num: '10', label: 'Schools' },
-              { num: '6', label: 'Countries' },
+              { num: '6', label: 'Countries in the pilot' },
               { num: '5', label: 'Continents' },
-              { num: '4.63/5', label: 'Overall workshop rating' },
+              { num: '4.63/5', label: 'Average workshop rating from students and teachers' },
             ].map((s) => (
               <div key={s.label} className={styles.impactStat}>
                 <div className={styles.impactStatNum}>{s.num}</div>
@@ -252,7 +253,7 @@ export default function CCiC() {
         <div className={styles.founderQuoteInner}>
           <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>From Ava, OY4C Founder</span>
           <p className={styles.quoteText}>
-            "The most beautiful 3.5 months a Founder could have asked for. Connecting, really connecting, with people from across the world, across backgrounds, across generations. This is what community looks like, especially in a world that's so desperate for it. This is what equipping a generation looks like. This is what scaling climate change education looks like. We were just planting seeds across the world. But seeds, eventually, sprout."
+            "The most beautiful 3 months a Founder could have asked for. Connecting, really connecting, with people from across the world, across backgrounds, across generations. This is what community looks like, especially in a world that's so desperate for it. This is what equipping a generation looks like. This is what scaling climate change education looks like. We were just planting seeds across the world. But seeds, eventually, sprout."
           </p>
           <div className={styles.quoteAuthor}>- Ava Langridge, Founder & Executive Director, OY4C</div>
         </div>
