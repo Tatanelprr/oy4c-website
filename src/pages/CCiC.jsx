@@ -1,8 +1,26 @@
+import { useState } from 'react'
 import { Clock, GraduationCap, DollarSign, Users, ShieldCheck } from 'lucide-react'
 import CCiCLocationsMap from '../components/CCiCLocationsMap'
 import styles from './CCiC.module.css'
 
 export default function CCiC() {
+  // Light client-side gates — no data is persisted or sent yet.
+  // TODO: wire these forms to a real collection endpoint (CRM / Google Sheet / API).
+  const [reportUnlocked, setReportUnlocked] = useState(false)
+  const [waitlistJoined, setWaitlistJoined] = useState(false)
+
+  const handleReportSubmit = (e) => {
+    e.preventDefault()
+    setReportUnlocked(true)
+    // Preserve the previous direct-download behaviour: open the PDF on submit.
+    window.open('/ccic-report-2025.pdf', '_blank', 'noopener,noreferrer')
+  }
+
+  const handleWaitlistSubmit = (e) => {
+    e.preventDefault()
+    setWaitlistJoined(true)
+  }
+
   return (
     <>
       {/* HERO */}
@@ -267,12 +285,41 @@ export default function CCiC() {
         <div className={styles.reportInner}>
           <span className="section-eyebrow">The Report</span>
           <h2 className="section-title">The CCiC Report</h2>
-          <p className={styles.reportText}>
-            Read the full report on our first CCiC project — everything we did, what we learned, and where we're going next.
-          </p>
-          <a href="/ccic-report-2025.pdf" target="_blank" className={styles.reportBtn}>
-            Download the Report →
-          </a>
+
+          <div className={styles.reportPreview}>
+            {/* TODO: replace this placeholder cover with the real report cover image */}
+            <div className={styles.reportThumb}>
+              <img src="/ccic-logo.jpg" alt="CCiC Report cover" className={styles.reportThumbImg} />
+            </div>
+            <div className={styles.reportDetails}>
+              <p className={styles.reportText}>
+                Read the full report on our first CCiC pilot — everything we did, what we learned, and where we're going next.
+              </p>
+              <div className={styles.reportPages}>24 pages</div>
+              <ul className={styles.reportBullets}>
+                <li>The full 3-month journey, country by country</li>
+                <li>What we learned, with data and quotes from students and teachers</li>
+                <li>The case for scaling CCiC as an open resource</li>
+              </ul>
+            </div>
+          </div>
+
+          {reportUnlocked ? (
+            <a href="/ccic-report-2025.pdf" target="_blank" rel="noopener noreferrer" className={styles.reportBtn}>
+              Download the Report (PDF) →
+            </a>
+          ) : (
+            <form className={styles.gateForm} onSubmit={handleReportSubmit}>
+              <p className={styles.gateFormLabel}>Tell us where to send it and get instant access to the PDF.</p>
+              <div className={styles.gateFormGrid}>
+                <input type="text" name="name" placeholder="Name" required className={styles.gateInput} />
+                <input type="email" name="email" placeholder="Email" required className={styles.gateInput} />
+                <input type="text" name="role" placeholder="Role" required className={styles.gateInput} />
+                <input type="text" name="organisation" placeholder="Organisation" required className={styles.gateInput} />
+              </div>
+              <button type="submit" className={styles.reportBtn}>Get the Report →</button>
+            </form>
+          )}
         </div>
       </section>
 
@@ -282,12 +329,30 @@ export default function CCiC() {
           <span className="section-eyebrow">What's next</span>
           <h2 className="section-title">CCiC is yours now.</h2>
           <p>
-            This project doesn't end with one founder and one journey. The seeds have been planted. Now it's time to scale.
+            This project doesn't end with one founder and one journey. Everything we used is becoming an open resource.
           </p>
           <p>
-            We are making CCiC an open resource, freely available to any young person, educator, or community group who wants to bring quality, youth-led climate change education to their school or community.
+            We are making CCiC freely available to any young person, educator, or community group who wants to bring quality, youth-led climate change education to their school or community.
           </p>
-          <span className={styles.comingSoon}>Coming Soon</span>
+
+          <ul className={styles.kitList}>
+            {['Slide deck', 'Facilitator guide', 'Activity materials', 'Timing sheet', 'Feedback forms template'].map((item) => (
+              <li key={item} className={styles.kitItem}>{item}</li>
+            ))}
+          </ul>
+
+          {waitlistJoined ? (
+            <p className={styles.waitlistConfirm}>You&rsquo;re on the list — we&rsquo;ll email you the day the kit goes live.</p>
+          ) : (
+            <form className={styles.gateForm} onSubmit={handleWaitlistSubmit}>
+              <p className={styles.gateFormLabel}>Open resource kit launching Q1 2027. Join the waitlist and we&rsquo;ll send it the day it&rsquo;s live.</p>
+              <div className={styles.waitlistRow}>
+                <input type="text" name="name" placeholder="Name" required className={styles.gateInput} />
+                <input type="email" name="email" placeholder="Email" required className={styles.gateInput} />
+                <button type="submit" className={styles.reportBtn}>Join the Waitlist →</button>
+              </div>
+            </form>
+          )}
         </div>
       </section>
 

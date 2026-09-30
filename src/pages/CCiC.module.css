@@ -658,14 +658,171 @@
 .reportBtn {
   display: inline-block;
   padding: 13px 28px;
+  border: none;
+  cursor: pointer;
   border-radius: var(--pill-radius);
   background: var(--green);
   color: var(--white);
   font-weight: 600;
   font-size: 0.88rem;
+  font-family: inherit;
   transition: opacity 0.2s;
 }
 .reportBtn:hover { opacity: 0.85; }
+
+/* Report preview + gated form */
+.reportPreview {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  text-align: left;
+  max-width: 620px;
+  margin: 8px auto 32px;
+}
+.reportThumb {
+  flex-shrink: 0;
+  width: 130px;
+  height: 168px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: var(--white);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.reportThumbImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.reportDetails {
+  flex: 1;
+}
+.reportDetails .reportText {
+  margin-bottom: 12px;
+}
+.reportPages {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--green-dark);
+  margin-bottom: 14px;
+}
+.reportBullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reportBullets li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.5;
+}
+.reportBullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.gateForm {
+  max-width: 520px;
+  margin: 0 auto;
+}
+.gateFormLabel {
+  font-size: 0.85rem;
+  color: var(--mid);
+  margin-bottom: 16px;
+}
+.gateFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.gateInput {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: var(--white);
+  color: var(--black);
+}
+.gateInput::placeholder { color: #999; }
+.gateInput:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+/* Open resource kit list + waitlist */
+.kitList {
+  list-style: none;
+  margin: 24px auto 32px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+  max-width: 560px;
+}
+.kitItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cream);
+  border-radius: var(--pill-radius);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--black);
+}
+.kitItem::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 700;
+}
+.waitlistRow {
+  display: flex;
+  gap: 12px;
+  max-width: 540px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.waitlistRow .gateInput {
+  flex: 1;
+  min-width: 160px;
+}
+.openResourceInner .waitlistConfirm {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  background: var(--cream);
+  border-radius: 14px;
+  padding: 18px 24px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .reportPreview { flex-direction: column; text-align: center; }
+  .reportBullets li { text-align: left; }
+  .gateFormGrid { grid-template-columns: 1fr; }
+}
 
 /* OPEN RESOURCE KIT */
 .resourceKit {
