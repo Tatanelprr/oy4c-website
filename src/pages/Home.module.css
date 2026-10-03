@@ -58,6 +58,14 @@
   margin-left: 6vw;
   box-shadow: 0 4px 32px rgba(0,0,0,0.12);
 }
+/* Léger fondu du contenu à chaque changement de slide */
+.heroContentInner {
+  animation: heroContentFade 0.6s ease;
+}
+@keyframes heroContentFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 .heroEyebrow {
   display: inline-block;
   font-size: 0.72rem;
@@ -323,6 +331,28 @@
   font-weight: 600;
   padding: 8px 18px;
   border-radius: var(--pill-radius);
+}
+/* Points d'indication du carrousel — masqués sur desktop */
+.pathsDots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.pathsDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pathsDotActive {
+  background: var(--white);
+  width: 24px;
+  border-radius: 4px;
 }
 
 /* NEWS */
@@ -603,9 +633,25 @@
   .whatInner { gap: 40px; }
 }
 @media (max-width: 600px) {
-  .metricsGrid, .pillars, .pathsGrid, .actionCards { grid-template-columns: 1fr; }
+  .metricsGrid, .pillars, .actionCards { grid-template-columns: 1fr; }
   .partnersRow { grid-template-columns: repeat(2, 1fr); }
-  .heroContent { margin: 0 5vw; max-width: 100%; padding: 28px 24px; }
+  /* Carte ancrée en bas pour laisser l'image visible au-dessus */
+  .hero { align-items: flex-end; }
+  .heroContent {
+    margin: 0 4vw 72px;
+    max-width: 100%;
+    padding: 22px 20px;
+  }
+  .heroEyebrow { margin-bottom: 16px; }
+  .heroContent h1 { margin-bottom: 16px; }
+  .heroSub { margin-bottom: 24px; line-height: 1.6; }
+  /* Slides 2 à 4 : phrase d'accroche limitée à 3 lignes */
+  .heroContentAlt .heroSub {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .impactTop { padding: 52px 5vw 0; }
   .metrics { padding: 0 5vw 52px; }
   .what { padding: 60px 5vw; }
@@ -624,4 +670,25 @@
   .pillarArrow { display: none; }
   .heroBtns { flex-direction: column; }
   .heroBtns .btn-pill { text-align: center; }
+}
+
+/* FIND YOUR WAY IN — carrousel sur mobile/tablette */
+@media (max-width: 768px) {
+  .pathsGrid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .pathsGrid::-webkit-scrollbar { display: none; }
+  .pathCard {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+  .pathImg { height: 130px; }
+  .pathsDots { display: flex; }
 }

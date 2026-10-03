@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   School, Briefcase, Handshake, Sprout,
@@ -38,15 +38,63 @@ const SLIDES = [
   '/hero/hero-4.jpg',
 ]
 
-function HeroSlideshow() {
-  const [current, setCurrent] = useState(0)
+// Contenu de la carte blanche, synchronisé avec le slide actif
+const HERO_SLIDES = [
+  {
+    eyebrow: 'Youth-led climate change education',
+    title: (
+      <>
+        Education for Youth.<br />
+        <em>By Youth.</em>
+        Together for the Climate.
+      </>
+    ),
+    sub: 'To create widespread awareness and action towards a sustainable future, OY4C empowers the next generation with high-quality, accessible, youth-led climate change education.',
+    buttons: [
+      { label: 'Learn about OY4C', to: '/about', variant: 'primary' },
+      { label: 'Take Action', to: '/takeaction', variant: 'outline' },
+    ],
+  },
+  {
+    eyebrow: 'OY4CCurriculum',
+    title: 'Free, ready-to-teach climate change education',
+    sub: 'Interdisciplinary, youth-developed lessons, free for schools and educators everywhere.',
+    buttons: [
+      { label: 'Get the OY4CCurriculum', to: '/curriculum', variant: 'primary' },
+    ],
+  },
+  {
+    eyebrow: 'CCiC',
+    title: '670 students. 5 continents. 3 months.',
+    sub: 'Our pilot programme brought climate change lessons into classrooms around the world.',
+    buttons: [
+      { label: 'See the CCiC pilot', to: '/ccic', variant: 'primary' },
+    ],
+  },
+  {
+    eyebrow: 'Our people',
+    title: '133 volunteers. 43 countries.',
+    sub: 'A global team of young people turning climate education into action on every continent.',
+    buttons: [
+      { label: 'Meet our people', to: '/team', variant: 'primary' },
+    ],
+  },
+]
 
+const PATHS = [
+  { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-1.jpg' },
+  { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum', img: '/paths/path-educator.jpg' },
+  { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partnerships', img: '/paths/path-partner.png' },
+  { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact', img: '/paths/path-funder.jpg' },
+]
+
+function HeroSlideshow({ current, setCurrent }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % SLIDES.length)
     }, 5000)
     return () => clearInterval(timer)
-  }, [])
+  }, [setCurrent])
 
   return (
     <div className={styles.slideshowBg}>
@@ -77,6 +125,29 @@ function HeroSlideshow() {
 export default function Home() {
   const [seenIn, setSeenIn]         = useState([])
   const [partnersList, setPartners] = useState([])
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [activePath, setActivePath]      = useState(0)
+  const pathsRef = useRef(null)
+
+  const handlePathsScroll = () => {
+    const el = pathsRef.current
+    if (!el) return
+    const card = el.children[0]
+    if (!card) return
+    const step = card.offsetWidth + 16 // card width + gap
+    setActivePath(Math.round(el.scrollLeft / step))
+  }
+
+  const scrollToPath = (i) => {
+    const el = pathsRef.current
+    if (!el) return
+    const card = el.children[0]
+    if (!card) return
+    const step = card.offsetWidth + 16
+    el.scrollTo({ left: i * step, behavior: 'smooth' })
+  }
+
+  const activeHero = HERO_SLIDES[currentSlide]
 
   useEffect(() => {
     fetch('/api/partners')
@@ -92,20 +163,23 @@ export default function Home() {
     <>
       {/* HERO */}
 <section className={styles.hero}>
-  <HeroSlideshow />
-  <div className={styles.heroContent}>
-    <span className={styles.heroEyebrow}>Youth-led climate change education</span>
-    <h1>
-      Education for Youth.<br />
-      <em>By Youth.</em>
-      Together for the Climate.
-    </h1>
-    <p className={styles.heroSub}>
-      To create widespread awareness and action towards a sustainable future, OY4C empowers the next generation with high-quality, accessible, youth-led climate change education.
-    </p>
-    <div className={styles.heroBtns}>
-      <Link to="/about" className="btn-pill btn-pill-primary">Learn about OY4C</Link>
-      <Link to="/takeaction" className="btn-pill btn-pill-outline">Take Action</Link>
+  <HeroSlideshow current={currentSlide} setCurrent={setCurrentSlide} />
+  <div className={`${styles.heroContent} ${currentSlide !== 0 ? styles.heroContentAlt : ''}`}>
+    <div key={currentSlide} className={styles.heroContentInner}>
+      <span className={styles.heroEyebrow}>{activeHero.eyebrow}</span>
+      <h1>{activeHero.title}</h1>
+      <p className={styles.heroSub}>{activeHero.sub}</p>
+      <div className={styles.heroBtns}>
+        {activeHero.buttons.map((b) => (
+          <Link
+            key={b.to}
+            to={b.to}
+            className={`btn-pill ${b.variant === 'primary' ? 'btn-pill-primary' : 'btn-pill-outline'}`}
+          >
+            {b.label}
+          </Link>
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -276,13 +350,8 @@ export default function Home() {
           <span className="section-eyebrow" style={{ color: 'var(--white)' }}>Find your way in</span>
           <h2 className="section-title" style={{ color: 'var(--white)' }}>What brings you here?</h2>
         </div>
-        <div className={styles.pathsGrid}>
-          {[
-            { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-1.jpg' },
-            { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum', img: '/paths/path-educator.jpg' },
-            { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partnerships', img: '/paths/path-partner.png' },
-            { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact', img: '/paths/path-funder.jpg' },
-          ].map((p) => (
+        <div className={styles.pathsGrid} ref={pathsRef} onScroll={handlePathsScroll}>
+          {PATHS.map((p) => (
             <Link key={p.who} to={p.to} className={styles.pathCard}>
               {p.img
                 ? <img src={p.img} alt={p.who} className={styles.pathImg} />
@@ -294,6 +363,16 @@ export default function Home() {
                 <span className={styles.pathCta}>{p.cta}</span>
               </div>
             </Link>
+          ))}
+        </div>
+        <div className={styles.pathsDots}>
+          {PATHS.map((p, i) => (
+            <button
+              key={p.who}
+              aria-label={`Go to ${p.who}`}
+              className={`${styles.pathsDot} ${i === activePath ? styles.pathsDotActive : ''}`}
+              onClick={() => scrollToPath(i)}
+            />
           ))}
         </div>
       </section>
