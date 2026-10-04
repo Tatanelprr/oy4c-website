@@ -60,10 +60,11 @@
   letter-spacing: -0.02em;
 }
 .heroContent h1 em {
-  font-style: italic;
+  font-style: normal;
   color: var(--teal);
-  font-weight: 300;
-  font-family: 'Georgia', serif;
+  font-weight: 400;
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
 }
 .heroSub {
   font-size: 1rem;

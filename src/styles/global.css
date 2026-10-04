@@ -14,6 +14,7 @@
   --cream-alt:   #f6f7ec;
   --mid:         #555555;
   --pill-radius: 999px;
+  --font-serif: 'Calistoga', Georgia, serif;
 }
 
 html { scroll-behavior: smooth; }

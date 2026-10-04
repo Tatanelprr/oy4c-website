@@ -28,6 +28,8 @@ import '@fontsource/dm-sans/latin-400.css'
 import '@fontsource/dm-sans/latin-500.css'
 import '@fontsource/dm-sans/latin-600.css'
 import '@fontsource/dm-sans/latin-ext-400.css'
+// Serif du Design Guide : Calistoga (un seul poids 400, pas d'italique), latin seul.
+import '@fontsource/calistoga/latin-400.css'
 
 import './styles/global.css'
 import App from './App.jsx'

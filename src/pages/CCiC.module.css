@@ -44,10 +44,11 @@
   letter-spacing: -0.02em;
 }
 .heroContent h1 em {
-  font-style: italic;
+  font-style: normal;
   color: var(--teal);
-  font-weight: 300;
-  font-family: 'Georgia', serif;
+  font-weight: 400;
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
 }
 .heroSub {
   font-size: 1rem;
@@ -150,10 +151,12 @@
   text-align: center;
   max-width: 900px;
   margin: 0 auto 52px;
-  font-family: 'Georgia', serif;
-  font-style: italic;
-  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
-  line-height: 1.3;
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--dark);
 }
 .tiles {
@@ -467,10 +470,12 @@
   margin: 0;
   padding: 0;
   border: none;
-  font-family: 'Georgia', serif;
-  font-style: italic;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
-  line-height: 1.35;
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
   color: var(--white);
 }
 
@@ -868,7 +873,10 @@
   color: rgba(255,255,255,0.85);
   line-height: 1.8;
   margin-bottom: 32px;
-  font-family: 'Georgia', serif;
+  /* Citation longue (>2 lignes) : on garde la police de texte pour la lisibilité,
+     Calistoga est réservée aux titres et phrases courtes. Poppins a un vrai
+     italique 300 importé (pas de fausse oblique). */
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
 }
 .quoteAuthorRow {
