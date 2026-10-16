@@ -11,7 +11,7 @@ export default function Cookies() {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>Cookies</span>
           <h1>Cookies Policy</h1>
-          <p className={styles.updated}>Last updated: 20 September 2026</p>
+          <p className={styles.updated}>Last updated: 16 October 2026</p>
         </div>
       </header>
 

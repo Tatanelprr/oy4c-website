@@ -57,7 +57,7 @@ export default function Footer() {
       </nav>
 
       <div className={styles.bottom}>
-        <span>© 2026 Our Youth 4 The Climate, a fiscally hosted project of Host (formerly Climate 2025), a company registered in England and Wales. VAT no. GB454839164.</span>
+        <span>© 2026 Our Youth 4 The Climate, a fiscally hosted project of Climate 2025 Limited, trading as Host, a company registered in England and Wales, no. 12309941.</span>
         <span>oy4c.org</span>
       </div>
     </footer>

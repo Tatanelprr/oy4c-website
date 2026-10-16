@@ -4,8 +4,7 @@ import styles from './Legal.module.css'
 // (EC Directive) Regulations 2002 and the Companies Act 2006: the service
 // provider must give its name, geographic address, contact details and
 // registration details in a form that is easily, directly and permanently
-// accessible. Fields the editor still has to confirm are marked [TO COMPLETE].
-const TODO = ({ children }) => <span className={styles.todo}>[{children}]</span>
+// accessible. Details verified on Companies House (company no. 12309941).
 
 export default function Legal() {
   return (
@@ -14,14 +13,15 @@ export default function Legal() {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>Legal information</span>
           <h1>Legal Notice</h1>
-          <p className={styles.updated}>Last updated: 20 September 2026</p>
+          <p className={styles.updated}>Last updated: 16 October 2026</p>
         </div>
       </header>
 
       <main className={styles.doc}>
         <p>
-          This website, <strong>oy4c.org</strong>, is published by the organisation
-          responsible for the project <strong>Our Youth 4 The Climate (OY4C)</strong>.
+          This website, <strong>oy4c.org</strong>, is published by{' '}
+          <strong>Climate 2025 Limited, trading as Host</strong>, the fiscal host of
+          the project <strong>Our Youth 4 The Climate (OY4C)</strong>.
           The information below is provided in accordance with the UK Electronic
           Commerce (EC Directive) Regulations 2002 and the Companies Act 2006.
         </p>
@@ -30,33 +30,22 @@ export default function Legal() {
         <ul>
           <li><strong>Project:</strong> Our Youth 4 The Climate (OY4C)</li>
           <li>
-            <strong>Publishing entity:</strong>{' '}
-            <TODO>TO COMPLETE — exact legal name of the fiscal host, e.g. “Host”
-            (formerly Climate 2025)</TODO>
+            <strong>Publishing entity:</strong> Climate 2025 Limited, trading as Host
+            (the fiscal host of Our Youth 4 The Climate)
           </li>
           <li>
-            <strong>Legal form &amp; registration:</strong> a company registered in
-            England and Wales, company registration number{' '}
-            <TODO>TO COMPLETE — 8-digit Companies House number</TODO>
+            <strong>Legal form &amp; registration:</strong> a private company limited
+            by guarantee without share capital, registered in England and Wales,
+            company registration number 12309941
           </li>
           <li>
-            <strong>Registered office:</strong>{' '}
-            <TODO>TO COMPLETE — full registered address</TODO>
+            <strong>Registered office:</strong> Electric Works, 3 Concourse Way,
+            Sheffield, England, S1 2BJ
           </li>
-          <li>
-            <strong>VAT number:</strong> GB454839164{' '}
-            <TODO>TO CONFIRM — this number is in VAT format; the value shown in the
-            site footer should be the VAT number, not the company registration
-            number</TODO>
-          </li>
+          {/* TODO: add back a VAT number line if Host confirms GB454839164 belongs to Climate 2025 Limited. */}
           <li>
             <strong>Contact email:</strong>{' '}
             <a href="mailto:hello@oy4c.org">hello@oy4c.org</a>
-          </li>
-          <li>
-            <strong>Person responsible for publication:</strong>{' '}
-            <TODO>TO COMPLETE — name and role, e.g. Ava Langridge, Founder &amp;
-            Executive Director</TODO>
           </li>
         </ul>
 

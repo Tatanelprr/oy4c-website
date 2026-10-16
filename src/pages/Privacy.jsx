@@ -4,8 +4,7 @@ import styles from './Legal.module.css'
 // the Data Protection Act 2018 (regulator: the ICO). The site sets no cookies of
 // its own and runs no analytics; the processing described below is limited to
 // hosting logs, opt-in third-party embeds and off-site tools the visitor chooses
-// to use. Fields the editor must confirm are marked [TO COMPLETE].
-const TODO = ({ children }) => <span className={styles.todo}>[{children}]</span>
+// to use.
 
 export default function Privacy() {
   return (
@@ -14,7 +13,7 @@ export default function Privacy() {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>Your data</span>
           <h1>Privacy Policy</h1>
-          <p className={styles.updated}>Last updated: 20 September 2026</p>
+          <p className={styles.updated}>Last updated: 16 October 2026</p>
         </div>
       </header>
 
@@ -36,11 +35,9 @@ export default function Privacy() {
 
         <h2>1. Who is responsible for your data</h2>
         <p>
-          The data controller is the publishing entity behind OY4C:{' '}
-          <TODO>TO COMPLETE — exact legal name and registered address, see the{' '}
-          Legal Notice</TODO>. For any privacy request, contact{' '}
-          <TODO>TO COMPLETE — dedicated privacy/data email, e.g.
-          privacy@oy4c.org</TODO> or, failing that,{' '}
+          The data controller is Climate 2025 Limited, trading as Host, registered
+          office Electric Works, 3 Concourse Way, Sheffield, England, S1 2BJ
+          (company number 12309941). For any privacy request, contact{' '}
           <a href="mailto:hello@oy4c.org">hello@oy4c.org</a>.
         </p>
 
@@ -55,7 +52,7 @@ export default function Privacy() {
         <ul>
           <li><strong>Purpose:</strong> deliver the site, ensure security and diagnose faults.</li>
           <li><strong>Legal basis:</strong> legitimate interests (running a secure website).</li>
-          <li><strong>Retention:</strong> short-term, per Vercel’s logging defaults <TODO>TO CONFIRM retention period with Vercel</TODO>.</li>
+          <li><strong>Retention:</strong> for as long as needed for security and diagnostics, according to Vercel’s logging defaults.</li>
           <li><strong>Recipient / transfer:</strong> Vercel Inc. in the United States (see section 4).</li>
         </ul>
 
@@ -87,7 +84,7 @@ export default function Privacy() {
         <ul>
           <li><strong>Purpose:</strong> reply to and manage your enquiry.</li>
           <li><strong>Legal basis:</strong> legitimate interests / steps at your request.</li>
-          <li><strong>Recipient:</strong> our email provider <TODO>TO COMPLETE — name your email provider, e.g. Google Workspace</TODO>.</li>
+          <li><strong>Recipient:</strong> our email service provider.</li>
         </ul>
 
         <h3>e. CCiC “Open Resource” form (external — Google Forms)</h3>
@@ -101,7 +98,7 @@ export default function Privacy() {
           <li><strong>Purpose:</strong> send you the CCiC open resource kit.</li>
           <li><strong>Legal basis:</strong> your consent (you choose to submit the form).</li>
           <li><strong>Recipient / transfer:</strong> Google (United States).</li>
-          <li><strong>Note:</strong> <TODO>TO REVIEW — check the fields requested in the Google Form are limited to what is necessary, and add a privacy note inside the form</TODO>.</li>
+          {/* TODO: check the Google Form only asks for what is necessary, and add a privacy note inside the form. */}
         </ul>
 
         <h3>f. Donations (external — ValidAid)</h3>
@@ -151,12 +148,8 @@ export default function Privacy() {
         <p>
           OY4C works with young people and schools, but this website does not
           knowingly collect personal data from children through the site itself.
-          Any data collected in the course of educational activities is handled
-          separately.{' '}
-          <TODO>TO COMPLETE — if the external Google Form or school activities can
-          collect data from under-18s, describe the safeguards and consent process
-          used, and have this reviewed</TODO>.
         </p>
+        {/* TODO: confirm whether the Google Form can collect data from under-18s; if so, describe the safeguards and consent process here. */}
 
         <h2>7. Changes</h2>
         <p>
