@@ -33,7 +33,7 @@ const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
   { src: '/hero/hero-1.jpg' },
-  { src: '/hero/hero-2.jpg', credit: 'Green School Bali', position: 'center bottom' },
+  { src: '/hero/hero-2.jpg' },
   { src: '/hero/hero-3.jpg', credit: 'Green School Bali', position: 'center bottom' },
   { src: '/hero/hero-4.jpg', credit: 'Green School Bali' },
 ]
