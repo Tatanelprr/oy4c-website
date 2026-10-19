@@ -146,7 +146,7 @@ export default function Blog() {
           )}
 
           <div className={styles.contribute}>
-            <a href="mailto:hello@oy4c.org" className={styles.contributeLink}>
+            <a href="mailto:media@oy4c.org" className={styles.contributeLink}>
               <Mail size={14} />
               Want to write for the blog? Contribute to the OY4C Blog →
             </a>
