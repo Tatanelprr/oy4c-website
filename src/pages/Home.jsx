@@ -94,7 +94,7 @@ function slideSide(i, c) {
   return o === 0 ? 0 : o <= SLIDES.length / 2 ? 100 : -100
 }
 
-function HeroSlideshow({ current, setCurrent }) {
+function HeroSlideshow({ current, setCurrent, paused }) {
   const n = SLIDES.length
   // Remember the outgoing slide so only it and the incoming one animate;
   // it exits opposite to the side the incoming slide is waiting on
@@ -102,10 +102,12 @@ function HeroSlideshow({ current, setCurrent }) {
   const xOf = (i, s) => i === s.cur ? 0 : i === s.prev ? s.exit : slideSide(i, s.cur)
   if (shown.cur !== current) setShown({ cur: current, prev: shown.cur, exit: -xOf(current, shown) })
 
+  // Paused while hovered; leaving restarts a full 10s countdown
   useEffect(() => {
+    if (paused) return
     const timer = setTimeout(() => setCurrent((current + 1) % n), 10000)
     return () => clearTimeout(timer)
-  }, [current, n, setCurrent])
+  }, [current, n, setCurrent, paused])
 
   return (
     <div className={styles.slideshowBg}>
@@ -151,6 +153,7 @@ export default function Home() {
   const [seenIn, setSeenIn]         = useState([])
   const [partnersList, setPartners] = useState([])
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [heroHovered, setHeroHovered]   = useState(false)
   const [activePath, setActivePath]      = useState(0)
   const pathsRef = useRef(null)
 
@@ -187,8 +190,8 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-<section className={styles.hero}>
-  <HeroSlideshow current={currentSlide} setCurrent={setCurrentSlide} />
+<section className={styles.hero} onMouseEnter={() => setHeroHovered(true)} onMouseLeave={() => setHeroHovered(false)}>
+  <HeroSlideshow current={currentSlide} setCurrent={setCurrentSlide} paused={heroHovered} />
   <div className={`${styles.heroContent} ${currentSlide !== 0 ? styles.heroContentAlt : ''}`}>
     <div key={currentSlide} className={styles.heroContentInner}>
       <span className={styles.heroEyebrow}>{activeHero.eyebrow}</span>
