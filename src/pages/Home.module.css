@@ -19,24 +19,6 @@
   background-position: center;
   transition: transform 1s ease-in-out;
 }
-/* Photo portrait : sur grand écran, pleine hauteur à droite du texte, fondu vers le noir à gauche */
-@media (min-width: 1100px) {
-  .slideFitRight {
-    background-color: var(--dark);
-    background-size: auto 100%;
-    background-position: right center;
-    background-repeat: no-repeat;
-  }
-  .slideFitRight::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    aspect-ratio: 724 / 1086;
-    background: linear-gradient(to right, var(--dark), transparent 35%);
-  }
-}
 .slideshowOverlay {
   position: absolute;
   inset: 0;
