@@ -459,7 +459,8 @@
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
     url('/hero/hero-regen26.jpg');
   background-size: cover;
-  background-position: center;
+  /* Keeps the full OY4C lettering in frame on wide banners */
+  background-position: center 35%;
 }
 .regenContent {
   position: relative;
