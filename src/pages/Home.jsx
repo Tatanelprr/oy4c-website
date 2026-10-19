@@ -33,7 +33,8 @@ const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
   { src: '/hero/hero-1.jpg' },
-  { src: '/hero/hero-2.jpg' },
+  // Zoomed from the left so the board title clears the white card
+  { src: '/hero/hero-2.jpg', zoom: { scale: 1.4, origin: 'left 30%' } },
   { src: '/hero/hero-3.jpg', credit: 'Green School Bali', position: 'center bottom' },
   { src: '/hero/hero-4.jpg', credit: 'Green School Bali' },
 ]
@@ -111,20 +112,25 @@ function HeroSlideshow({ current, setCurrent, paused }) {
 
   return (
     <div className={styles.slideshowBg}>
-      {SLIDES.map(({ src, position }, i) => {
+      {SLIDES.map(({ src, position, zoom }, i) => {
         const moving = i === shown.cur || i === shown.prev
         const x = xOf(i, shown)
         return (
           <div
             key={src}
             className={styles.slide}
-            style={{
-              backgroundImage: `url('${src}')`,
-              backgroundPosition: position,
-              transform: `translateX(${x}%)`,
-              transition: moving ? undefined : 'none',
-            }}
-          />
+            style={{ transform: `translateX(${x}%)`, transition: moving ? undefined : 'none' }}
+          >
+            <div
+              className={styles.slideImg}
+              style={{
+                backgroundImage: `url('${src}')`,
+                backgroundPosition: position,
+                transform: zoom ? `scale(${zoom.scale})` : undefined,
+                transformOrigin: zoom?.origin,
+              }}
+            />
+          </div>
         )
       })}
       <div className={styles.slideshowOverlay} />
