@@ -367,10 +367,10 @@
   line-height: 1.8;
 }
 
-/* Proof it scales — highlighted dark panel */
+/* Proof it scales — highlighted blue panel */
 .proof {
   padding: 90px 5vw;
-  background: var(--dark);
+  background: var(--teal);
 }
 .proofInner {
   max-width: 1000px;
@@ -379,7 +379,7 @@
 }
 .proofLede {
   font-size: 0.98rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.75);
   line-height: 1.7;
   max-width: 620px;
   margin: 0 auto 44px;
@@ -390,8 +390,8 @@
   gap: 20px;
 }
 .proofCard {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.55);
   border-radius: 18px;
   padding: 32px 24px;
 }
@@ -423,24 +423,24 @@
 .proofName {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
 }
 .proofRole {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--teal);
+  color: var(--dark-soft);
   margin-top: 2px;
 }
 .proofPlace {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.55);
+  color: rgba(0,0,0,0.6);
   margin-top: 6px;
 }
 .proofNote {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.75);
   line-height: 1.65;
   margin-top: 14px;
 }

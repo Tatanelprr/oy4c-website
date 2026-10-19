@@ -176,8 +176,8 @@ export default function CCiC() {
       {/* PROOF IT SCALES */}
       <section className={styles.proof}>
         <div className={styles.proofInner}>
-          <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>Proof it scales</span>
-          <h2 className="section-title" style={{ color: 'var(--white)' }}>The model doesn't depend on one founder</h2>
+          <span className="section-eyebrow" style={{ color: 'var(--black)' }}>Proof it scales</span>
+          <h2 className="section-title" style={{ color: 'var(--black)' }}>The model doesn't depend on one founder</h2>
           <p className={styles.proofLede}>
             While Ava was in transit, three team members ran full CCiC sessions on their own, on the other side of the world.
           </p>
