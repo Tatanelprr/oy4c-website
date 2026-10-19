@@ -22,8 +22,11 @@
   background: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
   padding: 40px;
+  flex: 1;
   max-width: 820px;
   margin: 80px 6vw;
+  /* Lets the h1 lines size themselves to the card width (cqi) */
+  container-type: inline-size;
   box-shadow: 0 4px 32px rgba(0,0,0,0.12);
 }
 .heroEyebrow {
@@ -39,7 +42,9 @@
   margin-bottom: 28px;
 }
 .heroContent h1 {
-  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  /* Each line fills the card width on a single line */
+  font-size: 6.25cqi;
+  white-space: nowrap;
   font-weight: 700;
   line-height: 1.1;
   color: var(--black);
@@ -47,6 +52,8 @@
   letter-spacing: -0.02em;
 }
 .heroContent h1 em {
+  display: block;
+  font-size: 15.3cqi;
   font-style: normal;
   color: var(--teal);
   font-weight: 400;
