@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   School, Briefcase, Handshake, Sprout,
-  Newspaper, Mic2, GraduationCap, ChevronLeft, ChevronRight
+  Newspaper, GraduationCap, ChevronLeft, ChevronRight
 } from 'lucide-react'
+import { fetchBlogPosts } from '../lib/notion'
 import styles from './Home.module.css'
 import VolunteerMap from '../components/VolunteerMap'
 
@@ -159,6 +160,7 @@ function HeroSlideshow({ current, setCurrent, paused }) {
 export default function Home() {
   const [seenIn, setSeenIn]         = useState([])
   const [partnersList, setPartners] = useState([])
+  const [latestPosts, setLatestPosts] = useState([])
   const [currentSlide, setCurrentSlide] = useState(0)
   const [heroHovered, setHeroHovered]   = useState(false)
   const [activePath, setActivePath]      = useState(0)
@@ -193,6 +195,16 @@ export default function Home() {
       })
       .catch(() => {}) // fail silently — sections stay empty
   }, [])
+
+  useEffect(() => {
+    // API returns published posts newest first
+    fetchBlogPosts()
+      .then((posts) => setLatestPosts(posts.slice(0, 3)))
+      .catch(() => {}) // fail silently — news grid stays empty
+  }, [])
+
+  const [featuredPost, ...otherPosts] = latestPosts
+  const formatDate = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
 
   return (
     <>
@@ -421,33 +433,35 @@ export default function Home() {
           </div>
           <Link to="/blog" className={styles.btnOutlineDark}>View all →</Link>
         </div>
-        <div className={styles.newsGrid}>
-          <a href="/oy4c-blog/when-no-trees-are-left" className={styles.newsCardFeatured}>
-            <div className={styles.newsImgFeatured} />
-            <div className={styles.newsBody}>
-              <span className={styles.newsTag}>Blog · Featured</span>
-              <div className={styles.newsTitle}>When No Trees Are Left</div>
-              <div className={styles.newsExcerpt}>What happens when no trees are left? Deforestation around the world is not just a problem, it's a crisis.</div>
-              <span className={styles.newsRead}>Read more →</span>
-            </div>
-          </a>
-          <div className={styles.newsCol}>
-            {[
-              { icon: <Newspaper />, tag: 'Press', title: 'OY4C featured in Global Youth Climate Summit', date: 'April 2025' },
-              { icon: <Mic2 />, tag: 'Event', title: 'OY4C speaks at COP side event on youth-led education', date: 'March 2025' },
-            ].map((n) => (
-              <a key={n.title} href="#" className={styles.newsCardSmall}>
-                <div className={styles.newsCardSmallIcon}>{n.icon}</div>
-                <div className={styles.newsBody}>
-                  <span className={styles.newsTag}>{n.tag}</span>
-                  <div className={styles.newsTitle}>{n.title}</div>
-                  <div className={styles.newsDate}>{n.date}</div>
-                  <span className={styles.newsRead}>Read more →</span>
-                </div>
-              </a>
-            ))}
+        {featuredPost && (
+          <div className={`${styles.newsGrid} ${otherPosts.length === 0 ? styles.newsGridSolo : ''}`}>
+            <Link to={`/blog/${featuredPost.id}`} className={styles.newsCardFeatured}>
+              <div
+                className={styles.newsImgFeatured}
+                style={featuredPost.image ? { backgroundImage: `url('${featuredPost.image}')` } : undefined}
+              />
+              <div className={styles.newsBody}>
+                <span className={styles.newsTag}>Blog · Latest</span>
+                <div className={styles.newsTitle}>{featuredPost.title}</div>
+                {featuredPost.excerpt && <div className={styles.newsExcerpt}>{featuredPost.excerpt}</div>}
+                <span className={styles.newsRead}>Read more →</span>
+              </div>
+            </Link>
+            {otherPosts.length > 0 && <div className={styles.newsCol}>
+              {otherPosts.map((post) => (
+                <Link key={post.id} to={`/blog/${post.id}`} className={styles.newsCardSmall}>
+                  <div className={styles.newsCardSmallIcon}><Newspaper /></div>
+                  <div className={styles.newsBody}>
+                    <span className={styles.newsTag}>{post.tags[0] ?? 'Blog'}</span>
+                    <div className={styles.newsTitle}>{post.title}</div>
+                    {post.date && <div className={styles.newsDate}>{formatDate(post.date)}</div>}
+                    <span className={styles.newsRead}>Read more →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>}
           </div>
-        </div>
+        )}
       </section>
 
     </>

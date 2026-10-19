@@ -435,6 +435,13 @@
   background-size: cover;
   background-position: center;
 }
+/* Only one published post: full-width card, image beside the text */
+.newsGridSolo { grid-template-columns: 1fr; }
+@media (min-width: 901px) {
+  .newsGridSolo .newsCardFeatured { flex-direction: row; }
+  .newsGridSolo .newsImgFeatured { flex: 1; height: auto; min-height: 300px; }
+  .newsGridSolo .newsBody { flex: 1; padding: 40px; align-self: center; }
+}
 .newsCol { display: flex; flex-direction: column; gap: 20px; }
 .newsCardSmall {
   background: var(--white);
