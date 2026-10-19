@@ -33,7 +33,7 @@ const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
   { src: '/hero/hero-1.jpg' },
-  { src: '/hero/hero-2.jpg' },
+  { src: '/hero/hero-2.jpg', fitRight: true },
   { src: '/hero/hero-3.jpg', credit: 'Green School Bali', position: 'center bottom' },
   { src: '/hero/hero-4.jpg', credit: 'Green School Bali' },
 ]
@@ -111,13 +111,13 @@ function HeroSlideshow({ current, setCurrent, paused }) {
 
   return (
     <div className={styles.slideshowBg}>
-      {SLIDES.map(({ src, position }, i) => {
+      {SLIDES.map(({ src, position, fitRight }, i) => {
         const moving = i === shown.cur || i === shown.prev
         const x = xOf(i, shown)
         return (
           <div
             key={src}
-            className={styles.slide}
+            className={`${styles.slide} ${fitRight ? styles.slideFitRight : ''}`}
             style={{
               backgroundImage: `url('${src}')`,
               backgroundPosition: position,
