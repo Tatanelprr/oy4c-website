@@ -10,7 +10,6 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  /* Placeholder image — swap /hero/hero-classroom.jpg for Ava's Bali/Rotorua photo later */
   background-image:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
     url('/hero/hero-classroom.jpg');
