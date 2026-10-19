@@ -17,13 +17,33 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: opacity 1.2s ease-in-out;
+  transition: transform 1s ease-in-out;
 }
 .slideshowOverlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.45);
 }
+.slideArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.3);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.slideArrow:hover { background: rgba(0,0,0,0.55); }
+.slideArrowLeft { left: 16px; }
+.slideArrowRight { right: 16px; }
 .slideCredit {
   position: absolute;
   right: 16px;
@@ -647,6 +667,8 @@
   .partnersRow { grid-template-columns: repeat(2, 1fr); }
   /* Carte ancrée en bas pour laisser l'image visible au-dessus */
   .hero { align-items: flex-end; }
+  /* Flèches dans la zone d'image visible au-dessus de la carte */
+  .slideArrow { top: 25%; width: 40px; height: 40px; }
   .heroContent {
     margin: 0 4vw 72px;
     max-width: 100%;

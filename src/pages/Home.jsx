@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   School, Briefcase, Handshake, Sprout,
-  Newspaper, Mic2, GraduationCap
+  Newspaper, Mic2, GraduationCap, ChevronLeft, ChevronRight
 } from 'lucide-react'
 import styles from './Home.module.css'
 import VolunteerMap from '../components/VolunteerMap'
@@ -88,30 +88,52 @@ const PATHS = [
   { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact', img: '/paths/path-funder.jpg' },
 ]
 
+// Position of slide i when c is shown: 0 = on screen, 100 = waiting right, -100 = waiting left
+function slideSide(i, c) {
+  const o = (i - c + SLIDES.length) % SLIDES.length
+  return o === 0 ? 0 : o <= SLIDES.length / 2 ? 100 : -100
+}
+
 function HeroSlideshow({ current, setCurrent }) {
+  const n = SLIDES.length
+  // Remember the outgoing slide so only it and the incoming one animate;
+  // it exits opposite to the side the incoming slide is waiting on
+  const [shown, setShown] = useState({ cur: current, prev: current, exit: 0 })
+  const xOf = (i, s) => i === s.cur ? 0 : i === s.prev ? s.exit : slideSide(i, s.cur)
+  if (shown.cur !== current) setShown({ cur: current, prev: shown.cur, exit: -xOf(current, shown) })
+
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % SLIDES.length)
-    }, 10000)
-    return () => clearInterval(timer)
-  }, [setCurrent])
+    const timer = setTimeout(() => setCurrent((current + 1) % n), 10000)
+    return () => clearTimeout(timer)
+  }, [current, n, setCurrent])
 
   return (
     <div className={styles.slideshowBg}>
-      {SLIDES.map(({ src }, i) => (
-        <div
-          key={src}
-          className={styles.slide}
-          style={{
-            backgroundImage: `url('${src}')`,
-            opacity: i === current ? 1 : 0,
-          }}
-        />
-      ))}
+      {SLIDES.map(({ src }, i) => {
+        const moving = i === shown.cur || i === shown.prev
+        const x = xOf(i, shown)
+        return (
+          <div
+            key={src}
+            className={styles.slide}
+            style={{
+              backgroundImage: `url('${src}')`,
+              transform: `translateX(${x}%)`,
+              transition: moving ? undefined : 'none',
+            }}
+          />
+        )
+      })}
       <div className={styles.slideshowOverlay} />
       {SLIDES[current].credit && (
         <span className={styles.slideCredit}>Photo: {SLIDES[current].credit}</span>
       )}
+      <button type="button" className={`${styles.slideArrow} ${styles.slideArrowLeft}`} aria-label="Previous slide" onClick={() => setCurrent((current - 1 + n) % n)}>
+        <ChevronLeft size={28} />
+      </button>
+      <button type="button" className={`${styles.slideArrow} ${styles.slideArrowRight}`} aria-label="Next slide" onClick={() => setCurrent((current + 1) % n)}>
+        <ChevronRight size={28} />
+      </button>
       <div className={styles.slideshowDots}>
         {SLIDES.map((_, i) => (
           <button
