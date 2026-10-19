@@ -92,7 +92,7 @@ function HeroSlideshow({ current, setCurrent }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % SLIDES.length)
-    }, 5000)
+    }, 10000)
     return () => clearInterval(timer)
   }, [setCurrent])
 
