@@ -32,10 +32,10 @@ const LOGO_LOCAL = {
 const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 const SLIDES = [
-  '/hero/hero-1.jpg',
-  '/hero/hero-2.jpg',
-  '/hero/hero-3.jpg',
-  '/hero/hero-4.jpg',
+  { src: '/hero/hero-1.jpg' },
+  { src: '/hero/hero-2.jpg', credit: 'Green School Bali' },
+  { src: '/hero/hero-3.jpg' },
+  { src: '/hero/hero-4.jpg', credit: 'Green School Bali' },
 ]
 
 // Contenu de la carte blanche, synchronisé avec le slide actif
@@ -98,7 +98,7 @@ function HeroSlideshow({ current, setCurrent }) {
 
   return (
     <div className={styles.slideshowBg}>
-      {SLIDES.map((src, i) => (
+      {SLIDES.map(({ src }, i) => (
         <div
           key={src}
           className={styles.slide}
@@ -109,6 +109,9 @@ function HeroSlideshow({ current, setCurrent }) {
         />
       ))}
       <div className={styles.slideshowOverlay} />
+      {SLIDES[current].credit && (
+        <span className={styles.slideCredit}>Photo: {SLIDES[current].credit}</span>
+      )}
       <div className={styles.slideshowDots}>
         {SLIDES.map((_, i) => (
           <button

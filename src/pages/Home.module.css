@@ -24,6 +24,15 @@
   inset: 0;
   background: rgba(0,0,0,0.45);
 }
+.slideCredit {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  z-index: 3;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
 .slideshowDots {
   position: absolute;
   bottom: 32px;
