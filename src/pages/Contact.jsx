@@ -1,4 +1,4 @@
-import { Mail, BookOpen, Users, DollarSign, Newspaper } from 'lucide-react'
+import { Mail, BookOpen, DollarSign, Newspaper } from 'lucide-react'
 import { InstagramIcon, LinkedinIcon, TiktokIcon } from '../components/SocialIcons'
 import styles from './Contact.module.css'
 
@@ -37,13 +37,6 @@ export default function Contact() {
                 title: 'Curriculum Questions',
                 desc: 'Interested in integrating the OY4CCurriculum into your school or programme?',
                 email: 'curriculum@oy4c.org',
-              },
-              {
-                icon: <Users size={24} />,
-                category: 'Volunteer',
-                title: 'Volunteer Applications',
-                desc: 'Want to join the OY4C team and become a youth climate educator?',
-                email: 'recruitment@oy4c.org',
               },
               {
                 icon: <DollarSign size={24} />,
