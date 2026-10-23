@@ -79,6 +79,166 @@
   letter-spacing: 0.02em;
 }
 
+/* JOURNEY (simple overview) */
+.journey {
+  padding: 80px 5vw;
+  background: var(--cream);
+}
+.journeyInner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.journeyGroups {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+.journeyGroup {
+  border-top: 3px solid var(--green-dark);
+  padding-top: 14px;
+}
+.journeyGroup.gate { border-top-style: dashed; border-top-color: var(--purple); }
+.journeyGroup.tier2 { border-top-color: var(--dark-soft); }
+.journeyGroupLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+.journeySteps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 16px;
+}
+.journeyStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--black);
+  line-height: 1.3;
+}
+.journeyIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--green-dark);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.tier2 .journeyIcon { background: var(--dark-soft); color: var(--white); }
+
+/* HOW TO GET IT (detailed) */
+.how {
+  padding: 90px 5vw;
+  background: var(--white);
+}
+.howInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+/* global teal eyebrow fails AA on white */
+.howEyebrow { color: var(--purple); }
+.howSub {
+  font-size: 1.05rem;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+.howSteps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.howStep {
+  display: flex;
+  flex-direction: column;
+}
+.howTag {
+  min-height: 1.6em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.howCard {
+  flex: 1;
+  background: var(--cream);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 22px 20px;
+}
+.gate .howCard { border: 2px dashed var(--purple); background: var(--white); }
+.tier2 .howCard { background: var(--dark-soft); border-color: var(--dark-soft); }
+.howCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.howNum {
+  font-family: 'League Spartan', 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1;
+}
+.howIcon { color: var(--green-dark); }
+.howTitle {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.howBody {
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.7;
+}
+.tier2 .howNum,
+.tier2 .howTitle { color: var(--white); }
+.tier2 .howBody { color: rgba(255,255,255,0.85); }
+.tier2 .howIcon { color: var(--teal); }
+.howNote {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.howNote svg { flex-shrink: 0; color: var(--green-dark); }
+.howContact {
+  font-size: 0.95rem;
+  color: var(--black);
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+.howContact a {
+  color: var(--black);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 /* BUBBLES */
 .bubbles {
   padding: 56px 5vw;
@@ -368,10 +528,34 @@
   .bubblesInner { grid-template-columns: repeat(2, 1fr); }
   .cards { grid-template-columns: 1fr 1fr; }
   .card, .card:nth-child(n+4) { grid-column: auto; }
+
+  /* journey: groups and steps stacked, group line on the left */
+  .journeyGroups { grid-template-columns: 1fr; gap: 24px; }
+  .journeyGroup, .journeyGroup.gate, .journeyGroup.tier2 { border-top: none; }
+  .journeyGroup { border-left: 3px solid var(--green-dark); padding: 0 0 0 18px; }
+  .journeyGroup.gate { border-left-style: dashed; border-left-color: var(--purple); }
+  .journeyGroup.tier2 { border-left-color: var(--dark-soft); }
+  .journeySteps { grid-auto-flow: row; gap: 12px; }
+  .journeyStep { flex-direction: row; text-align: left; gap: 14px; }
+  .journeyIcon { width: 48px; height: 48px; flex-shrink: 0; }
+
+  /* steps stacked with a connecting line */
+  .howSteps { grid-template-columns: 1fr; gap: 20px; padding-left: 22px; }
+  .howStep { position: relative; }
+  .howStep::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 0;
+    bottom: -20px;
+    border-left: 2px solid var(--green-dark);
+  }
+  .howStep:last-child::before { bottom: 0; }
+  .howTag:empty, .howTag[aria-hidden='true'] { display: none; }
 }
 @media (max-width: 600px) {
   .heroContent { padding: 56px 6vw; }
-  .story, .what, .who, .future, .faq, .cta { padding: 60px 5vw; }
+  .journey, .how, .story, .what, .who, .future, .faq, .cta { padding: 60px 5vw; }
   .bubbles { padding: 40px 5vw; }
   .bubblesInner, .cards { grid-template-columns: 1fr; }
   .heroBtns { flex-direction: column; align-items: stretch; }

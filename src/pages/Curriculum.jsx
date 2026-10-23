@@ -1,9 +1,70 @@
-import { Users, Gift, CheckCircle2, BookOpen, ChevronDown } from 'lucide-react'
+import {
+  Users,
+  Gift,
+  CheckCircle2,
+  BookOpen,
+  ChevronDown,
+  ClipboardList,
+  Mail,
+  Presentation,
+  MessageCircle,
+  LockOpen,
+  Lock,
+} from 'lucide-react'
 import styles from './Curriculum.module.css'
 
 // TODO: replace the provisional mailto below with the real curriculum-access link
 // or application form once it exists.
 const BRING_TO_SCHOOL_HREF = 'mailto:curriculum@oy4c.org'
+
+// group: 'tier1' | 'gate' | 'tier2'; groupLabel shown on the first step of each group
+const STEPS = [
+  {
+    icon: ClipboardList,
+    short: 'Fill in the form',
+    title: 'Fill in the access form',
+    body: "Tell us a little about you and where you'll be teaching.",
+    group: 'tier1',
+    groupLabel: 'Tier 1',
+  },
+  {
+    icon: Mail,
+    short: 'Check your email',
+    title: 'Check your email',
+    body: "You'll get a link to all Tier 1 resources on Google Drive. Keep this email: it also has your private link to unlock Tier 2.",
+    group: 'tier1',
+  },
+  {
+    icon: Presentation,
+    short: 'Teach',
+    title: 'Teach Tier 1',
+    body: 'Run the lessons with your learners and notice what works for them.',
+    group: 'tier1',
+  },
+  {
+    icon: MessageCircle,
+    short: 'Share feedback',
+    title: 'Tell us how it went',
+    body: 'Use the feedback link from your Tier 1 email. Your answers help us improve the curriculum.',
+    group: 'gate',
+    groupLabel: 'Progress gate',
+  },
+  {
+    icon: LockOpen,
+    short: 'Unlock more topics',
+    title: 'Unlock Tier 2',
+    body: "Once you've sent your feedback, Tier 2 resources arrive in your inbox automatically.",
+    group: 'tier2',
+    groupLabel: 'Tier 2',
+  },
+]
+
+const JOURNEY_GROUPS = ['tier1', 'gate', 'tier2'].map((g) => ({
+  group: g,
+  label: STEPS.find((s) => s.group === g).groupLabel,
+  start: STEPS.findIndex((s) => s.group === g) + 1,
+  steps: STEPS.filter((s) => s.group === g),
+}))
 
 const BUBBLES = [
   { icon: <Users size={28} aria-hidden="true" />, label: 'By youth, for youth' },
@@ -43,7 +104,11 @@ const FUTURE = [
 ]
 
 const FAQ = [
-  { q: 'Is it really free?', a: 'Yes, permanently, with no paid tier.' },
+  { q: 'Is it really free?', a: 'Yes, permanently. There is nothing to pay at any stage.' },
+  {
+    q: 'What are Tier 1 and Tier 2?',
+    a: 'Tier 1 is available as soon as you sign up. Tier 2 resources are unlocked after you share your feedback on Tier 1.',
+  },
   { q: 'What ages is it for?', a: 'Built for 14-18, used successfully with students from 12.' },
   {
     q: 'Do we need a specialist teacher?',
@@ -93,6 +158,72 @@ export default function Curriculum() {
         </div>
       </section>
 
+      {/* JOURNEY (simple overview) */}
+      <section className={styles.journey}>
+        <div className={styles.journeyInner}>
+          <h2 className="section-title">Your OY4CCurriculum Journey</h2>
+          <div className={styles.journeyGroups}>
+            {JOURNEY_GROUPS.map((g) => (
+              <div key={g.group} className={`${styles.journeyGroup} ${styles[g.group]}`}>
+                <p className={styles.journeyGroupLabel}>{g.label}</p>
+                <ol start={g.start} className={styles.journeySteps}>
+                  {g.steps.map(({ icon: Icon, short }) => (
+                    <li key={short} className={styles.journeyStep}>
+                      <span className={styles.journeyIcon}>
+                        <Icon size={26} aria-hidden="true" />
+                      </span>
+                      {short}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW TO GET IT (detailed) */}
+      <section className={styles.how} id="how-to-get-it">
+        <div className={styles.howInner}>
+          <span className={`section-eyebrow ${styles.howEyebrow}`}>How it works</span>
+          <h2 className="section-title">From sign-up to Tier 2 in five steps</h2>
+          <p className={styles.howSub}>
+            Start teaching with Tier 1 straight away. When you've tried it with your learners, share
+            your feedback to unlock Tier 2.
+          </p>
+          <ol className={styles.howSteps}>
+            {STEPS.map(({ icon: Icon, title, body, group, groupLabel }, i) => (
+              <li key={title} className={`${styles.howStep} ${styles[group]}`}>
+                {/* empty tag keeps cards aligned in the desktop row */}
+                <p className={styles.howTag} aria-hidden={!groupLabel}>
+                  {groupLabel ?? ' '}
+                </p>
+                <div className={styles.howCard}>
+                  <div className={styles.howCardTop}>
+                    <span className={styles.howNum}>{String(i + 1).padStart(2, '0')}</span>
+                    <Icon size={24} aria-hidden="true" className={styles.howIcon} />
+                  </div>
+                  <h3 className={styles.howTitle}>{title}</h3>
+                  <p className={styles.howBody}>{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p className={styles.howNote}>
+            <Lock size={18} aria-hidden="true" />
+            The Tier 2 link is only shared with teachers already using the curriculum.
+          </p>
+          <p className={styles.howContact}>
+            Questions? {/* TODO: provisional address, confirm with Ava. */}
+            <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
+          </p>
+          {/* TODO: replace with the real access-form link as soon as it is provided. */}
+          <a href={BRING_TO_SCHOOL_HREF} className={styles.btnPrimary}>
+            Fill in the access form
+          </a>
+        </div>
+      </section>
+
       {/* BUBBLES */}
       <section className={styles.bubbles}>
         <ul className={styles.bubblesInner}>
@@ -105,9 +236,8 @@ export default function Curriculum() {
         </ul>
       </section>
 
-      {/* TODO (phase B): "Your OY4CCurriculum Journey" (Ava's image), "What you get" (grid of the
-          13 topics, one full topic to browse, languages, module screenshots) and "How to get it"
-          (detailed process). */}
+      {/* TODO (phase B): "What you get" (grid of the 13 topics, one full topic to browse,
+          languages, module screenshots). */}
 
       {/* PROBLEM + STORY */}
       <section className={styles.story}>
