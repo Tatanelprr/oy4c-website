@@ -10,9 +10,7 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  /* TODO: swap for /hero/services-hero.webp once Ava's photo is added
-     (public/hero/services-hero.jpg → sharp: webp, 1600px max, q80, no EXIF). */
-  background-image: url('/hero/hero-4.jpg');
+  background-image: url('/hero/services-hero.webp');
   background-size: cover;
   background-position: center;
 }
