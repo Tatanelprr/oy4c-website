@@ -10,14 +10,42 @@ import {
   MessageCircle,
   LockOpen,
   Lock,
+  FileText,
+  Languages,
+  ListChecks,
 } from 'lucide-react'
+import CurriculumMap from '../components/CurriculumMap'
+import {
+  TIER_1_NAME,
+  TIER_2_NAME,
+  TIER1_ACCESS_URL,
+  COUNTER,
+  FAQ_TOPIC_DURATION_ANSWER,
+  FAQ_FLEXIBILITY,
+} from '../data/curriculumConfig'
 import styles from './Curriculum.module.css'
 
-// TODO: replace the provisional mailto below with the real curriculum-access link
-// or application form once it exists.
-const BRING_TO_SCHOOL_HREF = 'mailto:curriculum@oy4c.org'
+// All visible copy below is Ava's text (Round 2), verbatim, typos included.
+// Do not edit it without her sign-off. `**...**` marks her bold passages.
+
+// TODO: ASK SASHA. Provisional mailto until TIER1_ACCESS_URL is set
+// (src/data/curriculumConfig.js).
+const ACCESS_HREF = TIER1_ACCESS_URL || 'mailto:curriculum@oy4c.org'
+
+const FOOD_PDF_HREF = '/curriculum/food-management.pdf'
+// Computed at build time (vite.config.js); 0 hides the size.
+const FOOD_PDF_BYTES = Number(import.meta.env.FOOD_PDF_BYTES) || 0
+
+// Renders Ava's **bold** markup.
+function rich(text) {
+  return text.split('**').map((part, i) => (i % 2 ? <strong key={i}>{part}</strong> : part))
+}
 
 // group: 'tier1' | 'gate' | 'tier2'; groupLabel shown on the first step of each group
+// TODO: ASK SASHA (TIER_VISUAL): better Tier 1 vs Tier 2 visual. Tier 1 = 6 topics
+// (which ones?); step 3 = teach at least 1 topic, up to 6, before getting Tier 2.
+// TODO: ASK SASHA (TIER_FEEDBACK_WHY): is feedback needed for every Tier 1 topic?
+// Why does OY4C need it, and how does it benefit schools (step 4)?
 const STEPS = [
   {
     icon: ClipboardList,
@@ -25,19 +53,19 @@ const STEPS = [
     title: 'Fill in the access form',
     body: "Tell us a little about you and where you'll be teaching.",
     group: 'tier1',
-    groupLabel: 'Tier 1',
+    groupLabel: TIER_1_NAME,
   },
   {
     icon: Mail,
     short: 'Check your email',
     title: 'Check your email',
-    body: "You'll get a link to all Tier 1 resources on Google Drive. Keep this email: it also has your private link to unlock Tier 2.",
+    body: 'You’ll get a link to all tier 1 resources. Keep this email, as it also has your personal link to unlock Tier 2',
     group: 'tier1',
   },
   {
     icon: Presentation,
     short: 'Teach',
-    title: 'Teach Tier 1',
+    title: `Teach ${TIER_1_NAME}`,
     body: 'Run the lessons with your learners and notice what works for them.',
     group: 'tier1',
   },
@@ -45,17 +73,17 @@ const STEPS = [
     icon: MessageCircle,
     short: 'Share feedback',
     title: 'Tell us how it went',
-    body: 'Use the feedback link from your Tier 1 email. Your answers help us improve the curriculum.',
+    body: `Use the feedback link from your ${TIER_1_NAME} email. Your answers help us improve the curriculum.`,
     group: 'gate',
     groupLabel: 'Progress gate',
   },
   {
     icon: LockOpen,
     short: 'Unlock more topics',
-    title: 'Unlock Tier 2',
-    body: "Once you've sent your feedback, Tier 2 resources arrive in your inbox automatically.",
+    title: `Unlock ${TIER_2_NAME}`,
+    body: `Once you've sent your feedback, ${TIER_2_NAME} resources arrive in your inbox automatically.`,
     group: 'tier2',
-    groupLabel: 'Tier 2',
+    groupLabel: TIER_2_NAME,
   },
 ]
 
@@ -66,99 +94,149 @@ const JOURNEY_GROUPS = ['tier1', 'gate', 'tier2'].map((g) => ({
   steps: STEPS.filter((s) => s.group === g),
 }))
 
+const TOPICS = [
+  'Climate Education',
+  'Indigenous Peoples and Climate Change',
+  'Environment Policy & Politics',
+  'Eco-Anxiety',
+  'Climate Justice',
+  'Emissions',
+  'Pollution',
+  'Mitigation Strategies',
+  'Plastic Waste',
+  'Food Management',
+  'Fashion Industry',
+  'Nature Conservation',
+  'The Ocean',
+]
+
+const TOPIC_CONTENTS = [
+  'Complete Presentation (includes aims, youth climate activist examples, skills learned, job ideas in the field, resources)',
+  'Fully-Written Topic Document (you don’t need any previous knowledge to teach)',
+  'An Activity (to empower young people to turn knowledge into action)',
+  'A Quiz and Answer Key',
+]
+
+const LANGUAGES = [
+  'Currently only in English',
+  'We aim to change this in the coming 12 months if funding provides',
+]
+
 const BUBBLES = [
-  { icon: <Users size={28} aria-hidden="true" />, label: 'By youth, for youth' },
+  { icon: <Users size={28} aria-hidden="true" />, label: 'By Youth, For Youth' },
   { icon: <Gift size={28} aria-hidden="true" />, label: 'Free' },
-  { icon: <CheckCircle2 size={28} aria-hidden="true" />, label: 'Ready to use, open-resource' },
+  { icon: <CheckCircle2 size={28} aria-hidden="true" />, label: 'Ready-to-Use' },
   { icon: <BookOpen size={28} aria-hidden="true" />, label: '13 interdisciplinary topics' },
 ]
 
+// Double spaces are Ava's; HTML collapses them on screen.
+const STORY_INTRO = [
+  'In 2021, our then 17-year old Founder, Ava Langridge, noticed that climate change was  spoken about everywhere, except the place that should have been equipping us to  address the world we are inheriting',
+  'In August of that year, after having conversations with young people, ages 14-18 across the world, and learning about the shared climate change education gap across the globe, systems, and scales (enabled through social media), Ava started teaching herself about anything she could, and would invite anyone to join',
+  '5 students, quickly became 20, and by October 2021, UNESCO validated our ‘lived experience’ findings',
+]
+const STORY_STAT =
+  'UNESCO: Almost half (47%) of national curricula worldwide don’t mention climate change. This doesn’t even account for the quality of what does exist'
+const STORY_REST = [
+  'With this new information, there was substantial increase in interest in changing this',
+  'So our weekly classes became something more structured, and from May 2022 to February, 150 young people,  contributed to the development of our OY4CCurriculum',
+  '150 young people: have contributed to creating the OY4CCurriculum through researching, writing, and reviewing. OY4CCurriculum contributors, aged 12-24, are located in Costa Rica, Australia, Trinidad, South Africa, United Kingdom, Brazil, Uganda, United States…etc. Our community has also contributed, through polls and conversations, by reinforcing our understanding of what education is lacking.',
+]
+
+const REFORM_NOTE =
+  'Note: We understand the importance of global and national curriculum reform, and support it fully. However, given curriculum takes an extensive time to rebuild, we are the immediate response, to avoid loosing whole generations.'
+
 const WHAT_CARDS = [
-  {
-    title: 'Foundational climate change knowledge',
-    body: 'The science of how our climate works, what is changing, and why.',
-  },
-  {
-    title: 'Often neglected social dimensions',
-    body: 'How the climate crisis connects to justice, equity, health, and communities, taught through a global, intersectional lens.',
-  },
-  {
-    title: 'Action oriented',
-    body: 'Teaches how to move knowledge into action, to mitigate eco-anxiety.',
-  },
-  {
-    title: 'Empowerment',
-    body: 'Youth examples, to show people already taking action.',
-  },
-  {
-    title: 'No prior knowledge needed',
-    body: 'No existing knowledge is needed, by teacher or student.',
-  },
+  { title: 'Foundational climate change knowledge' },
+  { title: 'Often neglected social dimensions' },
+  { title: 'Action oriented', sub: 'teaches how to move knowledge into action, to mitigate eco-anxiety' },
+  { title: 'Empowerment', sub: 'youth examples, to show people already taking action' },
+  { title: 'No existing knowledge is needed' },
 ]
 
-const FUTURE = [
-  'Translate our resources',
-  'Collect longer-term data on the impact of the OY4CCurriculum, on a student and their actions, and on systemic, larger-scale change',
-  "Improve the interface we deliver our resources on. We're looking for technology and LMS co-development partners",
-  'Given we are the intermediary resource, start partnering with institutions driving curriculum reform, to ensure youth-built and youth-led curriculum reform is integrated into the longer-term agenda',
+const WHO = [
+  'Young people are inheriting the climate crisis. Almost none of us have been equipped to respond to it.',
+  'Being equipped means two things: understanding the crisis and its complexities, and having a toolkit to actually do something about it. Most of us get neither. We learn more about the climate crisis from social media and from living through it than we ever do in a classroom. And where climate education does exist, it’s often overwhelming — it leaves students feeling burdened, not capable.',
+  'That matters beyond the classroom. The people who’ll be running the 2050 climate targets are in school right now. Whether they arrive at that job equipped or barely informed is being decided today, by what we are and aren’t taught.',
+  '**The OY4CCurriculum is built for:**',
+  '**Students, 14–18.** The generation that will lead the response, taught the complexity and given the tools. The crisis should feel like something to act on, not something to carry.',
+  '**Educators and schools.** Anyone who wants to teach climate change meaningfully but has no time, budget or specialist to build it from scratch. We’ve done that part. It’s free, and it’s ready.',
+  '**Every classroom, not just the well-resourced ones.** This is a systemic crisis, so the response has to be systemic. That means every student, in every country, regardless of background, not only the schools that can afford to care.',
+  'Our team is aged 12 to 24. We sat through the gap we’re describing. We built the curriculum we wish we’d had. Your students will be grateful they do.',
 ]
 
+const WAY_FORWARD = [
+  'Translate our resources to 5+ languages',
+  'Collect longer-term data on the impact of the OY4CCurriculum, both on a student and their actions, and on systemic, larger-scale change',
+  "Improve the interface we deliver our resources on. **We're looking for technology and LMS co-development partners**",
+  'Given we are the intermediary resource, start partnering with institutions driving curriculum reform, to ensure youth-built and youth-led curriculum reform',
+]
+
+// TODO: Confirm with SASHA (flexibility FAQ and topic duration answer, see
+// curriculumConfig.js). Conditional entries are dropped while empty.
 const FAQ = [
-  { q: 'Is it really free?', a: 'Yes, permanently. There is nothing to pay at any stage.' },
-  {
-    q: 'What are Tier 1 and Tier 2?',
-    a: 'Tier 1 is available as soon as you sign up. Tier 2 resources are unlocked after you share your feedback on Tier 1.',
-  },
-  { q: 'What ages is it for?', a: 'Built for 14-18, used successfully with students from 12.' },
-  {
-    q: 'Do we need a specialist teacher?',
-    a: 'No. No prior climate knowledge is needed, by teacher or student.',
-  },
-  {
-    q: 'Does it align with our national curriculum?',
-    a: "It's designed to sit alongside any curriculum, and maps to ESD for 2030. Teach one topic or all thirteen.",
-  },
-  { q: 'What if we only want one lesson?', a: "Fine. Take what's useful." },
+  { q: 'Is it really free?', a: 'Yes. There is nothing to pay at any stage.' },
+  { q: 'What ages is it for?', a: 'Built for 14–18, used successfully with students from 12 to 20.' },
+  { q: 'Do we need a specialist educat?', a: 'No. No prior climate knowledge is needed, by educator or student.' },
+  FAQ_FLEXIBILITY.question && FAQ_FLEXIBILITY.answer
+    ? { q: FAQ_FLEXIBILITY.question, a: FAQ_FLEXIBILITY.answer }
+    : null,
+  FAQ_TOPIC_DURATION_ANSWER
+    ? { q: 'How long does each topic take?', a: FAQ_TOPIC_DURATION_ANSWER }
+    : null,
   {
     q: 'Do you need to come into our school?',
     a: 'No. The OY4CCurriculum is entirely self-serve. CCiC workshops are separate and optional.',
   },
   { q: 'What data do you collect from students?', a: 'None.' },
-  // TODO: remaining questions (time per topic, ownership and adaptation, translation,
-  // use of the name and logo, support, feedback link) once Ava confirms the answers.
-]
+  {
+    q: 'Can we use your name and logo?',
+    a: 'Please email us at curriculum@oy4c.org requesting use of our logo and name, and to clarify usage rights.',
+  },
+  {
+    q: 'How do we give feedback?',
+    a: 'You will receive a personalised link to submit feedback after requesting access to Tier 1',
+  },
+].filter(Boolean)
+
+const COUNTER_READY = Object.values(COUNTER).every((v) => v != null)
 
 export default function Curriculum() {
   return (
     <>
-      {/* HERO */}
+      {/* 1. HERO */}
       <section className={styles.hero}>
-        <div className={styles.heroBg} />
-        <div className={styles.heroContent}>
-          <h1>
-            Ready-to-use climate change education open-resource, built by young people for young
-            people
-          </h1>
-          <p className={styles.heroSub}>
-            Free. 13 interdisciplinary topics. No prior knowledge needed. Already in classrooms in
-            over 20 countries.
-          </p>
-          <div className={styles.heroBtns}>
-            <a href={BRING_TO_SCHOOL_HREF} className={styles.btnPrimary}>
-              Get the OY4CCurriculum
-            </a>
-            <a href="#what-it-is" className={styles.btnOutline}>
-              See what's inside
-            </a>
+        <div className={styles.heroInner}>
+          <div className={styles.heroContent}>
+            <h1>OY4CCurriculum</h1>
+            <p className={styles.heroLead}>
+              Ready-to-use climate change education open-resource, built by young people for young
+              people
+            </p>
+            <p className={styles.heroSub}>
+              Free. 13 interdisciplinary topics. No prior knowledge needed. Already in classrooms in
+              over 20 countries.
+            </p>
+            <div className={styles.heroBtns}>
+              <a href={ACCESS_HREF} className={styles.btnPrimary}>
+                Get the OY4CCurriculum
+              </a>
+              <a href="#what-you-get" className={styles.btnOutline}>
+                See what's inside
+              </a>
+            </div>
           </div>
-          <p className={styles.trustLine}>
-            free · ready to use · adaptable to any curriculum · written by 150 young people
-          </p>
-          {/* TODO: photo of the real modules (pages fanned out or in a grid) once Ava provides it. */}
+          <img
+            src="/curriculum/modules-fan.webp"
+            alt="Three slides from the OY4CCurriculum Topic 10: Food Management presentation"
+            className={styles.heroFan}
+            width="1340"
+            height="920"
+          />
         </div>
       </section>
 
-      {/* JOURNEY (simple overview) */}
+      {/* 2. JOURNEY (simple overview) */}
       <section className={styles.journey}>
         <div className={styles.journeyInner}>
           <h2 className="section-title">Your OY4CCurriculum Journey</h2>
@@ -167,14 +245,28 @@ export default function Curriculum() {
               <div key={g.group} className={`${styles.journeyGroup} ${styles[g.group]}`}>
                 <p className={styles.journeyGroupLabel}>{g.label}</p>
                 <ol start={g.start} className={styles.journeySteps}>
-                  {g.steps.map(({ icon: Icon, short }) => (
-                    <li key={short} className={styles.journeyStep}>
-                      <span className={styles.journeyIcon}>
-                        <Icon size={26} aria-hidden="true" />
-                      </span>
-                      {short}
-                    </li>
-                  ))}
+                  {g.steps.map(({ icon: Icon, short }, i) => {
+                    const content = (
+                      <>
+                        <span className={styles.journeyIcon}>
+                          <Icon size={26} aria-hidden="true" />
+                        </span>
+                        {short}
+                      </>
+                    )
+                    // the first step is the access button
+                    return g.start + i === 1 ? (
+                      <li key={short}>
+                        <a href={ACCESS_HREF} className={`${styles.journeyStep} ${styles.journeyBtn}`}>
+                          {content}
+                        </a>
+                      </li>
+                    ) : (
+                      <li key={short} className={styles.journeyStep}>
+                        {content}
+                      </li>
+                    )
+                  })}
                 </ol>
               </div>
             ))}
@@ -182,14 +274,77 @@ export default function Curriculum() {
         </div>
       </section>
 
-      {/* HOW TO GET IT (detailed) */}
+      {/* 3. WHAT YOU GET */}
+      <section className={styles.get} id="what-you-get">
+        <div className={styles.getInner}>
+          <h2 className="section-title">What You Get</h2>
+          <div className={styles.getGrid}>
+            <details className={styles.topics} open>
+              <summary className={styles.topicsSummary}>
+                <h3>All 13 topics</h3>
+                <ChevronDown size={20} aria-hidden="true" className={styles.faqChevron} />
+              </summary>
+              <ol className={styles.topicsList}>
+                {TOPICS.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ol>
+            </details>
+
+            <div className={styles.getSide}>
+              <div className={styles.getBlock}>
+                <h3 className={styles.getTitle}>
+                  <FileText size={20} aria-hidden="true" />
+                  One full topic viewable without registering
+                </h3>
+                <a
+                  href={FOOD_PDF_HREF}
+                  target="_blank"
+                  rel="noopener"
+                  className={styles.btnPrimary}
+                >
+                  View Topic 10: Food Management
+                </a>
+                {FOOD_PDF_BYTES > 0 && (
+                  <p className={styles.fileSize}>
+                    PDF, {(FOOD_PDF_BYTES / 1e6).toFixed(1)} MB
+                  </p>
+                )}
+              </div>
+
+              <div className={styles.getBlock}>
+                <h3 className={styles.getTitle}>
+                  <ListChecks size={20} aria-hidden="true" />
+                  What's in each topic
+                </h3>
+                <ul className={styles.getList}>
+                  {TOPIC_CONTENTS.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={`${styles.getBlock} ${styles.langBlock}`}>
+                <Languages size={20} aria-hidden="true" className={styles.langIcon} />
+                <div>
+                  {LANGUAGES.map((l) => (
+                    <p key={l}>{l}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. HOW TO GET IT (detailed) */}
       <section className={styles.how} id="how-to-get-it">
         <div className={styles.howInner}>
-          <span className={`section-eyebrow ${styles.howEyebrow}`}>How it works</span>
-          <h2 className="section-title">From sign-up to Tier 2 in five steps</h2>
+          <h2 className="section-title">How to get it</h2>
+          <p className={styles.howLead}>From sign-up to {TIER_2_NAME} in five steps</p>
           <p className={styles.howSub}>
-            Start teaching with Tier 1 straight away. When you've tried it with your learners, share
-            your feedback to unlock Tier 2.
+            Start teaching with {TIER_1_NAME} straight away. When you've tried it with your
+            learners, share your feedback to unlock {TIER_2_NAME}.
           </p>
           <ol className={styles.howSteps}>
             {STEPS.map(({ icon: Icon, title, body, group, groupLabel }, i) => (
@@ -211,20 +366,21 @@ export default function Curriculum() {
           </ol>
           <p className={styles.howNote}>
             <Lock size={18} aria-hidden="true" />
-            The Tier 2 link is only shared with teachers already using the curriculum.
+            The {TIER_2_NAME} link is only shared with teachers already using the curriculum.
           </p>
           <p className={styles.howContact}>
             Questions? {/* TODO: provisional address, confirm with Ava. */}
             <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
           </p>
-          {/* TODO: replace with the real access-form link as soon as it is provided. */}
-          <a href={BRING_TO_SCHOOL_HREF} className={styles.btnPrimary}>
-            Fill in the access form
-          </a>
+          <div className={styles.howCta}>
+            <a href={ACCESS_HREF} className={`${styles.btnPrimary} ${styles.btnLarge}`}>
+              Get your OY4CCurriculum TODAY!
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* BUBBLES */}
+      {/* 5. BUBBLES */}
       <section className={styles.bubbles}>
         <ul className={styles.bubblesInner}>
           {BUBBLES.map((b) => (
@@ -236,25 +392,27 @@ export default function Curriculum() {
         </ul>
       </section>
 
-      {/* TODO (phase B): "What you get" (grid of the 13 topics, one full topic to browse,
-          languages, module screenshots). */}
+      {/* 6. OY4CCURRICULUM MAP */}
+      <section className={styles.map}>
+        <div className={styles.mapInner}>
+          <h2 className="section-title">OY4CCurriculum Map</h2>
+          {COUNTER_READY && (
+            <p className={styles.counter}>
+              {COUNTER.schools} schools · {COUNTER.countries} countries · {COUNTER.students} students
+            </p>
+          )}
+          <CurriculumMap />
+        </div>
+      </section>
 
-      {/* PROBLEM + STORY */}
+      {/* 7. PROBLEM + STORY */}
       <section className={styles.story}>
         <div className={styles.storyInner}>
           <div className={styles.storyIntro}>
             <div className={styles.storyText}>
-              <p>
-                In 2021, our then 17-year-old Founder, Ava Langridge, noticed that climate change
-                was spoken about everywhere except the place meant to equip us for the world we're
-                inheriting: our classrooms.
-              </p>
-              <p>
-                So she started teaching herself, and invited anyone to join. 5 students became 20,
-                and then 50. Conversations with young people aged 14-18 across the world showed the
-                gap was everywhere, not just in her classroom.
-              </p>
-              <p className={styles.storyStrong}>In 2021, UNESCO confirmed it.</p>
+              {STORY_INTRO.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
             </div>
             <div className={styles.storyBadge}>
               <img
@@ -265,14 +423,12 @@ export default function Curriculum() {
             </div>
           </div>
 
-          <div className={styles.statBlock}>
-            <div className={styles.statNum}>47%</div>
-            <p className={styles.statCaption}>
-              Almost half (47%) of the world's national education curricula don't make any
-              reference to climate change. That says nothing about the quality of what does
-              exist.<sup>1</sup>
-            </p>
-          </div>
+          <p className={styles.statText}>
+            <span>{STORY_STAT}</span>
+            <sup>1</sup>
+          </p>
+          {/* Source note unchanged. TODO: Ava's text says "by October 2021", her
+              answer says to keep November 2021 (UNESCO publication date). */}
           <p className={styles.sourceNote}>
             <sup>1</sup> UNESCO (2021),{' '}
             <a
@@ -286,29 +442,19 @@ export default function Curriculum() {
           </p>
 
           <div className={styles.storyText}>
-            <p>
-              So we built what was missing. 150 young people aged 12-24, from Costa Rica to Uganda
-              to Trinidad, researched, wrote and reviewed the OY4CCurriculum. We beta-tested it
-              with 20 students across 11 countries, had it reviewed by experts, and launched on 6
-              February 2024. It's been reviewed and updated twice since.
-            </p>
-            <p className={styles.storyStrong}>
-              We didn't wait for the system to respond. The crisis wasn't waiting either.
-            </p>
+            {STORY_REST.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
           </div>
-
-          <blockquote className={styles.quote}>
-            <p>
-              We understand the importance of global and national curriculum reform, and support it
-              fully. But curriculum takes an extensive time to rebuild. We are the immediate
-              response, to avoid losing whole generations.
-            </p>
-          </blockquote>
-          {/* TODO: photo of past classes once Ava provides it. */}
         </div>
       </section>
 
-      {/* WHAT IT IS */}
+      {/* 8. CURRICULUM REFORM NOTE */}
+      <section className={styles.reform}>
+        <p className={styles.reformNote}>{REFORM_NOTE}</p>
+      </section>
+
+      {/* 9. WHAT IT IS */}
       <section className={styles.what} id="what-it-is">
         <div className={styles.whatInner}>
           <h2 className="section-title">What it is</h2>
@@ -316,65 +462,61 @@ export default function Curriculum() {
             {WHAT_CARDS.map((c) => (
               <div key={c.title} className={styles.card}>
                 <h3 className={styles.cardTitle}>{c.title}</h3>
-                <p className={styles.cardBody}>{c.body}</p>
+                {c.sub && <p className={styles.cardBody}>{c.sub}</p>}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHO IT'S FOR AND WHY IT MATTERS */}
+      {/* 10. WHO'S IT FOR AND WHY IT MATTERS */}
       <section className={styles.who}>
         <div className={styles.whoInner}>
-          <h2 className="section-title">Who it's for and why it matters</h2>
-          <p>
-            Who's inheriting the climate crisis? Young people. But do we know how to respond? No,
-            because we haven't been equipped. Being equipped means understanding the crisis and its
-            complexities, and having a toolkit to begin responding.
-          </p>
-          <p>
-            In 2050, who's going to be running the 2050 climate targets? Current young people.
-          </p>
-          <p className={styles.whoStrong}>Built for 14-18 year olds, the next generation of leaders.</p>
-          <p>
-            And for teachers and schools that want to provide meaningful climate change education,
-            but don't have the resources, time or experience to build it from scratch.
-          </p>
-          <p>
-            It's for everyone, regardless of a student's background. This crisis is systemic, so
-            everyone in the system needs to be part of the response.
-          </p>
-          <p>
-            Meanwhile, many young people learn more about the crisis from social media and real-life
-            experience than in the classroom. Even where climate change education exists, it is
-            often overwhelming and demotivating. It leaves students feeling burdened, not capable.
-            Our team of young people, aged 12 to 24, has experienced this firsthand. We built the
-            curriculum we wish we'd had.
-          </p>
+          <div className={styles.whoText}>
+            <h2 className="section-title">Who’s it for and why it matters</h2>
+            {WHO.map((p) => (
+              <p key={p}>{rich(p)}</p>
+            ))}
+          </div>
+          <div className={styles.whoPhotos}>
+            <img
+              src="/curriculum/who-1.webp"
+              alt="Students standing in a large covered hall, in front of a screen showing a lesson activity"
+              width="720"
+              height="960"
+              loading="lazy"
+            />
+            <img
+              src="/curriculum/who-2.webp"
+              alt="Students in a classroom, seen from behind, watching a lesson projected at the front"
+              width="720"
+              height="960"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
-      {/* FUTURE */}
+      {/* 11. OUR WAY FORWARD */}
       <section className={styles.future}>
         <div className={styles.futureInner}>
-          <h2 className="section-title">The future</h2>
+          <h2 className="section-title">Our Way Forward</h2>
           <ul className={styles.futureList}>
-            {FUTURE.map((item) => (
-              <li key={item}>{item}</li>
+            {WAY_FORWARD.map((item) => (
+              <li key={item}>{rich(item)}</li>
             ))}
           </ul>
           <p className={styles.futureContact}>
             If you want to support us and get involved in these, contact us:{' '}
-            {/* TODO: provisional address, confirm with Ava. */}
             <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
           </p>
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* 12. FAQs */}
       <section className={styles.faq}>
         <div className={styles.faqInner}>
-          <h2 className="section-title">Frequently asked questions</h2>
+          <h2 className="section-title">FAQs</h2>
           {FAQ.map((f) => (
             <details key={f.q} className={styles.faqItem}>
               <summary className={styles.faqQ}>
@@ -387,13 +529,12 @@ export default function Curriculum() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* 13. CTA */}
       <section className={styles.cta}>
-        <h2 className="section-title">Bring the OY4CCurriculum to your classroom</h2>
+        <h2 className="section-title">{rich('Bring the OY4CCurriculum to your classroom **TODAY**!')}</h2>
         <div className={styles.ctaBtns}>
-          {/* TODO: same provisional mailto, swap for the real access link/form when ready. */}
-          <a href={BRING_TO_SCHOOL_HREF} className={styles.btnPrimary}>
-            Get the OY4CCurriculum
+          <a href={ACCESS_HREF} className={styles.btnPrimary}>
+            {rich('**Get the OY4CCurriculum**')}
           </a>
         </div>
         <p className={styles.ctaContact}>

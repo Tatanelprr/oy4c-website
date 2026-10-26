@@ -1,0 +1,77 @@
+.wrap {
+  position: relative;
+  width: 100%;
+}
+
+.frame {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #dbeaf1;
+}
+
+.pin { cursor: pointer; outline: none; }
+.dot { fill: var(--green-dark); stroke: var(--white); }
+.dotCase { fill: var(--purple); stroke: var(--white); }
+.pin:focus-visible .dot,
+.pin:focus-visible .dotCase {
+  stroke: var(--black);
+}
+
+/* Floating card above (or below) the active pin */
+.card {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -100%);
+  width: 260px;
+  max-width: calc(100% - 16px);
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  padding: 14px 16px;
+  pointer-events: none;
+  z-index: 5;
+}
+.cardBelow { transform: translate(-50%, 0); }
+.cardPlace {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.35;
+}
+.cardLine {
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.cardQuote {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--black);
+  line-height: 1.5;
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 3px solid var(--purple);
+}
+
+/* Mobile: the card sits under the map instead of over the pins */
+@media (max-width: 600px) {
+  .card,
+  .cardBelow {
+    position: static;
+    transform: none;
+    width: auto;
+    max-width: none;
+    margin-top: 14px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: none;
+  }
+}
+
+/* several pins in reach of a tap: one block per place */
+.cardItem + .cardItem {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}

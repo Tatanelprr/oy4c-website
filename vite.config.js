@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { readFileSync, existsSync } from 'fs'
+import { readFileSync, existsSync, statSync } from 'fs'
 import { resolve } from 'path'
 
 function loadEnvFile(path) {
@@ -56,6 +56,14 @@ function devApiPlugin() {
   }
 }
 
+// Size of the public Topic 10 PDF, shown next to its download link
+// (0 when the file is missing: the size is then not displayed).
+const FOOD_PDF = resolve(process.cwd(), 'public/curriculum/food-management.pdf')
+const FOOD_PDF_BYTES = existsSync(FOOD_PDF) ? statSync(FOOD_PDF).size : 0
+
 export default defineConfig({
   plugins: [react(), devApiPlugin()],
+  define: {
+    'import.meta.env.FOOD_PDF_BYTES': JSON.stringify(FOOD_PDF_BYTES),
+  },
 })
