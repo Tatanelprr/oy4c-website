@@ -29,7 +29,7 @@
   max-width: 900px;
 }
 .heroContent h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(3.5rem, 9vw, 7rem);
   font-weight: 700;
   line-height: 1.1;
   color: var(--white);
@@ -40,7 +40,7 @@
 
 /* NUMBERS */
 .numbers {
-  background: var(--green);
+  background: var(--white);
   padding: 40px 5vw;
 }
 .numbersGrid {
@@ -54,7 +54,7 @@
 .numberNum {
   font-size: 2.2rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--green);
   line-height: 1;
   margin-bottom: 6px;
 }
