@@ -281,7 +281,7 @@ export default function Home() {
           </div>
           <div className={styles.impactTopVisual}>
             <VolunteerMap />
-            <p className={styles.mapCaption}>🌍 Countries where OY4C volunteers are active</p>
+            <p className={styles.mapCaption}>Countries where OY4C volunteers are active</p>
           </div>
         </div>
       </section>
