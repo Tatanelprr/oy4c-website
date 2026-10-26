@@ -1,6 +1,41 @@
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Users, Globe, Lightbulb, BarChart, Heart, Sprout, BookOpen } from 'lucide-react'
+import { Users, Globe, Lightbulb, BarChart, Heart, Sprout, BookOpen, Play } from 'lucide-react'
 import styles from './About.module.css'
+
+// TODO: set to the embed URL once Ava receives the video from Abiola. While
+// empty, the video section is not rendered at all. Before setting it, add the
+// video host to /privacy and /cookies (same treatment as Google Maps): the
+// iframe only loads after a click, so nothing reaches the host before consent.
+// For YouTube, use the youtube-nocookie.com embed domain.
+const VIDEO_URL = ''
+
+// Click-to-load facade, same approach as MapEmbed: no third-party request or
+// cookie until the visitor chooses to play the video.
+function VideoEmbed({ src, title }) {
+  const [loaded, setLoaded] = useState(false)
+
+  if (loaded) {
+    return <iframe src={src} title={title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen />
+  }
+
+  return (
+    <button type="button" className={styles.videoPlaceholder} onClick={() => setLoaded(true)}>
+      <Play size={40} aria-hidden="true" />
+      <span className={styles.videoAction}>Click to load the video</span>
+      <span className={styles.videoNotice}>
+        Loading the video will connect you to the video host and may set cookies. See our{' '}
+        <a href="/privacy" onClick={(e) => e.stopPropagation()}>Privacy Policy</a>.
+      </span>
+    </button>
+  )
+}
+
+VideoEmbed.propTypes = {
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+}
 
 export default function About() {
   return (
@@ -9,15 +44,24 @@ export default function About() {
       <section className={styles.hero}>
         <div className={styles.heroBg} />
         <div className={styles.heroContent}>
-          <span className={styles.heroEyebrow}>Who we are</span>
-          <h1>
-            Youth-led.<br />
-            <em>Climate-focused.</em><br />
-            Globally connected.
-          </h1>
-          <p className={styles.heroSub}>
-            OY4C is a global youth-led organisation on a mission to bring quality climate change education to every classroom, designed by young people, for young people.
-          </p>
+          <h1>Who Are We</h1>
+        </div>
+      </section>
+
+      {/* NUMBERS (same figures as the Home page metrics) */}
+      <section className={styles.numbers} aria-label="OY4C in numbers">
+        <div className={styles.numbersGrid}>
+          {[
+            { num: '133', label: 'Volunteers worldwide' },
+            { num: '43', label: 'Countries represented' },
+            { num: '10,000', label: 'Students reached' },
+            { num: '80,000', label: 'Across social media' },
+          ].map((n) => (
+            <div key={n.label}>
+              <div className={styles.numberNum}>{n.num}</div>
+              <div className={styles.numberLbl}>{n.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -27,12 +71,17 @@ export default function About() {
           <div className={styles.missionText}>
             <span className="section-eyebrow">Our mission</span>
             <h2 className="section-title">Education for Youth. By Youth. Together for the Climate.</h2>
-            <p>
-			  To create widespread awareness and action towards a sustainable future, OY4C empowers the next generation with high-quality, accessible, youth-led climate change education.
-			</p>
-			<p>
-			  Through our curriculum, programmes and global community, we equip young educators with the tools, knowledge and confidence to drive meaningful climate action in their schools and communities.
-			</p>
+            <p className={styles.missionName}>
+              <strong>Our Youth 4 The Climate</strong>, also known as OY4C
+            </p>
+            <blockquote className={styles.missionStatement}>
+              <p>
+                To create widespread awareness and action towards a sustainable future, OY4C empowers the next generation with high-quality, accessible, youth-led climate change education.
+              </p>
+              <p>
+                Through our OY4CCurriculum, programmes, and online community, we equip young people with the tools, knowledge and confidence to inherit and respond to the climate crisis.
+              </p>
+            </blockquote>
           </div>
           <div className={styles.missionValues}>
             {[
@@ -79,20 +128,20 @@ export default function About() {
         </div>
       </section>
 
-      {/* VIDEO */}
-      <section className={styles.video}>
-        <div className={styles.videoInner}>
-          <div className={styles.videoHead}>
-            <span className="section-eyebrow">Watch our story</span>
-            <h2 className="section-title">See OY4C in action</h2>
-          </div>
-          <div className={styles.videoWrapper}>
-            <div className={styles.videoPlaceholder}>
-              <p>Video to be updated - placeholder</p>
+      {/* VIDEO — hidden until VIDEO_URL is set */}
+      {VIDEO_URL && (
+        <section className={styles.video}>
+          <div className={styles.videoInner}>
+            <div className={styles.videoHead}>
+              <span className="section-eyebrow">Watch our story</span>
+              <h2 className="section-title">See OY4C in action</h2>
+            </div>
+            <div className={styles.videoWrapper}>
+              <VideoEmbed src={VIDEO_URL} title="OY4C video" />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* STORY */}
       <section className={styles.story}>
@@ -113,15 +162,13 @@ export default function About() {
               "Climate change education shouldn't be a privilege. Every young person deserves to understand the crisis they will inherit, and the power they have to shape its outcome."
             </p>
             <div className={styles.quoteAuthor}>
-              <span className={styles.avatar} aria-hidden="true">
-                <span className={styles.avatarInitials}>AL</span>
-                <img
-                  src="/team/ava-langridge-profile.jpg"
-                  alt=""
-                  className={styles.avatarImg}
-                  onError={(e) => { e.currentTarget.style.display = 'none' }}
-                />
-              </span>
+              <img
+                src="/team/ava-langridge.webp"
+                alt="Ava Langridge"
+                className={styles.avatar}
+                width="48"
+                height="48"
+              />
               <strong>Ava Langridge, Founder &amp; Executive Director</strong>
             </div>
           </blockquote>
