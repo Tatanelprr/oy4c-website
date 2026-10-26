@@ -33,10 +33,9 @@ const LOGO_LOCAL = {
 const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 // Partners not tagged "Partner" in Notion (Climate Fresk sits under "As Seen In" there)
-// TODO: Climate Fresk logo to come.
 const EXTRA_PARTNERS = [
   { name: 'GEP', logo: '/partners/gep.png' },
-  { name: 'Climate Fresk' },
+  { name: 'Climate Fresk', logo: '/seen-in/climate-fresk.png' },
 ]
 
 const SLIDES = [
