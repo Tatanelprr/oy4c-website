@@ -19,20 +19,20 @@
 
 /* NOTE strip below the hero */
 .note {
-  background: var(--dark);
+  background: var(--green);
   padding: 18px 5vw;
   text-align: center;
 }
 .note p {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.7);
+  color: var(--dark);
   margin: 0;
 }
 .note a {
-  color: var(--teal);
-  font-weight: 600;
+  color: var(--dark);
+  font-weight: 700;
+  text-decoration: underline;
 }
-.note a:hover { text-decoration: underline; }
 .heroContent {
   position: relative;
   z-index: 2;
@@ -193,6 +193,124 @@
   color: var(--mid);
   line-height: 1.75;
   flex: 1;
+}
+
+/* OUR PROJECTS */
+.projects {
+  padding: 90px 5vw;
+  background: var(--cream);
+}
+.projectsInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.orbit {
+  container-type: inline-size;
+  position: relative;
+  width: min(560px, 100%);
+  aspect-ratio: 1;
+  margin: 52px auto 0;
+  padding: 0;
+  list-style: none;
+  animation: orbitSpin 60s linear infinite;
+}
+.orbit:hover,
+.orbit:focus-within { animation-play-state: paused; }
+@property --spin {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+@keyframes orbitSpin { to { --spin: 360deg; } }
+@media (prefers-reduced-motion: reduce) {
+  .orbit { animation: none; }
+}
+/* the circle the logos sit on */
+.orbit::before {
+  content: '';
+  position: absolute;
+  inset: 16%;
+  border: 2px dashed var(--teal);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.orbitItem {
+  --angle: calc(var(--i) * 360deg / var(--n) + var(--spin));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26cqw;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-34cqw) rotate(calc(-1 * var(--angle)));
+}
+.orbitBtn {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18%;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--black);
+  transition: all 0.2s;
+}
+.orbitBtn:hover,
+.orbitBtn:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border-color: var(--teal);
+}
+.orbitBtn img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.projectDialog {
+  border: none;
+  border-radius: 20px;
+  padding: 0;
+  width: min(440px, calc(100% - 32px));
+}
+.projectDialog::backdrop { background: rgba(0,0,0,0.5); }
+.projectBody {
+  position: relative;
+  padding: 40px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.projectClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--mid);
+  padding: 6px;
+}
+.projectLogo {
+  max-height: 80px;
+  max-width: 200px;
+  object-fit: contain;
+}
+.projectName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--black);
+}
+.projectText {
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.75;
 }
 
 /* CTA */

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Globe, Heart, Users, Handshake } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Globe, Heart, Users, Handshake, X } from 'lucide-react'
 import styles from './Partnerships.module.css'
 
 // Local logo paths until CDN URLs are set in Notion
@@ -18,10 +18,27 @@ const EXTRA_PARTNERS = [
   { name: 'Climate Fresk', logo: '/seen-in/climate-fresk.png' },
 ]
 
+// "Our projects" circle: every partner except these
+const NOT_PROJECTS = new Set(['Climate Quilt'])
+
+// TODO: 2-3 sentences and a link per project, keyed by partner name, e.g.
+// 'GEP': { text: '…', link: 'https://…' }
+const PROJECT_INFO = {}
+
 export default function Partnerships() {
   const [partners, setPartners] = useState([])
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState(null)
+  const [project, setProject]   = useState(null)
+  const dialogRef = useRef(null)
+
+  const allPartners = [...partners, ...EXTRA_PARTNERS].map((p) => ({ ...p, logo: p.logo || LOGO_LOCAL[p.name] }))
+  const projects = allPartners.filter((p) => !NOT_PROJECTS.has(p.name))
+  const info = project ? PROJECT_INFO[project.name] : null
+
+  useEffect(() => {
+    if (project) dialogRef.current?.showModal()
+  }, [project])
 
   useEffect(() => {
     fetch('/api/partners')
@@ -66,13 +83,12 @@ export default function Partnerships() {
 
           {!loading && !error && (
             <div className={styles.partnersGrid}>
-              {[...partners, ...EXTRA_PARTNERS].map((p) => {
-                const logo = p.logo || LOGO_LOCAL[p.name]
+              {allPartners.map((p) => {
                 return (
                   <div key={p.name} className={styles.partnerCard}>
                     <div className={styles.partnerLogo}>
-                      {logo ? (
-                        <img src={logo} alt={p.name} />
+                      {p.logo ? (
+                        <img src={p.logo} alt={p.name} />
                       ) : (
                         <div className={styles.partnerLogoPlaceholder}>{p.name}</div>
                       )}
@@ -120,6 +136,49 @@ export default function Partnerships() {
           </div>
         </div>
       </section>
+
+      {/* OUR PROJECTS — partners on a circle, click opens a pop-in */}
+      {!loading && !error && (
+        <section className={styles.projects}>
+          <div className={styles.projectsInner}>
+            <span className="section-eyebrow">Our projects</span>
+            <h2 className="section-title">What we build together</h2>
+            <ul className={styles.orbit} style={{ '--n': projects.length }}>
+              {projects.map((p, i) => (
+                <li key={p.name} className={styles.orbitItem} style={{ '--i': i }}>
+                  <button type="button" className={styles.orbitBtn} onClick={() => setProject(p)}>
+                    {p.logo ? <img src={p.logo} alt={p.name} /> : p.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <dialog
+            ref={dialogRef}
+            className={styles.projectDialog}
+            aria-labelledby="project-title"
+            onClose={() => setProject(null)}
+            onClick={(e) => e.target === e.currentTarget && dialogRef.current.close()}
+          >
+            {project && (
+              <div className={styles.projectBody}>
+                <button type="button" className={styles.projectClose} onClick={() => dialogRef.current.close()} aria-label="Close">
+                  <X size={20} />
+                </button>
+                {project.logo && <img src={project.logo} alt="" className={styles.projectLogo} />}
+                <h3 id="project-title" className={styles.projectName}>{project.name}</h3>
+                {info?.text && <p className={styles.projectText}>{info.text}</p>}
+                {info?.link && (
+                  <a href={info.link} target="_blank" rel="noreferrer" className="btn-pill btn-pill-primary">
+                    Learn more →
+                  </a>
+                )}
+              </div>
+            )}
+          </dialog>
+        </section>
+      )}
 
       {/* CTA */}
       <section className={styles.cta}>
