@@ -1,3 +1,5 @@
+import { proxyImageUrl } from './_lib/img.js'
+
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
 const NOTION_VERSION = '2022-06-28'
 
@@ -20,8 +22,19 @@ function parsePageMeta(page) {
     date:    p.Date?.date?.start ?? page.created_time,
     author:  getRichText(p.Author) || p.Author?.people?.[0]?.name || '',
     tags:    p.Tags?.multi_select?.map((t) => t.name) ?? [],
-    image:   p.Image?.url ?? page.cover?.external?.url ?? page.cover?.file?.url ?? null,
+    image:   proxyImageUrl(p.Image?.url ?? page.cover?.external?.url ?? page.cover?.file?.url ?? null),
   }
+}
+
+// Body images and callout icons pasted as external links go through the proxy too.
+function proxyBlockImages(block) {
+  if (block.type === 'image' && block.image?.external?.url) {
+    block.image.external.url = proxyImageUrl(block.image.external.url)
+  }
+  if (block.type === 'callout' && block.callout?.icon?.external?.url) {
+    block.callout.icon.external.url = proxyImageUrl(block.callout.icon.external.url)
+  }
+  return block
 }
 
 async function fetchAllBlocks(blockId) {
@@ -36,7 +49,7 @@ async function fetchAllBlocks(blockId) {
     if (!res.ok) throw new Error(`Blocks fetch failed: ${res.status}`)
 
     const data = await res.json()
-    blocks.push(...data.results)
+    blocks.push(...data.results.map(proxyBlockImages))
     cursor = data.has_more ? data.next_cursor : undefined
   } while (cursor)
 

@@ -1,3 +1,5 @@
+import { proxyImageUrl } from './_lib/img.js'
+
 const NOTION_TOKEN       = process.env.VITE_NOTION_TOKEN
 const AMBASSADORS_DB_ID  = process.env.VITE_NOTION_AMBASSADORS_DB_ID
 const NOTION_VERSION     = '2022-06-28'
@@ -21,7 +23,7 @@ function parseAmbassador(page) {
     country:  getRichText(p.Country),
     linkedin: getUrl(p.LinkedIn),
     bio:      getRichText(p.Bio),
-    photo:    getUrl(p.Photo),
+    photo:    proxyImageUrl(getUrl(p.Photo)),
   }
 }
 

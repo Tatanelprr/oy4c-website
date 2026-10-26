@@ -1,3 +1,5 @@
+import { proxyImageUrl } from './_lib/img.js'
+
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
 const PARTNERS_DB_ID = process.env.VITE_NOTION_PARTNERS_DB_ID
 const NOTION_VERSION = '2022-06-28'
@@ -20,7 +22,7 @@ function parsePartner(page) {
   return {
     name:        getTitle(p.Name),
     description: getRichText(p.Description),
-    logo:        getUrl(p.Logo),
+    logo:        proxyImageUrl(getUrl(p.Logo)),
     website:     getUrl(p.Website),
     category:    getSelect(p.Category),
   }

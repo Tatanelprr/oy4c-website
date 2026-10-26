@@ -1,3 +1,5 @@
+import { proxyImageUrl } from './_lib/img.js'
+
 const NOTION_TOKEN = process.env.VITE_NOTION_TOKEN
 const DATABASE_ID  = process.env.VITE_NOTION_DATABASE_ID
 const NOTION_VERSION = '2022-06-28'
@@ -22,7 +24,7 @@ function parseArticle(page) {
     date:    p.Date?.date?.start ?? page.created_time,
     author:  getRichText(p.Author) || p.Author?.people?.[0]?.name || '',
     tags:    p.Tags?.multi_select?.map((t) => t.name) ?? [],
-    image:   p.Image?.url ?? page.cover?.external?.url ?? page.cover?.file?.url ?? null,
+    image:   proxyImageUrl(p.Image?.url ?? page.cover?.external?.url ?? page.cover?.file?.url ?? null),
   }
 }
 

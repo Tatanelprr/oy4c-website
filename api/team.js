@@ -1,3 +1,5 @@
+import { proxyImageUrl } from './_lib/img.js'
+
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
 const TEAM_DB_ID     = process.env.VITE_NOTION_TEAM_DB_ID
 const NOTION_VERSION = '2022-06-28'
@@ -24,7 +26,7 @@ function parseMember(page) {
     team:     getSelect(p.Team),
     linkedin: getUrl(p.LinkedIn),
     quote:    getRichText(p.Quote),
-    photo:    getUrl(p.Photo),
+    photo:    proxyImageUrl(getUrl(p.Photo)),
     section:  getSelect(p.Section),
   }
 }
