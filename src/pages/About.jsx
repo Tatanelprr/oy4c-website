@@ -1,8 +1,36 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Users, Globe, Lightbulb, BarChart, Heart, Sprout, BookOpen, Play } from 'lucide-react'
+import { Users, Globe, BookOpen, Play } from 'lucide-react'
 import styles from './About.module.css'
+
+// Ava's copy, verbatim (Who Are We, Round 2). Do not edit wording.
+const STORY = [
+  'At 17, Ava Langridge heard about climate change everywhere. In the headlines. At the dinner table. Everywhere except the one place meant to prepare her for the future: her classroom. In August 2021, she started asking young people around the world about it. Different countries, different schools, same answer: no one was teaching us. That same year, in November 2021, UNESCO confirmed it. Almost half of national curricula didn’t mention climate change at all.',
+  'The generation that caused this crisis was handing it over, without equipping the generation inheriting it.',
+  'So Ava stopped waiting. She started teaching herself, and any young person willing to join the call. Within three months, 50 volunteers from around the world had joined. Not because they had a plan. Because they were desperate to do something. No one was going to build the education they needed, so they built it themselves. Researching, writing, testing, rewriting. In February 2024, they launched the OY4CCurriculum. This was climate change education built by young people, for young people. Free, for anyone, because we didn’t want other young people to be in the same position as us.',
+  'Today, OY4C is 133 young people across 43 countries, running workshops from Oceania to Southeast Asia. All of it built without a single salary (yet).',
+  'Most climate education asks young people for feedback. OY4C hands them the pen. The people living the gap know exactly what’s missing, and how to teach it to each other. OY4C has one goal. Climate change education for an entire generation, written by the generation inheriting it.',
+]
+
+const VALUES = [
+  {
+    title: 'YOUNG PEOPLE BUILD.',
+    desc: 'All of OY4C, including our systems and resources, are written and tested by young people, and checked by scientists and teachers before it reaches a classroom. Climate change education built by the generation living through the crisis is more honest, more relevant, and harder to ignore.',
+  },
+  {
+    title: 'PARTNER TO SCALE.',
+    desc: 'We don’t work in silos. The climate crisis moves too fast for organisations with the same mission to compete, so we partner where it multiplies impact: reaching classrooms we couldn’t alone, while keeping young people’s authorship visible.',
+  },
+  {
+    title: 'FREE FOR EVERY CLASSROOM.',
+    desc: 'Our OY4CCurriculum is free for any school, educator or student, anywhere, forever, and we’re building diverse, sustainable funding to keep it that way. A student’s climate education shouldn’t depend on where they live or what their school can afford.',
+  },
+  {
+    title: 'MOVE AT THE PACE OF THE CRISIS.',
+    desc: 'We didn’t wait for national curricula to include high quality climate change education. We built a globally informed resource and tools to fill the gap now, and we update it as new science, classroom feedback and research emerge.',
+  },
+]
 
 // TODO: set to the embed URL once Ava receives the video from Abiola. While
 // empty, the video section is not rendered at all. Before setting it, add the
@@ -83,48 +111,6 @@ export default function About() {
               </p>
             </blockquote>
           </div>
-          <div className={styles.missionValues}>
-            {[
-              {
-                icon: <Lightbulb size={20} />,
-                title: 'Accessible Education',
-                desc: 'Empowering younger generations with high-quality climate change education regardless of background or location.',
-              },
-              {
-                icon: <Heart size={20} />,
-                title: 'Inclusive and Welcoming',
-                desc: 'All backgrounds and experiences are valued, diversity is our strength.',
-              },
-              {
-                icon: <Users size={20} />,
-                title: 'Collaborative Community',
-                desc: 'We believe in the power of collective action and building together.',
-              },
-              {
-                icon: <Globe size={20} />,
-                title: 'Systemic Change',
-                desc: 'Creating transformational impact that goes beyond awareness to drive real change.',
-              },
-              {
-                icon: <BarChart size={20} />,
-                title: 'Data-Driven Solutions',
-                desc: 'Our programmes are grounded in science and evidence for measurable outcomes.',
-              },
-              {
-                icon: <Sprout size={20} />,
-                title: 'Intersectional Environmentalism',
-                desc: 'Recognizing and acting on the interconnectedness of climate justice and social justice.',
-              },
-            ].map((v) => (
-              <div key={v.title} className={styles.valueCard}>
-                <div className={styles.valueIcon}>{v.icon}</div>
-                <div>
-                  <div className={styles.valueTitle}>{v.title}</div>
-                  <div className={styles.valueDesc}>{v.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -146,32 +132,36 @@ export default function About() {
       {/* STORY */}
       <section className={styles.story}>
         <div className={styles.storyInner}>
-          <span className="section-eyebrow">Our story</span>
-          <h2 className="section-title">How it All Started</h2>
-          <p>
-            OY4C was born from a simple but powerful question: <span className={styles.highlight}>why aren't young people leading the conversation on climate change education?</span> In 2021, a group of passionate young advocates came together to change that, and OY4C was founded.
-          </p>
-          <p>
-            What started as a small initiative quickly grew into a global movement. Today, OY4C spans 43 countries, with hundreds of volunteer educators bringing our curriculum to classrooms worldwide.
-          </p>
-          <p>
-            We are proudly youth-led at every level, from our founder and executive director to our volunteers on the ground. This isn't just something we say. It's who we are.
-          </p>
-          <blockquote className={styles.quote}>
-            <p className={styles.quoteText}>
-              "Climate change education shouldn't be a privilege. Every young person deserves to understand the crisis they will inherit, and the power they have to shape its outcome."
-            </p>
-            <div className={styles.quoteAuthor}>
-              <img
-                src="/team/ava-langridge.webp"
-                alt="Ava Langridge"
-                className={styles.avatar}
-                width="48"
-                height="48"
-              />
-              <strong>Ava Langridge, Founder &amp; Executive Director</strong>
-            </div>
-          </blockquote>
+          <img
+            src="/team/ava-langridge.webp"
+            alt="Ava Langridge"
+            className={styles.storyPhoto}
+            width="750"
+            height="958"
+            loading="lazy"
+          />
+          <div className={styles.storyText}>
+            <span className="section-eyebrow">Our story</span>
+            <h2 className="section-title">How it All Started</h2>
+            {STORY.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VALUES */}
+      <section className={styles.values}>
+        <div className={styles.valuesInner}>
+          <h2 className={styles.valuesTitle}>Our Values</h2>
+          <div className={styles.valuesGrid}>
+            {VALUES.map((v) => (
+              <div key={v.title} className={styles.valueCard}>
+                <h3 className={styles.valueTitle}>{v.title}</h3>
+                <p className={styles.valueDesc}>{v.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
