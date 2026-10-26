@@ -12,6 +12,13 @@ const LOGO_LOCAL = {
   'Energy for Refugees Amsterdam': '/partners/energy-for-refugees.jpg',
 }
 
+// Partners not tagged "Partner" in Notion (Climate Fresk sits under "As Seen In" there)
+// TODO: Climate Fresk logo to come.
+const EXTRA_PARTNERS = [
+  { name: 'GEP', logo: '/partners/gep.png' },
+  { name: 'Climate Fresk' },
+]
+
 export default function Partnerships() {
   const [partners, setPartners] = useState([])
   const [loading, setLoading]   = useState(true)
@@ -60,7 +67,7 @@ export default function Partnerships() {
 
           {!loading && !error && (
             <div className={styles.partnersGrid}>
-              {partners.map((p) => {
+              {[...partners, ...EXTRA_PARTNERS].map((p) => {
                 const logo = p.logo || LOGO_LOCAL[p.name]
                 return (
                   <div key={p.name} className={styles.partnerCard}>

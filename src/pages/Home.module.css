@@ -498,6 +498,10 @@
   object-fit: contain;
   margin: auto;
 }
+.partnerName {
+  font-weight: 700;
+  text-align: center;
+}
 .partnersViewAll {
   text-align: center;
   margin-top: 32px;

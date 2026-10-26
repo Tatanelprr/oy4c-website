@@ -32,6 +32,13 @@ const LOGO_LOCAL = {
 
 const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
+// Partners not tagged "Partner" in Notion (Climate Fresk sits under "As Seen In" there)
+// TODO: Climate Fresk logo to come.
+const EXTRA_PARTNERS = [
+  { name: 'GEP', logo: '/partners/gep.png' },
+  { name: 'Climate Fresk' },
+]
+
 const SLIDES = [
   { src: '/hero/hero-1.jpg' },
   // Zoomed from the left so the board title clears the white card
@@ -341,17 +348,14 @@ export default function Home() {
             <h2 className="section-title">Organisations we work with</h2>
           </div>
           <div className={styles.partnersRow}>
-            {partnersList.map((p) => {
+            {[...partnersList, ...EXTRA_PARTNERS].map((p) => {
               const logo = p.logo || LOGO_LOCAL[p.name]
               return (
                 <div key={p.name} className={styles.partnerLogo}>
-                  {logo && <img src={logo} alt={p.name} />}
+                  {logo ? <img src={logo} alt={p.name} /> : <span className={styles.partnerName}>{p.name}</span>}
                 </div>
               )
             })}
-            <div className={styles.partnerLogo}>
-              <img src="/partners/gep.png" alt="GEP" />
-            </div>
           </div>
           <div className={styles.partnersViewAll}>
             <Link to="/partnerships" className={styles.partnersViewAllLink}>View all partners →</Link>
