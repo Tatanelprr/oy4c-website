@@ -271,47 +271,62 @@
   max-height: 100%;
   object-fit: contain;
 }
+/* pop-in styled like the Home "What we do" cards */
 .projectDialog {
+  margin: auto; /* global reset removes the native dialog centring */
   border: none;
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 0;
-  width: min(440px, calc(100% - 32px));
+  background: var(--cream);
+  color: var(--black);
+  width: min(480px, calc(100% - 32px));
 }
 .projectDialog::backdrop { background: rgba(0,0,0,0.5); }
 .projectBody {
   position: relative;
-  padding: 40px 32px 32px;
+  padding: 28px 32px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
-  text-align: center;
 }
 .projectClose {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--mid);
   padding: 6px;
 }
+.projectHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+  padding-right: 28px;
+}
 .projectLogo {
-  max-height: 80px;
-  max-width: 200px;
+  height: 48px;
+  max-width: 120px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 .projectName {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--black);
+  font-size: 1rem;
+  font-weight: 600;
 }
 .projectText {
-  font-size: 0.9rem;
-  color: var(--mid);
-  line-height: 1.75;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  opacity: 0.7;
 }
+.projectLink {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green);
+}
+.projectLink:hover { color: var(--teal); }
 
 /* CTA */
 .cta {

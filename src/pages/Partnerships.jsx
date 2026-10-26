@@ -166,11 +166,13 @@ export default function Partnerships() {
                 <button type="button" className={styles.projectClose} onClick={() => dialogRef.current.close()} aria-label="Close">
                   <X size={20} />
                 </button>
-                {project.logo && <img src={project.logo} alt="" className={styles.projectLogo} />}
-                <h3 id="project-title" className={styles.projectName}>{project.name}</h3>
+                <div className={styles.projectHead}>
+                  {project.logo && <img src={project.logo} alt="" className={styles.projectLogo} />}
+                  <h3 id="project-title" className={styles.projectName}>{project.name}</h3>
+                </div>
                 {info?.text && <p className={styles.projectText}>{info.text}</p>}
                 {info?.link && (
-                  <a href={info.link} target="_blank" rel="noreferrer" className="btn-pill btn-pill-primary">
+                  <a href={info.link} target="_blank" rel="noreferrer" className={styles.projectLink}>
                     Learn more →
                   </a>
                 )}
