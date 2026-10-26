@@ -25,16 +25,14 @@
   letter-spacing: -0.02em;
 }
 /* same size as the hero sub-text of the first version of the page */
-.heroLead,
-.heroSub {
+.heroLead {
   font-size: 1.05rem;
   font-weight: 300;
   color: rgba(255,255,255,0.85);
   line-height: 1.7;
   max-width: 560px;
 }
-.heroLead { margin-bottom: 12px; }
-.heroSub { margin-bottom: 36px; }
+.heroLead { margin-bottom: 36px; }
 .heroFan {
   width: 100%;
   max-width: 600px;

@@ -213,10 +213,6 @@ export default function Curriculum() {
               Ready-to-use climate change education open-resource, built by young people for young
               people
             </p>
-            <p className={styles.heroSub}>
-              Free. 13 interdisciplinary topics. No prior knowledge needed. Already in classrooms in
-              over 20 countries.
-            </p>
             <div className={styles.heroBtns}>
               <a href={ACCESS_HREF} className={styles.btnPrimary}>
                 Get the OY4CCurriculum
