@@ -14,6 +14,7 @@ OY4C is a fiscally hosted project of a company registered in England and Wales. 
 - [Home](https://oy4c.org/): overview of OY4C, impact and programmes.
 - [About](https://oy4c.org/about): who OY4C is and its mission.
 - [OY4CCurriculum](https://oy4c.org/curriculum): free, youth-developed climate curriculum for schools.
+- [Services](https://oy4c.org/services): Climate education, built by young people. Built with you.
 - [CCiC](https://oy4c.org/ccic): Climate Curriculum into Classrooms workshop programme and open resource kit.
 - [Ambassador Programme](https://oy4c.org/ambassador): the OY4C ambassador network.
 - [Impact](https://oy4c.org/impact): impact figures and the 2025 Impact Report.
