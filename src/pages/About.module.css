@@ -10,7 +10,7 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.squarespace-cdn.com/content/v1/61bb9351758f6f75c02a5f7f/3ff677bf-f0d6-4e32-9d7f-95d9f34c6282/IMG_1049.JPG');
+  background-image: url('/hero/about-hero.webp');
   background-size: cover;
   background-position: center;
 }
