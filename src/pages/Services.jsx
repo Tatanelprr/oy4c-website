@@ -90,7 +90,7 @@ export default function Services() {
       <section className={styles.reach}>
         <h2 className="section-title">Have something in mind?</h2>
         <p className={styles.reachText}>Tell us what you’re working on. We’ll shape it with you.</p>
-        <a href={CONTACT_HREF} className={styles.btnPrimary}>
+        <a href={CONTACT_HREF} className="btn-pill btn-pill-primary">
           Reach out
         </a>
       </section>
