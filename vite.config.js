@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'fs'
 import { resolve, dirname } from 'path'
+import { execFileSync } from 'child_process'
 import { PAGE_META, SITE_URL, NOT_FOUND_META, BLOG_POST_LOADING_META } from './src/data/pageMeta.js'
 
 function loadEnvFile(path) {
@@ -108,13 +109,91 @@ function prerenderMetaPlugin() {
   }
 }
 
+// "Coming soon" placeholders: left out of the sitemap until they have content.
+const SITEMAP_EXCLUDED = new Set(['/takeaction', '/consultancy', '/speaker', '/last-push'])
+
+// Static routes of App.jsx with the page component each one renders.
+function appRoutes(root) {
+  const app = readFileSync(resolve(root, 'src/App.jsx'), 'utf-8')
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, '') // JSX comments (hidden routes)
+    .replace(/^\s*\/\/.*$/gm, '')
+  return [...app.matchAll(/<Route path="([^"]+)" element=\{<(\w+)\b/g)]
+    .map(([, path, component]) => ({ path, component }))
+    .filter(({ path, component }) => !path.includes(':') && path !== '*' && component !== 'Navigate')
+}
+
+// Date of the last commit touching a file, else today (shallow clones).
+function lastModified(root, file) {
+  try {
+    const date = execFileSync('git', ['log', '-1', '--format=%cs', '--', file], { cwd: root, encoding: 'utf-8' }).trim()
+    if (date) return date
+  } catch { /* no git available */ }
+  return new Date().toISOString().slice(0, 10)
+}
+
+// Published articles from the Notion "Blog & Articles" database, with their
+// last edit date. Needs VITE_NOTION_TOKEN and VITE_NOTION_DATABASE_ID at build
+// time (Vercel exposes project env vars to the build). Without them, the
+// sitemap only lists the static routes.
+// TODO: if the build log shows "sitemap: no Notion token", check in Vercel >
+// Settings > Environment Variables that both variables are enabled for the
+// Production (and Preview) environments, then redeploy.
+async function publishedArticles() {
+  const token = process.env.VITE_NOTION_TOKEN
+  const db = process.env.VITE_NOTION_DATABASE_ID
+  if (!token || !db) {
+    console.warn('sitemap: no Notion token at build time, articles not listed')
+    return []
+  }
+  const items = []
+  let cursor
+  do {
+    const resp = await fetch(`https://api.notion.com/v1/databases/${db}/query`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Notion-Version': '2022-06-28', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page_size: 100, filter: { property: 'Published', checkbox: { equals: true } }, ...(cursor && { start_cursor: cursor }) }),
+    })
+    if (!resp.ok) throw new Error(`Notion status ${resp.status}`)
+    const data = await resp.json()
+    items.push(...data.results.map((page) => ({ path: `/blog/${page.id}`, lastmod: page.last_edited_time.slice(0, 10) })))
+    cursor = data.has_more ? data.next_cursor : undefined
+  } while (cursor)
+  return items
+}
+
+// Writes dist/sitemap.xml: App.jsx routes (minus placeholders) + articles.
+function sitemapPlugin() {
+  return {
+    name: 'sitemap',
+    apply: 'build',
+    async closeBundle() {
+      const root = process.cwd()
+      const urls = appRoutes(root)
+        .filter(({ path }) => !SITEMAP_EXCLUDED.has(path))
+        .map(({ path, component }) => ({ path, lastmod: lastModified(root, `src/pages/${component}.jsx`) }))
+      try {
+        const articles = await publishedArticles()
+        urls.push(...articles)
+        console.log(`sitemap: ${urls.length - articles.length} pages + ${articles.length} articles`)
+      } catch (err) {
+        console.warn(`sitemap: articles not listed (${err.message})`)
+      }
+      const body = urls
+        .map(({ path, lastmod }) => `  <url><loc>${SITE_URL}${path}</loc><lastmod>${lastmod}</lastmod></url>`)
+        .join('\n')
+      writeFileSync(resolve(root, 'dist/sitemap.xml'),
+        `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`)
+    },
+  }
+}
+
 // Size of the public Topic 10 PDF, shown next to its download link
 // (0 when the file is missing: the size is then not displayed).
 const FOOD_PDF = resolve(process.cwd(), 'public/curriculum/food-management.pdf')
 const FOOD_PDF_BYTES = existsSync(FOOD_PDF) ? statSync(FOOD_PDF).size : 0
 
 export default defineConfig({
-  plugins: [react(), devApiPlugin(), prerenderMetaPlugin()],
+  plugins: [react(), devApiPlugin(), prerenderMetaPlugin(), sitemapPlugin()],
   define: {
     'import.meta.env.FOOD_PDF_BYTES': JSON.stringify(FOOD_PDF_BYTES),
   },
