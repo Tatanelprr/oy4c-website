@@ -1,8 +1,24 @@
 import { proxyImageUrl } from './_lib/img.js'
 import { normalizeAuthor } from './_lib/author.js'
+import { sendJson, sendError, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
+const DATABASE_ID    = process.env.VITE_NOTION_DATABASE_ID
 const NOTION_VERSION = '2022-06-28'
+
+// Notion page ids: 32 hex digits, with or without the UUID dashes.
+const compactId = (value) => (typeof value === 'string' ? value.replace(/-/g, '').toLowerCase() : '')
+const isNotionId = (value) => /^[0-9a-f]{32}$/.test(compactId(value))
+
+// Only published articles of the Blog & Articles database are served: any
+// other page shared with the integration (drafts, team, partners) answers 404.
+function isPublishedArticle(page) {
+  return page.object === 'page'
+    && !page.archived && !page.in_trash
+    && page.parent?.type === 'database_id'
+    && compactId(page.parent.database_id) === compactId(DATABASE_ID)
+    && page.properties?.Published?.checkbox === true
+}
 
 function notionHeaders() {
   return {
@@ -47,7 +63,7 @@ async function fetchAllBlocks(blockId) {
     if (cursor) url.searchParams.set('start_cursor', cursor)
 
     const res = await fetch(url.toString(), { headers: notionHeaders() })
-    if (!res.ok) throw new Error(`Blocks fetch failed: ${res.status}`)
+    if (!res.ok) throw await notionErrorFrom(res)
 
     const data = await res.json()
     blocks.push(...data.results.map(proxyBlockImages))
@@ -59,27 +75,22 @@ async function fetchAllBlocks(blockId) {
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
-  res.setHeader('Pragma', 'no-cache')
 
   const { id } = req.query
-  if (!id) return res.status(400).json({ error: 'Missing id parameter' })
+  if (!isNotionId(id)) return sendError(res, 404, 'blog-post invalid id')
 
   try {
-    const [pageRes, blocks] = await Promise.all([
-      fetch(`https://api.notion.com/v1/pages/${id}`, { headers: notionHeaders() }),
-      fetchAllBlocks(id),
-    ])
-
-    if (!pageRes.ok) {
-      const err = await pageRes.json()
-      return res.status(pageRes.status).json({ error: 'Notion error', detail: err.message })
-    }
+    // Page first: its blocks are only fetched once it is a published article.
+    const pageRes = await fetch(`https://api.notion.com/v1/pages/${compactId(id)}`, { headers: notionHeaders() })
+    if (pageRes.status === 404 || pageRes.status === 400) return sendError(res, 404, 'blog-post not found')
+    if (!pageRes.ok) throw await notionErrorFrom(pageRes)
 
     const page = await pageRes.json()
-    res.status(200).json({ ...parsePageMeta(page), blocks })
+    if (!isPublishedArticle(page)) return sendError(res, 404, 'blog-post not a published article')
+
+    const blocks = await fetchAllBlocks(page.id)
+    sendJson(res, { ...parsePageMeta(page), blocks })
   } catch (err) {
-    console.error('blog-post handler error:', err.message)
-    res.status(500).json({ error: 'Internal error', detail: err.message })
+    sendHandlerError(res, 'blog-post handler error', err)
   }
 }

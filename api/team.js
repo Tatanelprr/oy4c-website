@@ -1,4 +1,5 @@
 import { proxyImageUrl } from './_lib/img.js'
+import { sendJson, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
 const TEAM_DB_ID     = process.env.VITE_NOTION_TEAM_DB_ID
@@ -41,10 +42,7 @@ async function fetchAllMembers() {
       `https://api.notion.com/v1/databases/${TEAM_DB_ID}/query`,
       { method: 'POST', headers: notionHeaders(), body: JSON.stringify(body) }
     )
-    if (!resp.ok) {
-      const err = await resp.json()
-      throw new Error(err.message ?? `Notion error ${resp.status}`)
-    }
+    if (!resp.ok) throw await notionErrorFrom(resp)
     const data = await resp.json()
     members.push(...data.results.map(parseMember))
     cursor = data.has_more ? data.next_cursor : undefined
@@ -54,8 +52,6 @@ async function fetchAllMembers() {
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
-  res.setHeader('Pragma', 'no-cache')
 
   try {
     const members = await fetchAllMembers()
@@ -84,9 +80,8 @@ export default async function handler(req, res) {
       }
     }
 
-    res.status(200).json(grouped)
+    sendJson(res, grouped)
   } catch (err) {
-    console.error('Team handler error:', err.message)
-    res.status(500).json({ error: 'Internal error', detail: err.message })
+    sendHandlerError(res, 'team handler error', err)
   }
 }

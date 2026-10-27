@@ -1,4 +1,5 @@
 import { proxyImageUrl } from './_lib/img.js'
+import { sendJson, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
 const PARTNERS_DB_ID = process.env.VITE_NOTION_PARTNERS_DB_ID
@@ -41,10 +42,7 @@ async function fetchActivePartners() {
       `https://api.notion.com/v1/databases/${PARTNERS_DB_ID}/query`,
       { method: 'POST', headers: notionHeaders(), body: JSON.stringify(body) }
     )
-    if (!resp.ok) {
-      const err = await resp.json()
-      throw new Error(err.message ?? `Notion error ${resp.status}`)
-    }
+    if (!resp.ok) throw await notionErrorFrom(resp)
     const data = await resp.json()
     items.push(...data.results.map(parsePartner))
     cursor = data.has_more ? data.next_cursor : undefined
@@ -54,17 +52,14 @@ async function fetchActivePartners() {
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
-  res.setHeader('Pragma', 'no-cache')
 
   try {
     const all = await fetchActivePartners()
-    res.status(200).json({
+    sendJson(res, {
       partners: all.filter((p) => p.category === 'Partner'),
       seenIn:   all.filter((p) => p.category === 'As Seen In'),
     })
   } catch (err) {
-    console.error('Partners handler error:', err.message)
-    res.status(500).json({ error: 'Internal error', detail: err.message })
+    sendHandlerError(res, 'partners handler error', err)
   }
 }

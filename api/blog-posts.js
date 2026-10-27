@@ -1,4 +1,5 @@
 import { proxyImageUrl } from './_lib/img.js'
+import { sendJson, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 import { normalizeAuthor } from './_lib/author.js'
 
 const NOTION_TOKEN = process.env.VITE_NOTION_TOKEN
@@ -31,8 +32,6 @@ function parseArticle(page) {
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
-  res.setHeader('Pragma', 'no-cache')
 
   try {
     const response = await fetch(
@@ -47,17 +46,12 @@ export default async function handler(req, res) {
       }
     )
 
-    if (!response.ok) {
-      const err = await response.json()
-      console.error('Notion API error:', err)
-      return res.status(502).json({ error: 'Notion API error', detail: err.message })
-    }
+    if (!response.ok) throw await notionErrorFrom(response)
 
     const data     = await response.json()
     const articles = data.results.map(parseArticle)
-    res.status(200).json(articles)
+    sendJson(res, articles)
   } catch (err) {
-    console.error('Handler error:', err.message)
-    res.status(500).json({ error: 'Internal error', detail: err.message })
+    sendHandlerError(res, 'blog-posts handler error', err)
   }
 }

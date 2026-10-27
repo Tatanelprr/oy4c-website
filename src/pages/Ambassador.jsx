@@ -63,7 +63,7 @@ export default function Ambassador() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`/api/ambassadors?t=${Date.now()}`)
+    fetch('/api/ambassadors')
       .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
       .then(setAmbassadors)
       .catch((err) => setError(err.message))

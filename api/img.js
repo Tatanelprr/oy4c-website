@@ -79,9 +79,10 @@ export default async function handler(req, res) {
     res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox")
     res.end(req.method === 'HEAD' ? undefined : body)
   } catch (err) {
+    // The reason stays in the server logs; the client only gets a generic 502.
     const reason = err.name === 'AbortError' ? 'Upstream timeout' : err.message
-    if (!(err instanceof UpstreamError) && err.name !== 'AbortError') console.error('img proxy error:', err.message)
-    sendError(res, 502, `Bad gateway: ${reason}`)
+    console.error('img proxy error:', reason)
+    sendError(res, 502, 'Bad gateway')
   } finally {
     clearTimeout(timer)
     controller.abort() // releases an unread upstream body after an early error

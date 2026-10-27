@@ -135,7 +135,7 @@ export default function Team() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`/api/team?t=${Date.now()}`)
+    fetch('/api/team')
       .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
       .then(setTeamData)
       .catch((err) => setError(err.message))

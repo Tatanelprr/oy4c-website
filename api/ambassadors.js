@@ -1,4 +1,5 @@
 import { proxyImageUrl } from './_lib/img.js'
+import { sendJson, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 
 const NOTION_TOKEN       = process.env.VITE_NOTION_TOKEN
 const AMBASSADORS_DB_ID  = process.env.VITE_NOTION_AMBASSADORS_DB_ID
@@ -29,8 +30,6 @@ function parseAmbassador(page) {
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
-  res.setHeader('Pragma', 'no-cache')
 
   try {
     const resp = await fetch(
@@ -42,17 +41,12 @@ export default async function handler(req, res) {
       }
     )
 
-    if (!resp.ok) {
-      const err = await resp.json()
-      console.error('Notion API error:', err)
-      return res.status(502).json({ error: 'Notion API error', detail: err.message })
-    }
+    if (!resp.ok) throw await notionErrorFrom(resp)
 
     const data = await resp.json()
     const ambassadors = data.results.map(parseAmbassador)
-    res.status(200).json(ambassadors)
+    sendJson(res, ambassadors)
   } catch (err) {
-    console.error('Ambassadors handler error:', err.message)
-    res.status(500).json({ error: 'Internal error', detail: err.message })
+    sendHandlerError(res, 'ambassadors handler error', err)
   }
 }
