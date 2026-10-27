@@ -1,8 +1,84 @@
 {
   "rewrites": [
     {
-      "source": "/((?!api/)(?!.*\\.(?:jpg|jpeg|png|webp|svg|pdf|json|js|css|woff2|txt|xml|ico)$).*)",
-      "destination": "/"
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/index.html"
+    },
+    {
+      "source": "/team",
+      "destination": "/team/index.html"
+    },
+    {
+      "source": "/curriculum",
+      "destination": "/curriculum/index.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services/index.html"
+    },
+    {
+      "source": "/ccic",
+      "destination": "/ccic/index.html"
+    },
+    {
+      "source": "/ambassador",
+      "destination": "/ambassador/index.html"
+    },
+    {
+      "source": "/last-push",
+      "destination": "/last-push/index.html"
+    },
+    {
+      "source": "/impact",
+      "destination": "/impact/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/partnerships",
+      "destination": "/partnerships/index.html"
+    },
+    {
+      "source": "/speaker",
+      "destination": "/speaker/index.html"
+    },
+    {
+      "source": "/consultancy",
+      "destination": "/consultancy/index.html"
+    },
+    {
+      "source": "/takeaction",
+      "destination": "/takeaction/index.html"
+    },
+    {
+      "source": "/legal",
+      "destination": "/legal/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy/index.html"
+    },
+    {
+      "source": "/cookies",
+      "destination": "/cookies/index.html"
+    },
+    {
+      "source": "/blog/:id([0-9a-fA-F-]{32,36})",
+      "destination": "/blog-post.html"
+    },
+    {
+      "source": "/partner",
+      "destination": "/index.html"
     }
   ]
 }

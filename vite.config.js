@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'fs'
 import { resolve, dirname } from 'path'
-import { PAGE_META, SITE_URL } from './src/data/pageMeta.js'
+import { PAGE_META, SITE_URL, NOT_FOUND_META, BLOG_POST_LOADING_META } from './src/data/pageMeta.js'
 
 function loadEnvFile(path) {
   if (!existsSync(path)) return
@@ -76,19 +76,34 @@ export function renderMeta(html, { title, description, path, noindex }) {
 // After the build, writes dist/<route>/index.html for every route in
 // PAGE_META, so each page has its own title, description and canonical before
 // any JavaScript runs (no flash of the home title, and crawlers that do not run
-// JavaScript see the right values).
+// JavaScript see the right values). Also writes:
+// - dist/blog-post.html: template for /blog/:id (generic blog meta, no canonical);
+// - dist/404.html: served by Vercel with a real 404 status for any URL that no
+//   rewrite in vercel.json matches; the app then renders the NotFound page.
+// The build fails if a route of PAGE_META has no rewrite in vercel.json, since
+// that route would then answer 404 in production.
 function prerenderMetaPlugin() {
   return {
     name: 'prerender-route-meta',
     apply: 'build',
     closeBundle() {
-      const dist = resolve(process.cwd(), 'dist')
+      const root = process.cwd()
+      const dist = resolve(root, 'dist')
       const template = readFileSync(resolve(dist, 'index.html'), 'utf-8')
-      for (const meta of Object.values(PAGE_META)) {
-        const file = meta.path === '/' ? resolve(dist, 'index.html') : resolve(dist, `.${meta.path}/index.html`)
+      const write = (file, meta) => {
         mkdirSync(dirname(file), { recursive: true })
         writeFileSync(file, renderMeta(template, meta))
       }
+      for (const meta of Object.values(PAGE_META)) {
+        write(meta.path === '/' ? resolve(dist, 'index.html') : resolve(dist, `.${meta.path}/index.html`), meta)
+      }
+      write(resolve(dist, 'blog-post.html'), BLOG_POST_LOADING_META)
+      write(resolve(dist, '404.html'), NOT_FOUND_META)
+
+      const { rewrites = [] } = JSON.parse(readFileSync(resolve(root, 'vercel.json'), 'utf-8'))
+      const sources = new Set(rewrites.map((r) => r.source))
+      const missing = Object.keys(PAGE_META).filter((p) => !sources.has(p))
+      if (missing.length) throw new Error(`vercel.json has no rewrite for: ${missing.join(', ')}`)
     },
   }
 }
