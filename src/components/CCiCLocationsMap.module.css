@@ -59,9 +59,9 @@
   text-align: center;
 }
 .loadBtn {
-  border: 1.5px solid var(--green);
+  border: 1.5px solid var(--green-dark);
   background: transparent;
-  color: var(--green-dark);
+  color: var(--black);
   border-radius: var(--pill-radius);
   padding: 10px 22px;
   font-size: 0.9rem;
@@ -71,11 +71,7 @@
 }
 .loadBtn:hover {
   background: var(--green);
-  color: var(--white);
-}
-.loadBtn:focus-visible {
-  outline: 3px solid var(--teal);
-  outline-offset: 2px;
+  color: var(--black);
 }
 .notice {
   font-size: 0.75rem;
@@ -86,5 +82,5 @@
 }
 .notice a {
   text-decoration: underline;
-  color: var(--green-dark);
+  color: var(--black);
 }

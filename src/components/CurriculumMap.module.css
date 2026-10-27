@@ -12,9 +12,13 @@
 .pin { cursor: pointer; outline: none; }
 .dot { fill: var(--green-dark); stroke: var(--white); }
 .dotCase { fill: var(--purple); stroke: var(--white); }
+/* Keyboard focus: thick black ring, constant on screen whatever the map scale
+   (an outline is not reliably drawn on SVG groups). */
 .pin:focus-visible .dot,
 .pin:focus-visible .dotCase {
   stroke: var(--black);
+  stroke-width: 3px;
+  vector-effect: non-scaling-stroke;
 }
 
 /* Floating card above (or below) the active pin */

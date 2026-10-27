@@ -55,8 +55,11 @@
   bottom: 12px;
   z-index: 3;
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.85);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  color: var(--white);
+  /* Dark pill: the credit sits on photos that can be light (3.5:1 without it). */
+  background: rgba(0,0,0,0.65);
+  padding: 2px 8px;
+  border-radius: var(--pill-radius);
 }
 .slideshowDots {
   position: absolute;
@@ -106,7 +109,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--black);
   background: rgba(111, 184, 211, 0.15);
   padding: 6px 16px;
   border-radius: var(--pill-radius);
@@ -122,7 +125,7 @@
 }
 .heroContent h1 em {
   font-style: normal;
-  color: var(--teal);
+  color: var(--teal-dark);
   font-weight: 400;
   font-family: var(--font-serif);
   display: block;
@@ -137,7 +140,7 @@
   margin-bottom: 44px;
 }
 .heroBtns { display: flex; gap: 14px; flex-wrap: wrap; }
-.heroBtns :global(.btn-pill-primary) { background: var(--green); color: var(--white); }
+.heroBtns :global(.btn-pill-primary) { background: var(--green); color: var(--black); }
 .heroBtns :global(.btn-pill-outline) { border: 1.5px solid var(--black); color: var(--black); }
 
 /* IMPACT + METRICS */
@@ -173,7 +176,7 @@
   padding: 12px 26px;
   border-radius: var(--pill-radius);
   background: var(--teal);
-  color: var(--white);
+  color: var(--black);
   font-weight: 600;
   font-size: 0.88rem;
   transition: opacity 0.2s;
@@ -192,7 +195,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--black);
   margin-bottom: 36px;
   padding-top: 52px;
 }
@@ -223,7 +226,7 @@
 /* ANNOUNCEMENT BAR */
 .announcementBar {
   background: var(--teal);
-  color: var(--white);
+  color: var(--black);
   overflow: hidden;
   white-space: nowrap;
   padding: 16px 0;
@@ -236,13 +239,13 @@
   animation: marqueeAnim 30s linear infinite;
 }
 .marqueeInner a {
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
   padding: 0 2.5rem;
   transition: opacity 0.2s;
 }
 .marqueeInner a:hover { opacity: 0.75; }
-.sep { opacity: 0.5; padding: 0 0.5rem; }
+.sep { padding: 0 0.5rem; }
 @keyframes marqueeAnim {
   from { transform: translateX(0); }
   to { transform: translateX(-33.333%); }
@@ -273,7 +276,7 @@
   transition: all 0.2s;
   color: var(--black);
 }
-.pillar:hover { background: var(--teal); color: var(--white); }
+.pillar:hover { background: var(--teal); color: var(--black); }
 /* PART 1 — header (logo OR icon + title), même hauteur sur les deux cartes */
 .pillarHead {
   display: flex;
@@ -296,7 +299,7 @@
   object-fit: contain;
   flex-shrink: 0;
 }
-.pillar:hover .pillarIcon { color: var(--white); }
+.pillar:hover .pillarIcon { color: var(--black); }
 .pillarTitle { font-size: 1rem; font-weight: 600; }
 /* PART 2 — description */
 .pillarDesc { font-size: 0.82rem; line-height: 1.55; opacity: 0.7; }
@@ -304,17 +307,17 @@
 .pillarArrow {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--green);
+  color: var(--black);
   white-space: nowrap;
   margin-top: auto;
 }
-.pillar:hover .pillarArrow { color: var(--white); }
+.pillar:hover .pillarArrow { color: var(--black); }
 
 /* PATHS */
 .paths { background: var(--green); padding: 80px 5vw; }
 .pathsHead { text-align: center; margin-bottom: 52px; }
-.pathsHead .section-eyebrow { color: var(--white); opacity: 0.75; }
-.pathsHead h2 { color: var(--white); }
+.pathsHead .section-eyebrow { color: var(--black); }
+.pathsHead h2 { color: var(--black); }
 .pathsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -331,7 +334,7 @@
   flex-direction: column;
   overflow: hidden;
   transition: background 0.2s;
-  color: var(--white);
+  color: var(--black);
 }
 .pathCard:hover { background: rgba(255,255,255,0.15); }
 .pathImg {
@@ -355,7 +358,7 @@
   width: 32px; height: 32px;
 }
 .pathWho { font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
-.pathDesc { font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 20px; }
+.pathDesc { font-size: 0.8rem; color: rgba(0,0,0,0.75); line-height: 1.6; margin-bottom: 20px; }
 .pathCta {
   display: inline-block;
   align-self: flex-start;
@@ -407,11 +410,11 @@
   border-radius: var(--pill-radius);
   font-size: 0.8rem;
   font-weight: 600;
-  border: 1.5px solid var(--teal);
-  color: var(--teal);
+  border: 1.5px solid var(--black);
+  color: var(--black);
   transition: all 0.2s;
 }
-.btnOutlineDark:hover { background: var(--teal); color: var(--white); }
+.btnOutlineDark:hover { background: var(--teal); color: var(--black); }
 .newsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -466,7 +469,7 @@
 .newsCardSmall .newsBody { padding: 0; }
 .newsTag {
   font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--teal); margin-bottom: 8px; display: block;
+  letter-spacing: 0.1em; color: var(--black); margin-bottom: 8px; display: block;
 }
 .newsTitle, .newsExcerpt {
   display: -webkit-box; -webkit-box-orient: vertical;
@@ -475,7 +478,7 @@
 .newsTitle { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
 .newsCardFeatured .newsTitle { font-size: 1.15rem; }
 .newsExcerpt { font-size: 0.83rem; color: var(--mid); line-height: 1.6; margin-bottom: 12px; }
-.newsDate { font-size: 0.75rem; color: var(--mid); opacity: 0.7; margin-bottom: 10px; }
+.newsDate { font-size: 0.75rem; color: var(--mid); margin-bottom: 10px; }
 .newsRead {
   font-size: 0.78rem; font-weight: 600; color: var(--dark);
   border-bottom: 1.5px solid var(--dark);
@@ -513,8 +516,8 @@
 .partnersViewAllLink {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--teal);
-  border-bottom: 1.5px solid var(--teal);
+  color: var(--black);
+  border-bottom: 1.5px solid var(--black);
   padding-bottom: 2px;
   transition: opacity 0.2s;
 }
@@ -538,7 +541,7 @@
   display: block;
 }
 .highlight {
-  color: var(--teal);
+  color: var(--teal-dark);
   font-weight: 700;
 }
 .testimonialGrid {
@@ -631,7 +634,6 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mid);
-  opacity: 0.5;
   margin-bottom: 28px;
 }
 .seenInTrack { overflow: hidden; }

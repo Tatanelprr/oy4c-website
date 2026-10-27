@@ -400,8 +400,8 @@ export default function Home() {
       {/* VISITOR PATHS */}
       <section className={styles.paths}>
         <div className={styles.pathsHead}>
-          <span className="section-eyebrow" style={{ color: 'var(--white)' }}>Find your way in</span>
-          <h2 className="section-title" style={{ color: 'var(--white)' }}>What brings you here?</h2>
+          <span className="section-eyebrow" style={{ color: 'var(--black)' }}>Find your way in</span>
+          <h2 className="section-title" style={{ color: 'var(--black)' }}>What brings you here?</h2>
         </div>
         <div className={styles.pathsGrid} ref={pathsRef} onScroll={handlePathsScroll}>
           {PATHS.map((p) => (

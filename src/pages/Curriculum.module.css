@@ -71,14 +71,6 @@
   padding: 18px 40px;
   font-size: 1.05rem;
 }
-.btnPrimary:focus-visible,
-.btnOutline:focus-visible,
-.journeyBtn:focus-visible,
-.topicsSummary:focus-visible,
-.faqQ:focus-visible {
-  outline: 3px solid var(--teal);
-  outline-offset: 3px;
-}
 
 /* JOURNEY (simple overview) */
 .journey {

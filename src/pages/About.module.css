@@ -54,7 +54,7 @@
 .numberNum {
   font-size: 2.2rem;
   font-weight: 700;
-  color: var(--green);
+  color: var(--green-dark);
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -233,13 +233,13 @@
 .statNum {
   font-size: 3rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
   line-height: 1;
   margin-bottom: 8px;
 }
 .statLbl {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.75);
+  color: rgba(0,0,0,0.75);
 }
 .stat {
   background: rgba(255,255,255,0.15);
@@ -310,7 +310,7 @@
 .onwardArrow {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--teal);
+  color: var(--black);
 }
 
 @media (max-width: 900px) {

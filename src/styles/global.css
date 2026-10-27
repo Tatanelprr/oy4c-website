@@ -8,6 +8,9 @@
   --green:       #4db748;
   --green-dark:  #279c75;
   --teal:        #6fb8d3;
+  /* Darker teal already used by the blog covers: 4.65:1 on white, for teal
+     text on white (and large text on light tints). Not a new palette colour. */
+  --teal-dark:   #2f7d99;
   --lavender:    #c5b7de;
   --purple:      #8665b1;
   --cream:       #edf3ec;
@@ -32,6 +35,14 @@ h1, h2, h3 {
 
 a { text-decoration: none; color: inherit; }
 
+/* Keyboard focus, visible on any background: a black outline with a white
+   ring underneath (box-shadow fills the outline offset). */
+:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--white);
+}
+
 .btn-pill {
   display: inline-block;
   padding: 13px 28px;
@@ -43,8 +54,9 @@ a { text-decoration: none; color: inherit; }
   font-family: 'DM Sans', 'Poppins', sans-serif;
   border: none;
 }
-.btn-pill-primary { background: var(--green); color: var(--white); }
-.btn-pill-primary:hover { background: var(--teal); }
+/* Text on --green and --teal is black: white only reaches 2.6:1 and 2.2:1 (WCAG AA needs 4.5:1). */
+.btn-pill-primary { background: var(--green); color: var(--black); }
+.btn-pill-primary:hover { background: var(--teal); color: var(--black); }
 .btn-pill-outline { border: 1.5px solid rgba(255,255,255,0.5); color: var(--white); background: transparent; }
 .btn-pill-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
 
@@ -55,7 +67,7 @@ a { text-decoration: none; color: inherit; }
   text-transform: uppercase;
   display: block;
   margin-bottom: 14px;
-  color: var(--teal);
+  color: var(--black); /* teal is 2.2:1 on white, 2:1 on cream */
 }
 
 .section-title {

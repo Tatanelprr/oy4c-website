@@ -114,11 +114,6 @@
   color: var(--black);
   text-decoration: underline;
 }
-.cardLink:focus-visible,
-.reach :global(.btn-pill-primary):focus-visible {
-  outline: 3px solid var(--teal);
-  outline-offset: 3px;
-}
 
 /* REACH OUT (same band as the Curriculum CTA) */
 .reach {

@@ -91,7 +91,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--green);
+  color: var(--black);
 }
 .contactTitle {
   font-size: 1.1rem;
@@ -109,7 +109,7 @@
   gap: 8px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--teal);
+  color: var(--black);
   text-decoration: none;
   transition: opacity 0.2s;
   margin-top: auto;
@@ -152,7 +152,7 @@
   transition: all 0.2s;
   border: 1px solid rgba(0,0,0,0.06);
 }
-.socialLink:hover { background: var(--teal); color: var(--white); }
+.socialLink:hover { background: var(--teal); color: var(--black); }
 
 @media (max-width: 768px) {
   .contactsGrid { grid-template-columns: 1fr; }

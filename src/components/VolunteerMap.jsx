@@ -98,6 +98,7 @@ export default function VolunteerMap() {
                   fill={isActive ? '#4db748' : '#d6e8d5'}
                   stroke="#ffffff"
                   strokeWidth={0.4}
+                  tabIndex={-1}
                   style={{
                     default: { outline: 'none' },
                     hover:   {

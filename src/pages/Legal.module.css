@@ -54,8 +54,8 @@
 .doc p { margin-bottom: 14px; }
 .doc ul { margin: 0 0 14px 20px; }
 .doc li { margin-bottom: 8px; }
-.doc a { color: var(--green-dark); text-decoration: underline; }
-.doc a:hover { color: var(--green); }
+.doc a { color: var(--black); text-decoration: underline; }
+.doc a:hover { color: var(--black); }
 .doc strong { color: var(--black); }
 
 /* [À COMPLÉTER] markers, so they are impossible to miss before publishing */

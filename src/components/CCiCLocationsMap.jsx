@@ -63,6 +63,7 @@ export default function CCiCLocationsMap({ src, title }) {
                   fill="#d6e8d5"
                   stroke="#ffffff"
                   strokeWidth={0.4}
+                  tabIndex={-1}
                   style={{
                     default: { outline: 'none' },
                     hover:   { fill: '#d6e8d5', outline: 'none' },

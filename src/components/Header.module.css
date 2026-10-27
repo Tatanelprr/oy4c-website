@@ -94,7 +94,13 @@
 .links li a:hover,
 .dropLabel:hover { background: var(--cream); }
 
-.active { color: var(--teal) !important; }
+/* Current page: underlined (teal text was 2.2:1 on white). */
+.active {
+  color: var(--black) !important;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
 
 .dropdown { position: relative; }
 
@@ -134,13 +140,13 @@
 
 .cta {
   background: var(--green) !important;
-  color: var(--white) !important;
+  color: var(--black) !important;
   padding: 9px 20px !important;
   border-radius: var(--pill-radius) !important;
   font-weight: 600 !important;
   font-size: 0.82rem;
 }
-.cta:hover { background: var(--teal) !important; color: var(--white) !important; }
+.cta:hover { background: var(--teal) !important; color: var(--black) !important; }
 
 .burger {
   display: none;
@@ -185,7 +191,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--black);
   margin-top: 16px;
   margin-bottom: 4px;
 }

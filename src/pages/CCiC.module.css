@@ -35,7 +35,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--black);
   background: rgba(111, 184, 211, 0.15);
   padding: 6px 16px;
   border-radius: var(--pill-radius);
@@ -55,7 +55,7 @@
   display: block;
   font-size: 15.3cqi;
   font-style: normal;
-  color: var(--teal);
+  color: var(--teal-dark);
   font-weight: 400;
   font-family: var(--font-serif);
   letter-spacing: -0.01em;
@@ -97,7 +97,7 @@
   padding: 13px 28px;
   border-radius: var(--pill-radius);
   background: var(--green);
-  color: var(--white);
+  color: var(--black);
   font-weight: 600;
   font-size: 0.88rem;
   transition: opacity 0.2s;
@@ -237,7 +237,7 @@
   justify-content: center;
   font-weight: 700;
   font-size: 1rem;
-  color: var(--white);
+  color: var(--black);
   margin-bottom: 6px;
 }
 .stageNumTeal  { background: var(--teal); }
@@ -287,13 +287,13 @@
 .tjQuestion::before {
   content: '→';
   margin: 0 6px;
-  color: var(--teal);
+  color: var(--black);
 }
 .tjQuestion {
   font-size: 0.68rem;
   font-weight: 700;
   font-style: italic;
-  color: var(--teal);
+  color: var(--black);
 }
 .scrollHint {
   display: none;
@@ -336,7 +336,7 @@
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: var(--teal);
+  color: var(--black);
   margin-bottom: 10px;
 }
 .stopHead {
@@ -356,7 +356,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--green);
+  color: var(--black);
   border: 1px solid var(--green);
   border-radius: var(--pill-radius);
   padding: 3px 10px;
@@ -519,7 +519,7 @@
 .insightNum {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--lavender);
+  color: var(--purple);
   line-height: 1;
   margin-bottom: 12px;
 }
@@ -546,7 +546,7 @@
   text-align: center;
 }
 .impactInner h2 {
-  color: var(--white);
+  color: var(--black);
   margin-bottom: 52px;
 }
 .impactDateline {
@@ -554,7 +554,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: rgba(0,0,0,0.75);
   margin-top: -32px;
   margin-bottom: 32px;
 }
@@ -573,24 +573,24 @@
 .impactStatNum {
   font-size: 2.8rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
   line-height: 1;
   margin-bottom: 8px;
 }
 .impactStatLbl {
   font-size: 0.82rem;
-  color: var(--white);
+  color: var(--black);
 }
 .impactFootnote {
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.9);
+  color: rgba(0,0,0,0.85);
   margin-bottom: 44px;
 }
 .impactRating {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
   margin-top: 24px;
 }
 .impactQuote {
@@ -601,13 +601,13 @@
   font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.5;
-  color: var(--white);
+  color: var(--black);
   margin: 0 0 14px;
 }
 .impactQuote figcaption {
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.75);
 }
 .sdgs {
   margin-top: 36px;
@@ -622,7 +622,7 @@
   padding: 5px 12px;
   font-size: 0.7rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.8);
 }
 
 /* OPEN RESOURCE */
@@ -677,7 +677,7 @@
   cursor: pointer;
   border-radius: var(--pill-radius);
   background: var(--green);
-  color: var(--white);
+  color: var(--black);
   font-weight: 600;
   font-size: 0.88rem;
   font-family: inherit;
@@ -725,7 +725,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--green-dark);
+  color: var(--black);
   margin-bottom: 14px;
 }
 .reportBullets {
@@ -779,9 +779,8 @@
   background: var(--white);
   color: var(--black);
 }
-.gateInput::placeholder { color: #999; }
+.gateInput::placeholder { color: var(--mid); }
 .gateInput:focus {
-  outline: none;
   border-color: var(--green);
 }
 
@@ -861,7 +860,7 @@
   padding: 13px 28px;
   border-radius: var(--pill-radius);
   background: var(--teal);
-  color: var(--white);
+  color: var(--black);
   font-weight: 600;
   font-size: 0.88rem;
   transition: opacity 0.2s;
@@ -953,7 +952,7 @@
   padding: 13px 28px;
   border-radius: var(--pill-radius);
   background: var(--green);
-  color: var(--white);
+  color: var(--black);
   font-weight: 600;
   font-size: 0.88rem;
   transition: opacity 0.2s;
@@ -977,7 +976,7 @@
   max-width: 500px;
 }
 .ctaPartner a {
-  color: var(--green-dark);
+  color: var(--black);
   font-weight: 600;
   text-decoration: underline;
 }

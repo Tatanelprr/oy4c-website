@@ -82,18 +82,18 @@
   text-transform: capitalize;
 }
 .filterBtn:hover {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--black);
+  color: var(--black);
 }
 .filterBtnActive {
   background: var(--green);
   border-color: var(--green);
-  color: var(--white);
+  color: var(--black);
 }
 .filterBtnActive:hover {
   background: var(--green-dark);
   border-color: var(--green-dark);
-  color: var(--white);
+  color: var(--black);
 }
 
 /* GRID */
@@ -161,7 +161,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--teal);
+  color: var(--black);
   background: #e0f3f8;
   padding: 4px 12px;
   border-radius: var(--pill-radius);
@@ -262,8 +262,8 @@
   padding-bottom: 1px;
 }
 .contributeLink:hover {
-  color: var(--teal);
-  border-bottom-color: var(--teal);
+  color: var(--black);
+  border-bottom-color: var(--black);
 }
 
 /* RESPONSIVE */

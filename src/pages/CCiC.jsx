@@ -255,8 +255,8 @@ export default function CCiC() {
       {/* IMPACT */}
       <section className={styles.impact}>
         <div className={styles.impactInner}>
-          <span className="section-eyebrow" style={{ color: 'rgba(255,255,255,0.75)' }}>Impact</span>
-          <h2 className="section-title" style={{ color: 'var(--white)' }}>The numbers, so far</h2>
+          <span className="section-eyebrow" style={{ color: 'rgba(0,0,0,0.75)' }}>Impact</span>
+          <h2 className="section-title" style={{ color: 'var(--black)' }}>The numbers, so far</h2>
           <div className={styles.impactDateline}>February–April 2026</div>
           <div className={styles.impactGrid}>
             {[

@@ -10,7 +10,7 @@
   padding: 24px 10vw 0;
   transition: color 0.18s;
 }
-.back:hover { color: var(--teal); }
+.back:hover { color: var(--black); }
 
 /* HERO */
 .hero {
@@ -37,7 +37,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--teal);
+  color: var(--black);
   background: #e0f3f8;
   padding: 4px 12px;
   border-radius: var(--pill-radius);
