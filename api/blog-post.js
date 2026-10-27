@@ -1,4 +1,5 @@
 import { proxyImageUrl } from './_lib/img.js'
+import { normalizeAuthor } from './_lib/author.js'
 
 const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
 const NOTION_VERSION = '2022-06-28'
@@ -20,7 +21,7 @@ function parsePageMeta(page) {
     title:   getTitle(p.Title ?? p.Name),
     excerpt: getRichText(p.Excerpt ?? p.Description ?? p.Summary),
     date:    p.Date?.date?.start ?? page.created_time,
-    author:  getRichText(p.Author) || p.Author?.people?.[0]?.name || '',
+    author:  normalizeAuthor(getRichText(p.Author) || p.Author?.people?.[0]?.name),
     tags:    p.Tags?.multi_select?.map((t) => t.name) ?? [],
     image:   proxyImageUrl(p.Image?.url ?? page.cover?.external?.url ?? page.cover?.file?.url ?? null),
   }
