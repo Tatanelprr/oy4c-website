@@ -16,7 +16,7 @@ export default function Privacy() {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>Your data</span>
           <h1>Privacy Policy</h1>
-          <p className={styles.updated}>Last updated: 16 October 2026</p>
+          <p className={styles.updated}>Last updated: 27 October 2026</p>
         </div>
       </header>
 
@@ -30,11 +30,13 @@ export default function Privacy() {
 
         <div className={styles.callout}>
           <strong>In short:</strong> this website does not set any cookies of its
-          own, does not use analytics, advertising or tracking, and has no contact
-          form or user accounts. The only personal data involved is your server log
+          own, does not use analytics, advertising or tracking, and has no user
+          accounts. The only personal data involved is your server log
           data, plus data you actively choose to share (by emailing us, or by using
           the external Google Form / donation links).
         </div>
+        {/* TODO: the CCiC page has two forms (report request, waitlist). Describe
+            them here once their handling is decided: sentence to be provided. */}
 
         <h2>1. Who is responsible for your data</h2>
         <p>
@@ -63,7 +65,7 @@ export default function Privacy() {
         <p>
           On the CCiC page, a “CCiC around the world” map from Google Maps is{' '}
           <strong>not loaded by default</strong>. It only loads if you explicitly
-          click “Click to load the map”. When you do, Google receives your IP
+          click “Load the interactive Google map”. When you do, Google receives your IP
           address and may set cookies.
         </p>
         <ul>

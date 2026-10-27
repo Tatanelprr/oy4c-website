@@ -14,7 +14,7 @@ export default function Cookies() {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>Cookies</span>
           <h1>Cookies Policy</h1>
-          <p className={styles.updated}>Last updated: 16 October 2026</p>
+          <p className={styles.updated}>Last updated: 27 October 2026</p>
         </div>
       </header>
 
@@ -55,7 +55,7 @@ export default function Cookies() {
           <tbody>
             <tr>
               <td>Google Maps</td>
-              <td>Only after you click “Click to load the map” on the CCiC page</td>
+              <td>Only after you click “Load the interactive Google map” on the CCiC page</td>
               <td>Display an interactive map of where CCiC has taken place</td>
               <td>Third-party cookies set by Google; possible US transfer</td>
             </tr>
