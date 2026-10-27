@@ -4,7 +4,7 @@ import {
   School, Briefcase, Handshake, Sprout,
   Newspaper, GraduationCap, ChevronLeft, ChevronRight
 } from 'lucide-react'
-import { fetchBlogPosts } from '../lib/notion'
+import { fetchBlogPosts, formatPostDate } from '../lib/notion'
 import styles from './Home.module.css'
 import VolunteerMap from '../components/VolunteerMap'
 
@@ -210,7 +210,6 @@ export default function Home() {
   }, [])
 
   const [featuredPost, ...otherPosts] = latestPosts
-  const formatDate = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
 
   return (
     <>
@@ -441,23 +440,24 @@ export default function Home() {
             <Link to={`/blog/${featuredPost.id}`} className={styles.newsCardFeatured}>
               <div
                 className={styles.newsImgFeatured}
-                style={featuredPost.image ? { backgroundImage: `url('${featuredPost.image}')` } : undefined}
+                // Fallback photo layered underneath, so a failed image never leaves an empty block
+                style={featuredPost.image ? { backgroundImage: `url('${featuredPost.image}'), url('/news/news-fallback-congo.webp')` } : undefined}
               />
               <div className={styles.newsBody}>
                 <span className={styles.newsTag}>Blog · Latest</span>
                 <div className={styles.newsTitle}>{featuredPost.title}</div>
-                {featuredPost.excerpt && <div className={styles.newsExcerpt}>{featuredPost.excerpt}</div>}
+                {featuredPost.excerpt?.trim() && <div className={styles.newsExcerpt}>{featuredPost.excerpt}</div>}
                 <span className={styles.newsRead}>Read more →</span>
               </div>
             </Link>
             {otherPosts.length > 0 && <div className={styles.newsCol}>
               {otherPosts.map((post) => (
                 <Link key={post.id} to={`/blog/${post.id}`} className={styles.newsCardSmall}>
-                  <div className={styles.newsCardSmallIcon}><Newspaper /></div>
+                  <div className={styles.newsCardSmallIcon}><Newspaper aria-hidden="true" /></div>
                   <div className={styles.newsBody}>
-                    <span className={styles.newsTag}>{post.tags[0] ?? 'Blog'}</span>
+                    <span className={styles.newsTag}>{post.tags?.[0] ?? 'Blog'}</span>
                     <div className={styles.newsTitle}>{post.title}</div>
-                    {post.date && <div className={styles.newsDate}>{formatDate(post.date)}</div>}
+                    {formatPostDate(post.date) && <div className={styles.newsDate}>{formatPostDate(post.date)}</div>}
                     <span className={styles.newsRead}>Read more →</span>
                   </div>
                 </Link>

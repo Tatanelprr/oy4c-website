@@ -132,6 +132,18 @@
 .card:hover .cardImg img {
   transform: scale(1.04);
 }
+/* Placeholder cover (no image): same box as .cardImg, soft tint + icon */
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover svg { transition: transform 0.35s ease; }
+.card:hover .cover svg { transform: scale(1.08); }
+.cover_lavender { background: color-mix(in srgb, var(--lavender) 35%, var(--white)); color: var(--purple); }
+.cover_teal     { background: color-mix(in srgb, var(--teal) 25%, var(--white));     color: #2f7d99; }
+.cover_cream    { background: color-mix(in srgb, var(--cream) 85%, var(--green-dark)); color: var(--green-dark); }
+.cover_green    { background: color-mix(in srgb, var(--green) 18%, var(--white));    color: var(--green-dark); }
 .cardBody {
   padding: 28px;
   display: flex;
@@ -159,19 +171,31 @@
   font-weight: 700;
   color: var(--black);
   line-height: 1.35;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 .cardExcerpt {
   font-size: 0.85rem;
   color: var(--mid);
   line-height: 1.7;
-  flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 }
+/* Pushed to the bottom so dates line up across a row, whatever sits above */
 .cardMeta {
   display: flex;
   align-items: center;
   gap: 18px;
   flex-wrap: wrap;
-  margin-top: 4px;
+  margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }

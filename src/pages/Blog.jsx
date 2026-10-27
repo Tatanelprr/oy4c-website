@@ -1,47 +1,76 @@
 import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Calendar, User, Tag, Mail, Loader } from 'lucide-react'
-import { fetchBlogPosts } from '../lib/notion'
+import { Calendar, User, Tag, Mail, Loader, Newspaper, Leaf } from 'lucide-react'
+import { fetchBlogPosts, formatPostDate } from '../lib/notion'
 import styles from './Blog.module.css'
 
+// Placeholder cover for posts without an image: soft tint + icon, picked
+// from the post id so each card keeps the same look between visits.
+const COVER_TINTS = ['lavender', 'teal', 'cream', 'green']
+const COVER_ICONS = [Newspaper, Leaf]
+
+// FNV-1a: well spread even for ids that differ by a character or two
+function hashId(id = '') {
+  let h = 0x811c9dc5
+  for (let i = 0; i < id.length; i++) {
+    h ^= id.charCodeAt(i)
+    h = Math.imul(h, 0x01000193)
+  }
+  return h >>> 0
+}
+
+function CoverPlaceholder({ id }) {
+  const h = hashId(id)
+  const Icon = COVER_ICONS[(h >>> 8) % COVER_ICONS.length]
+  return (
+    <div className={`${styles.cardImg} ${styles.cover} ${styles[`cover_${COVER_TINTS[h % COVER_TINTS.length]}`]}`}>
+      <Icon size={40} strokeWidth={1.5} aria-hidden="true" />
+    </div>
+  )
+}
+
 function ArticleCard({ article }) {
+  const [imgFailed, setImgFailed] = useState(false)
+  const tags = article.tags ?? []
+  const author = article.author?.trim()
+  const date = formatPostDate(article.date)
   return (
     <Link to={`/blog/${article.id}`} className={styles.card}>
-      {article.image && (
+      {article.image && !imgFailed ? (
         <div className={styles.cardImg}>
-          <img src={article.image} alt={article.title} />
+          <img src={article.image} alt={article.title} onError={() => setImgFailed(true)} />
         </div>
+      ) : (
+        <CoverPlaceholder id={article.id} />
       )}
       <div className={styles.cardBody}>
-        {article.tags.length > 0 && (
+        {tags.length > 0 && (
           <div className={styles.cardTags}>
-            {article.tags.map((tag) => (
+            {tags.map((tag) => (
               <span key={tag} className={styles.tag}>{tag}</span>
             ))}
           </div>
         )}
         <h2 className={styles.cardTitle}>{article.title}</h2>
-        {article.excerpt && (
+        {article.excerpt?.trim() && (
           <p className={styles.cardExcerpt}>{article.excerpt}</p>
         )}
-        <div className={styles.cardMeta}>
-          {article.date && (
-            <span className={styles.metaItem}>
-              <Calendar size={13} />
-              {new Date(article.date).toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
-            </span>
-          )}
-          {article.author && (
-            <span className={styles.metaItem}>
-              <User size={13} />
-              {article.author}
-            </span>
-          )}
-        </div>
+        {(date || author) && (
+          <div className={styles.cardMeta}>
+            {date && (
+              <span className={styles.metaItem}>
+                <Calendar size={13} aria-hidden="true" />
+                {date}
+              </span>
+            )}
+            {author && (
+              <span className={styles.metaItem}>
+                <User size={13} aria-hidden="true" />
+                {author}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </Link>
   )
@@ -61,14 +90,14 @@ export default function Blog() {
   }, [])
 
   const tags = useMemo(
-    () => ['all', ...Array.from(new Set(articles.flatMap((a) => a.tags)))],
+    () => ['all', ...Array.from(new Set(articles.flatMap((a) => a.tags ?? [])))],
     [articles]
   )
 
   const filtered =
     activeTag === 'all'
       ? articles
-      : articles.filter((a) => a.tags.includes(activeTag))
+      : articles.filter((a) => (a.tags ?? []).includes(activeTag))
 
   return (
     <>

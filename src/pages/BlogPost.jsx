@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Calendar, User, Loader } from 'lucide-react'
-import { fetchBlogPost } from '../lib/notion'
+import { fetchBlogPost, formatPostDate } from '../lib/notion'
 import styles from './BlogPost.module.css'
 
 // ── Rich text ──────────────────────────────────────────────────────────────
@@ -155,6 +155,8 @@ export default function BlogPost() {
   const [post, setPost] = useState(null)
   // Track error per-id so stale errors don't leak to new navigation
   const [fetchError, setFetchError] = useState({ id: null, msg: null })
+  // Hero image that failed to load (by src), so a broken image is never shown
+  const [failedImg, setFailedImg] = useState(null)
 
   const error   = fetchError.id === id ? fetchError.msg : null
   const loading = !error && post?.id !== id
@@ -191,6 +193,10 @@ export default function BlogPost() {
     )
   }
 
+  const tags   = post.tags ?? []
+  const author = post.author?.trim()
+  const date   = formatPostDate(post.date)
+
   return (
     <>
       <Link to="/blog" className={styles.back}>
@@ -198,13 +204,18 @@ export default function BlogPost() {
       </Link>
 
       <div className={styles.hero}>
-        {post.image && (
-          <img src={post.image} alt={post.title} className={styles.heroImg} />
+        {post.image && post.image !== failedImg && (
+          <img
+            src={post.image}
+            alt={post.title}
+            className={styles.heroImg}
+            onError={() => setFailedImg(post.image)}
+          />
         )}
 
-        {post.tags.length > 0 && (
+        {tags.length > 0 && (
           <div className={styles.heroTags}>
-            {post.tags.map((tag) => (
+            {tags.map((tag) => (
               <span key={tag} className={styles.tag}>{tag}</span>
             ))}
           </div>
@@ -212,22 +223,22 @@ export default function BlogPost() {
 
         <h1 className={styles.title}>{post.title}</h1>
 
-        <div className={styles.meta}>
-          {post.date && (
-            <span className={styles.metaItem}>
-              <Calendar size={14} />
-              {new Date(post.date).toLocaleDateString('en-GB', {
-                day: 'numeric', month: 'long', year: 'numeric',
-              })}
-            </span>
-          )}
-          {post.author && (
-            <span className={styles.metaItem}>
-              <User size={14} />
-              {post.author}
-            </span>
-          )}
-        </div>
+        {(date || author) && (
+          <div className={styles.meta}>
+            {date && (
+              <span className={styles.metaItem}>
+                <Calendar size={14} aria-hidden="true" />
+                {date}
+              </span>
+            )}
+            {author && (
+              <span className={styles.metaItem}>
+                <User size={14} aria-hidden="true" />
+                {author}
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       <hr className={styles.divider} />

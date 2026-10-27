@@ -468,6 +468,10 @@
   font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.1em; color: var(--teal); margin-bottom: 8px; display: block;
 }
+.newsTitle, .newsExcerpt {
+  display: -webkit-box; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; overflow-wrap: anywhere;
+}
 .newsTitle { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
 .newsCardFeatured .newsTitle { font-size: 1.15rem; }
 .newsExcerpt { font-size: 0.83rem; color: var(--mid); line-height: 1.6; margin-bottom: 12px; }

@@ -9,3 +9,11 @@ export async function fetchBlogPost(id) {
   if (!res.ok) throw new Error(`Failed to fetch post (${res.status})`)
   return res.json()
 }
+
+// Notion dates as "12 March 2026"; '' when missing or unparseable.
+export function formatPostDate(value) {
+  if (!value) return ''
+  const d = new Date(value)
+  if (Number.isNaN(d.getTime())) return ''
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+}
