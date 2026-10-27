@@ -40,7 +40,7 @@ function ArticleCard({ article }) {
     <Link to={`/blog/${article.id}`} className={styles.card}>
       {article.image && !imgFailed ? (
         <div className={styles.cardImg}>
-          <img src={article.image} alt={article.title} onError={() => setImgFailed(true)} />
+          <img src={article.image} alt={article.title} loading="lazy" onError={() => setImgFailed(true)} />
         </div>
       ) : (
         <CoverPlaceholder id={article.id} />

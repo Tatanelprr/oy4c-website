@@ -51,7 +51,8 @@ function groupBlocks(blocks) {
 
 // ── Individual block ───────────────────────────────────────────────────────
 
-function Block({ block }) {
+// title: the article's title, used as alt text for its images.
+function Block({ block, title }) {
   const rt = (key) => block[key]?.rich_text ?? []
 
   switch (block.type) {
@@ -94,7 +95,7 @@ function Block({ block }) {
       if (!src) return null
       return (
         <>
-          <img src={src} alt="" className={styles.blockImg} />
+          <img src={src} alt={title} className={styles.blockImg} loading="lazy" />
           {cap.length > 0 && (
             <p className={styles.caption}><RichText tokens={cap} /></p>
           )}
@@ -117,7 +118,7 @@ function Block({ block }) {
 
 // ── Grouped block renderer ─────────────────────────────────────────────────
 
-function NotionContent({ blocks }) {
+function NotionContent({ blocks, title }) {
   const groups = groupBlocks(blocks)
   return (
     <div className={styles.content}>
@@ -144,7 +145,7 @@ function NotionContent({ blocks }) {
             </ol>
           )
         }
-        return <Block key={group.id ?? i} block={group} />
+        return <Block key={group.id ?? i} block={group} title={title} />
       })}
     </div>
   )
@@ -266,7 +267,7 @@ export default function BlogPost() {
 
       <hr className={styles.divider} />
 
-      {post.blocks && <NotionContent blocks={post.blocks} />}
+      {post.blocks && <NotionContent blocks={post.blocks} title={post.title} />}
     </>
   )
 }

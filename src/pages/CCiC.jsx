@@ -197,6 +197,9 @@ export default function CCiC() {
                     src={m.photo}
                     alt=""
                     className={styles.proofAvatarImg}
+                    width="160"
+                    height="160"
+                    loading="lazy"
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
                 </div>
@@ -292,7 +295,7 @@ export default function CCiC() {
           <div className={styles.reportPreview}>
             {/* TODO: replace this placeholder cover with the real report cover image */}
             <div className={styles.reportThumb}>
-              <img src="/ccic-logo.jpg" alt="CCiC Report cover" className={styles.reportThumbImg} />
+              <img src="/ccic-logo.webp" alt="" className={styles.reportThumbImg} width="520" height="347" loading="lazy" />
             </div>
             <div className={styles.reportDetails}>
               <p className={styles.reportText}>
@@ -403,6 +406,9 @@ export default function CCiC() {
                 src="/team/ava-langridge.webp"
                 alt=""
                 className={styles.quoteAvatarImg}
+                width="640"
+                height="817"
+                loading="lazy"
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
             </div>

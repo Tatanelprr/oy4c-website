@@ -19,7 +19,8 @@ function AmbassadorCard({ ambassador }) {
       {ambassador.photo ? (
         <img
           src={ambassador.photo}
-          alt={ambassador.name}
+          alt=""
+          loading="lazy"
           className={styles.ambassadorPhoto}
           onError={(e) => {
             e.target.style.display = 'none'
@@ -45,6 +46,7 @@ function AmbassadorCard({ ambassador }) {
               target="_blank"
               rel="noreferrer"
               className={styles.ambassadorLinkedin}
+              aria-label={`${ambassador.name} on LinkedIn`}
             >
               <Link2 size={16} />
             </a>

@@ -36,7 +36,7 @@ export default function Header() {
     <>
       <nav className={styles.nav}>
 	    <Link to="/" className={styles.logo}>
-		  <img src="/logo.png" alt="Our Youth 4 The Climate" className={styles.logoImg} />
+		  <img src="/logo.png" alt="" className={styles.logoImg} width="178" height="251" />
 		  <span>Our Youth 4 The Climate</span>
 		</Link>
         <ul className={styles.links}>

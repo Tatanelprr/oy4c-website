@@ -139,8 +139,8 @@ export default function About() {
             src="/team/ava-langridge.webp"
             alt="Ava Langridge"
             className={styles.storyPhoto}
-            width="750"
-            height="958"
+            width="640"
+            height="817"
             loading="lazy"
           />
           <div className={styles.storyText}>

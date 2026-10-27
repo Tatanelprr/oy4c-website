@@ -12,20 +12,20 @@ import { PAGE_META } from '../data/pageMeta'
 
 // Local logo fallbacks until CDN URLs are set in Notion
 const LOGO_LOCAL = {
-  'National Geographic':             '/seen-in/national-geographic.png',
+  'National Geographic':             '/seen-in/national-geographic.webp',
   'DoSomething.org':                 '/seen-in/dosomething.png',
   'TedX':                            '/seen-in/tedx.png',
   'Euronews':                        '/seen-in/euronews.svg',
-  'Environmental Media Association': '/seen-in/ema.png',
+  'Environmental Media Association': '/seen-in/ema.webp',
   'Global Heroes':                   '/seen-in/global-heroes.png',
   'Sierra Club':                     '/seen-in/sierra-club.png',
   'QS Impact':                       '/seen-in/qs.svg',
-  'UCL':                             '/seen-in/ucl.png',
+  'UCL':                             '/seen-in/ucl.webp',
   'Turner Contemporary':             '/seen-in/turner-contemporary.png',
   'Digital Camp':                    '/seen-in/digital-camp.png',
   'Climate Fresk':                   '/seen-in/climate-fresk.png',
   'Feel Good Action':                '/partners/feel-good-action.webp',
-  'Climate Cardinals':               '/partners/climate-cardinals.png',
+  'Climate Cardinals':               '/partners/climate-cardinals.webp',
   'Force of Nature':                 '/partners/force-of-nature.webp',
   'Climate Majority Project':        '/partners/climate-majority-project.webp',
   'Climate Quilt':                   '/partners/climate-quilt.png',
@@ -36,16 +36,16 @@ const INVERT_LOGOS = new Set(['Turner Contemporary'])
 
 // Partners not tagged "Partner" in Notion (Climate Fresk sits under "As Seen In" there)
 const EXTRA_PARTNERS = [
-  { name: 'GEP', logo: '/partners/gep.png' },
+  { name: 'GEP', logo: '/partners/gep.webp' },
   { name: 'Climate Fresk', logo: '/seen-in/climate-fresk.png' },
 ]
 
 const SLIDES = [
-  { src: '/hero/hero-1.jpg' },
+  { src: '/hero/hero-1.webp' },
   // Zoomed from the left so the board title clears the white card
-  { src: '/hero/hero-2.jpg', zoom: { scale: 1.4, origin: 'left 30%' } },
-  { src: '/hero/hero-3.jpg', credit: 'Green School Bali', position: 'center bottom' },
-  { src: '/hero/hero-4.jpg', credit: 'Green School Bali' },
+  { src: '/hero/hero-2.webp', zoom: { scale: 1.4, origin: 'left 30%' } },
+  { src: '/hero/hero-3.webp', credit: 'Green School Bali', position: 'center bottom' },
+  { src: '/hero/hero-4.webp', credit: 'Green School Bali' },
 ]
 
 // Contenu de la carte blanche, synchronisé avec le slide actif
@@ -92,10 +92,10 @@ const HERO_SLIDES = [
 ]
 
 const PATHS = [
-  { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-1.jpg' },
-  { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum', img: '/paths/path-educator.jpg' },
-  { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partnerships', img: '/paths/path-partner.png' },
-  { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact', img: '/paths/path-funder.jpg' },
+  { icon: <Sprout />, who: "I'm a Young Person", desc: "You don't need permission to teach your generation. Bring OY4C to your community!", cta: 'Start here →', to: '/takeaction', img: '/hero/hero-1.webp', imgW: 1600, imgH: 900 },
+  { icon: <School />, who: "I'm an Educator or School", desc: 'A free, ready-to-teach climate change curriculum built by the generation you\'re teaching', cta: 'Get the curriculum →', to: '/curriculum', img: '/paths/path-educator.webp', imgW: 600, imgH: 400 },
+  { icon: <Handshake />, who: "I'm a Partner", desc: 'We work with organisations to take climate change education further than either of us could alone.', cta: 'Partner with us →', to: '/partnerships', img: '/paths/path-partner.webp', imgW: 890, imgH: 1266 },
+  { icon: <Briefcase />, who: "I'm a Funder", desc: '133 volunteers. 43 countries. Six continents. See what youth-led delivery achieves, and what\'s next.', cta: 'See our impact →', to: '/impact', img: '/paths/path-funder.webp', imgW: 600, imgH: 400 },
 ]
 
 // Position of slide i when c is shown: 0 = on screen, 100 = waiting right, -100 = waiting left
@@ -257,6 +257,7 @@ export default function Home() {
                         src={src}
                         alt={item.name}
                         className={`${styles.seenInLogo}${invert ? ' ' + styles.seenInLogoInvert : ''}`}
+                        loading="lazy"
                         draggable={false}
                       />
                     )
@@ -353,7 +354,7 @@ export default function Home() {
               const logo = p.logo || LOGO_LOCAL[p.name]
               return (
                 <div key={p.name} className={styles.partnerLogo}>
-                  {logo ? <img src={logo} alt={p.name} /> : <span className={styles.partnerName}>{p.name}</span>}
+                  {logo ? <img src={logo} alt={p.name} loading="lazy" /> : <span className={styles.partnerName}>{p.name}</span>}
                 </div>
               )
             })}
@@ -378,7 +379,7 @@ export default function Home() {
           <div className={styles.pillars}>
             <Link to="/curriculum" className={styles.pillar}>
               <div className={styles.pillarHead}>
-                <img src="/curriculum-logo.png" alt="OY4CCurriculum" className={styles.pillarCurriculumLogo} />
+                <img src="/curriculum-logo.png" alt="" className={styles.pillarCurriculumLogo} width="532" height="373" loading="lazy" />
                 <div className={styles.pillarTitle}>OY4CCurriculum</div>
               </div>
               <div className={styles.pillarDesc}>Ready-to-use, youth-developed, interdisciplinary climate change curriculum. Free for schools and educators worldwide.</div>
@@ -386,7 +387,7 @@ export default function Home() {
             </Link>
             <Link to="/ccic" className={styles.pillar}>
               <div className={styles.pillarHead}>
-                <img src="/ccic-logo.jpg" alt="CCiC" style={{ height: '48px', objectFit: 'contain' }} />
+                <img src="/ccic-logo.webp" alt="" style={{ height: '48px', width: 'auto', objectFit: 'contain' }} width="520" height="347" loading="lazy" />
                 <div className={styles.pillarTitle}>CCiC: Climate Curriculum into Classrooms</div>
               </div>
               <div className={styles.pillarDesc}>Our workshop programme, delivered across six continents, now an open resource anyone can run, with everything you need to bring climate conversations into your classroom.</div>
@@ -406,7 +407,7 @@ export default function Home() {
           {PATHS.map((p) => (
             <Link key={p.who} to={p.to} className={styles.pathCard}>
               {p.img
-                ? <img src={p.img} alt={p.who} className={styles.pathImg} />
+                ? <img src={p.img} alt="" className={styles.pathImg} width={p.imgW} height={p.imgH} loading="lazy" />
                 : <div className={`${styles.pathImg} ${styles.pathImgPlaceholder}`} />}
               <div className={styles.pathBody}>
                 <span className={styles.pathIcon}>{p.icon}</span>

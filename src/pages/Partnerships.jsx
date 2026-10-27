@@ -7,7 +7,7 @@ import { PAGE_META } from '../data/pageMeta'
 // Local logo paths until CDN URLs are set in Notion
 const LOGO_LOCAL = {
   'Feel Good Action':              '/partners/feel-good-action.webp',
-  'Climate Cardinals':             '/partners/climate-cardinals.png',
+  'Climate Cardinals':             '/partners/climate-cardinals.webp',
   'Force of Nature':               '/partners/force-of-nature.webp',
   'Climate Majority Project':      '/partners/climate-majority-project.webp',
   'Climate Quilt':                 '/partners/climate-quilt.png',
@@ -16,7 +16,7 @@ const LOGO_LOCAL = {
 
 // Partners not tagged "Partner" in Notion (Climate Fresk sits under "As Seen In" there)
 const EXTRA_PARTNERS = [
-  { name: 'GEP', logo: '/partners/gep.png' },
+  { name: 'GEP', logo: '/partners/gep.webp' },
   { name: 'Climate Fresk', logo: '/seen-in/climate-fresk.png' },
 ]
 
@@ -91,7 +91,7 @@ export default function Partnerships() {
                   <div key={p.name} className={styles.partnerCard}>
                     <div className={styles.partnerLogo}>
                       {p.logo ? (
-                        <img src={p.logo} alt={p.name} />
+                        <img src={p.logo} alt={p.name} loading="lazy" />
                       ) : (
                         <div className={styles.partnerLogoPlaceholder}>{p.name}</div>
                       )}
@@ -150,7 +150,7 @@ export default function Partnerships() {
               {projects.map((p, i) => (
                 <li key={p.name} className={styles.orbitItem} style={{ '--i': i }}>
                   <button type="button" className={styles.orbitBtn} onClick={() => setProject(p)}>
-                    {p.logo ? <img src={p.logo} alt={p.name} /> : p.name}
+                    {p.logo ? <img src={p.logo} alt={p.name} loading="lazy" /> : p.name}
                   </button>
                 </li>
               ))}

@@ -418,6 +418,9 @@ export default function Curriculum() {
                 src="/curriculum-logo.png"
                 alt="OY4CCurriculum logo: built by young people, for young people"
                 className={styles.storyLogo}
+                width="532"
+                height="373"
+                loading="lazy"
               />
             </div>
           </div>

@@ -12,7 +12,7 @@
   inset: 0;
   background-image:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url('/hero/hero-classroom.jpg');
+    url('/hero/hero-classroom.webp');
   background-size: cover;
   background-position: center;
 }
@@ -457,7 +457,7 @@
   inset: 0;
   background-image:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('/hero/hero-regen26.jpg');
+    url('/hero/hero-regen26.webp');
   background-size: cover;
   /* Keeps the full OY4C lettering in frame on wide banners */
   background-position: center 35%;
@@ -711,6 +711,7 @@
 .reportThumbImg {
   max-width: 100%;
   max-height: 100%;
+  height: auto; /* keeps the ratio despite the width/height attributes */
   object-fit: contain;
 }
 .reportDetails {

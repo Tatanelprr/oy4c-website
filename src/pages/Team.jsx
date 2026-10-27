@@ -29,7 +29,8 @@ function Avatar({ member, size = 'lg' }) {
       <div className={cls}>
         <img
           src={member.photo}
-          alt={member.name}
+          alt=""
+          loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
           onError={(e) => { e.target.style.display = 'none' }}
         />
@@ -53,7 +54,7 @@ function SeniorCard({ member }) {
           {member.pronouns}
           {member.pronouns && member.linkedin && <span> · </span>}
           {member.linkedin && (
-            <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.linkedinIcon}>
+            <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.linkedinIcon} aria-label={`${member.name} on LinkedIn`}>
               <LinkedinIcon size={12} />
             </a>
           )}
@@ -85,7 +86,7 @@ function MemberCard({ member }) {
           {member.pronouns}
           {member.pronouns && member.linkedin && <span> · </span>}
           {member.linkedin && (
-            <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.linkedinIcon}>
+            <a href={member.linkedin} target="_blank" rel="noreferrer" className={styles.linkedinIcon} aria-label={`${member.name} on LinkedIn`}>
               <LinkedinIcon size={12} />
             </a>
           )}
