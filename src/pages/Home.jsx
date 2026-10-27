@@ -278,7 +278,7 @@ export default function Home() {
             <p className="section-body">
               A transformative year of growth, innovation and global reach. Discover what OY4C accomplished in 2025, by the numbers and beyond.
             </p>
-            <a href="/s/2025-Impact-Report-576j.pdf" target="_blank" rel="noreferrer" className={styles.btnAccent}>
+            <a href="/impact-report-2025.pdf" target="_blank" rel="noreferrer" className={styles.btnAccent}>
               Download the report →
             </a>
           </div>

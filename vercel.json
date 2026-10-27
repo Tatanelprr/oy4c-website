@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/s/2025-Impact-Report-576j.pdf",
+      "destination": "/impact-report-2025.pdf",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
