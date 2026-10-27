@@ -1,6 +1,9 @@
 import styles from './LastPush.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 export default function LastPush() {
+  usePageMeta(PAGE_META['/last-push'])
   return (
     <>
       <section className={styles.hero}>

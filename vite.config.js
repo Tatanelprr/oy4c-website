@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { readFileSync, existsSync, statSync } from 'fs'
-import { resolve } from 'path'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'fs'
+import { resolve, dirname } from 'path'
+import { PAGE_META, SITE_URL } from './src/data/pageMeta.js'
 
 function loadEnvFile(path) {
   if (!existsSync(path)) return
@@ -56,13 +57,49 @@ function devApiPlugin() {
   }
 }
 
+const escapeHtml = (text) =>
+  text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+// Copy of the built index.html with one route's title, description and
+// canonical (or no canonical / a noindex tag when the meta asks for it).
+export function renderMeta(html, { title, description, path, noindex }) {
+  let out = html
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escapeHtml(description)}" />`)
+  out = path
+    ? out.replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${SITE_URL}${path}" />`)
+    : out.replace(/\s*<link rel="canonical" href="[^"]*" \/>/, '')
+  if (noindex) out = out.replace('</title>', '</title>\n    <meta name="robots" content="noindex" />')
+  return out
+}
+
+// After the build, writes dist/<route>/index.html for every route in
+// PAGE_META, so each page has its own title, description and canonical before
+// any JavaScript runs (no flash of the home title, and crawlers that do not run
+// JavaScript see the right values).
+function prerenderMetaPlugin() {
+  return {
+    name: 'prerender-route-meta',
+    apply: 'build',
+    closeBundle() {
+      const dist = resolve(process.cwd(), 'dist')
+      const template = readFileSync(resolve(dist, 'index.html'), 'utf-8')
+      for (const meta of Object.values(PAGE_META)) {
+        const file = meta.path === '/' ? resolve(dist, 'index.html') : resolve(dist, `.${meta.path}/index.html`)
+        mkdirSync(dirname(file), { recursive: true })
+        writeFileSync(file, renderMeta(template, meta))
+      }
+    },
+  }
+}
+
 // Size of the public Topic 10 PDF, shown next to its download link
 // (0 when the file is missing: the size is then not displayed).
 const FOOD_PDF = resolve(process.cwd(), 'public/curriculum/food-management.pdf')
 const FOOD_PDF_BYTES = existsSync(FOOD_PDF) ? statSync(FOOD_PDF).size : 0
 
 export default defineConfig({
-  plugins: [react(), devApiPlugin()],
+  plugins: [react(), devApiPlugin(), prerenderMetaPlugin()],
   define: {
     'import.meta.env.FOOD_PDF_BYTES': JSON.stringify(FOOD_PDF_BYTES),
   },

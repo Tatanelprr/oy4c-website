@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import styles from './Impact.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 export default function Impact() {
+  usePageMeta(PAGE_META['/impact'])
   return (
     <>
   {/* HERO */}

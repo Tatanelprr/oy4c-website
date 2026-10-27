@@ -1,4 +1,6 @@
 import styles from './Legal.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // Legal notice / "impressum" required in the UK by the Electronic Commerce
 // (EC Directive) Regulations 2002 and the Companies Act 2006: the service
@@ -7,6 +9,7 @@ import styles from './Legal.module.css'
 // accessible. Details verified on Companies House (company no. 12309941).
 
 export default function Legal() {
+  usePageMeta(PAGE_META['/legal'])
   return (
     <>
       <header className={styles.hero}>

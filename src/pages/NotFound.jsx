@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import styles from './NotFound.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { NOT_FOUND_META } from '../data/pageMeta'
 
 export default function NotFound() {
+  usePageMeta(NOT_FOUND_META)
   return (
     <div className={styles.wrap}>
       <div className={styles.inner}>

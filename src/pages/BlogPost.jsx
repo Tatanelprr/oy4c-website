@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Calendar, User, Loader } from 'lucide-react'
 import { fetchBlogPost, formatPostDate } from '../lib/notion'
 import styles from './BlogPost.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { BLOG_POST_LOADING_META, NOT_FOUND_META, blogPostMeta } from '../data/pageMeta'
 
 // ── Rich text ──────────────────────────────────────────────────────────────
 
@@ -150,6 +152,19 @@ function NotionContent({ blocks }) {
 
 // ── Page ───────────────────────────────────────────────────────────────────
 
+// Plain text of the opening paragraphs (at least 120 characters when the
+// article allows), used for the meta description when the excerpt is empty.
+function leadText(blocks = []) {
+  let text = ''
+  for (const b of blocks) {
+    if (b.type !== 'paragraph') continue
+    const para = (b.paragraph?.rich_text ?? []).map((t) => t.plain_text ?? t.text?.content ?? '').join('').trim()
+    if (para) text = text ? `${text} ${para}` : para
+    if (text.length >= 120) break
+  }
+  return text
+}
+
 export default function BlogPost() {
   const { id } = useParams()
   const [post, setPost] = useState(null)
@@ -160,6 +175,14 @@ export default function BlogPost() {
 
   const error   = fetchError.id === id ? fetchError.msg : null
   const loading = !error && post?.id !== id
+
+  // The API answers 404 for unknown or unpublished articles.
+  const notFound = error?.includes('(404)')
+  usePageMeta(
+    notFound ? NOT_FOUND_META
+      : !loading && post ? blogPostMeta(post, leadText(post.blocks))
+      : BLOG_POST_LOADING_META
+  )
 
   useEffect(() => {
     let active = true

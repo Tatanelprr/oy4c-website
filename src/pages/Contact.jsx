@@ -1,8 +1,11 @@
 import { Mail, BookOpen, DollarSign, Newspaper } from 'lucide-react'
 import { InstagramIcon, LinkedinIcon, TiktokIcon } from '../components/SocialIcons'
 import styles from './Contact.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 export default function Contact() {
+  usePageMeta(PAGE_META['/contact'])
   return (
     <>
       {/* HERO */}

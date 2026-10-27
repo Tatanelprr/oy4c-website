@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { Clock, GraduationCap, DollarSign, Users, ShieldCheck } from 'lucide-react'
 import CCiCLocationsMap from '../components/CCiCLocationsMap'
 import styles from './CCiC.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 export default function CCiC() {
+  usePageMeta(PAGE_META['/ccic'])
   // Light client-side gates — no data is persisted or sent yet.
   // TODO: wire these forms to a real collection endpoint (CRM / Google Sheet / API).
   const [reportUnlocked, setReportUnlocked] = useState(false)

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Loader } from 'lucide-react'
 import styles from './Team.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 function LinkedinIcon({ size = 12 }) {
   return (
@@ -127,6 +129,7 @@ function CollapsibleSection({ title, children }) {
 }
 
 export default function Team() {
+  usePageMeta(PAGE_META['/team'])
   const [teamData, setTeamData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)

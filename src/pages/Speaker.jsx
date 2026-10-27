@@ -1,7 +1,10 @@
 import { Mic } from 'lucide-react'
 import styles from '../styles/Placeholder.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 export default function Speaker() {
+  usePageMeta(PAGE_META['/speaker'])
   return (
     <>
       <section className={styles.hero}>

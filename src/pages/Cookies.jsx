@@ -1,10 +1,13 @@
 import styles from './Legal.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // Cookies policy under the UK Privacy and Electronic Communications Regulations
 // (PECR). The site loads no non-essential trackers automatically, so no consent
 // banner is required; the only third party that can set a cookie is Google Maps,
 // and only after the visitor explicitly clicks to load it.
 export default function Cookies() {
+  usePageMeta(PAGE_META['/cookies'])
   return (
     <>
       <header className={styles.hero}>

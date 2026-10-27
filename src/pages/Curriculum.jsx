@@ -24,6 +24,8 @@ import {
   FAQ_FLEXIBILITY,
 } from '../data/curriculumConfig'
 import styles from './Curriculum.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // All visible copy below is Ava's text (Round 2), verbatim, typos included.
 // Do not edit it without her sign-off. `**...**` marks her bold passages.
@@ -202,6 +204,7 @@ const FAQ = [
 const COUNTER_READY = Object.values(COUNTER).every((v) => v != null)
 
 export default function Curriculum() {
+  usePageMeta(PAGE_META['/curriculum'])
   return (
     <>
       {/* 1. HERO */}

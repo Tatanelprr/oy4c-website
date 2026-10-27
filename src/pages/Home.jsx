@@ -7,6 +7,8 @@ import {
 import { fetchBlogPosts, formatPostDate } from '../lib/notion'
 import styles from './Home.module.css'
 import VolunteerMap from '../components/VolunteerMap'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // Local logo fallbacks until CDN URLs are set in Notion
 const LOGO_LOCAL = {
@@ -164,6 +166,7 @@ function HeroSlideshow({ current, setCurrent, paused }) {
 }
 
 export default function Home() {
+  usePageMeta(PAGE_META['/'])
   const [seenIn, setSeenIn]         = useState([])
   const [partnersList, setPartners] = useState([])
   const [latestPosts, setLatestPosts] = useState([])

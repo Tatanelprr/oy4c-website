@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Calendar, User, Tag, Mail, Loader, Newspaper, Leaf } from 'lucide-react'
 import { fetchBlogPosts, formatPostDate } from '../lib/notion'
 import styles from './Blog.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // Placeholder cover for posts without an image: soft tint + icon, picked
 // from the post id so each card keeps the same look between visits.
@@ -77,6 +79,7 @@ function ArticleCard({ article }) {
 }
 
 export default function Blog() {
+  usePageMeta(PAGE_META['/blog'])
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)

@@ -1,4 +1,6 @@
 import styles from './Legal.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // Privacy notice built from what the site actually does, under the UK GDPR and
 // the Data Protection Act 2018 (regulator: the ICO). The site sets no cookies of
@@ -7,6 +9,7 @@ import styles from './Legal.module.css'
 // to use.
 
 export default function Privacy() {
+  usePageMeta(PAGE_META['/privacy'])
   return (
     <>
       <header className={styles.hero}>

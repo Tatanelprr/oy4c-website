@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link2, Loader } from 'lucide-react'
 import styles from './Ambassador.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 function getInitials(name) {
   return name
@@ -55,6 +57,7 @@ function AmbassadorCard({ ambassador }) {
 }
 
 export default function Ambassador() {
+  usePageMeta(PAGE_META['/ambassador'])
   const [ambassadors, setAmbassadors] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)

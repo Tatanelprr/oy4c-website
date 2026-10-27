@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Users, Globe, BookOpen, Play } from 'lucide-react'
 import styles from './About.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // Ava's copy, verbatim (Who Are We, Round 2). Do not edit wording.
 const STORY = [
@@ -66,6 +68,7 @@ VideoEmbed.propTypes = {
 }
 
 export default function About() {
+  usePageMeta(PAGE_META['/about'])
   return (
     <>
       {/* HERO */}

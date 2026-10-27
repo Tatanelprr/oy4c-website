@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { Globe, Heart, Users, Handshake, X } from 'lucide-react'
 import styles from './Partnerships.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // Local logo paths until CDN URLs are set in Notion
 const LOGO_LOCAL = {
@@ -26,6 +28,7 @@ const NOT_PROJECTS = new Set(['Climate Quilt'])
 const PROJECT_INFO = {}
 
 export default function Partnerships() {
+  usePageMeta(PAGE_META['/partnerships'])
   const [partners, setPartners] = useState([])
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState(null)

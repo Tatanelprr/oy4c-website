@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
 import { Mic, BookOpen, Megaphone } from 'lucide-react'
 import styles from './Services.module.css'
+import usePageMeta from '../lib/usePageMeta'
+import { PAGE_META } from '../data/pageMeta'
 
 // All visible copy below is Ava's final text, verbatim. Do not edit it here
 // without her sign-off.
@@ -25,27 +26,8 @@ const SERVICES = [
   },
 ]
 
-// Page title and meta description, built from Ava's eyebrow and headline.
-// Restored on unmount so other pages keep the defaults from index.html.
-function usePageMeta(title, description) {
-  useEffect(() => {
-    const meta = document.querySelector('meta[name="description"]')
-    const prevTitle = document.title
-    const prevDescription = meta?.getAttribute('content')
-    document.title = title
-    meta?.setAttribute('content', description)
-    return () => {
-      document.title = prevTitle
-      if (prevDescription != null) meta.setAttribute('content', prevDescription)
-    }
-  }, [title, description])
-}
-
 export default function Services() {
-  usePageMeta(
-    'Our services — Our Youth 4 The Climate',
-    'Climate education, built by young people. Built with you.',
-  )
+  usePageMeta(PAGE_META['/services'])
 
   return (
     <>
