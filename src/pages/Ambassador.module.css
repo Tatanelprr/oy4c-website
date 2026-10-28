@@ -46,11 +46,7 @@
   padding: 90px 5vw;
   background: var(--white);
 }
-.overviewInner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+.overviewText {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -58,7 +54,7 @@
   font-size: 0.95rem;
   color: var(--mid);
   line-height: 1.85;
-  margin-bottom: 16px;
+  max-width: 760px;
 }
 
 .pillars {
@@ -134,21 +130,6 @@
   color: rgba(0,0,0,0.75);
 }
 
-/* WHO IT'S FOR */
-.whoFor {
-  padding: 90px 5vw;
-  background: var(--cream);
-}
-.whoForInner {
-  max-width: 800px;
-  margin: 0 auto;
-}
-.whoForInner p {
-  font-size: 0.95rem;
-  color: var(--mid);
-  line-height: 1.85;
-  margin-bottom: 16px;
-}
 
 /* AMBASSADORS */
 .ambassadors {
@@ -409,15 +390,13 @@
   .pillars { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .overviewInner { grid-template-columns: 1fr; }
   .cases { grid-template-columns: 1fr; }
   .metricsGrid { grid-template-columns: repeat(2, 1fr); }
   .ambassadorsGrid { grid-template-columns: repeat(2, 1fr); }
-  .overviewInner { gap: 48px; }
 }
 @media (max-width: 600px) {
   .heroContent { padding: 48px 6vw; }
-  .overview, .whoFor, .ambassadors, .impact, .cta, .faq { padding: 60px 5vw; }
+  .overview, .ambassadors, .impact, .cta, .faq { padding: 60px 5vw; }
   .pillars { grid-template-columns: 1fr; margin-top: 40px; }
   .metrics { padding: 52px 5vw; }
   .heroBtns { flex-direction: column; }

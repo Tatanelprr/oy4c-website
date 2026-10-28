@@ -147,20 +147,11 @@ export default function Ambassador() {
 
       {/* OVERVIEW */}
       <section className={styles.overview}>
-        <div className={styles.overviewInner}>
-          <div className={styles.overviewText}>
-            <h2 className="section-title">What is the Ambassador Programme</h2>
-            <p>
-              OY4C’s Ambassador Programme brings together young leaders committed to making climate change education more accessible and actionable. The programme is built around a simple idea that climate action looks different everywhere.
-            </p>
-          </div>
-          <div>
-            <span className="section-eyebrow">What you'll do</span>
-            <h2 className="section-title">Lead. Advocate. Impact.</h2>
-            <p className="section-body">
-              As an OY4C Ambassador, you'll lead local and digital climate initiatives, join global advocacy campaigns, and develop your own social impact project, all while connecting with a worldwide network of youth climate leaders.
-            </p>
-          </div>
+        <div className={styles.overviewText}>
+          <h2 className="section-title">What is the Ambassador Programme</h2>
+          <p>
+            OY4C’s Ambassador Programme brings together young leaders committed to making climate change education more accessible and actionable. The programme is built around a simple idea that climate action looks different everywhere.
+          </p>
         </div>
         <ul className={styles.pillars}>
           {PILLARS.map(({ icon: Icon, title, text }) => (
@@ -183,23 +174,6 @@ export default function Ambassador() {
               <div className={styles.metricLbl}>{m.label}</div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* WHO IT'S FOR */}
-      <section className={styles.whoFor}>
-        <div className={styles.whoForInner}>
-          <span className="section-eyebrow">Who it's for</span>
-          <h2 className="section-title">Built for passionate young leaders</h2>
-          <p>
-            The Ambassador Program is designed for university-level youth who are passionate about climate change education, community impact, and youth advocacy.
-          </p>
-          <p>
-            OY4C Ambassadors come from diverse academic, cultural, and regional backgrounds, but share a common commitment to making climate knowledge more accessible and actionable within their communities.
-          </p>
-          <p>
-            The program also contributes to OY4C's wider global network of youth-led climate change education initiatives, creating opportunities for collaboration, advocacy, and community engagement across regions.
-          </p>
         </div>
       </section>
 
@@ -271,7 +245,7 @@ export default function Ambassador() {
           <a
             href="https://www.linkedin.com/posts/our-youth-4-the-climate_meet-the-oy4c-ambassadors-our-first-activity-7460657900710092821-GOSV"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className={styles.ctaBtn}
           >
             Meet the cohort on LinkedIn →
