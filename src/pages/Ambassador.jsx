@@ -5,6 +5,9 @@ import styles from './Ambassador.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
 
+// Off until the programme lead confirms everyone in the group photo is 18 or over.
+const SHOW_GROUP_PHOTO = false
+
 // Texts below are the programme lead's wording, verbatim: do not edit.
 const PILLARS = [
   { icon: BookOpen,  title: 'Learn',   text: 'Build climate knowledge and leadership skills' },
@@ -25,6 +28,10 @@ const CASES = [
     num: '01',
     place: 'Gombe State, Nigeria',
     text: '15 young people, 100+ community members reached. Musa Muhammad Musa brought climate education into the community through clean-ups, plastic pollution awareness, and grassroots organising. His English and Hausa awareness campaigns reached 1,000+ people online.',
+    photos: [
+      { src: '/ambassadors/gombe-action.webp', width: 1200, height: 800, alt: 'Young volunteers clearing a pile of waste from a street in Gombe State, Nigeria' },
+      SHOW_GROUP_PHOTO && { src: '/ambassadors/gombe-group.webp', width: 1200, height: 879, alt: 'Group of volunteers standing beside a pile of waste in Gombe State, Nigeria' },
+    ].filter(Boolean),
   },
   {
     num: '02',
@@ -218,6 +225,13 @@ export default function Ambassador() {
               <article key={c.num} className={styles.case}>
                 <h3><span className={styles.caseNum}>{c.num}</span> | {c.place}</h3>
                 <p>{c.text}</p>
+                {c.photos?.length > 0 && (
+                  <div className={styles.casePhotos}>
+                    {c.photos.map((ph) => (
+                      <img key={ph.src} src={ph.src} width={ph.width} height={ph.height} alt={ph.alt} loading="lazy" />
+                    ))}
+                  </div>
+                )}
               </article>
             ))}
           </div>

@@ -260,6 +260,22 @@
   color: var(--mid);
   line-height: 1.75;
 }
+/* One photo full width, two side by side */
+.casePhotos {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+.casePhotos img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+}
 
 .ctaBtns {
   display: flex;
