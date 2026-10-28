@@ -54,6 +54,11 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+/* Holds the grid's place while the list loads: the "Contribute" link and the
+   footer start below the fold instead of jumping down when the cards arrive. */
+.loading {
+  min-height: 100vh;
+}
 
 /* FILTERS */
 .filters {
