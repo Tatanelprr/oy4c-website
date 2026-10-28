@@ -37,7 +37,7 @@ export const PAGE_META = {
   },
   '/ambassador': {
     title: 'Ambassador Programme — Leadership & advocacy | OY4C',
-    description: 'A 6-month leadership initiative bringing together young leaders committed to advancing climate literacy and advocacy within their communities.',
+    description: 'OY4C Ambassadors: a six-month leadership initiative supporting young people to turn climate knowledge into community action, advocacy, and lasting change.',
   },
   '/last-push': {
     title: 'The Last Push — Campaign by Our Youth 4 The Climate',
