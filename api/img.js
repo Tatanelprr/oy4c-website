@@ -4,13 +4,19 @@ import { parseAllowedImageUrl } from './_lib/img.js'
 // Not an open proxy: only hosts in ALLOWED_IMAGE_HOSTS, https only, redirects
 // re-checked against the same allowlist, raster images only.
 
-const TIMEOUT_MS    = 8000
+const TIMEOUT_MS    = 5000 // per attempt
+const RETRY_DELAY   = 300
 const MAX_BYTES     = 4 * 1024 * 1024 // Vercel caps function responses at 4.5 MB
 const MAX_REDIRECTS = 3
 // SVG is excluded: served from our origin it could run script.
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'])
 
-class UpstreamError extends Error {}
+class UpstreamError extends Error {
+  constructor(message, status) {
+    super(message)
+    this.status = status
+  }
+}
 
 function sendError(res, status, message) {
   res.statusCode = status
@@ -34,7 +40,7 @@ async function fetchImage(url, signal) {
       current = next
       continue
     }
-    if (!resp.ok) throw new UpstreamError(`Upstream status ${resp.status}`)
+    if (!resp.ok) throw new UpstreamError(`Upstream status ${resp.status}`, resp.status)
     return resp
   }
   throw new UpstreamError('Too many redirects')
@@ -54,6 +60,24 @@ async function readLimited(resp) {
   return Buffer.concat(chunks)
 }
 
+// One attempt, timeout covering headers and body.
+async function loadImage(target) {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS)
+  try {
+    const upstream = await fetchImage(target, controller.signal)
+    const type = (upstream.headers.get('content-type') ?? '').split(';')[0].trim().toLowerCase()
+    if (!ALLOWED_TYPES.has(type)) throw new UpstreamError(`Not an allowed image type: ${type || 'none'}`)
+    return { type, body: await readLimited(upstream) }
+  } finally {
+    clearTimeout(timer)
+    controller.abort() // releases an unread upstream body after an early error
+  }
+}
+
+// imgbb sheds bursts of parallel requests with 503s or stalls: worth one more try.
+const isTransient = (err) => err.name === 'AbortError' || err.status >= 500
+
 export default async function handler(req, res) {
   if (req.method !== 'GET' && req.method !== 'HEAD') return sendError(res, 405, 'Method not allowed')
 
@@ -61,15 +85,16 @@ export default async function handler(req, res) {
   const target = parseAllowedImageUrl(raw)
   if (!target) return sendError(res, 400, 'Invalid or disallowed image URL')
 
-  const controller = new AbortController()
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS)
-
   try {
-    const upstream = await fetchImage(target, controller.signal)
-    const type = (upstream.headers.get('content-type') ?? '').split(';')[0].trim().toLowerCase()
-    if (!ALLOWED_TYPES.has(type)) throw new UpstreamError(`Not an allowed image type: ${type || 'none'}`)
-
-    const body = await readLimited(upstream)
+    let image
+    try {
+      image = await loadImage(target)
+    } catch (err) {
+      if (!isTransient(err)) throw err
+      await new Promise((r) => setTimeout(r, RETRY_DELAY))
+      image = await loadImage(target)
+    }
+    const { type, body } = image
 
     res.statusCode = 200
     res.setHeader('Content-Type', type)
@@ -83,8 +108,5 @@ export default async function handler(req, res) {
     const reason = err.name === 'AbortError' ? 'Upstream timeout' : err.message
     console.error('img proxy error:', reason)
     sendError(res, 502, 'Bad gateway')
-  } finally {
-    clearTimeout(timer)
-    controller.abort() // releases an unread upstream body after an early error
   }
 }
