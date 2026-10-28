@@ -80,6 +80,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 52px 40px 100px;
+  overflow-wrap: anywhere; /* long URLs in the text wrap instead of overflowing on phones */
 }
 
 /* BLOCK TYPES */
