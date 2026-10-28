@@ -28,3 +28,15 @@ export function proxyImageUrl(value) {
   if (!parseAllowedImageUrl(value)) return value
   return `/api/img?u=${encodeURIComponent(value)}`
 }
+
+// First body image that can go through the proxy, used as the cover of an
+// article that has none. Notion-hosted files are skipped: their URLs expire
+// after about an hour, sooner than a cached API response can be served.
+export function firstBodyImage(blocks = []) {
+  for (const b of blocks) {
+    if (b.type !== 'image') continue
+    const url = proxyImageUrl(b.image?.external?.url)
+    if (url?.startsWith('/api/img?')) return { url, caption: b.image.caption ?? [], blockId: b.id }
+  }
+  return null
+}

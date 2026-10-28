@@ -1,4 +1,4 @@
-import { proxyImageUrl } from './_lib/img.js'
+import { proxyImageUrl, firstBodyImage } from './_lib/img.js'
 import { normalizeAuthor } from './_lib/author.js'
 import { sendJson, sendError, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 
@@ -89,7 +89,15 @@ export default async function handler(req, res) {
     if (!isPublishedArticle(page)) return sendError(res, 404, 'blog-post not a published article')
 
     const blocks = await fetchAllBlocks(page.id)
-    sendJson(res, { ...parsePageMeta(page), blocks })
+    const meta = parsePageMeta(page)
+    // No cover in Notion: the first body image becomes the cover, and is not
+    // repeated in the body (coverBlockId).
+    const first = meta.image ? null : firstBodyImage(blocks)
+    if (first) {
+      meta.image = first.url
+      meta.coverBlockId = first.blockId
+    }
+    sendJson(res, { ...meta, blocks })
   } catch (err) {
     sendHandlerError(res, 'blog-post handler error', err)
   }

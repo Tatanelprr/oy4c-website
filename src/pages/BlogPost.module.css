@@ -20,6 +20,7 @@
 }
 .heroImg {
   width: 100%;
+  height: auto; /* keeps the width/height ratio instead of the 900px attribute */
   max-height: 420px;
   object-fit: cover;
   border-radius: 20px;

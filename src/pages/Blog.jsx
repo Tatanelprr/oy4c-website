@@ -42,7 +42,7 @@ function ArticleCard({ article, eager }) {
     <Link to={`/blog/${article.id}`} className={styles.card}>
       {article.image && !imgFailed ? (
         <div className={styles.cardImg}>
-          <img src={article.image} alt={article.title} loading={eager ? undefined : 'lazy'} onError={() => setImgFailed(true)} />
+          <img src={article.image} alt={article.title} width={1600} height={900} loading={eager ? undefined : 'lazy'} onError={() => setImgFailed(true)} />
         </div>
       ) : (
         <CoverPlaceholder id={article.id} />

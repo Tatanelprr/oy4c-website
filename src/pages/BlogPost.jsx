@@ -118,8 +118,9 @@ function Block({ block, title }) {
 
 // ── Grouped block renderer ─────────────────────────────────────────────────
 
-function NotionContent({ blocks, title }) {
-  const groups = groupBlocks(blocks)
+// skipId: body image already shown as the cover.
+function NotionContent({ blocks, title, skipId }) {
+  const groups = groupBlocks(blocks.filter((b) => b.id !== skipId))
   return (
     <div className={styles.content}>
       {groups.map((group, i) => {
@@ -232,6 +233,8 @@ export default function BlogPost() {
           <img
             src={post.image}
             alt={post.title}
+            width={1600}
+            height={900}
             className={styles.heroImg}
             onError={() => setFailedImg(post.image)}
           />
@@ -267,7 +270,7 @@ export default function BlogPost() {
 
       <hr className={styles.divider} />
 
-      {post.blocks && <NotionContent blocks={post.blocks} title={post.title} />}
+      {post.blocks && <NotionContent blocks={post.blocks} title={post.title} skipId={post.coverBlockId} />}
     </>
   )
 }
