@@ -97,6 +97,10 @@ export default async function handler(req, res) {
       meta.image = first.url
       meta.coverBlockId = first.blockId
     }
+    // Cover credit (Harvard citation typed by the team), as rich text so its links
+    // survive; falls back to the caption of the body image used as cover.
+    const credit = page.properties['Image credit']?.rich_text ?? []
+    meta.imageCredit = credit.some((t) => t.plain_text?.trim()) ? credit : (first?.caption ?? [])
     sendJson(res, { ...meta, blocks })
   } catch (err) {
     sendHandlerError(res, 'blog-post handler error', err)

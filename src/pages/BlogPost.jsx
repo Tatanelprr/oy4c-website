@@ -8,7 +8,24 @@ import { BLOG_POST_LOADING_META, NOT_FOUND_META, blogPostMeta } from '../data/pa
 
 // ── Rich text ──────────────────────────────────────────────────────────────
 
-function RichText({ tokens = [] }) {
+// Bare http(s) URLs in a citation, without trailing punctuation such as "." or ")".
+const URL_RE = /https?:\/\/[^\s<>"]+[^\s<>".,;:!?)\]]/g
+
+// Plain text with its bare URLs turned into links.
+function linkified(content, className) {
+  const parts = []
+  let last = 0
+  for (const m of content.matchAll(URL_RE)) {
+    if (m.index > last) parts.push(content.slice(last, m.index))
+    parts.push(<a key={m.index} href={m[0]} target="_blank" rel="noreferrer" className={className}>{m[0]}</a>)
+    last = m.index + m[0].length
+  }
+  if (last < content.length) parts.push(content.slice(last))
+  return parts
+}
+
+// linkify: also make bare URLs clickable (image credits and captions).
+function RichText({ tokens = [], linkify = false }) {
   return tokens.map((token, i) => {
     const { annotations: a, text: { content, link } } = token
     const className = [
@@ -19,12 +36,13 @@ function RichText({ tokens = [] }) {
       a.code          ? styles.inlineCode : '',
     ].filter(Boolean).join(' ') || undefined
 
-    const el = <span key={i} className={className}>{content}</span>
-    return link
-      ? <a key={i} href={link.url} target="_blank" rel="noreferrer" className={className}>{content}</a>
-      : el
+    if (link) return <a key={i} href={link.url} target="_blank" rel="noreferrer" className={className}>{content}</a>
+    return <span key={i} className={className}>{linkify ? linkified(content) : content}</span>
   })
 }
+
+// True when rich text has visible characters.
+const hasText = (tokens = []) => tokens.some((t) => (t.plain_text ?? t.text?.content ?? '').trim())
 
 // ── Block grouping ─────────────────────────────────────────────────────────
 
@@ -94,12 +112,12 @@ function Block({ block, title }) {
       const cap = block.image?.caption ?? []
       if (!src) return null
       return (
-        <>
+        <figure>
           <img src={src} alt={title} className={styles.blockImg} loading="lazy" />
-          {cap.length > 0 && (
-            <p className={styles.caption}><RichText tokens={cap} /></p>
+          {hasText(cap) && (
+            <figcaption className={styles.caption}><RichText tokens={cap} linkify /></figcaption>
           )}
-        </>
+        </figure>
       )
     }
 
@@ -230,14 +248,19 @@ export default function BlogPost() {
 
       <div className={styles.hero}>
         {post.image && post.image !== failedImg && (
-          <img
-            src={post.image}
-            alt={post.title}
-            width={1600}
-            height={900}
-            className={styles.heroImg}
-            onError={() => setFailedImg(post.image)}
-          />
+          <figure className={styles.heroFigure}>
+            <img
+              src={post.image}
+              alt={post.title}
+              width={1600}
+              height={900}
+              className={styles.heroImg}
+              onError={() => setFailedImg(post.image)}
+            />
+            {hasText(post.imageCredit) && (
+              <figcaption className={styles.credit}><RichText tokens={post.imageCredit} linkify /></figcaption>
+            )}
+          </figure>
         )}
 
         {tags.length > 0 && (
