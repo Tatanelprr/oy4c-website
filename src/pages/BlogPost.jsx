@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Calendar, User, Loader } from 'lucide-react'
-import { fetchBlogPost, formatPostDate, imgAtWidth } from '../lib/notion'
+import { fetchBlogPost, formatPostDate, imgAtWidth, imgSrcSet } from '../lib/notion'
+
+// Rendered widths: hero spans the page minus 10vw (5vw on phones) each side,
+// body images the 900px content column minus its padding.
+const HERO_SIZES = '(max-width: 768px) 90vw, 80vw'
+const BODY_SIZES = '(max-width: 768px) calc(100vw - 40px), 820px'
 import styles from './BlogPost.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { BLOG_POST_LOADING_META, NOT_FOUND_META, blogPostMeta } from '../data/pageMeta'
@@ -113,7 +118,17 @@ function Block({ block, title }) {
       if (!src) return null
       return (
         <figure>
-          <img src={imgAtWidth(src, 1200)} alt={title} className={styles.blockImg} loading="lazy" />
+          {/* Notion gives no dimensions: 3:2 reserves the space until the image loads */}
+          <img
+            src={imgAtWidth(src, 1200)}
+            srcSet={imgSrcSet(src, [800, 1200])}
+            sizes={BODY_SIZES}
+            alt={title}
+            width={1200}
+            height={800}
+            className={styles.blockImg}
+            loading="lazy"
+          />
           {hasText(cap) && (
             <figcaption className={styles.caption}><RichText tokens={cap} linkify /></figcaption>
           )}
@@ -251,6 +266,9 @@ export default function BlogPost() {
           <figure className={styles.heroFigure}>
             <img
               src={imgAtWidth(post.image, 1200)}
+              srcSet={imgSrcSet(post.image, [800, 1200])}
+              sizes={HERO_SIZES}
+              fetchPriority="high"
               alt={post.title}
               width={1600}
               height={900}

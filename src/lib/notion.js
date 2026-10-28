@@ -13,6 +13,10 @@ export async function fetchBlogPost(id) {
 // Proxied image resized by /api/img (w: 400, 800 or 1200); other sources unchanged.
 export const imgAtWidth = (src, w) => (src?.startsWith('/api/img?') ? `${src}&w=${w}` : src)
 
+// srcset for a proxied image at the given widths; undefined for other sources.
+export const imgSrcSet = (src, widths) =>
+  src?.startsWith('/api/img?') ? widths.map((w) => `${imgAtWidth(src, w)} ${w}w`).join(', ') : undefined
+
 // Notion dates as "12 March 2026"; '' when missing or unparseable.
 export function formatPostDate(value) {
   if (!value) return ''
