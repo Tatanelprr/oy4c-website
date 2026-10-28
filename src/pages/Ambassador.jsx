@@ -8,7 +8,7 @@ import { PAGE_META } from '../data/pageMeta'
 // Texts below are the programme lead's wording, verbatim: do not edit.
 const PILLARS = [
   { icon: BookOpen,  title: 'Learn',   text: 'Build climate knowledge and leadership skills' },
-  { icon: Users,     title: 'Connect', text: 'Collaborate with a global network of young leaders’' },
+  { icon: Users,     title: 'Connect', text: 'Collaborate with a global network of young leaders' },
   { icon: Lightbulb, title: 'Create',  text: 'Develop an independent social impact project' },
   { icon: Megaphone, title: 'Amplify', text: 'Share ideas, advocacy, and community impact' },
 ]
@@ -47,7 +47,7 @@ const FAQ = [
   },
   {
     q: 'What do ambassadors gain from participating?',
-    a: 'Ambassadors develop practical skills in climate communication, digital campaigning, project management, and community engagement. They also gain hands-on experience leading a social impact project with structured feedback and opportunities to connect with youth leaders across regions',
+    a: 'Ambassadors develop practical skills in climate communication, digital campaigning, project management, and community engagement. They also gain hands-on experience leading a social impact project with structured feedback and opportunities to connect with youth leaders across regions.',
   },
   {
     q: 'How much time do ambassadors need to commit?',
@@ -55,7 +55,7 @@ const FAQ = [
   },
   {
     q: 'What support do ambassadors receive from OY4C?',
-    a: 'Ambassadors received structured training in climate education, communication, and outreach. Alongside that, feedback cycles for project guidance and mentorship from experts are also available.',
+    a: 'Ambassadors receive structured training in climate education, communication, and outreach. Alongside that, feedback cycles for project guidance and mentorship from experts are also available.',
   },
   {
     q: 'What happens after the programme ends?',
@@ -256,7 +256,7 @@ export default function Ambassador() {
         <p>
           The next generation of OY4C Ambassadors will bring new perspectives, local knowledge, and ideas to make climate education more accessible
         </p>
-        <p className={styles.ctaDate}>Applications for the next cohort opens June 2027</p>
+        <p className={styles.ctaDate}>Applications for the next cohort open June 2027</p>
         <p>Follow OY4C to hear about the next application cycle and opportunities to get involved</p>
         <ul className={styles.ctaSocials}>
           {SOCIALS.map(({ href, label, Icon }) => (
