@@ -103,21 +103,29 @@ export default async function handler(req, res) {
       image = await loadImage(target)
     }
     let { type, body } = image
+    let cacheControl = 'public, max-age=31536000, s-maxage=31536000, immutable'
     if (width) {
-      const { default: sharp } = await import('sharp')
-      // rotate() applies the EXIF orientation; sharp drops all metadata unless asked to keep it.
-      body = await sharp(body, { limitInputPixels: 50e6 })
-        .rotate()
-        .resize({ width, withoutEnlargement: true })
-        .webp({ quality: 80 })
-        .toBuffer()
-      type = 'image/webp'
+      try {
+        const { default: sharp } = await import('sharp')
+        // rotate() applies the EXIF orientation; sharp drops all metadata unless asked to keep it.
+        body = await sharp(body, { limitInputPixels: 50e6 })
+          .rotate()
+          .resize({ width, withoutEnlargement: true })
+          .webp({ quality: 80 })
+          .toBuffer()
+        type = 'image/webp'
+      } catch (err) {
+        // sharp missing or failing: serve the checked original rather than an
+        // error, and only cache it briefly so the resized version comes back.
+        console.error('img proxy resize failed, serving original:', err.message)
+        cacheControl = 'public, max-age=0, s-maxage=300'
+      }
     }
 
     res.statusCode = 200
     res.setHeader('Content-Type', type)
     res.setHeader('Content-Length', body.length)
-    res.setHeader('Cache-Control', 'public, max-age=31536000, s-maxage=31536000, immutable')
+    res.setHeader('Cache-Control', cacheControl)
     res.setHeader('X-Content-Type-Options', 'nosniff')
     res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox")
     res.end(req.method === 'HEAD' ? undefined : body)
