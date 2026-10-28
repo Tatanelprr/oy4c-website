@@ -276,6 +276,10 @@
   object-fit: cover;
   border-radius: 12px;
 }
+/* Side by side they are ~136px wide on a phone: one per row instead */
+@media (max-width: 639px) {
+  .casePhotos { grid-auto-flow: row; }
+}
 
 .ctaBtns {
   display: flex;

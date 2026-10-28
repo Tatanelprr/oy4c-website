@@ -5,8 +5,8 @@ import styles from './Ambassador.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
 
-// Off until the programme lead confirms everyone in the group photo is 18 or over.
-const SHOW_GROUP_PHOTO = false
+// Group photo in the Gombe State card, next to the action photo.
+const SHOW_GROUP_PHOTO = true
 
 // Texts below are the programme lead's wording, verbatim: do not edit.
 const PILLARS = [
