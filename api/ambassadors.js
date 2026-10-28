@@ -13,7 +13,8 @@ function notionHeaders() {
   }
 }
 
-const getRichText = (prop) => prop?.rich_text?.[0]?.plain_text ?? ''
+// Joins every segment: Notion splits a bio into several as soon as any word is formatted
+const getRichText = (prop) => prop?.rich_text?.map((t) => t.plain_text).join('') ?? ''
 const getTitle    = (prop) => prop?.title?.[0]?.plain_text ?? ''
 const getUrl      = (prop) => prop?.url ?? null
 

@@ -1,8 +1,67 @@
 import { useState, useEffect } from 'react'
-import { Link2, Loader } from 'lucide-react'
+import { Link2, Loader, BookOpen, Users, Lightbulb, Megaphone, ChevronDown } from 'lucide-react'
+import { InstagramIcon, LinkedinIcon, TiktokIcon } from '../components/SocialIcons'
 import styles from './Ambassador.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
+
+// Texts below are the programme lead's wording, verbatim: do not edit.
+const PILLARS = [
+  { icon: BookOpen,  title: 'Learn',   text: 'Build climate knowledge and leadership skills' },
+  { icon: Users,     title: 'Connect', text: 'Collaborate with a global network of young leaders’' },
+  { icon: Lightbulb, title: 'Create',  text: 'Develop an independent social impact project' },
+  { icon: Megaphone, title: 'Amplify', text: 'Share ideas, advocacy, and community impact' },
+]
+
+const NUMBERS = [
+  { num: '600+', label: 'people reached across cohort projects' },
+  { num: '7',    label: 'ambassadors selected' },
+  { num: '6',    label: 'countries represented' },
+  { num: '3',    label: 'continents reached' },
+]
+
+const CASES = [
+  {
+    num: '01',
+    place: 'Gombe State, Nigeria',
+    text: '15 young people, 100+ community members reached. Musa Muhammad Musa brought climate education into the community through clean-ups, plastic pollution awareness, and grassroots organising. His English and Hausa awareness campaigns reached 1,000+ people online.',
+  },
+  {
+    num: '02',
+    place: 'New York, USA',
+    text: 'Renee Zhao organised an interactive policy simulation at an official UN High-Level Political Forum 2026 side event. Participants explored five Sustainable Development Goals, represented diverse stakeholder perspectives, and collaborated on practical policy solutions.',
+  },
+]
+
+// Same links as the footer
+const SOCIALS = [
+  { href: 'https://www.instagram.com/ouryouth4theclimate/', label: 'Instagram', Icon: InstagramIcon },
+  { href: 'https://www.linkedin.com/company/our-youth-4-the-climate/', label: 'LinkedIn', Icon: LinkedinIcon },
+  { href: 'https://www.tiktok.com/@ouryouth4theclimate', label: 'TikTok', Icon: TiktokIcon },
+]
+
+const FAQ = [
+  {
+    q: 'Who can apply to the Ambassador Programme?',
+    a: 'The programme is open to students aged 18-25 who are passionate about climate education, ready to commit consistently, and open to feedback.',
+  },
+  {
+    q: 'What do ambassadors gain from participating?',
+    a: 'Ambassadors develop practical skills in climate communication, digital campaigning, project management, and community engagement. They also gain hands-on experience leading a social impact project with structured feedback and opportunities to connect with youth leaders across regions',
+  },
+  {
+    q: 'How much time do ambassadors need to commit?',
+    a: 'The six-month programme requires an estimated 5-7 hours per week. Ambassadors participate in three core training sessions, monthly check-ins, bi-weekly feedback cycles, and outreach activities. The programme is remote-friendly, with possible on-ground engagement during active campaigns.',
+  },
+  {
+    q: 'What support do ambassadors receive from OY4C?',
+    a: 'Ambassadors received structured training in climate education, communication, and outreach. Alongside that, feedback cycles for project guidance and mentorship from experts are also available.',
+  },
+  {
+    q: 'What happens after the programme ends?',
+    a: 'Ambassadors complete an offboarding process and document their social impact project. Depending on their engagement and performance, ambassadors may also be considered for further involvement in OY4C.',
+  },
+]
 
 function getInitials(name) {
   return name
@@ -78,13 +137,10 @@ export default function Ambassador() {
       <section className={styles.hero}>
         <div className={styles.heroBg} />
         <div className={styles.heroContent}>
-          <span className={styles.heroEyebrow}>Leadership & advocacy</span>
-          <h1>
-            Ambassador<br />
-            <em>Programme</em>
-          </h1>
+          <h1>OY4C Ambassadors</h1>
+          <p className={styles.heroTagline}>Young People. Local Action. Global Impact</p>
           <p className={styles.heroSub}>
-            A 6-month leadership initiative bringing together young leaders committed to advancing climate literacy and advocacy within their communities.
+            A six-month leadership initiative supporting young people to turn climate knowledge into community action, advocacy, and lasting change
           </p>
         </div>
       </section>
@@ -93,16 +149,9 @@ export default function Ambassador() {
       <section className={styles.overview}>
         <div className={styles.overviewInner}>
           <div className={styles.overviewText}>
-            <span className="section-eyebrow">About the programme</span>
-            <h2 className="section-title">More than a volunteer opportunity</h2>
+            <h2 className="section-title">What is the Ambassador Programme</h2>
             <p>
-              In 2026, OY4C launched its first-ever Ambassador Program, bringing together young leaders committed to advancing climate literacy and advocacy within their communities.
-            </p>
-            <p>
-              Designed as a 6-month leadership initiative, the program equips a global network of young leaders to advance climate change education through advocacy, communication, and community action - while supporting OY4C's mission to make climate change education more accessible worldwide.
-            </p>
-            <p>
-              Throughout the program, ambassadors lead local and digital initiatives, participate in global advocacy campaigns, and develop independent social impact projects aligned with climate action.
+              OY4C’s Ambassador Programme brings together young leaders committed to making climate change education more accessible and actionable. The programme is built around a simple idea that climate action looks different everywhere.
             </p>
           </div>
           <div>
@@ -113,18 +162,22 @@ export default function Ambassador() {
             </p>
           </div>
         </div>
+        <ul className={styles.pillars}>
+          {PILLARS.map(({ icon: Icon, title, text }) => (
+            <li key={title} className={styles.pillar}>
+              <span className={styles.pillarIcon}><Icon size={22} aria-hidden="true" /></span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* METRICS */}
       <section className={styles.metrics}>
-        <p className={styles.metricsLabel}>2026 Cohort - by the numbers</p>
+        <h2 className={`section-title ${styles.metricsTitle}`}>OY4C Ambassadors By The Numbers</h2>
         <div className={styles.metricsGrid}>
-          {[
-            { num: '321', label: 'Applications received' },
-            { num: '12', label: 'Ambassadors selected' },
-            { num: '8', label: 'Countries represented' },
-            { num: '4', label: 'Continents represented' },
-          ].map((m) => (
+          {NUMBERS.map((m) => (
             <div key={m.label} className={styles.metric}>
               <div className={styles.metricNum}>{m.num}</div>
               <div className={styles.metricLbl}>{m.label}</div>
@@ -154,7 +207,7 @@ export default function Ambassador() {
       <section className={styles.ambassadors}>
         <div className={styles.ambassadorsHead}>
           <span className="section-eyebrow">2026 Cohort</span>
-          <h2 className="section-title">Meet our Ambassadors</h2>
+          <h2 className="section-title">Meet the Ambassadors</h2>
         </div>
 
         {loading && (
@@ -179,12 +232,41 @@ export default function Ambassador() {
         )}
       </section>
 
+      {/* IDEAS TO IMPACT */}
+      <section className={styles.impact}>
+        <div className={styles.impactInner}>
+          <h2 className="section-title">From Ideas to Impact</h2>
+          <p className={styles.impactIntro}>
+            Every community faces different challenges. Our ambassadors respond in different ways, from grassroots environmental action to international policy dialogue.
+          </p>
+          <div className={styles.cases}>
+            {CASES.map((c) => (
+              <article key={c.num} className={styles.case}>
+                <h3><span className={styles.caseNum}>{c.num}</span> | {c.place}</h3>
+                <p>{c.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className={styles.cta}>
-        <h2>Join the next cohort</h2>
+        <h2>Your Community. Your Ideas. Your Impact</h2>
         <p>
-          Applications for the next OY4C Ambassador cohort will open soon. Follow our socials to be the first to know.
+          The next generation of OY4C Ambassadors will bring new perspectives, local knowledge, and ideas to make climate education more accessible
         </p>
+        <p className={styles.ctaDate}>Applications for the next cohort opens June 2027</p>
+        <p>Follow OY4C to hear about the next application cycle and opportunities to get involved</p>
+        <ul className={styles.ctaSocials}>
+          {SOCIALS.map(({ href, label, Icon }) => (
+            <li key={label}>
+              <a href={href} target="_blank" rel="noreferrer" aria-label={`OY4C on ${label}`}>
+                <Icon size={20} />
+              </a>
+            </li>
+          ))}
+        </ul>
         <div className={styles.ctaBtns}>
           <a
             href="https://www.linkedin.com/posts/our-youth-4-the-climate_meet-the-oy4c-ambassadors-our-first-activity-7460657900710092821-GOSV"
@@ -200,6 +282,22 @@ export default function Ambassador() {
           >
             community@oy4c.org
           </a>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className={styles.faq}>
+        <div className={styles.faqInner}>
+          <h2 className="section-title">FAQ</h2>
+          {FAQ.map((f) => (
+            <details key={f.q} className={styles.faqItem}>
+              <summary className={styles.faqQ}>
+                <h3>{f.q}</h3>
+                <ChevronDown size={20} aria-hidden="true" className={styles.faqChevron} />
+              </summary>
+              <p className={styles.faqA}>{f.a}</p>
+            </details>
+          ))}
         </div>
       </section>
     </>
