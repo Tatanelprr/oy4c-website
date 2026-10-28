@@ -35,18 +35,30 @@ function parseArticle(page) {
 const FIRST_BLOCKS      = 25
 const COVER_CONCURRENCY = 3 // Notion allows about 3 requests per second on average
 const COVER_TIMEOUT_MS  = 5000
+// Covers already found, kept in the function instance for as long as a list
+// response may be served (s-maxage 5 min + stale-while-revalidate 1 h). Keyed on
+// last_edited_time too, so an edited article is read again at once.
+const COVER_TTL_MS      = (300 + 3600) * 1000
+const COVER_CACHE_MAX   = 500
+const coverCache        = new Map() // page id -> { edited, url, expires }
 
-// Never throws: an article whose blocks cannot be read keeps the placeholder cover.
-async function firstImageOf(pageId) {
+// Never throws: an article whose blocks cannot be read keeps the placeholder
+// cover, and the failure is not cached so the next list request retries it.
+async function coverOf(page) {
+  const hit = coverCache.get(page.id)
+  if (hit && hit.edited === page.last_edited_time && hit.expires > Date.now()) return hit.url
   try {
     const res = await fetch(
-      `https://api.notion.com/v1/blocks/${pageId}/children?page_size=${FIRST_BLOCKS}`,
+      `https://api.notion.com/v1/blocks/${page.id}/children?page_size=${FIRST_BLOCKS}`,
       { headers: notionHeaders(), signal: AbortSignal.timeout(COVER_TIMEOUT_MS) }
     )
     if (!res.ok) throw await notionErrorFrom(res)
-    return firstBodyImage((await res.json()).results)?.url ?? null
+    const url = firstBodyImage((await res.json()).results)?.url ?? null
+    if (coverCache.size >= COVER_CACHE_MAX) coverCache.clear()
+    coverCache.set(page.id, { edited: page.last_edited_time, url, expires: Date.now() + COVER_TTL_MS })
+    return url
   } catch (err) {
-    console.error('blog-posts cover fallback:', pageId, err.message)
+    console.error('blog-posts cover fallback:', page.id, err.message)
     return null
   }
 }
@@ -85,9 +97,9 @@ export default async function handler(req, res) {
 
     const data     = await response.json()
     const articles = data.results.map(parseArticle)
-    const missing  = articles.filter((a) => !a.image)
-    const covers   = await mapLimit(missing, COVER_CONCURRENCY, (a) => firstImageOf(a.id))
-    missing.forEach((a, i) => { a.image = covers[i] })
+    const missing  = articles.map((a, i) => [a, data.results[i]]).filter(([a]) => !a.image)
+    const covers   = await mapLimit(missing, COVER_CONCURRENCY, ([, page]) => coverOf(page))
+    missing.forEach(([a], i) => { a.image = covers[i] })
     sendJson(res, articles)
   } catch (err) {
     sendHandlerError(res, 'blog-posts handler error', err)
