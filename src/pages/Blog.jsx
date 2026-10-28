@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Calendar, User, Tag, Mail, Loader, Newspaper, Leaf } from 'lucide-react'
-import { fetchBlogPosts, formatPostDate } from '../lib/notion'
+import { fetchBlogPosts, formatPostDate, imgAtWidth } from '../lib/notion'
 import styles from './Blog.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
@@ -42,7 +42,7 @@ function ArticleCard({ article, eager }) {
     <Link to={`/blog/${article.id}`} className={styles.card}>
       {article.image && !imgFailed ? (
         <div className={styles.cardImg}>
-          <img src={article.image} alt={article.title} width={1600} height={900} loading={eager ? undefined : 'lazy'} onError={() => setImgFailed(true)} />
+          <img src={imgAtWidth(article.image, 800)} alt={article.title} width={1600} height={900} loading={eager ? undefined : 'lazy'} onError={() => setImgFailed(true)} />
         </div>
       ) : (
         <CoverPlaceholder id={article.id} />

@@ -1,9 +1,14 @@
 import { parseAllowedImageUrl } from './_lib/img.js'
 
-// Image proxy: GET /api/img?u=<encoded https URL on an allowed host>.
+// Image proxy: GET /api/img?u=<encoded https URL on an allowed host>[&w=400|800|1200].
 // Not an open proxy: only hosts in ALLOWED_IMAGE_HOSTS, https only, redirects
 // re-checked against the same allowlist, raster images only.
+// With w, the image is resized to that width (never enlarged) and served as
+// WebP without metadata. w is part of the URL, so the CDN caches each width apart.
 
+// Closed list, matched as exact strings: no arbitrary resize work, and no
+// "0400" or "400.0" variants splitting the CDN cache.
+const WIDTHS        = new Set(['400', '800', '1200'])
 const TIMEOUT_MS    = 5000 // per attempt
 const RETRY_DELAY   = 300
 const MAX_BYTES     = 4 * 1024 * 1024 // Vercel caps function responses at 4.5 MB
@@ -81,9 +86,12 @@ const isTransient = (err) => err.name === 'AbortError' || err.status >= 500
 export default async function handler(req, res) {
   if (req.method !== 'GET' && req.method !== 'HEAD') return sendError(res, 405, 'Method not allowed')
 
-  const raw = new URL(req.url ?? '', 'http://localhost').searchParams.get('u')
-  const target = parseAllowedImageUrl(raw)
+  const params = new URL(req.url ?? '', 'http://localhost').searchParams
+  const target = parseAllowedImageUrl(params.get('u'))
   if (!target) return sendError(res, 400, 'Invalid or disallowed image URL')
+  const widths = params.getAll('w')
+  if (widths.length > 1 || (widths.length && !WIDTHS.has(widths[0]))) return sendError(res, 400, 'Invalid width')
+  const width = params.has('w') ? Number(params.get('w')) : null
 
   try {
     let image
@@ -94,7 +102,17 @@ export default async function handler(req, res) {
       await new Promise((r) => setTimeout(r, RETRY_DELAY))
       image = await loadImage(target)
     }
-    const { type, body } = image
+    let { type, body } = image
+    if (width) {
+      const { default: sharp } = await import('sharp')
+      // rotate() applies the EXIF orientation; sharp drops all metadata unless asked to keep it.
+      body = await sharp(body, { limitInputPixels: 50e6 })
+        .rotate()
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: 80 })
+        .toBuffer()
+      type = 'image/webp'
+    }
 
     res.statusCode = 200
     res.setHeader('Content-Type', type)

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Calendar, User, Loader } from 'lucide-react'
-import { fetchBlogPost, formatPostDate } from '../lib/notion'
+import { fetchBlogPost, formatPostDate, imgAtWidth } from '../lib/notion'
 import styles from './BlogPost.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { BLOG_POST_LOADING_META, NOT_FOUND_META, blogPostMeta } from '../data/pageMeta'
@@ -113,7 +113,7 @@ function Block({ block, title }) {
       if (!src) return null
       return (
         <figure>
-          <img src={src} alt={title} className={styles.blockImg} loading="lazy" />
+          <img src={imgAtWidth(src, 1200)} alt={title} className={styles.blockImg} loading="lazy" />
           {hasText(cap) && (
             <figcaption className={styles.caption}><RichText tokens={cap} linkify /></figcaption>
           )}
@@ -250,7 +250,7 @@ export default function BlogPost() {
         {post.image && post.image !== failedImg && (
           <figure className={styles.heroFigure}>
             <img
-              src={post.image}
+              src={imgAtWidth(post.image, 1200)}
               alt={post.title}
               width={1600}
               height={900}
