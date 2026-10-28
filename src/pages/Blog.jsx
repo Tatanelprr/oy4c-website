@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Calendar, User, Tag, Mail, Loader, Newspaper, Leaf } from 'lucide-react'
 import { fetchBlogPosts, formatPostDate } from '../lib/notion'
@@ -10,6 +10,8 @@ import { PAGE_META } from '../data/pageMeta'
 // from the post id so each card keeps the same look between visits.
 const COVER_TINTS = ['lavender', 'teal', 'cream', 'green']
 const COVER_ICONS = [Newspaper, Leaf]
+
+const PAGE_SIZE = 12
 
 // FNV-1a: well spread even for ids that differ by a character or two
 function hashId(id = '') {
@@ -31,7 +33,7 @@ function CoverPlaceholder({ id }) {
   )
 }
 
-function ArticleCard({ article }) {
+function ArticleCard({ article, eager }) {
   const [imgFailed, setImgFailed] = useState(false)
   const tags = article.tags ?? []
   const author = article.author?.trim()
@@ -40,7 +42,7 @@ function ArticleCard({ article }) {
     <Link to={`/blog/${article.id}`} className={styles.card}>
       {article.image && !imgFailed ? (
         <div className={styles.cardImg}>
-          <img src={article.image} alt={article.title} loading="lazy" onError={() => setImgFailed(true)} />
+          <img src={article.image} alt={article.title} loading={eager ? undefined : 'lazy'} onError={() => setImgFailed(true)} />
         </div>
       ) : (
         <CoverPlaceholder id={article.id} />
@@ -84,6 +86,10 @@ export default function Blog() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [activeTag, setActiveTag] = useState('all')
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const [announcement, setAnnouncement] = useState('')
+  const gridRef = useRef(null)
+  const focusIndex = useRef(null)
 
   useEffect(() => {
     fetchBlogPosts()
@@ -101,6 +107,28 @@ export default function Blog() {
     activeTag === 'all'
       ? articles
       : articles.filter((a) => (a.tags ?? []).includes(activeTag))
+  const visible = filtered.slice(0, visibleCount)
+
+  // After "Load more", focus the first new card so keyboard users keep their place
+  // (the button itself may have just disappeared).
+  useEffect(() => {
+    if (focusIndex.current === null) return
+    gridRef.current?.children[focusIndex.current]?.focus()
+    focusIndex.current = null
+  }, [visibleCount])
+
+  function selectTag(tag) {
+    setActiveTag(tag)
+    setVisibleCount(PAGE_SIZE)
+    setAnnouncement('')
+  }
+
+  function loadMore() {
+    const next = Math.min(visibleCount + PAGE_SIZE, filtered.length)
+    focusIndex.current = visibleCount
+    setVisibleCount(next)
+    setAnnouncement(`Showing ${next} of ${filtered.length} articles`)
+  }
 
   return (
     <>
@@ -148,7 +176,7 @@ export default function Blog() {
                     <button
                       key={tag}
                       className={`${styles.filterBtn} ${activeTag === tag ? styles.filterBtnActive : ''}`}
-                      onClick={() => setActiveTag(tag)}
+                      onClick={() => selectTag(tag)}
                     >
                       {tag === 'all' ? 'All' : tag}
                     </button>
@@ -157,11 +185,20 @@ export default function Blog() {
               )}
 
               {filtered.length > 0 ? (
-                <div className={styles.grid}>
-                  {filtered.map((article) => (
-                    <ArticleCard key={article.id} article={article} />
-                  ))}
-                </div>
+                <>
+                  <div className={styles.grid} ref={gridRef}>
+                    {visible.map((article, i) => (
+                      <ArticleCard key={article.id} article={article} eager={i < 3} />
+                    ))}
+                  </div>
+                  {visible.length < filtered.length && (
+                    <div className={styles.loadMoreWrap}>
+                      <button type="button" className={styles.loadMore} onClick={loadMore}>
+                        Load more
+                      </button>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className={styles.empty}>
                   <div className={styles.emptyIcon}>
@@ -174,6 +211,7 @@ export default function Blog() {
                   <p className={styles.emptyDesc}>Check back soon, stories from our global network are on their way.</p>
                 </div>
               )}
+              <p className={styles.srOnly} aria-live="polite">{announcement}</p>
             </>
           )}
 
