@@ -36,7 +36,7 @@ export const PAGE_META = {
     description: 'CCiC is a free, 1h30 in-person climate workshop, designed and delivered by young people, for students aged 12-18. We bring everything. You open the door.',
   },
   '/ambassador': {
-    title: 'Ambassador Programme — Leadership & advocacy | OY4C',
+    title: 'OY4C Ambassadors — Young People. Local Action. Global Impact',
     description: 'OY4C Ambassadors: a six-month leadership initiative supporting young people to turn climate knowledge into community action, advocacy, and lasting change.',
   },
   '/last-push': {
