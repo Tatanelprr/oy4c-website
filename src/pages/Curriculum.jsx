@@ -13,6 +13,8 @@ import {
   FileText,
   Languages,
   ListChecks,
+  Sparkles,
+  CircleHelp,
 } from 'lucide-react'
 import CurriculumMap from '../components/CurriculumMap'
 import {
@@ -127,11 +129,16 @@ const TOPICS = [
   'The Ocean',
 ]
 
+// Ava's text; what was in brackets is shown as a subtitle (Ava's feedback).
 const TOPIC_CONTENTS = [
-  'Complete Presentation (includes aims, youth climate activist examples, skills learned, job ideas in the field, resources)',
-  'Fully-Written Topic Document (you don’t need any previous knowledge to teach)',
-  'An Activity (to empower young people to turn knowledge into action)',
-  'A Quiz and Answer Key',
+  {
+    icon: Presentation,
+    key: 'Complete Presentation',
+    sub: 'includes aims, youth climate activist examples, skills learned, job ideas in the field, resources',
+  },
+  { icon: FileText, key: 'Fully-Written Topic Document', sub: 'you don’t need any previous knowledge to teach' },
+  { icon: Sparkles, key: 'An Activity', sub: 'to empower young people to turn knowledge into action' },
+  { icon: CircleHelp, key: 'A Quiz and Answer Key' },
 ]
 
 const LANGUAGES = [
@@ -143,7 +150,7 @@ const BUBBLES = [
   { icon: <Users size={28} aria-hidden="true" />, label: 'By Youth, For Youth' },
   { icon: <Gift size={28} aria-hidden="true" />, label: 'Free' },
   { icon: <CheckCircle2 size={28} aria-hidden="true" />, label: 'Ready-to-Use' },
-  { icon: <BookOpen size={28} aria-hidden="true" />, label: '13 interdisciplinary topics' },
+  { icon: <BookOpen size={28} aria-hidden="true" />, label: '13 Interdisciplinary topics' },
 ]
 
 // Double spaces are Ava's; HTML collapses them on screen.
@@ -182,12 +189,34 @@ const WHO = [
   'Our team is aged 12 to 24. We sat through the gap we’re describing. We built the curriculum we wish we’d had. Your students will be grateful they do.',
 ]
 
+// Each item with the words Ava asked to show in green.
 const WAY_FORWARD = [
-  'Translate our resources to 5+ languages',
-  'Collect longer-term data on the impact of the OY4CCurriculum, both on a student and their actions, and on systemic, larger-scale change',
-  "Improve the interface we deliver our resources on. **We're looking for technology and LMS co-development partners**",
-  'Given we are the intermediary resource, start partnering with institutions driving curriculum reform, to ensure youth-built and youth-led curriculum reform',
+  ['Translate our resources to 5+ languages', 'Translate'],
+  [
+    'Collect longer-term data on the impact of the OY4CCurriculum, both on a student and their actions, and on systemic, larger-scale change',
+    'longer-term data on the impact of the OY4CCurriculum',
+  ],
+  [
+    "Improve the interface we deliver our resources on. **We're looking for technology and LMS co-development partners**",
+    'Improve the interface',
+  ],
+  [
+    'Given we are the intermediary resource, start partnering with institutions driving curriculum reform, to ensure youth-built and youth-led curriculum reform',
+    'start partnering with institutions driving curriculum reform',
+  ],
 ]
+
+// Ava's text with `phrase` in green bold, the rest through rich().
+function withGreen(text, phrase) {
+  const [before, after] = text.split(phrase)
+  return (
+    <>
+      {rich(before)}
+      <strong className={styles.green}>{phrase}</strong>
+      {rich(after)}
+    </>
+  )
+}
 
 // Topic duration, flexibility and FAQ_SASHA entries: Sasha's text, see
 // curriculumConfig.js. Conditional entries are dropped while empty.
@@ -309,7 +338,10 @@ export default function Curriculum() {
           <div className={styles.getGrid}>
             <details className={styles.topics} open>
               <summary className={styles.topicsSummary}>
-                <h3>All 13 topics</h3>
+                <div>
+                  <h3>All OY4CCurriculum's 13 Topics</h3>
+                  <p className={styles.topicsSub}>Interdisciplinary and Ready-to-Go</p>
+                </div>
                 <ChevronDown size={20} aria-hidden="true" className={styles.faqChevron} />
               </summary>
               <ol className={styles.topicsList}>
@@ -346,8 +378,14 @@ export default function Curriculum() {
                   What's in each topic
                 </h3>
                 <ul className={styles.getList}>
-                  {TOPIC_CONTENTS.map((t) => (
-                    <li key={t}>{t}</li>
+                  {TOPIC_CONTENTS.map(({ icon: Icon, key, sub }) => (
+                    <li key={key}>
+                      <Icon size={20} aria-hidden="true" />
+                      <span>
+                        <strong className={styles.getKey}>{key}</strong>
+                        {sub && <span className={styles.getSub}>{sub}</span>}
+                      </span>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -447,6 +485,7 @@ export default function Curriculum() {
       <section className={styles.map}>
         <div className={styles.mapInner}>
           <h2 className="section-title">OY4CCurriculum Map</h2>
+          <p className={styles.mapSub}>The OY4CCurriculum is being taught across 6 continents</p>
           {COUNTER_READY && (
             <p className={styles.counter}>
               {COUNTER.communities} {COUNTER_COMMUNITIES_LABEL} · {COUNTER.countries} countries · {COUNTER.students} students
@@ -528,8 +567,10 @@ export default function Curriculum() {
         <div className={styles.whoInner}>
           <div className={styles.whoText}>
             <h2 className="section-title">Who’s it for and why it matters</h2>
-            {WHO.map((p) => (
-              <p key={p}>{rich(p)}</p>
+            {WHO.map((p, i) => (
+              <p key={p} className={i === WHO.length - 1 ? styles.whoTeam : undefined}>
+                {rich(p)}
+              </p>
             ))}
           </div>
           <div className={styles.whoPhotos}>
@@ -554,10 +595,10 @@ export default function Curriculum() {
       {/* 11. OUR WAY FORWARD */}
       <section className={styles.future}>
         <div className={styles.futureInner}>
-          <h2 className="section-title">Our Way Forward</h2>
+          <h2 className={`section-title ${styles.green}`}>Our Way Forward</h2>
           <ul className={styles.futureList}>
-            {WAY_FORWARD.map((item) => (
-              <li key={item}>{rich(item)}</li>
+            {WAY_FORWARD.map(([item, phrase]) => (
+              <li key={item}>{withGreen(item, phrase)}</li>
             ))}
           </ul>
           <p className={styles.futureContact}>
