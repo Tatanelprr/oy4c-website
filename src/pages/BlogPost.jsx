@@ -281,7 +281,6 @@ export default function BlogPost() {
               width={1600}
               height={900}
               className={styles.heroImg}
-              onLoad={setRatio}
               onError={() => setFailedImg(post.image)}
             />
             {hasText(post.imageCredit) && (

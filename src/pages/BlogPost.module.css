@@ -19,28 +19,17 @@
   max-width: 100%;
 }
 .heroImg {
-  width: var(--img-w);
+  width: 100%;
   height: auto; /* keeps the width/height ratio instead of the 900px attribute */
-  max-height: var(--max-h); /* also before --r is set, so the page below never jumps */
-  margin: 0 auto;
+  max-height: 420px;
+  object-fit: cover;
   border-radius: 20px;
   display: block;
 }
-/* An image and its credit or caption share one width: the full column,
-   narrower when that would make the image taller than --max-h. --r is the
-   image's natural ratio, set on load; until then the ratio of its width/height
-   attributes. */
-.heroFigure,
-.figure {
-  --max-h: 70vh;
-  --img-w: min(100%, var(--max-h) * var(--r, var(--attr-r)));
-}
-.heroFigure { --attr-r: 16 / 9; margin-bottom: 40px; }
-.figure { --attr-r: 3 / 2; }
+.heroFigure { margin-bottom: 40px; }
 /* Image credit, shown as typed in Notion. --mid is 7.5:1 on white */
 .credit {
-  width: var(--img-w);
-  margin: 10px auto 0;
+  margin-top: 10px;
   font-size: 0.78rem;
   line-height: 1.6;
   color: var(--mid);
@@ -167,6 +156,13 @@
   text-align: justify;
 }
 
+/* A body image and its caption share one width: the full column, narrower
+   when that would make the image taller than --max-h. --r is the image's
+   natural ratio, set on load; until then 3:2 like its width/height attributes. */
+.figure {
+  --max-h: 70vh;
+  --img-w: min(100%, var(--max-h) * var(--r, 3 / 2));
+}
 .blockImg {
   width: var(--img-w);
   height: auto;
@@ -256,6 +252,5 @@
   .hero    { padding: 24px 5vw 40px; }
   .divider { margin: 0 5vw; }
   .content { padding: 40px 20px 80px; }
-  .heroFigure,
-  .figure { --max-h: 60vh; }
+  .figure  { --max-h: 60vh; }
 }
