@@ -164,18 +164,22 @@ export default function CCiC() {
           <p className={styles.journeyIntro}>
             OY4C has been online since its founding during the pandemic. Social media and youth drive scaled us globally. But at some point, you have to show up. So Ava, OY4C's Founder and Executive Director, set off.
           </p>
+          {/* photo: optional school photo, e.g. '/ccic/schools/fiji.webp', hidden
+              while empty. These are students under 18: only add one once
+              consent to show it is confirmed. */}
           <div className={styles.stopGrid}>
             {[
-              { place: 'Canada (Online)', body: 'Where it started, online. Ava in London, students in Ontario, Canada. The first CCiC session, before going in person.' },
-              { place: 'Fiji', body: "The first classroom. First real students, first real conversation. The moment OY4C's impact became tangible." },
-              { place: 'Auckland, New Zealand', body: "A community event at New Lynn Memorial Square — participants embroidering cloth while discussing fashion's impact on people, planet and economy. No formal structure, just community." },
-              { place: 'Rotorua, New Zealand', body: "60 students. Everyone there for the same reason: young people coming together, empowering each other, realising they're not alone. By youth. For youth." },
-              { place: 'Bali, Indonesia', body: "72 students at SD Bali Public School. Green School Bali students, who'd already had climate education, were notably less reactive — not because they didn't care, but because the knowledge was already part of how they moved through the world." },
-              { place: 'Cebu, Philippines', body: 'Earth Day, 14 students. Already skilled at repairing and extending the life of their clothes — not from classroom sustainability lessons, but from necessity and community. We brought the framework. They brought the practice.' },
-              { place: 'Maiduguri, Nigeria', tag: 'Team-run', body: 'Run by Muhammad, Story Creator. He went on to integrate the full OY4C Curriculum into his school.' },
-              { place: 'Pontianak, Indonesia', tag: 'Team-run', body: 'Run by Deanna, Director of Community. 140 students, eager and ready. Similar sessions were run independently by Alexandra (Bratislava, Slovakia).' },
+              { place: 'Canada (Online)', photo: '', body: 'Where it started, online. Ava in London, students in Ontario, Canada. The first CCiC session, before going in person.' },
+              { place: 'Fiji', photo: '', body: "The first classroom. First real students, first real conversation. The moment OY4C's impact became tangible." },
+              { place: 'Auckland, New Zealand', photo: '', body: "A community event at New Lynn Memorial Square — participants embroidering cloth while discussing fashion's impact on people, planet and economy. No formal structure, just community." },
+              { place: 'Rotorua, New Zealand', photo: '', body: "60 students. Everyone there for the same reason: young people coming together, empowering each other, realising they're not alone. By youth. For youth." },
+              { place: 'Bali, Indonesia', photo: '', body: "72 students at SD Bali Public School. Green School Bali students, who'd already had climate education, were notably less reactive — not because they didn't care, but because the knowledge was already part of how they moved through the world." },
+              { place: 'Cebu, Philippines', photo: '', body: 'Earth Day, 14 students. Already skilled at repairing and extending the life of their clothes — not from classroom sustainability lessons, but from necessity and community. We brought the framework. They brought the practice.' },
+              { place: 'Maiduguri, Nigeria', photo: '', tag: 'Team-run', body: 'Run by Muhammad, Story Creator. He went on to integrate the full OY4C Curriculum into his school.' },
+              { place: 'Pontianak, Indonesia', photo: '', tag: 'Team-run', body: 'Run by Deanna, Director of Community. 140 students, eager and ready. Similar sessions were run independently by Alexandra (Bratislava, Slovakia).' },
             ].map((s, i) => (
               <div key={s.place} className={styles.stop}>
+                {s.photo && <img src={s.photo} alt="" className={styles.stopPhoto} loading="lazy" />}
                 <div className={styles.stopNum}>{String(i + 1).padStart(2, '0')}</div>
                 <div className={styles.stopHead}>
                   <span className={styles.stopPlace}>{s.place}</span>

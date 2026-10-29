@@ -363,6 +363,14 @@
   border-radius: var(--pill-radius);
   padding: 3px 10px;
 }
+.stopPhoto {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
 .stopBody {
   font-size: 0.85rem;
   color: var(--mid);
