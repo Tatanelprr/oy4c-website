@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
-import { Globe, Heart, Users, Handshake, X } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Globe, Heart, Users, Handshake } from 'lucide-react'
+import { InstagramIcon } from '../components/SocialIcons'
 import styles from './Partnerships.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
@@ -27,32 +28,57 @@ const EXTRA_PARTNERS = [
   { name: 'Climate Fresk', logo: '/seen-in/climate-fresk.png' },
 ]
 
-// "What we build together" stays hidden until there are case studies to show
-// (Ava). Set to true to show it again.
-const SHOW_WHAT_WE_BUILD = false
+// "What we build together": set to false to hide the section.
+const SHOW_WHAT_WE_BUILD = true
 
-// "Our projects" circle: every partner except these
-const NOT_PROJECTS = new Set(['Climate Quilt'])
+// "What we build together" cards: Aana Shenai's text, verbatim (typos included).
+const BUILD_PARTNERS = {
+  "Climate Fresk": {
+    url: "https://climatefresk.org/world/",
+    text: "Kenya has faced climate extremes for the past five years, and is often left out of climate research. In partnership with Climate Fresk Kenya, Restoration Warriors, LOST and 3es, OY4C launched a testimonial campaign to gather young Kenyans experiences with climate change and eco-anxiety, with the ultimate goal of creating a policy brief for elected officials.",
+    instagram: "https://www.instagram.com/p/De7St1AiN8x/",
+  },
+  "Force of Nature": {
+    url: "https://www.forceofnature.xyz/",
+    text: "Force of Nature is a leading climate organization focused on helping young people manage their exo-anxiety. They have been a key partner to guiding OY4C's growth as a climate education organization, and have partnered with OY4C on virtual speaker events",
+  },
+  "Feel Good Action": {
+    url: "http://feelgoodaction.org/partners/oy4c",
+    text: "FGA is a digital advocacy organization dedicated to promoting sustainability within political action. OY4C has worked with FGA over the past few years to highlight the intersection between voting and environmentalism, leading campaigns on youth voter registration and creating awareness about environmental policy changes in the United States.",
+  },
+  "UNESCO": {
+    url: "https://www.unesco.org/en/sustainable-development/education/greening-future/members",
+    text: "The Greening Education Partnership is a global initiative that takes a whole-of-system approach to support countries to tackle the climate crisis by harnessing the critical role of education. OY4C joined the Greening Education Partnership in 2025 and has since presented at a Quarterly Group meeting to provide youth input to the Greening Curriculum Pillar.",
+  },
+  "Climate Cardinals": {
+    url: "https://www.climatecardinals.org/",
+    text: "Climate Cardinals tackles one of the most important issues within the climate crisis: accessibility to climate education in different languages. As youth-founded and led climate organizations, OY4C and Climate Cardinals are working together to ensure our educational resources are accessible to non-English speakers.",
+  },
+  "Energy for Refugees": {
+    url: "https://www.energyforrefugees.com/",
+    text: "Energy for Refugees works to alleviate energy poverty in refugee camps and displaced communities worldwide through renewable energy solutions. In the summer of 2026, OY4C partnered with them to fundraise for youth-led climate solutions.",
+    instagram: "https://www.instagram.com/p/DZH1tlgqLVk/",
+  },
+  "Climate Majority Project": {
+    url: "https://www.climatemajorityproject.com/climate-courage-2026",
+    text: "CMP is a UK-based organization that mobilizes the public majority for urgent climate action and adaptation beyond polarizing party politics. OY4C is an organizational partner for the Climate Courage Schools Campaign that advocates for more resources for schools and teachers in the face of climate change.",
+  },
+}
 
-// TODO: 2-3 sentences and a link per project, keyed by partner name, e.g.
-// 'GEP': { text: '…', link: 'https://…' }
-const PROJECT_INFO = {}
+// Categories in order; a partner may appear in several (same card).
+const BUILD_CATEGORIES = [
+  { title: "Education", partners: ["UNESCO", "Force of Nature"] },
+  { title: "Policy", partners: ["Climate Fresk", "Feel Good Action", "Climate Majority Project"] },
+  { title: "Climate Justice", partners: ["Climate Cardinals", "Climate Fresk", "Energy for Refugees"] },
+]
 
 export default function Partnerships() {
   usePageMeta(PAGE_META['/partnerships'])
   const [partners, setPartners] = useState([])
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState(null)
-  const [project, setProject]   = useState(null)
-  const dialogRef = useRef(null)
 
   const allPartners = [...partners, ...EXTRA_PARTNERS].map((p) => ({ ...p, logo: p.logo || LOGO_LOCAL[p.name] }))
-  const projects = allPartners.filter((p) => !NOT_PROJECTS.has(p.name))
-  const info = project ? PROJECT_INFO[project.name] : null
-
-  useEffect(() => {
-    if (project) dialogRef.current?.showModal()
-  }, [project])
 
   useEffect(() => {
     fetch('/api/partners')
@@ -151,48 +177,44 @@ export default function Partnerships() {
         </div>
       </section>
 
-      {/* OUR PROJECTS — partners on a circle, click opens a pop-in */}
-      {SHOW_WHAT_WE_BUILD && !loading && !error && (
+      {/* WHAT WE BUILD TOGETHER — partner projects by category */}
+      {SHOW_WHAT_WE_BUILD && (
         <section className={styles.projects}>
           <div className={styles.projectsInner}>
             <span className="section-eyebrow">Our projects</span>
             <h2 className="section-title">What we build together</h2>
-            <ul className={styles.orbit} style={{ '--n': projects.length }}>
-              {projects.map((p, i) => (
-                <li key={p.name} className={styles.orbitItem} style={{ '--i': i }}>
-                  <button type="button" className={styles.orbitBtn} onClick={() => setProject(p)}>
-                    {p.logo ? <img src={p.logo} alt={p.name} loading="lazy" /> : p.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <dialog
-            ref={dialogRef}
-            className={styles.projectDialog}
-            aria-labelledby="project-title"
-            onClose={() => setProject(null)}
-            onClick={(e) => e.target === e.currentTarget && dialogRef.current.close()}
-          >
-            {project && (
-              <div className={styles.projectBody}>
-                <button type="button" className={styles.projectClose} onClick={() => dialogRef.current.close()} aria-label="Close">
-                  <X size={20} />
-                </button>
-                <div className={styles.projectHead}>
-                  {project.logo && <img src={project.logo} alt="" className={styles.projectLogo} />}
-                  <h3 id="project-title" className={styles.projectName}>{project.name}</h3>
-                </div>
-                {info?.text && <p className={styles.projectText}>{info.text}</p>}
-                {info?.link && (
-                  <a href={info.link} target="_blank" rel="noreferrer" className={styles.projectLink}>
-                    Learn more →
-                  </a>
-                )}
+            {BUILD_CATEGORIES.map((c) => (
+              <div key={c.title} className={styles.buildCategory}>
+                <h3 className={styles.buildCategoryTitle}>{c.title}</h3>
+                <ul className={styles.buildGrid}>
+                  {c.partners.map((name) => {
+                    const { url, text, instagram } = BUILD_PARTNERS[name]
+                    return (
+                      <li key={name} className={styles.buildCard}>
+                        <div className={styles.buildCardHead}>
+                          <a href={url} target="_blank" rel="noopener noreferrer" className={styles.buildName}>
+                            {name}
+                          </a>
+                          {instagram && (
+                            <a
+                              href={instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={styles.buildInstagram}
+                              aria-label={`${name} on Instagram`}
+                            >
+                              <InstagramIcon size={18} />
+                            </a>
+                          )}
+                        </div>
+                        <p className={styles.buildText}>{text}</p>
+                      </li>
+                    )
+                  })}
+                </ul>
               </div>
-            )}
-          </dialog>
+            ))}
+          </div>
         </section>
       )}
 
