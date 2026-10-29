@@ -38,7 +38,7 @@ export default function Services() {
           <span className={styles.heroEyebrow}>Our services</span>
           <h1>Climate education, built by young people. Built with you.</h1>
           <p className={styles.heroSub}>
-            Our Youth 4 Climate is a youth-led organisation transforming climate change education across the world. We partner with organisations to build resources, share opportunities and lead conversations that reach the next generation. Every partnership equips young people for the crisis they’re inheriting.
+            Our Youth 4 The Climate is a youth-led organisation transforming climate change education across the world. We partner with organisations to build resources, share opportunities and lead conversations that reach the next generation. Every partnership equips young people for the crisis they’re inheriting.
           </p>
         </div>
       </section>
