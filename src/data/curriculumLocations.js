@@ -8,6 +8,7 @@ import { CASE_STUDY_2_QUOTE_TEXT } from './curriculumConfig'
 //
 // caseStudy fields, shown in this order and only when set:
 // place, venue, date, taughtBy, topic, activity, quote.
+// `hidden: true` keeps an entry in the file but off the map.
 export const CURRICULUM_LOCATIONS = [
   { id: 'ma-usa', name: 'MA, United States', lat: 42.26, lng: -71.8, approximate: true },
   { id: 'lima', name: 'Lima, Peru', lat: -12.05, lng: -77.04 },
@@ -83,6 +84,7 @@ export const CURRICULUM_LOCATIONS = [
     lng: 80.83,
     approximate: true,
   },
-  { id: 'bronxville', name: 'Bronxville, New York, United States', lat: 40.94, lng: -73.83 },
-  { id: 'muscat', name: 'Muscat, Oman', lat: 23.59, lng: 58.38 },
+  // Sasha: not sent the curriculum yet. Re-enable when the curriculum has been sent.
+  { id: 'bronxville', name: 'Bronxville, New York, United States', lat: 40.94, lng: -73.83, hidden: true },
+  { id: 'muscat', name: 'Muscat, Oman', lat: 23.59, lng: 58.38, hidden: true },
 ]

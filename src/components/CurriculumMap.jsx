@@ -19,7 +19,8 @@ const TOUCH_REACH = 22
 
 const CASE_STUDY_FIELDS = ['venue', 'date', 'taughtBy', 'topic', 'activity']
 
-const byId = Object.fromEntries(CURRICULUM_LOCATIONS.map((l) => [l.id, l]))
+const LOCATIONS = CURRICULUM_LOCATIONS.filter((l) => !l.hidden)
+const byId = Object.fromEntries(LOCATIONS.map((l) => [l.id, l]))
 
 /**
  * World map of the places where the OY4CCurriculum has been taught.
@@ -140,7 +141,7 @@ export default function CurriculumMap() {
             }
           </Geographies>
 
-          {CURRICULUM_LOCATIONS.map((loc) => {
+          {LOCATIONS.map((loc) => {
             const isActive = active?.ids.includes(loc.id)
             return (
               <Marker
