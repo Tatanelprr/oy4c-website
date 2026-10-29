@@ -229,7 +229,10 @@
 }
 
 /* LOADING / ERROR */
+/* Holds the article's place while it loads: the footer starts below the fold
+   instead of jumping down when the article arrives. */
 .loading {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
