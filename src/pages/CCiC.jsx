@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import { Clock, GraduationCap, DollarSign, Users, ShieldCheck } from 'lucide-react'
+import { Clock, GraduationCap, DollarSign, Users, Shirt } from 'lucide-react'
 import CCiCLocationsMap from '../components/CCiCLocationsMap'
 import styles from './CCiC.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
+
+// Removed from the Impact section; Ava wants to add them to the home page later:
+// 'SDG 4 - Quality Education', 'SDG 10 - Reduced Inequalities', 'SDG 13 - Climate Action'
 
 export default function CCiC() {
   usePageMeta(PAGE_META['/ccic'])
@@ -36,9 +39,11 @@ export default function CCiC() {
             <em>Now it's yours.</em>
           </h1>
           <p className={styles.heroSub}>
-            We ran free climate workshops for 670 students across 6 countries. Everything we used is becoming open access.
+            We ran free climate workshops in person for 670 students across 6 countries. It is now an open resource for you to use and run!
           </p>
-          <p className={styles.heroDateline}>February to April 2026</p>
+          <p className={styles.heroDateline}>
+            We ran our pilot from <strong>February to April 2026</strong>
+          </p>
           <div className={styles.heroStats}>
             {[
               '670 students taught live',
@@ -46,7 +51,7 @@ export default function CCiC() {
               '10 schools',
               '6 countries',
               '5 continents',
-              '4.63/5',
+              '4.63 / 5 average rating',
             ].map((s) => (
               <span key={s} className={styles.heroStat}>{s}</span>
             ))}
@@ -61,38 +66,30 @@ export default function CCiC() {
       <section className={styles.what}>
         <div className={styles.whatInner}>
           <span className="section-eyebrow">What is CCiC?</span>
-          <h2 className="section-title">Climate Curriculum into Classrooms</h2>
+          <h2 className={`section-title ${styles.whatTitle}`}>Climate Curriculum into Classrooms (CCiC)</h2>
 
           <p className={styles.whatDefinition}>
-            CCiC is a free, 1h30 in-person climate workshop, designed and delivered by young people, for students aged 12-18. We bring everything. You open the door.
+            CCiC is a free, 1h30 in-person climate workshop, designed by young people, for students aged 12-18. We developed the resource and ran the pilot. Now, YOU can run it.
           </p>
-
-          <div className={styles.credibilityStrip}>
-            {['4.5 years', '133 volunteers', '43 countries', '100,000 reached monthly'].map((s) => (
-              <span key={s} className={styles.credStat}>{s}</span>
-            ))}
-          </div>
 
           <div className={styles.whatText}>
             <p>
-              OY4C has spent 4.5 years building a global, youth-led climate change education movement online. We've reached over 100,000 people monthly, built a team of 133 volunteers across 43 countries, and brought our curriculum into classrooms in over 20 countries.
+              OY4C has spent 5.5 years building a global, youth-led climate change education movement online. We've reached over 100,000 people monthly, built a team of 133 volunteers across 43 countries, and brought our curriculum into classrooms in over 20 countries.
             </p>
             <p>
               But we needed to go further. We needed to show up in person, to have real conversations, and prove that youth-to-youth climate change education works on the ground.
             </p>
           </div>
 
-          <p className={styles.pullQuote}>
-            "Is our work making a difference on the ground?"
-          </p>
+          <p className={styles.pullQuote}>Why CCiC</p>
 
           <div className={styles.tiles}>
             {[
-              { icon: <DollarSign size={28} />, title: 'Zero cost. Zero prep.', desc: 'We bring all materials directly to your school' },
+              { icon: <DollarSign size={28} />, title: 'Zero Cost', desc: 'We bring all materials directly to your school' },
               { icon: <Clock size={28} />, title: '1h30 session', desc: '45 mins of learning + 45 mins of hands-on activity' },
               { icon: <GraduationCap size={28} />, title: 'Ages 12-18', desc: 'Flexible for one class, a year group, or a whole assembly' },
-              { icon: <Users size={28} />, title: 'Youth-to-youth', desc: 'Students learn from their peers, not another adult at the front of the room.' },
-              { icon: <ShieldCheck size={28} />, title: 'Teachers stay in the room', desc: 'Teachers stay present the whole time, so schools keep full oversight and students feel safe.' },
+              { icon: <Users size={28} />, title: 'Youth-to-youth', desc: 'Students learn from their peers and walk away collectively empowered' },
+              { icon: <Shirt size={28} />, title: 'New topic Approach', desc: 'To help students grasp climate change and sustainability, we intersect this workshop with the fashion industry, a topic everyone can relate to' },
             ].map((t) => (
               <div key={t.title} className={styles.tile}>
                 <div className={styles.tileIcon}>{t.icon}</div>
@@ -110,7 +107,7 @@ export default function CCiC() {
           <span className="section-eyebrow">The Workshop</span>
           <h2 className="section-title">What happens in a CCiC workshop?</h2>
           <p className={styles.workshopLede}>
-            Everyone in the room is wearing clothes, and every one of those clothes has a story worth following.
+            Clothes have stories worth telling. Do you know the story of yours?
           </p>
 
           <div className={styles.stageScroll}>
@@ -147,8 +144,8 @@ export default function CCiC() {
       {/* JOURNEY */}
       <section className={styles.journey}>
         <div className={styles.journeyInner}>
-          <span className="section-eyebrow">The Journey</span>
-          <h2 className="section-title">3 months. 6 countries. 5 continents. Not one person.</h2>
+          <span className="section-eyebrow">Our Pilot from February to April 2026</span>
+          <h2 className={`section-title ${styles.journeyTitle}`}>3 months. 6 countries. 5 continents. Not one person.</h2>
           <p className={styles.journeyIntro}>
             OY4C has been online since its founding during the pandemic. Social media and youth drive scaled us globally. But at some point, you have to show up. So Ava, OY4C's Founder and Executive Director, set off.
           </p>
@@ -255,8 +252,8 @@ export default function CCiC() {
       {/* IMPACT */}
       <section className={styles.impact}>
         <div className={styles.impactInner}>
-          <span className="section-eyebrow" style={{ color: 'rgba(0,0,0,0.75)' }}>Impact</span>
-          <h2 className="section-title" style={{ color: 'var(--black)' }}>The numbers, so far</h2>
+          <span className={`section-eyebrow ${styles.impactEyebrow}`}>Impact</span>
+          <h2 className="section-title">The numbers (so far)</h2>
           <div className={styles.impactDateline}>February–April 2026</div>
           <div className={styles.impactGrid}>
             {[
@@ -273,16 +270,10 @@ export default function CCiC() {
               </div>
             ))}
           </div>
-          <p className={styles.impactFootnote}>Plus 250 students at ReGen26.</p>
           <figure className={styles.impactQuote}>
             <blockquote>&ldquo;Liberated and inspired. Showed me some insight to what I can do better to help the climate crisis.&rdquo;</blockquote>
             <figcaption>— Student, 16, Rotorua, New Zealand</figcaption>
           </figure>
-          <div className={styles.sdgs}>
-            {['SDG 4 - Quality Education', 'SDG 10 - Reduced Inequalities', 'SDG 13 - Climate Action'].map((s) => (
-              <span key={s} className={styles.sdgBadge}>{s}</span>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -395,7 +386,7 @@ export default function CCiC() {
       {/* FOUNDER QUOTE */}
       <section className={styles.founderQuote}>
         <div className={styles.founderQuoteInner}>
-          <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>From Ava, OY4C Founder</span>
+          <span className={`section-eyebrow ${styles.quoteEyebrow}`}>From Ava, OY4C Founder</span>
           <p className={styles.quoteText}>
             "The best 3 months a Founder could have asked for — connecting, really connecting, with people across the world, across backgrounds, across generations. We were just planting seeds. But I've seen what they grow into."
           </p>
@@ -417,19 +408,6 @@ export default function CCiC() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={styles.cta}>
-        <span className="section-eyebrow">Get involved</span>
-        <h2 className="section-title">Where should CCiC go next?</h2>
-        <p>Whether you're a teacher, a student, a youth advocate, or an organisation, there's a way for you to be part of this.</p>
-        <div className={styles.ctaBtns}>
-          <a href="mailto:hello@oy4c.org" className={styles.ctaBtn}>Bring CCiC to Your School →</a>
-          <a href="mailto:hello@oy4c.org" className={styles.ctaBtnOutline}>Run It Yourself →</a>
-        </div>
-        <p className={styles.ctaPartner}>
-          Funding or partnering on the next round? <a href="mailto:partnerships@oy4c.org">partnerships@oy4c.org</a>
-        </p>
-      </section>
     </>
   )
 }

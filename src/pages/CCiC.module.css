@@ -68,14 +68,13 @@
   max-width: 620px;
   margin-bottom: 16px;
 }
+/* sits right above the stat pills */
 .heroDateline {
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.95rem;
   color: var(--mid);
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
+.heroDateline strong { color: var(--black); }
 .heroStats {
   display: flex;
   flex-wrap: wrap;
@@ -131,22 +130,11 @@
   letter-spacing: -0.01em;
   color: var(--black);
   max-width: 820px;
-  margin-bottom: 20px;
-}
-.credibilityStrip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  row-gap: 6px;
-  font-size: 0.8rem;
-  color: var(--mid);
   margin-bottom: 44px;
 }
-.credStat:not(:first-child)::before {
-  content: '·';
-  margin: 0 14px;
-  color: rgba(0,0,0,0.28);
-}
+/* --teal-dark on white 4.65:1 */
+.whatTitle,
+.journeyTitle { color: var(--teal-dark); }
 .whatText {
   max-width: 800px;
   margin-bottom: 52px;
@@ -523,10 +511,12 @@
   line-height: 1;
   margin-bottom: 12px;
 }
+/* --purple on white 4.66:1 */
 .insightTitle {
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--purple);
+  line-height: 1.35;
   margin-bottom: 10px;
 }
 .insightBody {
@@ -535,10 +525,12 @@
   line-height: 1.75;
 }
 
-/* IMPACT */
+/* IMPACT: white on --green-dark is 3.44:1, so every text here is bold and
+   18.66px or more (white on --green would be 2.57:1) */
 .impact {
   padding: 90px 5vw;
-  background: var(--green);
+  background: var(--green-dark);
+  color: var(--white);
 }
 .impactInner {
   max-width: 1000px;
@@ -546,15 +538,20 @@
   text-align: center;
 }
 .impactInner h2 {
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 52px;
 }
+.impactEyebrow {
+  color: var(--white);
+  font-size: 1.17rem;
+  font-weight: 700;
+}
 .impactDateline {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 1.17rem;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.75);
+  color: var(--white);
   margin-top: -32px;
   margin-bottom: 32px;
 }
@@ -564,8 +561,9 @@
   gap: 2px;
   margin-bottom: 16px;
 }
+/* darkens the band (black 15%): white 4.57:1 there */
 .impactStat {
-  background: rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.15);
   padding: 36px 24px;
   text-align: center;
   border-radius: 4px;
@@ -573,19 +571,14 @@
 .impactStatNum {
   font-size: 2.8rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--white);
   line-height: 1;
   margin-bottom: 8px;
 }
 .impactStatLbl {
-  font-size: 0.82rem;
-  color: var(--black);
-}
-.impactFootnote {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: rgba(0,0,0,0.85);
-  margin-bottom: 44px;
+  font-size: 1.17rem;
+  font-weight: 700;
+  color: var(--white);
 }
 .impactRating {
   font-size: 1.2rem;
@@ -595,34 +588,19 @@
 }
 .impactQuote {
   max-width: 640px;
-  margin: 0 auto;
+  margin: 44px auto 0;
 }
 .impactQuote blockquote {
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.5;
-  color: var(--black);
+  color: var(--white);
   margin: 0 0 14px;
 }
 .impactQuote figcaption {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: rgba(0,0,0,0.75);
-}
-.sdgs {
-  margin-top: 36px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.sdgBadge {
-  background: rgba(255,255,255,0.12);
-  border-radius: var(--pill-radius);
-  padding: 5px 12px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: rgba(0,0,0,0.8);
+  font-size: 1.17rem;
+  font-weight: 700;
+  color: var(--white);
 }
 
 /* OPEN RESOURCE */
@@ -867,11 +845,12 @@
 }
 .resourceKitBtn:hover { opacity: 0.85; }
 
-/* FOUNDER QUOTE */
+/* FOUNDER QUOTE: --teal-dark on white 4.65:1 */
 .founderQuote {
   padding: 90px 5vw;
-  background: var(--dark);
+  background: var(--white);
 }
+.quoteEyebrow { color: var(--teal-dark); }
 .founderQuoteInner {
   max-width: 800px;
   margin: 0 auto;
@@ -880,7 +859,7 @@
 .quoteText {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-style: italic;
-  color: rgba(255,255,255,0.85);
+  color: var(--teal-dark);
   line-height: 1.8;
   margin-bottom: 32px;
   /* Citation longue (>2 lignes) : on garde la police de texte pour la lisibilité,
@@ -922,63 +901,9 @@
 }
 .quoteAuthor {
   font-size: 0.82rem;
-  color: var(--teal);
+  color: var(--teal-dark);
   font-weight: 600;
   text-align: left;
-}
-
-/* CTA */
-.cta {
-  padding: 90px 5vw;
-  background: var(--cream);
-  text-align: center;
-}
-.cta h2 { margin-bottom: 16px; }
-.cta p {
-  font-size: 0.95rem;
-  color: var(--mid);
-  max-width: 500px;
-  margin: 0 auto 44px;
-  line-height: 1.75;
-}
-.ctaBtns {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.ctaBtn {
-  display: inline-block;
-  padding: 13px 28px;
-  border-radius: var(--pill-radius);
-  background: var(--green);
-  color: var(--black);
-  font-weight: 600;
-  font-size: 0.88rem;
-  transition: opacity 0.2s;
-}
-.ctaBtn:hover { opacity: 0.85; }
-.ctaBtnOutline {
-  display: inline-block;
-  padding: 13px 28px;
-  border-radius: var(--pill-radius);
-  border: 1.5px solid var(--dark);
-  color: var(--dark);
-  font-weight: 600;
-  font-size: 0.88rem;
-  transition: all 0.2s;
-}
-.ctaBtnOutline:hover { background: var(--dark); color: var(--white); }
-.cta .ctaPartner {
-  font-size: 0.85rem;
-  color: var(--mid);
-  margin: 28px auto 0;
-  max-width: 500px;
-}
-.ctaPartner a {
-  color: var(--black);
-  font-weight: 600;
-  text-decoration: underline;
 }
 
 /* MAP */
@@ -1029,7 +954,7 @@
   .impactGrid { grid-template-columns: 1fr; }
   .stopGrid { grid-template-columns: 1fr; }
   .heroContent { margin: 48px 4vw; padding: 22px 20px; }
-  .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .cta, .map, .proof, .regen { padding: 60px 5vw; }
+  .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .map, .proof, .regen { padding: 60px 5vw; }
   .stage { flex-basis: 85%; padding: 22px 20px; }
   .heroBtns { flex-direction: column; }
   /* Keep all 6 stat pills wrapping cleanly (no horizontal scroll) */
@@ -1037,6 +962,4 @@
 }
 @media (max-width: 480px) {
   .mapFrame { height: 280px; }
-  .ctaBtns { flex-direction: column; align-items: stretch; }
-  .ctaBtn, .ctaBtnOutline { text-align: center; }
 }
