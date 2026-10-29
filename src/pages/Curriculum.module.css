@@ -26,7 +26,7 @@
 }
 /* same size as the hero sub-text of the first version of the page */
 .heroLead {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 300;
   color: rgba(255,255,255,0.85);
   line-height: 1.7;
@@ -52,7 +52,7 @@
   background: var(--green);
   color: var(--black);
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   transition: opacity 0.2s;
 }
 .btnPrimary:hover { opacity: 0.85; }
@@ -63,13 +63,13 @@
   border: 1.5px solid rgba(255,255,255,0.6);
   color: var(--white);
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   transition: all 0.2s;
 }
 .btnOutline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
 .btnLarge {
   padding: 18px 40px;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 /* JOURNEY (simple overview) */
@@ -94,7 +94,7 @@
 .journeyGroup.gate { border-top-style: dashed; border-top-color: var(--purple); }
 .journeyGroup.tier2 { border-top-color: var(--dark-soft); }
 .journeyGroupLabel {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -116,7 +116,7 @@
   gap: 10px;
   text-align: center;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--black);
   line-height: 1.3;
 }
@@ -175,7 +175,7 @@
 }
 .topicsSummary::-webkit-details-marker { display: none; }
 .topicsSummary h3 {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--black);
 }
@@ -185,7 +185,7 @@
   columns: 1;
 }
 .topicsList li {
-  font-size: 0.95rem;
+  font-size: 1.08rem;
   color: var(--black);
   line-height: 1.6;
   padding: 3px 0;
@@ -205,7 +205,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--black);
   line-height: 1.35;
@@ -213,7 +213,7 @@
 }
 .getTitle svg { flex-shrink: 0; color: var(--green-dark); }
 .fileSize {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--mid);
   margin-top: 10px;
 }
@@ -221,7 +221,7 @@
   padding-left: 1.2em;
 }
 .getList li {
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   color: var(--mid);
   line-height: 1.65;
   margin-bottom: 8px;
@@ -235,7 +235,7 @@
 }
 .langIcon { flex-shrink: 0; color: var(--green-dark); margin-top: 2px; }
 .langBlock p {
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   color: var(--black);
   line-height: 1.6;
 }
@@ -251,13 +251,13 @@
   margin: 0 auto;
 }
 .howLead {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--black);
   margin: -8px 0 10px;
 }
 .howSub {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--mid);
   line-height: 1.75;
   max-width: 680px;
@@ -277,7 +277,7 @@
 }
 .howTag {
   min-height: 1.6em;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -308,14 +308,14 @@
 }
 .howIcon { color: var(--green-dark); }
 .howTitle {
-  font-size: 1.02rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--black);
   line-height: 1.3;
   margin-bottom: 8px;
 }
 .howBody {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--mid);
   line-height: 1.7;
 }
@@ -342,7 +342,7 @@
   align-items: center;
   gap: 10px;
   padding: 14px 20px;
-  font-size: 1.02rem;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 /* dark text on green: white on --green fails AA */
@@ -359,13 +359,13 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--black);
   line-height: 1.4;
 }
 .tierTopics svg { flex-shrink: 0; margin-top: 2px; color: var(--green-dark); }
 .tiersNote {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--black);
   line-height: 1.7;
   margin-bottom: 24px;
@@ -374,13 +374,13 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--black);
   margin-bottom: 10px;
 }
 .howNote svg { flex-shrink: 0; color: var(--green-dark); }
 .howContact {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--black);
   font-weight: 500;
   margin-bottom: 36px;
@@ -423,7 +423,7 @@
   flex-shrink: 0;
 }
 .bubbleLabel {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--black);
   line-height: 1.3;
@@ -439,7 +439,7 @@
   margin: 0 auto;
 }
 .counter {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--black);
   margin-bottom: 20px;
@@ -462,7 +462,7 @@
   margin-bottom: 40px;
 }
 .storyText p {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--mid);
   line-height: 1.85;
   margin-bottom: 18px;
@@ -502,7 +502,7 @@
 }
 .statText sup { font-size: 0.5em; color: var(--black); }
 .sourceNote {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--mid);
   line-height: 1.6;
   margin: 14px 0 40px;
@@ -526,7 +526,7 @@
   border-left: 4px solid var(--purple);
   border-radius: 0 14px 14px 0;
   padding: 22px 26px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-style: italic;
   color: var(--black);
   line-height: 1.75;
@@ -556,14 +556,14 @@
   padding: 28px 26px;
 }
 .cardTitle {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--black);
   line-height: 1.3;
   margin-bottom: 10px;
 }
 .cardBody {
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   color: var(--mid);
   line-height: 1.75;
 }
@@ -596,7 +596,7 @@
   display: block;
 }
 .whoInner p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--mid);
   line-height: 1.85;
   margin-bottom: 18px;
@@ -621,7 +621,7 @@
   margin-bottom: 28px;
 }
 .futureList li {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--mid);
   line-height: 1.75;
   margin-bottom: 12px;
@@ -630,7 +630,7 @@
 .futureList strong { color: var(--black); font-weight: 600; }
 .futureContact,
 .ctaContact {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--black);
   font-weight: 500;
 }
@@ -666,7 +666,7 @@
 }
 .faqQ::-webkit-details-marker { display: none; }
 .faqQ h3 {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--black);
   line-height: 1.4;
@@ -678,7 +678,7 @@
 }
 .faqItem[open] .faqChevron { transform: rotate(180deg); }
 .faqA {
-  font-size: 0.98rem;
+  font-size: 1.08rem;
   color: var(--mid);
   line-height: 1.75;
   padding: 0 4px 20px;
@@ -743,7 +743,7 @@
   .heroInner { padding: 48px 6vw; }
   .journey, .get, .how, .map, .story, .what, .who, .future, .faq, .cta { padding: 60px 5vw; }
   .reform { padding: 0 5vw 60px; }
-  .btnLarge { padding: 16px 24px; font-size: 1rem; }
+  .btnLarge { padding: 16px 24px; font-size: 1.08rem; }
   .bubbles { padding: 40px 5vw; }
   .bubblesInner, .cards { grid-template-columns: 1fr; }
   .heroBtns { flex-direction: column; align-items: stretch; }
