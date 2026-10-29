@@ -11,6 +11,13 @@ import styles from './BlogPost.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { BLOG_POST_LOADING_META, NOT_FOUND_META, blogPostMeta } from '../data/pageMeta'
 
+// Puts the image's natural ratio on its figure, where the CSS uses it to cap
+// the height without distorting the image (see --r in BlogPost.module.css).
+function setRatio(e) {
+  const { naturalWidth: w, naturalHeight: h, parentElement } = e.currentTarget
+  if (h) parentElement.style.setProperty('--r', w / h)
+}
+
 // ── Rich text ──────────────────────────────────────────────────────────────
 
 // Bare http(s) URLs in a citation, without trailing punctuation such as "." or ")".
@@ -117,7 +124,7 @@ function Block({ block, title }) {
       const cap = block.image?.caption ?? []
       if (!src) return null
       return (
-        <figure>
+        <figure className={styles.figure}>
           {/* Notion gives no dimensions: 3:2 reserves the space until the image loads */}
           <img
             src={imgAtWidth(src, 1200)}
@@ -128,6 +135,7 @@ function Block({ block, title }) {
             height={800}
             className={styles.blockImg}
             loading="lazy"
+            onLoad={setRatio}
           />
           {hasText(cap) && (
             <figcaption className={styles.caption}><RichText tokens={cap} linkify /></figcaption>
@@ -273,6 +281,7 @@ export default function BlogPost() {
               width={1600}
               height={900}
               className={styles.heroImg}
+              onLoad={setRatio}
               onError={() => setFailedImg(post.image)}
             />
             {hasText(post.imageCredit) && (
