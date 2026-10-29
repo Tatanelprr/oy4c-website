@@ -190,6 +190,13 @@
   font-weight: 700;
   color: var(--black);
 }
+/* lightest grey with 4.5:1 on the white card: #767676 is 4.54:1 (#777777 is 4.48:1) */
+.partnerCategory {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #767676;
+}
 .partnerDesc {
   font-size: 0.83rem;
   color: var(--mid);
@@ -340,23 +347,6 @@
 }
 .projectInstagram:hover,
 .projectInstagram:focus-visible { color: #24647b; background: var(--white); }
-.projectTags {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.projectTags li {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--black);
-  background: var(--white);
-  border-radius: var(--pill-radius);
-  padding: 4px 12px;
-}
 /* --mid on --cream 6.7:1 */
 .projectText {
   font-size: 0.95rem;

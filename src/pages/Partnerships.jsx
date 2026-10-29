@@ -65,7 +65,8 @@ const BUILD_PARTNERS = {
   },
 }
 
-// Categories, shown as tags in the pop-in; a partner may be in several.
+// Partner categories (Aana Shenai), shown under each partner in "Organisations
+// we work with"; a partner may be in several.
 const BUILD_CATEGORIES = [
   { title: "Education", partners: ["UNESCO", "Force of Nature"] },
   { title: "Policy", partners: ["Climate Fresk", "Feel Good Action", "Climate Majority Project"] },
@@ -75,11 +76,15 @@ const BUILD_CATEGORIES = [
 // "What we build together" circle: every partner except these
 const NOT_PROJECTS = new Set(['Climate Quilt'])
 
-// Circle partner name -> its entry in BUILD_PARTNERS, when Aana named it otherwise.
+// Partner name on the site -> its name in Aana's text, when she named it otherwise.
 const BUILD_ALIAS = {
   'Greening Education Partnership': 'UNESCO',
   'Energy for Refugees Amsterdam': 'Energy for Refugees',
 }
+
+// "Policy, Climate Justice"; '' when Aana gave no category.
+const categoriesOf = (name) =>
+  BUILD_CATEGORIES.filter((c) => c.partners.includes(BUILD_ALIAS[name] ?? name)).map((c) => c.title).join(', ')
 
 export default function Partnerships() {
   usePageMeta(PAGE_META['/partnerships'])
@@ -96,7 +101,6 @@ export default function Partnerships() {
     .map((p) => ({ ...p, logo: LOGO_LOCAL[p.name] || p.logo }))
   const buildName = project && (BUILD_ALIAS[project.name] ?? project.name)
   const info = project && BUILD_PARTNERS[buildName]
-  const tags = project ? BUILD_CATEGORIES.filter((c) => c.partners.includes(buildName)).map((c) => c.title) : []
 
   useEffect(() => {
     if (project) dialogRef.current?.showModal()
@@ -146,6 +150,7 @@ export default function Partnerships() {
           {!loading && !error && (
             <div className={styles.partnersGrid}>
               {allPartners.map((p) => {
+                const categories = categoriesOf(p.name)
                 return (
                   <div key={p.name} className={styles.partnerCard}>
                     <div className={styles.partnerLogo}>
@@ -155,7 +160,10 @@ export default function Partnerships() {
                         <div className={styles.partnerLogoPlaceholder}>{p.name}</div>
                       )}
                     </div>
-                    <div className={styles.partnerName}>{p.name}</div>
+                    <div>
+                      <div className={styles.partnerName}>{p.name}</div>
+                      {categories && <div className={styles.partnerCategory}>{categories}</div>}
+                    </div>
                     {p.description && (
                       <div className={styles.partnerDesc}>{p.description}</div>
                     )}
@@ -258,11 +266,6 @@ export default function Partnerships() {
                     </a>
                   )}
                 </div>
-                {tags.length > 0 && (
-                  <ul className={styles.projectTags}>
-                    {tags.map((t) => <li key={t}>{t}</li>)}
-                  </ul>
-                )}
                 {info && <p className={styles.projectText}>{info.text}</p>}
               </div>
             )}
