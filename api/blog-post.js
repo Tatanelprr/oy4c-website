@@ -2,8 +2,8 @@ import { proxyImageUrl, firstBodyImage } from './_lib/img.js'
 import { normalizeAuthor } from './_lib/author.js'
 import { sendJson, sendError, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 
-const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
-const DATABASE_ID    = process.env.VITE_NOTION_DATABASE_ID
+const NOTION_TOKEN   = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
+const DATABASE_ID    = process.env.NOTION_DATABASE_ID ?? process.env.VITE_NOTION_DATABASE_ID
 const NOTION_VERSION = '2022-06-28'
 
 // Notion page ids: 32 hex digits, with or without the UUID dashes.

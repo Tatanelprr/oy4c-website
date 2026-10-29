@@ -1,8 +1,8 @@
 import { proxyImageUrl } from './_lib/img.js'
 import { sendJson, sendHandlerError, notionErrorFrom } from './_lib/respond.js'
 
-const NOTION_TOKEN       = process.env.VITE_NOTION_TOKEN
-const AMBASSADORS_DB_ID  = process.env.VITE_NOTION_AMBASSADORS_DB_ID
+const NOTION_TOKEN       = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
+const AMBASSADORS_DB_ID  = process.env.NOTION_AMBASSADORS_DB_ID ?? process.env.VITE_NOTION_AMBASSADORS_DB_ID
 const NOTION_VERSION     = '2022-06-28'
 
 function notionHeaders() {

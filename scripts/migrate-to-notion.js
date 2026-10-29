@@ -4,12 +4,12 @@ import { dirname, join } from 'path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const NOTION_TOKEN   = process.env.VITE_NOTION_TOKEN
+const NOTION_TOKEN   = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
 const NOTION_VERSION = '2022-06-28'
 const PAGE_ID        = process.argv[2]
 
 if (!NOTION_TOKEN) {
-  console.error('Error: VITE_NOTION_TOKEN is not set')
+  console.error('Error: NOTION_TOKEN (or the old VITE_NOTION_TOKEN) is not set')
   process.exit(1)
 }
 if (!PAGE_ID) {
