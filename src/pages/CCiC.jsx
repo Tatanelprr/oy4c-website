@@ -427,7 +427,7 @@ export default function CCiC() {
           <a href="mailto:hello@oy4c.org" className={styles.ctaBtnOutline}>Run It Yourself →</a>
         </div>
         <p className={styles.ctaPartner}>
-          Funding or partnering on the next round? <a href="mailto:hello@oy4c.org">hello@oy4c.org</a>
+          Funding or partnering on the next round? <a href="mailto:partnerships@oy4c.org">partnerships@oy4c.org</a>
         </p>
       </section>
     </>
