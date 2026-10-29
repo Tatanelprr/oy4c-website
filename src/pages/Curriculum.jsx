@@ -148,7 +148,7 @@ const BUBBLES = [
 
 // Double spaces are Ava's; HTML collapses them on screen.
 const STORY_INTRO = [
-  'In 2021, our then 17-year old Founder, Ava Langridge, noticed that climate change was  spoken about everywhere, except the place that should have been equipping us to  address the world we are inheriting',
+  'In 2021, our then 17-year-old Founder, Ava Langridge, noticed that climate change was  spoken about everywhere, except the place that should have been equipping us to  address the world we are inheriting',
   'In August of that year, after having conversations with young people, ages 14-18 across the world, and learning about the shared climate change education gap across the globe, systems, and scales (enabled through social media), Ava started teaching herself about anything she could, and would invite anyone to join',
   '5 students, quickly became 20, and by October 2021, UNESCO validated our ‘lived experience’ findings',
 ]
@@ -161,7 +161,7 @@ const STORY_REST = [
 ]
 
 const REFORM_NOTE =
-  'Note: We understand the importance of global and national curriculum reform, and support it fully. However, given curriculum takes an extensive time to rebuild, we are the immediate response, to avoid loosing whole generations.'
+  'Note: We understand the importance of global and national curriculum reform, and support it fully. However, given curriculum takes an extensive time to rebuild, we are the immediate response, to avoid losing whole generations.'
 
 const WHAT_CARDS = [
   { title: 'Foundational climate change knowledge' },
@@ -207,7 +207,7 @@ const FAQ = [
     ),
   },
   { q: 'What ages is it for?', a: 'Built for 14–18, used successfully with students from 12 to 20.' },
-  { q: 'Do we need a specialist educat?', a: 'No. No prior climate knowledge is needed, by educator or student.' },
+  { q: 'Do we need a specialist educator?', a: 'No. No prior climate knowledge is needed, by educator or student.' },
   FAQ_FLEXIBILITY.question && FAQ_FLEXIBILITY.answer
     ? { q: FAQ_FLEXIBILITY.question, a: FAQ_FLEXIBILITY.answer }
     : null,

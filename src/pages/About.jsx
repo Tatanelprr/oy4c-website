@@ -18,7 +18,7 @@ const STORY = [
 const VALUES = [
   {
     title: 'YOUNG PEOPLE BUILD.',
-    desc: 'All of OY4C, including our systems and resources, are written and tested by young people, and checked by scientists and teachers before it reaches a classroom. Climate change education built by the generation living through the crisis is more honest, more relevant, and harder to ignore.',
+    desc: 'All of OY4C, including our systems and resources, is written and tested by young people, and checked by scientists and teachers before it reaches a classroom. Climate change education built by the generation living through the crisis is more honest, more relevant, and harder to ignore.',
   },
   {
     title: 'PARTNER TO SCALE.',
@@ -30,7 +30,7 @@ const VALUES = [
   },
   {
     title: 'MOVE AT THE PACE OF THE CRISIS.',
-    desc: 'We didn’t wait for national curricula to include high quality climate change education. We built a globally informed resource and tools to fill the gap now, and we update it as new science, classroom feedback and research emerge.',
+    desc: 'We didn’t wait for national curricula to include high-quality climate change education. We built a globally informed resource and tools to fill the gap now, and we update it as new science, classroom feedback and research emerge.',
   },
 ]
 
