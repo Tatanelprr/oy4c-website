@@ -4,8 +4,8 @@ import { PAGE_META } from '../data/pageMeta'
 
 // Cookies policy under the UK Privacy and Electronic Communications Regulations
 // (PECR). The site loads no non-essential trackers automatically, so no consent
-// banner is required; the only third party that can set a cookie is Google Maps,
-// and only after the visitor explicitly clicks to load it.
+// banner is required; Google Maps can set cookies only after the visitor explicitly
+// clicks to load it, and the Google Forms we link to are off-site (Google's own pages).
 export default function Cookies() {
   usePageMeta(PAGE_META['/cookies'])
   return (

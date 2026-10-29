@@ -33,7 +33,7 @@ export default function Privacy() {
           own, does not use analytics, advertising or tracking, and has no user
           accounts. The only personal data involved is your server log
           data, plus data you actively choose to share (by emailing us, or by using
-          the external Google Form / donation links).
+          the external Google Forms / donation links).
         </div>
         {/* TODO: the CCiC page has two forms (report request, waitlist). Describe
             them here once their handling is decided: sentence to be provided. */}
@@ -116,7 +116,7 @@ export default function Privacy() {
 
         <h3>g. OY4CCurriculum access form</h3>
         <p>
-          When you ask for access to the OY4CCurriculum, you fill in a form hosted by Google Forms. The form asks for your full name, email address, the name of your institution, your country, your relationship to the school, the age group you intend to teach, how you heard about OY4C, how and when you plan to use the curriculum, and an approximate start month. We use this information to give you access to the curriculum, to follow up on the feedback we ask for to unlock the next tier, and to understand where and how the curriculum is used. The form can be filled in by educators and by students, including students under 18. The answers are stored and can only be accessed by the OY4C curriculum team. We do not share them outside OY4C unless we have told the person who filled in the form. Google processes this data on our behalf and may set its own cookies on its pages: see Google's privacy policy. Our own website sets no cookies.
+          When you ask for access to the OY4CCurriculum, you fill in a form hosted by Google Forms. The form asks for your full name, email address, the name of your institution, your country, your relationship to the school, the age group you intend to teach, how you heard about OY4C, how and when you plan to use the curriculum, and an approximate start month. We use this information to give you access to the curriculum, to follow up on the feedback we ask for to unlock the next tier, and to understand where and how the curriculum is used. The form can be filled in by educators and by students, including students under 18. The answers are stored and can only be accessed by the OY4C curriculum team. We do not share them outside OY4C unless we have told the person who filled in the form. Google processes this data on our behalf and may set its own cookies on its pages: see Google’s privacy policy. Our own website sets no cookies.
         </p>
         {/* TODO: retention period for form answers: to be decided by OY4C */}
         {/* TODO: age rule for under-18s: to be decided by OY4C */}
@@ -124,15 +124,16 @@ export default function Privacy() {
         <h2>3. Cookies and tracking</h2>
         <p>
           This website sets <strong>no cookies of its own</strong> and uses no
-          analytics or advertising technologies. The only third party that can set a
-          cookie is Google Maps, and only after you choose to load the map. For
+          analytics or advertising technologies. Google Maps can set cookies, but
+          only after you choose to load the map. If you open one of our Google Forms,
+          you leave this website and Google may set its own cookies on its pages. For
           details, see our <a href="/cookies">Cookies Policy</a>.
         </p>
 
         <h2>4. International transfers</h2>
         <p>
           Some providers are located in the United States (Vercel; Google, if you
-          load the map or use the external form). Where personal data is transferred
+          load the map or use the external forms). Where personal data is transferred
           outside the UK, it is protected by appropriate safeguards, such as the UK
           International Data Transfer Agreement / Addendum to the EU Standard
           Contractual Clauses, and the UK Extension to the EU–US Data Privacy
