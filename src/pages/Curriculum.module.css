@@ -319,10 +319,57 @@
   color: var(--mid);
   line-height: 1.7;
 }
+.howBody + .howBody { margin-top: 8px; }
 .tier2 .howNum,
 .tier2 .howTitle { color: var(--white); }
 .tier2 .howBody { color: rgba(255,255,255,0.85); }
 .tier2 .howIcon { color: var(--teal); }
+/* tier visual (provisional, data in curriculumConfig.js) */
+.tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.tier {
+  background: var(--white);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.tierHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+/* dark text on green: white on --green fails AA */
+.tier1 .tierHead { background: var(--green); color: var(--black); }
+.tier2 .tierHead { background: var(--dark-soft); color: var(--white); }
+.tier2 .tierHead svg { color: var(--teal); }
+.tierTopics {
+  list-style: none;
+  padding: 16px 20px 20px;
+  display: grid;
+  gap: 10px;
+}
+.tierTopics li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--black);
+  line-height: 1.4;
+}
+.tierTopics svg { flex-shrink: 0; margin-top: 2px; color: var(--green-dark); }
+.tiersNote {
+  font-size: 0.95rem;
+  color: var(--black);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
 .howNote {
   display: flex;
   align-items: center;
@@ -636,6 +683,7 @@
   line-height: 1.75;
   padding: 0 4px 20px;
 }
+.faqA a { color: var(--black); font-weight: 600; text-decoration: underline; }
 
 /* CTA */
 .cta {
@@ -689,6 +737,7 @@
   }
   .howStep:last-child::before { bottom: 0; }
   .howTag:empty, .howTag[aria-hidden='true'] { display: none; }
+  .tiers { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .heroInner { padding: 48px 6vw; }

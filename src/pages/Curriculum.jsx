@@ -20,19 +20,34 @@ import {
   TIER_2_NAME,
   TIER1_ACCESS_URL,
   COUNTER,
+  COUNTER_COMMUNITIES_LABEL,
   FAQ_TOPIC_DURATION_ANSWER,
   FAQ_FLEXIBILITY,
+  FAQ_SASHA,
+  TIER_FEEDBACK_WHY,
+  TIERS,
+  TIERS_NOTE,
 } from '../data/curriculumConfig'
 import styles from './Curriculum.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
 
-// All visible copy below is Ava's text (Round 2), verbatim, typos included.
+// All visible copy below is Ava's text (Round 2), verbatim, typos included
+// (Sasha's text lives in curriculumConfig.js).
 // Do not edit it without her sign-off. `**...**` marks her bold passages.
 
-// TODO: ASK SASHA. Provisional mailto until TIER1_ACCESS_URL is set
-// (src/data/curriculumConfig.js).
-const ACCESS_HREF = TIER1_ACCESS_URL || 'mailto:curriculum@oy4c.org'
+// The form opens in a new tab; provisional mailto while TIER1_ACCESS_URL is empty.
+const ACCESS_LINK = TIER1_ACCESS_URL
+  ? { href: TIER1_ACCESS_URL, target: '_blank', rel: 'noopener noreferrer' }
+  : { href: 'mailto:curriculum@oy4c.org' }
+
+const CONTACT_EMAIL = 'curriculum@oy4c.org'
+// Turns the contact address inside a text into a mailto link.
+function withMailto(text) {
+  return text.split(CONTACT_EMAIL).flatMap((part, i) =>
+    i ? [<a key={i} href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, part] : [part],
+  )
+}
 
 const FOOD_PDF_HREF = '/curriculum/food-management.pdf'
 // Computed at build time (vite.config.js); 0 hides the size.
@@ -44,10 +59,6 @@ function rich(text) {
 }
 
 // group: 'tier1' | 'gate' | 'tier2'; groupLabel shown on the first step of each group
-// TODO: ASK SASHA (TIER_VISUAL): better Tier 1 vs Tier 2 visual. Tier 1 = 6 topics
-// (which ones?); step 3 = teach at least 1 topic, up to 6, before getting Tier 2.
-// TODO: ASK SASHA (TIER_FEEDBACK_WHY): is feedback needed for every Tier 1 topic?
-// Why does OY4C need it, and how does it benefit schools (step 4)?
 const STEPS = [
   {
     icon: ClipboardList,
@@ -61,7 +72,7 @@ const STEPS = [
     icon: Mail,
     short: 'Check your email',
     title: 'Check your email',
-    body: 'You’ll get a link to all tier 1 resources. Keep this email, as it also has your personal link to unlock Tier 2',
+    body: `You’ll get a link to all ${TIER_1_NAME} resources. Keep this email, as it also has your personal link to unlock ${TIER_2_NAME}`,
     group: 'tier1',
   },
   {
@@ -76,6 +87,7 @@ const STEPS = [
     short: 'Share feedback',
     title: 'Tell us how it went',
     body: `Use the feedback link from your ${TIER_1_NAME} email. Your answers help us improve the curriculum.`,
+    why: TIER_FEEDBACK_WHY,
     group: 'gate',
     groupLabel: 'Progress gate',
   },
@@ -174,8 +186,8 @@ const WAY_FORWARD = [
   'Given we are the intermediary resource, start partnering with institutions driving curriculum reform, to ensure youth-built and youth-led curriculum reform',
 ]
 
-// TODO: Confirm with SASHA (flexibility FAQ and topic duration answer, see
-// curriculumConfig.js). Conditional entries are dropped while empty.
+// Topic duration, flexibility and FAQ_SASHA entries: Sasha's text, see
+// curriculumConfig.js. Conditional entries are dropped while empty.
 const FAQ = [
   { q: 'Is it really free?', a: 'Yes. There is nothing to pay at any stage.' },
   { q: 'What ages is it for?', a: 'Built for 14–18, used successfully with students from 12 to 20.' },
@@ -186,6 +198,7 @@ const FAQ = [
   FAQ_TOPIC_DURATION_ANSWER
     ? { q: 'How long does each topic take?', a: FAQ_TOPIC_DURATION_ANSWER }
     : null,
+  ...FAQ_SASHA,
   {
     q: 'Do you need to come into our school?',
     a: 'No. The OY4CCurriculum is entirely self-serve. CCiC workshops are separate and optional.',
@@ -197,7 +210,7 @@ const FAQ = [
   },
   {
     q: 'How do we give feedback?',
-    a: 'You will receive a personalised link to submit feedback after requesting access to Tier 1',
+    a: `You will receive a personalised link to submit feedback after requesting access to ${TIER_1_NAME}`,
   },
 ].filter(Boolean)
 
@@ -217,7 +230,7 @@ export default function Curriculum() {
               people
             </p>
             <div className={styles.heroBtns}>
-              <a href={ACCESS_HREF} className={styles.btnPrimary}>
+              <a {...ACCESS_LINK} className={styles.btnPrimary}>
                 Get the OY4CCurriculum
               </a>
               <a href="#what-you-get" className={styles.btnOutline}>
@@ -256,7 +269,7 @@ export default function Curriculum() {
                     // the first step is the access button
                     return g.start + i === 1 ? (
                       <li key={short}>
-                        <a href={ACCESS_HREF} className={`${styles.journeyStep} ${styles.journeyBtn}`}>
+                        <a {...ACCESS_LINK} className={`${styles.journeyStep} ${styles.journeyBtn}`}>
                           {content}
                         </a>
                       </li>
@@ -346,7 +359,7 @@ export default function Curriculum() {
             learners, share your feedback to unlock {TIER_2_NAME}.
           </p>
           <ol className={styles.howSteps}>
-            {STEPS.map(({ icon: Icon, title, body, group, groupLabel }, i) => (
+            {STEPS.map(({ icon: Icon, title, body, why, group, groupLabel }, i) => (
               <li key={title} className={`${styles.howStep} ${styles[group]}`}>
                 {/* empty tag keeps cards aligned in the desktop row */}
                 <p className={styles.howTag} aria-hidden={!groupLabel}>
@@ -359,10 +372,33 @@ export default function Curriculum() {
                   </div>
                   <h3 className={styles.howTitle}>{title}</h3>
                   <p className={styles.howBody}>{body}</p>
+                  {why && <p className={styles.howBody}>{why}</p>}
                 </div>
               </li>
             ))}
           </ol>
+          <div className={styles.tiers}>
+            {TIERS.map((t, i) => {
+              const Icon = i ? Lock : LockOpen
+              return (
+                <div key={t.name} className={`${styles.tier} ${i ? styles.tier2 : styles.tier1}`}>
+                  <h3 className={styles.tierHead}>
+                    <Icon size={20} aria-hidden="true" />
+                    {t.name} · {t.status}
+                  </h3>
+                  <ul className={styles.tierTopics}>
+                    {t.topics.map((topic) => (
+                      <li key={topic}>
+                        <BookOpen size={16} aria-hidden="true" />
+                        {topic}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
+          <p className={styles.tiersNote}>{TIERS_NOTE}</p>
           <p className={styles.howNote}>
             <Lock size={18} aria-hidden="true" />
             The {TIER_2_NAME} link is only shared with teachers already using the curriculum.
@@ -372,7 +408,7 @@ export default function Curriculum() {
             <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
           </p>
           <div className={styles.howCta}>
-            <a href={ACCESS_HREF} className={`${styles.btnPrimary} ${styles.btnLarge}`}>
+            <a {...ACCESS_LINK} className={`${styles.btnPrimary} ${styles.btnLarge}`}>
               Get your OY4CCurriculum TODAY!
             </a>
           </div>
@@ -397,7 +433,7 @@ export default function Curriculum() {
           <h2 className="section-title">OY4CCurriculum Map</h2>
           {COUNTER_READY && (
             <p className={styles.counter}>
-              {COUNTER.schools} schools · {COUNTER.countries} countries · {COUNTER.students} students
+              {COUNTER.communities} {COUNTER_COMMUNITIES_LABEL} · {COUNTER.countries} countries · {COUNTER.students} students
             </p>
           )}
           <CurriculumMap />
@@ -525,7 +561,7 @@ export default function Curriculum() {
                 <h3>{f.q}</h3>
                 <ChevronDown size={20} aria-hidden="true" className={styles.faqChevron} />
               </summary>
-              <p className={styles.faqA}>{f.a}</p>
+              <p className={styles.faqA}>{withMailto(f.a)}</p>
             </details>
           ))}
         </div>
@@ -535,7 +571,7 @@ export default function Curriculum() {
       <section className={styles.cta}>
         <h2 className="section-title">{rich('Bring the OY4CCurriculum to your classroom **TODAY**!')}</h2>
         <div className={styles.ctaBtns}>
-          <a href={ACCESS_HREF} className={styles.btnPrimary}>
+          <a {...ACCESS_LINK} className={styles.btnPrimary}>
             {rich('**Get the OY4CCurriculum**')}
           </a>
         </div>
