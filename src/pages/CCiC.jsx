@@ -8,23 +8,24 @@ import { PAGE_META } from '../data/pageMeta'
 // Removed from the Impact section; Ava wants to add them to the home page later:
 // 'SDG 4 - Quality Education', 'SDG 10 - Reduced Inequalities', 'SDG 13 - Climate Action'
 
+// TODO: Pack request form URL, to come from Ethan. While empty, the button
+// opens mailto:hello@oy4c.org.
+const PACK_FORM_URL = ''
+const PACK_LINK = PACK_FORM_URL
+  ? { href: PACK_FORM_URL, target: '_blank', rel: 'noopener noreferrer' }
+  : { href: 'mailto:hello@oy4c.org' }
+
 export default function CCiC() {
   usePageMeta(PAGE_META['/ccic'])
   // Light client-side gates — no data is persisted or sent yet.
   // TODO: wire these forms to a real collection endpoint (CRM / Google Sheet / API).
   const [reportUnlocked, setReportUnlocked] = useState(false)
-  const [waitlistJoined, setWaitlistJoined] = useState(false)
 
   const handleReportSubmit = (e) => {
     e.preventDefault()
     setReportUnlocked(true)
     // Preserve the previous direct-download behaviour: open the PDF on submit.
     window.open('/ccic-report-2025.pdf', '_blank', 'noopener,noreferrer')
-  }
-
-  const handleWaitlistSubmit = (e) => {
-    e.preventDefault()
-    setWaitlistJoined(true)
   }
 
   return (
@@ -65,20 +66,34 @@ export default function CCiC() {
       {/* WHAT IS CCiC */}
       <section className={styles.what}>
         <div className={styles.whatInner}>
-          <span className="section-eyebrow">What is CCiC?</span>
-          <h2 className={`section-title ${styles.whatTitle}`}>Climate Curriculum into Classrooms (CCiC)</h2>
+          <div className={styles.whatTop}>
+            <div>
+              <span className="section-eyebrow">What is CCiC?</span>
+              <h2 className={`section-title ${styles.whatTitle}`}>Climate Curriculum into Classrooms (CCiC)</h2>
 
-          <p className={styles.whatDefinition}>
-            CCiC is a free, 1h30 in-person climate workshop, designed by young people, for students aged 12-18. We developed the resource and ran the pilot. Now, YOU can run it.
-          </p>
+              <p className={styles.whatDefinition}>
+                CCiC is a free, 1h30 in-person climate workshop, designed by young people, for students aged 12-18. We developed the resource and ran the pilot. Now, YOU can run it.
+              </p>
 
-          <div className={styles.whatText}>
-            <p>
-              OY4C has spent 5.5 years building a global, youth-led climate change education movement online. We've reached over 100,000 people monthly, built a team of 133 volunteers across 43 countries, and brought our curriculum into classrooms in over 20 countries.
-            </p>
-            <p>
-              But we needed to go further. We needed to show up in person, to have real conversations, and prove that youth-to-youth climate change education works on the ground.
-            </p>
+              <div className={styles.whatText}>
+                <p>
+                  OY4C has spent 5.5 years building a global, youth-led climate change education movement online. We've reached over 100,000 people monthly, built a team of 133 volunteers across 43 countries, and brought our curriculum into classrooms in over 20 countries.
+                </p>
+                <p>
+                  But we needed to go further. We needed to show up in person, to have real conversations, and prove that youth-to-youth climate change education works on the ground.
+                </p>
+              </div>
+            </div>
+
+            {/* Map, small, to the right of the text (Ava's feedback) */}
+            <div className={styles.whatMap}>
+              <span className="section-eyebrow">Where we've been</span>
+              <h3 className={styles.whatMapTitle}>CCiC around the world</h3>
+              <CCiCLocationsMap
+                src="https://www.google.com/maps/d/embed?mid=19lCUg7zsVuQmOAlSUS59yObBwLDHZiM"
+                title="CCiC around the world"
+              />
+            </div>
           </div>
 
           <p className={styles.pullQuote}>Why CCiC</p>
@@ -338,30 +353,10 @@ export default function CCiC() {
             ))}
           </ul>
 
-          {waitlistJoined ? (
-            <p className={styles.waitlistConfirm}>You&rsquo;re on the list — we&rsquo;ll email you the day the kit goes live.</p>
-          ) : (
-            <form className={styles.gateForm} onSubmit={handleWaitlistSubmit}>
-              <p className={styles.gateFormLabel}>Open resource kit launching Q1 2027. Join the waitlist and we&rsquo;ll send it the day it&rsquo;s live.</p>
-              <div className={styles.waitlistRow}>
-                <input type="text" name="name" placeholder="Name" required className={styles.gateInput} />
-                <input type="email" name="email" placeholder="Email" required className={styles.gateInput} />
-                <button type="submit" className={styles.reportBtn}>Join the Waitlist →</button>
-              </div>
-            </form>
-          )}
-        </div>
-      </section>
-
-      {/* MAP */}
-      <section className={styles.map}>
-        <div className={styles.mapInner}>
-          <span className="section-eyebrow">Where we've been</span>
-          <h2 className="section-title">CCiC around the world</h2>
-          <CCiCLocationsMap
-            src="https://www.google.com/maps/d/embed?mid=19lCUg7zsVuQmOAlSUS59yObBwLDHZiM"
-            title="CCiC around the world"
-          />
+          <div className={styles.gateForm}>
+            <p className={styles.gateFormLabel}>Open resource kit launching Q1 2027. Join the waitlist and we&rsquo;ll send it the day it&rsquo;s live.</p>
+            <a {...PACK_LINK} className={styles.reportBtn}>Request your Pack today for Free</a>
+          </div>
         </div>
       </section>
 

@@ -123,6 +123,20 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+/* text on the left, the map on the right */
+.whatTop {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 52px;
+}
+.whatMapTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 12px;
+}
 .whatDefinition {
   font-size: clamp(1.3rem, 2.4vw, 1.9rem);
   font-weight: 600;
@@ -789,27 +803,6 @@
   color: var(--green);
   font-weight: 700;
 }
-.waitlistRow {
-  display: flex;
-  gap: 12px;
-  max-width: 540px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-.waitlistRow .gateInput {
-  flex: 1;
-  min-width: 160px;
-}
-.openResourceInner .waitlistConfirm {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--green-dark);
-  background: var(--cream);
-  border-radius: 14px;
-  padding: 18px 24px;
-  max-width: 520px;
-  margin: 0 auto;
-}
 
 @media (max-width: 600px) {
   .reportPreview { flex-direction: column; text-align: center; }
@@ -906,28 +899,10 @@
   text-align: left;
 }
 
-/* MAP */
-.map {
-  background: var(--cream);
-  padding: 90px 5vw;
-}
-.mapInner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.mapFrame {
-  border-radius: 20px;
-  overflow: hidden;
-  height: 500px;
-}
-.mapFrame iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .whatTop { grid-template-columns: 1fr; gap: 32px; }
+  .whatMap { max-width: 480px; }
   .tiles { grid-template-columns: repeat(2, 1fr); }
   /* Workshop timeline becomes a horizontal snap-scroll strip */
   .stageTrack {
@@ -954,12 +929,9 @@
   .impactGrid { grid-template-columns: 1fr; }
   .stopGrid { grid-template-columns: 1fr; }
   .heroContent { margin: 48px 4vw; padding: 22px 20px; }
-  .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .map, .proof, .regen { padding: 60px 5vw; }
+  .what, .workshop, .journey, .insights, .openResource, .report, .resourceKit, .founderQuote, .proof, .regen { padding: 60px 5vw; }
   .stage { flex-basis: 85%; padding: 22px 20px; }
   .heroBtns { flex-direction: column; }
   /* Keep all 6 stat pills wrapping cleanly (no horizontal scroll) */
   .heroStats { justify-content: center; }
-}
-@media (max-width: 480px) {
-  .mapFrame { height: 280px; }
 }
