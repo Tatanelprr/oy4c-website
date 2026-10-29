@@ -292,7 +292,8 @@
   padding: 22px 20px;
 }
 .gate .howCard { border: 2px dashed var(--purple); background: var(--white); }
-.tier2 .howCard { background: var(--dark-soft); border-color: var(--dark-soft); }
+/* dark text on --teal: white on it fails AA */
+.tier2 .howCard { background: var(--teal); border-color: var(--teal); }
 .howCardTop {
   display: flex;
   align-items: center;
@@ -321,9 +322,9 @@
 }
 .howBody + .howBody { margin-top: 8px; }
 .tier2 .howNum,
-.tier2 .howTitle { color: var(--white); }
-.tier2 .howBody { color: rgba(255,255,255,0.85); }
-.tier2 .howIcon { color: var(--teal); }
+.tier2 .howTitle,
+.tier2 .howBody,
+.tier2 .howIcon { color: var(--black); }
 /* tier visual (provisional, data in curriculumConfig.js) */
 .tiers {
   display: grid;
@@ -347,8 +348,7 @@
 }
 /* dark text on green: white on --green fails AA */
 .tier1 .tierHead { background: var(--green); color: var(--black); }
-.tier2 .tierHead { background: var(--dark-soft); color: var(--white); }
-.tier2 .tierHead svg { color: var(--teal); }
+.tier2 .tierHead { background: var(--teal); color: var(--black); }
 .tierTopics {
   list-style: none;
   padding: 16px 20px 20px;
