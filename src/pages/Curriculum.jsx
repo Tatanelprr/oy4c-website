@@ -398,10 +398,7 @@ export default function Curriculum() {
           <ol className={styles.howSteps}>
             {STEPS.map(({ icon: Icon, title, body, why, group, groupLabel }, i) => (
               <li key={title} className={`${styles.howStep} ${styles[group]}`}>
-                {/* empty tag keeps cards aligned in the desktop row */}
-                <p className={styles.howTag} aria-hidden={!groupLabel}>
-                  {groupLabel ?? ' '}
-                </p>
+                {groupLabel && <p className={styles.howTag}>{groupLabel}</p>}
                 <div className={styles.howCard}>
                   <div className={styles.howCardTop}>
                     <span className={styles.howNum}>{String(i + 1).padStart(2, '0')}</span>
@@ -414,32 +411,35 @@ export default function Curriculum() {
               </li>
             ))}
           </ol>
-          <div className={styles.tiers}>
-            {TIERS.map((t, i) => {
-              const Icon = i ? Lock : LockOpen
-              return (
-                <div key={t.name} className={`${styles.tier} ${i ? styles.tier2 : styles.tier1}`}>
-                  <h3 className={styles.tierHead}>
-                    <Icon size={20} aria-hidden="true" />
-                    {t.name} · {t.status}
-                  </h3>
-                  <ul className={styles.tierTopics}>
-                    {t.topics.map((topic) => (
-                      <li key={topic}>
-                        <BookOpen size={16} aria-hidden="true" />
-                        {topic}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            })}
+          {/* The two tiers, kept apart from the steps above (Ava's feedback) */}
+          <div className={styles.tiersBlock}>
+            <div className={styles.tiers}>
+              {TIERS.map((t, i) => {
+                const Icon = i ? Lock : LockOpen
+                return (
+                  <div key={t.name} className={`${styles.tier} ${i ? styles.tier2 : styles.tier1}`}>
+                    <h3 className={styles.tierHead}>
+                      <Icon size={20} aria-hidden="true" />
+                      {t.name} · {t.status}
+                    </h3>
+                    <ul className={styles.tierTopics}>
+                      {t.topics.map((topic) => (
+                        <li key={topic}>
+                          <BookOpen size={16} aria-hidden="true" />
+                          {topic}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              })}
+            </div>
+            <p className={styles.tiersNote}>{TIERS_NOTE}</p>
+            <p className={styles.howNote}>
+              <Lock size={18} aria-hidden="true" />
+              The {TIER_2_NAME} link is only shared with teachers already using the curriculum.
+            </p>
           </div>
-          <p className={styles.tiersNote}>{TIERS_NOTE}</p>
-          <p className={styles.howNote}>
-            <Lock size={18} aria-hidden="true" />
-            The {TIER_2_NAME} link is only shared with teachers already using the curriculum.
-          </p>
           <p className={styles.howContact}>
             Questions? {/* TODO: provisional address, confirm with Ava. */}
             <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
