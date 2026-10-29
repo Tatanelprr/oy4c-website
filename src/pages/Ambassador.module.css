@@ -93,14 +93,15 @@
   line-height: 1.65;
 }
 
-/* METRICS */
+/* METRICS: white on --teal-dark; the cells darken it (black 15%), white
+   stays at 6:1 or more */
 .metrics {
-  background: var(--teal);
+  background: var(--teal-dark);
   padding: 70px 5vw;
 }
 .metricsTitle {
   text-align: center;
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 40px;
 }
 .metricsGrid {
@@ -111,23 +112,23 @@
   margin: 0 auto;
 }
 .metric {
-  background: rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.15);
   padding: 44px 28px;
   text-align: center;
   border-radius: 4px;
   transition: background 0.2s;
 }
-.metric:hover { background: rgba(255,255,255,0.08); }
+.metric:hover { background: rgba(0,0,0,0.25); }
 .metricNum {
   font-size: 3.2rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--white);
   line-height: 1;
   margin-bottom: 8px;
 }
 .metricLbl {
   font-size: 0.82rem;
-  color: rgba(0,0,0,0.75);
+  color: var(--white);
 }
 
 
@@ -174,7 +175,7 @@
   justify-content: center;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black); /* white on --teal was 2.2:1 */
 }
 .ambassadorBody {
   padding: 20px;
