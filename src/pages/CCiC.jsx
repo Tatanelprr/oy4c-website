@@ -231,8 +231,12 @@ export default function CCiC() {
         <div className={styles.regenContent}>
           <span className="section-eyebrow" style={{ color: 'var(--teal)' }}>ReGen26</span>
           <h2 className="section-title" style={{ color: 'var(--white)' }}>250 students. One day. Green School Bali.</h2>
+          {/* CCiC report (public/ccic-report-2025.pdf), page 6, verbatim */}
           <p className={styles.regenText}>
-            ReGen26 was the first event of its kind for CCiC: two full workshops delivered on site at Green School Bali, reaching 250 students in a single day.
+            ReGen26 was the first event of its kind: young people from schools around the world, convened at Green School Bali for a two-day collaborative conference. OY4C ran two full CCiC workshops on-site, to students who had come from across continents.
+          </p>
+          <p className={styles.regenText}>
+            The most striking moment came from the contrast in the room. Students from Green School Bali, who'd had years of embedded climate change education, engaged differently to those who hadn't. Not less committed, but less shocked. Because this was already normal to them. That's the goal. We need climate change education so embedded it stops being a revelation and starts being a baseline.
           </p>
           <blockquote className={styles.regenQuote}>
             "Green School students were less shocked, not less committed."
