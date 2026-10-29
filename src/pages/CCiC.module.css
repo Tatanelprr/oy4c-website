@@ -378,18 +378,22 @@
 }
 
 /* Proof it scales — highlighted blue panel */
+/* White on --teal-dark 4.65:1; the cards darken it (black 15%): 6.04:1 */
 .proof {
   padding: 90px 5vw;
-  background: var(--teal);
+  background: var(--teal-dark);
+  color: var(--white);
 }
 .proofInner {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
+.proofInner :global(.section-eyebrow),
+.proofInner h2 { color: var(--white); }
 .proofLede {
   font-size: 0.98rem;
-  color: rgba(0,0,0,0.75);
+  color: var(--white);
   line-height: 1.7;
   max-width: 620px;
   margin: 0 auto 44px;
@@ -400,8 +404,8 @@
   gap: 20px;
 }
 .proofCard {
-  background: rgba(255,255,255,0.35);
-  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 18px;
   padding: 32px 24px;
 }
@@ -412,7 +416,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 16px;
-  background: var(--green);
+  background: var(--green-dark); /* white initials, bold 24px: 3.44:1 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -433,24 +437,24 @@
 .proofName {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--white);
 }
 .proofRole {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--dark-soft);
+  color: var(--white);
   margin-top: 2px;
 }
 .proofPlace {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(0,0,0,0.6);
+  color: var(--white);
   margin-top: 6px;
 }
 .proofNote {
   font-size: 0.82rem;
-  color: rgba(0,0,0,0.75);
+  color: var(--white);
   line-height: 1.65;
   margin-top: 14px;
 }
