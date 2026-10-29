@@ -28,10 +28,9 @@ export const CASE_STUDY_2_QUOTE_TEXT = ''
 export const FAQ_TOPIC_DURATION_ANSWER =
   'Each topic lasts about 90 minutes, and can be split into subsections to suit your teaching plan. It is up to you how you want to use the available materials.'
 
-// TODO: ASK SASHA. Question for the flexibility FAQ (only the answer was sent).
-// Nothing is shown while either is empty.
+// Flexibility FAQ (Sasha). Nothing is shown while either is empty.
 export const FAQ_FLEXIBILITY = {
-  question: '',
+  question: 'How many OY4CCurriculum topics should I teach?',
   answer:
     "You are welcome to teach as many or as few of the topics as you wish, however, to access the Sprout tier (which contains these 7 topics - Emissions, Pollution, Mitigation Strategies, Plastic Waste, Food Management, Oceans - you must teach and submit feedback and evidence for at least 1 topic in the Seed tier. All the information for how to access the Sprout tier is detailed in your welcome email, as well as in the Seed topic drive, in the folder titled 'Accessing the Sprout tier'.",
 }
