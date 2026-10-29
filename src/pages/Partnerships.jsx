@@ -4,7 +4,8 @@ import styles from './Partnerships.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
 
-// Local logo paths until CDN URLs are set in Notion
+// Local copies of the partner logos: used when Notion has no logo, and when the
+// Notion one fails to load (i.ibb.co, behind /api/img, is sometimes down).
 const LOGO_LOCAL = {
   'Feel Good Action':              '/partners/feel-good-action.webp',
   'Climate Cardinals':             '/partners/climate-cardinals.webp',
@@ -12,6 +13,12 @@ const LOGO_LOCAL = {
   'Climate Majority Project':      '/partners/climate-majority-project.webp',
   'Climate Quilt':                 '/partners/climate-quilt.png',
   'Energy for Refugees Amsterdam': '/partners/energy-for-refugees.jpg',
+}
+
+// Swaps a failed logo for its local copy, once.
+function fallBackToLocalLogo(e, name) {
+  const local = LOGO_LOCAL[name]
+  if (local && e.currentTarget.getAttribute('src') !== local) e.currentTarget.src = local
 }
 
 // Partners not tagged "Partner" in Notion (Climate Fresk sits under "As Seen In" there)
@@ -95,7 +102,7 @@ export default function Partnerships() {
                   <div key={p.name} className={styles.partnerCard}>
                     <div className={styles.partnerLogo}>
                       {p.logo ? (
-                        <img src={p.logo} alt={p.name} loading="lazy" />
+                        <img src={p.logo} alt={p.name} loading="lazy" onError={(e) => fallBackToLocalLogo(e, p.name)} />
                       ) : (
                         <div className={styles.partnerLogoPlaceholder}>{p.name}</div>
                       )}
