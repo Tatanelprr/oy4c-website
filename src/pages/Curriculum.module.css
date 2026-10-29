@@ -1,7 +1,8 @@
 /* HERO */
 .hero {
   min-height: 62vh;
-  background: linear-gradient(135deg, var(--dark) 0%, #1d3021 100%);
+  /* --teal-dark under a 35% black layer: white 8.7:1, the lead 6.8:1 */
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), var(--teal-dark);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -67,9 +68,22 @@
   transition: all 0.2s;
 }
 .btnOutline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-.btnLarge {
-  padding: 18px 40px;
-  font-size: 1.15rem;
+/* Main access button: the first thing to catch the eye. White on --purple 4.7:1 */
+.btnCta {
+  display: inline-block;
+  padding: 20px 44px;
+  border-radius: var(--pill-radius);
+  background: var(--purple);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 1.3rem;
+  box-shadow: 0 6px 18px rgba(134,101,177,0.4);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btnCta:hover,
+.btnCta:focus-visible {
+  background: #6f4f9c;
+  box-shadow: 0 8px 26px rgba(134,101,177,0.6);
 }
 
 /* JOURNEY (simple overview) */
@@ -132,16 +146,22 @@
   border: 1px solid rgba(0,0,0,0.06);
 }
 .tier2 .journeyIcon { background: var(--teal); color: var(--black); }
-/* step 1 is the access button: green icon, underlined label */
+/* step 1 is the access button, styled like .btnCta */
 .journeyBtn {
   border-radius: 16px;
-  padding: 4px 8px 10px;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: background 0.2s;
+  padding: 12px 10px 14px;
+  background: var(--purple);
+  color: var(--white);
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(134,101,177,0.4);
+  transition: background 0.2s, box-shadow 0.2s;
 }
-.journeyBtn:hover { background: rgba(77,183,72,0.12); }
-.journeyBtn .journeyIcon { background: var(--green); color: var(--black); border-color: var(--green); }
+.journeyBtn:hover,
+.journeyBtn:focus-visible {
+  background: #6f4f9c;
+  box-shadow: 0 8px 26px rgba(134,101,177,0.6);
+}
+.journeyBtn .journeyIcon { background: var(--white); color: var(--purple); border-color: var(--white); }
 
 /* WHAT YOU GET */
 .get {
@@ -685,13 +705,16 @@
 }
 .faqA a { color: var(--black); font-weight: 600; text-decoration: underline; }
 
-/* CTA */
+/* CTA: white on --teal-dark 4.7:1 */
 .cta {
   padding: 90px 5vw;
-  background: var(--cream);
+  background: var(--teal-dark);
+  color: var(--white);
   text-align: center;
 }
 .cta h2 { margin-bottom: 28px; }
+.cta .ctaContact,
+.cta .ctaContact a { color: var(--white); }
 .ctaBtns {
   display: flex;
   gap: 14px;
@@ -743,7 +766,7 @@
   .heroInner { padding: 48px 6vw; }
   .journey, .get, .how, .map, .story, .what, .who, .future, .faq, .cta { padding: 60px 5vw; }
   .reform { padding: 0 5vw 60px; }
-  .btnLarge { padding: 16px 24px; font-size: 1.08rem; }
+  .btnCta { padding: 18px 26px; font-size: 1.15rem; }
   .bubbles { padding: 40px 5vw; }
   .bubblesInner, .cards { grid-template-columns: 1fr; }
   .heroBtns { flex-direction: column; align-items: stretch; }

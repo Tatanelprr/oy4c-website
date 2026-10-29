@@ -424,8 +424,8 @@ export default function Curriculum() {
             <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
           </p>
           <div className={styles.howCta}>
-            <a {...ACCESS_LINK} className={`${styles.btnPrimary} ${styles.btnLarge}`}>
-              Get your OY4CCurriculum TODAY!
+            <a {...ACCESS_LINK} className={styles.btnCta}>
+              Get the OY4CCurriculum TODAY!
             </a>
           </div>
         </div>
@@ -567,7 +567,19 @@ export default function Curriculum() {
         </div>
       </section>
 
-      {/* 12. FAQs */}
+      {/* 12. CTA */}
+      <section className={styles.cta}>
+        <h2 className="section-title">{rich('Bring the OY4CCurriculum to your classroom **TODAY**!')}</h2>
+        <div className={styles.ctaBtns}>
+          <a {...ACCESS_LINK} className={styles.btnPrimary}>
+            {rich('**Get the OY4CCurriculum**')}
+          </a>
+        </div>
+        <p className={styles.ctaContact}>
+          Questions? <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
+        </p>
+      </section>
+      {/* 13. FAQs */}
       <section className={styles.faq}>
         <div className={styles.faqInner}>
           <h2 className="section-title">FAQs</h2>
@@ -583,18 +595,6 @@ export default function Curriculum() {
         </div>
       </section>
 
-      {/* 13. CTA */}
-      <section className={styles.cta}>
-        <h2 className="section-title">{rich('Bring the OY4CCurriculum to your classroom **TODAY**!')}</h2>
-        <div className={styles.ctaBtns}>
-          <a {...ACCESS_LINK} className={styles.btnPrimary}>
-            {rich('**Get the OY4CCurriculum**')}
-          </a>
-        </div>
-        <p className={styles.ctaContact}>
-          Questions? <a href="mailto:curriculum@oy4c.org">curriculum@oy4c.org</a>
-        </p>
-      </section>
     </>
   )
 }
