@@ -4,7 +4,9 @@
 // For every ambassador the site shows (the Notion "Ambassadors 2026" database,
 // archived pages excluded, as in /api/ambassadors), takes the original photo
 // from public/ambassadors/ when there is one (file named after the ambassador,
-// e.g. "Noor Alabed.png"), otherwise downloads the Notion photo with the image
+// e.g. "Noor Alabed.png"; the originals now live outside the repository, in
+// ../photos-ambassadeurs-originaux: copy one back here to use it), otherwise
+// downloads the Notion photo with the image
 // proxy's own checks (host allowlist, https, redirects re-checked). Either way:
 // raster types only so no SVG, 4 MB limit. Converts it to WebP quality 80
 // without metadata, 400 and 800 px wide, never enlarged:
