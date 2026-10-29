@@ -196,6 +196,17 @@
   margin-bottom: 4px;
 }
 
+/* Social icons after Donate (desktop); in the menu on mobile */
+.links li.socials {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+.links li.socials a {
+  display: flex;
+  padding: 7px;
+  color: var(--black);
+}
 .mobileSocials {
   display: flex;
   gap: 16px;

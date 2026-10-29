@@ -29,6 +29,20 @@ const NAV = [
   { label: 'Contact Us', to: '/contact' },
 ]
 
+// Same links as the footer.
+const SOCIALS = [
+  { label: 'OY4C on Instagram', href: 'https://www.instagram.com/ouryouth4theclimate/', Icon: InstagramIcon },
+  { label: 'OY4C on LinkedIn', href: 'https://www.linkedin.com/company/our-youth-4-the-climate/', Icon: LinkedinIcon },
+  { label: 'OY4C on TikTok', href: 'https://www.tiktok.com/@ouryouth4theclimate', Icon: TiktokIcon },
+]
+
+const socialLinks = (size) =>
+  SOCIALS.map(({ label, href, Icon }) => (
+    <a key={href} href={href} target="_blank" rel="noreferrer" aria-label={label}>
+      <Icon size={size} />
+    </a>
+  ))
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -63,6 +77,7 @@ export default function Header() {
               Donate →
             </a>
           </li>
+          <li className={styles.socials}>{socialLinks(18)}</li>
         </ul>
 
         <button
@@ -90,11 +105,7 @@ export default function Header() {
               <Link key={item.label} to={item.to} onClick={() => setMenuOpen(false)}>{item.label}</Link>
             )
           )}
-          <div className={styles.mobileSocials}>
-            <a href="https://www.instagram.com/ouryouth4theclimate/" target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon size={20} /></a>
-            <a href="https://www.linkedin.com/company/our-youth-4-the-climate/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedinIcon size={20} /></a>
-            <a href="https://www.tiktok.com/@ouryouth4theclimate" target="_blank" rel="noreferrer" aria-label="TikTok"><TiktokIcon size={20} /></a>
-          </div>
+          <div className={styles.mobileSocials}>{socialLinks(20)}</div>
         </div>
       )}
     </>
