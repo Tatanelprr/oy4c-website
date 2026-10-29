@@ -702,7 +702,7 @@
   color: var(--green-dark);
   font-weight: 700;
 }
-.futureList .green { color: var(--green-dark); font-size: 1.2rem; }
+.futureList .green { color: var(--green-dark); font-size: 1.2rem; font-weight: 700; }
 .futureContact,
 .ctaContact {
   font-size: 1.05rem;

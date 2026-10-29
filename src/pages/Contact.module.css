@@ -83,7 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--teal);
+  color: var(--teal-dark); /* 4.1:1 on --cream */
   flex-shrink: 0;
 }
 .contactCategory {
