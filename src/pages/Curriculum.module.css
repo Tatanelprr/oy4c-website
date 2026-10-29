@@ -92,7 +92,7 @@
   padding-top: 14px;
 }
 .journeyGroup.gate { border-top-style: dashed; border-top-color: var(--purple); }
-.journeyGroup.tier2 { border-top-color: var(--dark-soft); }
+.journeyGroup.tier2 { border-top-color: var(--teal); }
 .journeyGroupLabel {
   font-size: 0.82rem;
   font-weight: 700;
@@ -131,7 +131,7 @@
   color: var(--green-dark);
   border: 1px solid rgba(0,0,0,0.06);
 }
-.tier2 .journeyIcon { background: var(--dark-soft); color: var(--white); }
+.tier2 .journeyIcon { background: var(--teal); color: var(--black); }
 /* step 1 is the access button: green icon, underlined label */
 .journeyBtn {
   border-radius: 16px;
@@ -719,7 +719,7 @@
   .journeyGroup, .journeyGroup.gate, .journeyGroup.tier2 { border-top: none; }
   .journeyGroup { border-left: 3px solid var(--green-dark); padding: 0 0 0 18px; }
   .journeyGroup.gate { border-left-style: dashed; border-left-color: var(--purple); }
-  .journeyGroup.tier2 { border-left-color: var(--dark-soft); }
+  .journeyGroup.tier2 { border-left-color: var(--teal); }
   .journeySteps { grid-auto-flow: row; gap: 12px; }
   .journeyStep { flex-direction: row; text-align: left; gap: 14px; }
   .journeyIcon { width: 48px; height: 48px; flex-shrink: 0; }
