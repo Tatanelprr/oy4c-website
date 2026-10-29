@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Globe, Heart, Users, Handshake } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Globe, Heart, Users, Handshake, X } from 'lucide-react'
 import { InstagramIcon } from '../components/SocialIcons'
 import styles from './Partnerships.module.css'
 import usePageMeta from '../lib/usePageMeta'
@@ -31,7 +31,7 @@ const EXTRA_PARTNERS = [
 // "What we build together": set to false to hide the section.
 const SHOW_WHAT_WE_BUILD = true
 
-// "What we build together" cards: Aana Shenai's text, verbatim (typos included).
+// "What we build together" pop-ins: Aana Shenai's text, verbatim (typos included).
 const BUILD_PARTNERS = {
   "Climate Fresk": {
     url: "https://climatefresk.org/world/",
@@ -65,20 +65,42 @@ const BUILD_PARTNERS = {
   },
 }
 
-// Categories in order; a partner may appear in several (same card).
+// Categories, shown as tags in the pop-in; a partner may be in several.
 const BUILD_CATEGORIES = [
   { title: "Education", partners: ["UNESCO", "Force of Nature"] },
   { title: "Policy", partners: ["Climate Fresk", "Feel Good Action", "Climate Majority Project"] },
   { title: "Climate Justice", partners: ["Climate Cardinals", "Climate Fresk", "Energy for Refugees"] },
 ]
 
+// "What we build together" circle: every partner except these
+const NOT_PROJECTS = new Set(['Climate Quilt'])
+
+// Circle partner name -> its entry in BUILD_PARTNERS, when Aana named it otherwise.
+const BUILD_ALIAS = {
+  'Greening Education Partnership': 'UNESCO',
+  'Energy for Refugees Amsterdam': 'Energy for Refugees',
+}
+
 export default function Partnerships() {
   usePageMeta(PAGE_META['/partnerships'])
   const [partners, setPartners] = useState([])
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState(null)
+  const [project, setProject]   = useState(null)
+  const dialogRef = useRef(null)
 
   const allPartners = [...partners, ...EXTRA_PARTNERS].map((p) => ({ ...p, logo: p.logo || LOGO_LOCAL[p.name] }))
+  // the circle uses the local copies first, so nothing waits on i.ibb.co
+  const projects = allPartners
+    .filter((p) => !NOT_PROJECTS.has(p.name))
+    .map((p) => ({ ...p, logo: LOGO_LOCAL[p.name] || p.logo }))
+  const buildName = project && (BUILD_ALIAS[project.name] ?? project.name)
+  const info = project && BUILD_PARTNERS[buildName]
+  const tags = project ? BUILD_CATEGORIES.filter((c) => c.partners.includes(buildName)).map((c) => c.title) : []
+
+  useEffect(() => {
+    if (project) dialogRef.current?.showModal()
+  }, [project])
 
   useEffect(() => {
     fetch('/api/partners')
@@ -177,44 +199,74 @@ export default function Partnerships() {
         </div>
       </section>
 
-      {/* WHAT WE BUILD TOGETHER — partner projects by category */}
-      {SHOW_WHAT_WE_BUILD && (
+      {/* WHAT WE BUILD TOGETHER — partners on a circle, click opens a pop-in
+          (the category cards of 5c7dc3e were replaced by this) */}
+      {SHOW_WHAT_WE_BUILD && !loading && !error && (
         <section className={styles.projects}>
           <div className={styles.projectsInner}>
             <span className="section-eyebrow">Our projects</span>
             <h2 className="section-title">What we build together</h2>
-            {BUILD_CATEGORIES.map((c) => (
-              <div key={c.title} className={styles.buildCategory}>
-                <h3 className={styles.buildCategoryTitle}>{c.title}</h3>
-                <ul className={styles.buildGrid}>
-                  {c.partners.map((name) => {
-                    const { url, text, instagram } = BUILD_PARTNERS[name]
-                    return (
-                      <li key={name} className={styles.buildCard}>
-                        <div className={styles.buildCardHead}>
-                          <a href={url} target="_blank" rel="noopener noreferrer" className={styles.buildName}>
-                            {name}
-                          </a>
-                          {instagram && (
-                            <a
-                              href={instagram}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={styles.buildInstagram}
-                              aria-label={`${name} on Instagram`}
-                            >
-                              <InstagramIcon size={18} />
-                            </a>
-                          )}
-                        </div>
-                        <p className={styles.buildText}>{text}</p>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            ))}
+            <ul className={styles.orbit} style={{ '--n': projects.length }}>
+              {projects.map((p, i) => (
+                <li key={p.name} className={styles.orbitItem} style={{ '--i': i }}>
+                  <button
+                    type="button"
+                    className={styles.orbitBtn}
+                    aria-label={p.name}
+                    aria-haspopup="dialog"
+                    onClick={() => setProject(p)}
+                  >
+                    {p.logo ? <img src={p.logo} alt="" loading="lazy" /> : p.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <dialog
+            ref={dialogRef}
+            className={styles.projectDialog}
+            aria-labelledby="project-title"
+            onClose={() => setProject(null)}
+            onClick={(e) => e.target === e.currentTarget && dialogRef.current.close()}
+          >
+            {project && (
+              <div className={styles.projectBody}>
+                <button type="button" className={styles.projectClose} onClick={() => dialogRef.current.close()} aria-label="Close">
+                  <X size={20} />
+                </button>
+                <div className={styles.projectHead}>
+                  {project.logo && <img src={project.logo} alt="" className={styles.projectLogo} />}
+                  <h3 id="project-title" className={styles.projectName}>
+                    {info ? (
+                      <a href={info.url} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+                        {buildName}
+                      </a>
+                    ) : (
+                      project.name
+                    )}
+                  </h3>
+                  {info?.instagram && (
+                    <a
+                      href={info.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.projectInstagram}
+                      aria-label={`${buildName} on Instagram`}
+                    >
+                      <InstagramIcon size={18} />
+                    </a>
+                  )}
+                </div>
+                {tags.length > 0 && (
+                  <ul className={styles.projectTags}>
+                    {tags.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
+                )}
+                {info && <p className={styles.projectText}>{info.text}</p>}
+              </div>
+            )}
+          </dialog>
         </section>
       )}
 
