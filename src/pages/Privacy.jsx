@@ -16,7 +16,7 @@ export default function Privacy() {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>Your data</span>
           <h1>Privacy Policy</h1>
-          <p className={styles.updated}>Last updated: 27 October 2026</p>
+          <p className={styles.updated}>Last updated: 29 October 2026</p>
         </div>
       </header>
 
@@ -113,6 +113,13 @@ export default function Privacy() {
           Donations and payment data are handled entirely by ValidAid under its own
           privacy policy; we do not process card data on this site.
         </p>
+
+        <h3>g. OY4CCurriculum access form</h3>
+        <p>
+          When you ask for access to the OY4CCurriculum, you fill in a form hosted by Google Forms. The form asks for your full name, email address, the name of your institution, your country, your relationship to the school, the age group you intend to teach, how you heard about OY4C, how and when you plan to use the curriculum, and an approximate start month. We use this information to give you access to the curriculum, to follow up on the feedback we ask for to unlock the next tier, and to understand where and how the curriculum is used. The form can be filled in by educators and by students, including students under 18. The answers are stored and can only be accessed by the OY4C curriculum team. We do not share them outside OY4C unless we have told the person who filled in the form. Google processes this data on our behalf and may set its own cookies on its pages: see Google's privacy policy. Our own website sets no cookies.
+        </p>
+        {/* TODO: retention period for form answers: to be decided by OY4C */}
+        {/* TODO: age rule for under-18s: to be decided by OY4C */}
 
         <h2>3. Cookies and tracking</h2>
         <p>
