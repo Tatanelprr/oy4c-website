@@ -1,7 +1,7 @@
 import { CASE_STUDY_2_DATE, CASE_STUDY_2_RECAP, CASE_STUDY_2_QUOTE_TEXT, CASE_STUDY_PHOTOS } from './curriculumConfig'
 
 // Places where the OY4CCurriculum has been taught (Ava, Round 2).
-// `name` is Ava's text, unchanged. `label` is a shorter display name, only for
+// `name` is Ava's text, unchanged except typos she allowed us to fix. `label` is a shorter display name, only for
 // the longest entries. Coordinates are city-level only; `approximate: true`
 // marks places given as a region, a district or a village.
 // TODO: coordinates to be validated.
@@ -16,7 +16,7 @@ export const CURRICULUM_LOCATIONS = [
   { id: 'bratislava', name: 'Bratislava, Slovakia', lat: 48.15, lng: 17.11 },
   { id: 'mapou', name: 'Mapou, Mauritius', lat: -20.08, lng: 57.61 },
   { id: 'chicago', name: 'Chicago, IL, USA', lat: 41.88, lng: -87.63 },
-  { id: 'michigan', name: 'Michigan area USA.', lat: 42.73, lng: -84.55, approximate: true },
+  { id: 'michigan', name: 'Michigan area, USA', lat: 42.73, lng: -84.55, approximate: true },
   { id: 'paramaribo', name: 'Paramaribo, Suriname', lat: 5.85, lng: -55.2 },
   { id: 'berkeley', name: 'Berkeley, CA, USA', lat: 37.87, lng: -122.27 },
   {
@@ -34,7 +34,7 @@ export const CURRICULUM_LOCATIONS = [
     },
   },
   { id: 'durham', name: 'Durham, North Carolina, USA', lat: 35.99, lng: -78.9 },
-  { id: 'madrid', name: 'Madrid. Spain', lat: 40.42, lng: -3.7 },
+  { id: 'madrid', name: 'Madrid, Spain', lat: 40.42, lng: -3.7 },
   { id: 'soledad', name: 'Soledad, California, USA', lat: 36.42, lng: -121.33 },
   { id: 'lewiston', name: 'Lewiston, Maine, USA', lat: 44.1, lng: -70.21 },
   {
@@ -56,7 +56,7 @@ export const CURRICULUM_LOCATIONS = [
     lng: 13.16,
   },
   { id: 'elubo', name: 'Elubo, Western Region, Ghana', lat: 5.28, lng: -2.77 },
-  { id: 'pain-court', name: 'Pain court, ontario, canada', lat: 42.4, lng: -82.3 },
+  { id: 'pain-court', name: 'Pain Court, Ontario, Canada', lat: 42.4, lng: -82.3 },
   {
     id: 'olango',
     name: 'Barangay Tingo, Olango Island, Lapu-Lapu City, Cebu Province, Philippines',

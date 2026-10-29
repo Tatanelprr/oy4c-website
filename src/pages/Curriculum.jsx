@@ -150,13 +150,13 @@ const BUBBLES = [
 const STORY_INTRO = [
   'In 2021, our then 17-year-old Founder, Ava Langridge, noticed that climate change was  spoken about everywhere, except the place that should have been equipping us to  address the world we are inheriting',
   'In August of that year, after having conversations with young people, ages 14-18 across the world, and learning about the shared climate change education gap across the globe, systems, and scales (enabled through social media), Ava started teaching herself about anything she could, and would invite anyone to join',
-  '5 students, quickly became 20, and by October 2021, UNESCO validated our ‘lived experience’ findings',
+  '5 students quickly became 20, and by October 2021, UNESCO validated our ‘lived experience’ findings',
 ]
 const STORY_STAT =
   'UNESCO: Almost half (47%) of national curricula worldwide don’t mention climate change. This doesn’t even account for the quality of what does exist'
 const STORY_REST = [
-  'With this new information, there was substantial increase in interest in changing this',
-  'So our weekly classes became something more structured, and from May 2022 to February, 150 young people,  contributed to the development of our OY4CCurriculum',
+  'With this new information, there was a substantial increase in interest in changing this',
+  'So our weekly classes became something more structured, and from May 2022 to February, 150 young people  contributed to the development of our OY4CCurriculum',
   '150 young people: have contributed to creating the OY4CCurriculum through researching, writing, and reviewing. OY4CCurriculum contributors, aged 12-24, are located in Costa Rica, Australia, Trinidad, South Africa, United Kingdom, Brazil, Uganda, United States…etc. Our community has also contributed, through polls and conversations, by reinforcing our understanding of what education is lacking.',
 ]
 
