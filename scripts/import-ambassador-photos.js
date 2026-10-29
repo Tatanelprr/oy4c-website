@@ -2,10 +2,12 @@
 // Notion photo (hosted on i.ibb.co, which is sometimes down) fails to load.
 //
 // For every ambassador the site shows (the Notion "Ambassadors 2026" database,
-// archived pages excluded, as in /api/ambassadors), downloads the photo with
-// the image proxy's own checks (host allowlist, https, redirects re-checked,
-// raster types only so no SVG, 4 MB limit) and converts it to WebP quality 80
-// without metadata, 400 and 800 px wide:
+// archived pages excluded, as in /api/ambassadors), takes the original photo
+// from public/ambassadors/ when there is one (file named after the ambassador,
+// e.g. "Noor Alabed.png"), otherwise downloads the Notion photo with the image
+// proxy's own checks (host allowlist, https, redirects re-checked). Either way:
+// raster types only so no SVG, 4 MB limit. Converts it to WebP quality 80
+// without metadata, 400 and 800 px wide, never enlarged:
 //   public/ambassadors/<first-name>-400.webp and <first-name>-800.webp
 // --apply also rewrites src/data/ambassadorPhotos.js, the list the page reads.
 //
@@ -15,7 +17,7 @@
 // The Notion token is read from .env.local and never printed.
 
 import sharp from 'sharp'
-import { readFileSync, existsSync } from 'fs'
+import { readFileSync, readdirSync, existsSync } from 'fs'
 import { writeFile } from 'fs/promises'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
@@ -27,6 +29,9 @@ const APPLY = process.argv.includes('--apply')
 const WIDTHS = [400, 800]
 const QUALITY = 80
 const NOTION_VERSION = '2022-06-28'
+const PHOTO_DIR = join(root, 'public/ambassadors')
+const MAX_BYTES = 4 * 1024 * 1024 // same limit as the image proxy
+const RASTER = new Set(['jpeg', 'png', 'webp', 'gif', 'avif']) // sharp formats; no SVG
 
 // Same parsing as vite.config.js; values already in the environment win.
 function loadEnvFile(path) {
@@ -74,6 +79,34 @@ async function fetchAmbassadors() {
   }))
 }
 
+// Lowercase, no accents, single spaces: "Musa Muhammad Musa " -> "musa muhammad musa".
+const norm = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim()
+
+// Original photos in public/ambassadors/ (not the generated -400/-800 copies).
+const ORIGINALS = existsSync(PHOTO_DIR)
+  ? readdirSync(PHOTO_DIR).filter((f) => /\.(jpe?g|png|webp|gif|avif)$/i.test(f) && !/-(400|800)\.webp$/.test(f))
+  : []
+const stem = (file) => norm(file.replace(/\.[^.]+$/, ''))
+
+// The original whose name is the ambassador's full name, else the only one
+// starting with the same first name. { ambiguous } when several match.
+function findOriginal(name) {
+  const full = ORIGINALS.filter((f) => stem(f) === norm(name))
+  if (full.length === 1) return { file: full[0] }
+  const first = norm(name).split(' ')[0]
+  const byFirst = ORIGINALS.filter((f) => stem(f).split(' ')[0] === first)
+  if (full.length > 1 || byFirst.length > 1) return { ambiguous: [...full, ...byFirst] }
+  return byFirst.length ? { file: byFirst[0], byFirstName: true } : {}
+}
+
+async function readOriginal(file) {
+  const body = readFileSync(join(PHOTO_DIR, file))
+  if (body.length > MAX_BYTES) throw new Error(`${file} is over 4 MB`)
+  const { format } = await sharp(body).metadata()
+  if (!RASTER.has(format)) throw new Error(`${file} is not an allowed image type: ${format}`)
+  return { type: `local ${file} (${format})`, body }
+}
+
 // i.ibb.co sheds bursts with 503s or stalls: several spaced attempts.
 const ATTEMPTS = 6
 async function download(url) {
@@ -100,11 +133,14 @@ for (const { name, photo } of ambassadors) {
   if (seen.has(slug)) throw new Error(`"${name}" and "${seen.get(slug)}" would share the file name ${slug}`)
   seen.set(slug, name)
 
+  const original = findOriginal(name)
+  if (original.ambiguous) console.log(`- ${name}: AMBIGUOUS local originals (${original.ambiguous.join(', ')}), using Notion`)
+  if (original.byFirstName) console.log(`- ${name}: local original matched by first name only: ${original.file}`)
   const url = parseAllowedImageUrl(photo)
-  if (!url) { console.log(`- ${name}: no photo on an allowed host (${photo ? new URL(photo).hostname : 'empty'}), skipped`); continue }
+  if (!original.file && !url) { console.log(`- ${name}: no local original and no photo on an allowed host, skipped`); continue }
 
   try {
-    const { type, body } = await download(url)
+    const { type, body } = original.file ? await readOriginal(original.file) : await download(url)
     const outputs = []
     for (const width of WIDTHS) {
       // rotate() applies the EXIF orientation; sharp drops all metadata unless asked to keep it.
@@ -122,6 +158,8 @@ for (const { name, photo } of ambassadors) {
   } catch (err) {
     failed++
     console.log(`- ${name}: FAILED (${err.name === 'AbortError' ? 'timeout' : err.message})`)
+    // keep copies written by an earlier run in the list
+    if (WIDTHS.every((w) => existsSync(join(PHOTO_DIR, `${slug}-${w}.webp`)))) manifest[name] = slug
   }
 }
 
