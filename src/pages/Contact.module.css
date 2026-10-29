@@ -122,6 +122,8 @@
   background: var(--white);
   text-align: center;
 }
+/* --teal-dark on white 4.65:1 */
+.socialTitle { color: var(--teal-dark); }
 .socialInner {
   max-width: 600px;
   margin: 0 auto;

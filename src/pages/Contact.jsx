@@ -75,7 +75,7 @@ export default function Contact() {
       <section className={styles.social}>
         <div className={styles.socialInner}>
           <span className="section-eyebrow">Follow us</span>
-          <h2 className="section-title">Stay connected</h2>
+          <h2 className={`section-title ${styles.socialTitle}`}>Stay connected</h2>
           <p>
             Follow OY4C on social media for daily climate change education content, updates on our programmes, and stories from our global community.
           </p>
