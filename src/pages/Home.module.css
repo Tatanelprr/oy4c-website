@@ -495,12 +495,14 @@
   margin: 0 auto;
 }
 .partnerLogo {
+  min-width: 0; /* a wide logo must not widen its grid column (overflow at 375px) */
   padding: 16px 28px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .partnerLogo img {
+  max-width: 100%;
   max-height: 40px;
   object-fit: contain;
   margin: auto;
