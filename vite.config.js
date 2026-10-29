@@ -61,15 +61,29 @@ function devApiPlugin() {
 const escapeHtml = (text) =>
   text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
+// Replaces the content of <meta {attr}="{key}" content="..." />.
+const setMeta = (html, attr, key, value) =>
+  html.replace(new RegExp(`<meta ${attr}="${key}" content="[^"]*" />`), `<meta ${attr}="${key}" content="${escapeHtml(value)}" />`)
+
 // Copy of the built index.html with one route's title, description and
-// canonical (or no canonical / a noindex tag when the meta asks for it).
+// canonical, also used for og:title / og:description / og:url and
+// twitter:title / twitter:description (no canonical and no og:url, or a
+// noindex tag, when the meta asks for it).
 export function renderMeta(html, { title, description, path, noindex }) {
-  let out = html
-    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
-    .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escapeHtml(description)}" />`)
+  let out = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
+  for (const [attr, key, value] of [
+    ['name', 'description', description],
+    ['property', 'og:title', title],
+    ['property', 'og:description', description],
+    ['name', 'twitter:title', title],
+    ['name', 'twitter:description', description],
+  ]) out = setMeta(out, attr, key, value)
   out = path
-    ? out.replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${SITE_URL}${path}" />`)
-    : out.replace(/\s*<link rel="canonical" href="[^"]*" \/>/, '')
+    ? setMeta(out, 'property', 'og:url', `${SITE_URL}${path}`)
+        .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${SITE_URL}${path}" />`)
+    : out
+        .replace(/\s*<meta property="og:url" content="[^"]*" \/>/, '')
+        .replace(/\s*<link rel="canonical" href="[^"]*" \/>/, '')
   if (noindex) out = out.replace('</title>', '</title>\n    <meta name="robots" content="noindex" />')
   return out
 }
