@@ -65,8 +65,9 @@ async function readLimited(resp) {
   return Buffer.concat(chunks)
 }
 
-// One attempt, timeout covering headers and body.
-async function loadImage(target) {
+// One attempt, timeout covering headers and body. Also used by
+// scripts/import-ambassador-photos.js, so the copies pass the same checks.
+export async function loadImage(target) {
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS)
   try {

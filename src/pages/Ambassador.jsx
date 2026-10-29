@@ -4,6 +4,7 @@ import { InstagramIcon, LinkedinIcon, TiktokIcon } from '../components/SocialIco
 import styles from './Ambassador.module.css'
 import usePageMeta from '../lib/usePageMeta'
 import { PAGE_META } from '../data/pageMeta'
+import { AMBASSADOR_PHOTOS } from '../data/ambassadorPhotos'
 
 // Group photo in the Gombe State card, next to the action photo.
 const SHOW_GROUP_PHOTO = true
@@ -79,24 +80,41 @@ function getInitials(name) {
     .toUpperCase()
 }
 
+// Card width: 1, 2, 3 then 4 columns (see .ambassadorsGrid).
+const PHOTO_SIZES = '(max-width: 600px) 90vw, (max-width: 768px) 45vw, (max-width: 1100px) 30vw, 290px'
+
 function AmbassadorCard({ ambassador }) {
+  // Local copy (scripts/import-ambassador-photos.js), used when the Notion
+  // photo is missing or fails to load; without one, the initials show.
+  const local = AMBASSADOR_PHOTOS[ambassador.name]
+  const localSrc = local && `/ambassadors/${local}-400.webp`
+  const localSrcSet = local && `${localSrc} 400w, /ambassadors/${local}-800.webp 800w`
+  const src = ambassador.photo || localSrc
   return (
     <div className={styles.ambassadorCard}>
-      {ambassador.photo ? (
+      {src ? (
         <img
-          src={ambassador.photo}
+          src={src}
+          srcSet={ambassador.photo ? undefined : localSrcSet}
+          sizes={PHOTO_SIZES}
           alt=""
           loading="lazy"
           className={styles.ambassadorPhoto}
           onError={(e) => {
-            e.target.style.display = 'none'
-            e.target.nextSibling.style.display = 'flex'
+            const img = e.currentTarget
+            if (localSrc && img.getAttribute('src') !== localSrc) {
+              img.srcset = localSrcSet
+              img.src = localSrc
+              return
+            }
+            img.style.display = 'none'
+            img.nextSibling.style.display = 'flex'
           }}
         />
       ) : null}
       <div
         className={styles.ambassadorPhotoPlaceholder}
-        style={{ display: ambassador.photo ? 'none' : 'flex' }}
+        style={{ display: src ? 'none' : 'flex' }}
       >
         {getInitials(ambassador.name)}
       </div>
