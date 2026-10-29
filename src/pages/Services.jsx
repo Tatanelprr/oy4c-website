@@ -36,35 +36,42 @@ export default function Services() {
         <div className={styles.heroBg} />
         <div className={styles.heroContent}>
           <span className={styles.heroEyebrow}>Our services</span>
-          <h1>Climate education, built by young people. Built with you.</h1>
-          <p className={styles.heroSub}>
-            Our Youth 4 The Climate is a youth-led organisation transforming climate change education across the world. We partner with organisations to build resources, share opportunities and lead conversations that reach the next generation. Every partnership equips young people for the crisis they’re inheriting.
-          </p>
+          <h1>
+            Climate education, built by young people.{' '}
+            <span className={styles.heroAccent}>Built with you.</span>
+          </h1>
         </div>
+      </section>
+
+      {/* INTRO */}
+      <section className={styles.intro}>
+        <p>
+          Our Youth 4 The Climate is a youth-led organisation transforming climate change education across the world. We partner with organisations to build resources, share opportunities and lead conversations that reach the next generation. Every partnership equips young people for the crisis they’re inheriting.
+        </p>
       </section>
 
       {/* WORK WITH US */}
       <section className={styles.work}>
         <div className={styles.workInner}>
-          <h2 className="section-title">Work with Us</h2>
+          <h2 className="section-title">Work with Us - Our Services</h2>
           <ul className={styles.cards}>
             {SERVICES.map(({ icon: Icon, title, body }) => (
               <li key={title} className={styles.card}>
-                <span className={styles.cardIcon}>
-                  <Icon size={24} aria-hidden="true" />
-                </span>
-                <h3 className={styles.cardTitle}>{title}</h3>
+                <h3 className={styles.cardTitle}>
+                  <span className={styles.cardIcon}>
+                    <Icon size={24} aria-hidden="true" />
+                  </span>
+                  {title}
+                </h3>
                 <p className={styles.cardBody}>{body}</p>
-                <a
-                  href={CONTACT_HREF}
-                  className={styles.cardLink}
-                  aria-label={`Get in touch about ${title}`}
-                >
-                  Get in touch →
-                </a>
               </li>
             ))}
           </ul>
+          <div className={styles.workCta}>
+            <a href={CONTACT_HREF} className={styles.bigBtn}>
+              Get in touch
+            </a>
+          </div>
         </div>
       </section>
 
@@ -72,7 +79,7 @@ export default function Services() {
       <section className={styles.reach}>
         <h2 className="section-title">Have something in mind?</h2>
         <p className={styles.reachText}>Tell us what you’re working on. We’ll shape it with you.</p>
-        <a href={CONTACT_HREF} className="btn-pill btn-pill-primary">
+        <a href={CONTACT_HREF} className={styles.reachBtn}>
           Reach out
         </a>
       </section>
