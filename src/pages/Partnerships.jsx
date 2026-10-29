@@ -16,9 +16,13 @@ const LOGO_LOCAL = {
 
 // Partners not tagged "Partner" in Notion (Climate Fresk sits under "As Seen In" there)
 const EXTRA_PARTNERS = [
-  { name: 'GEP', logo: '/partners/gep.webp' },
+  { name: 'Greening Education Partnership', logo: '/partners/gep.webp' },
   { name: 'Climate Fresk', logo: '/seen-in/climate-fresk.png' },
 ]
+
+// "What we build together" stays hidden until there are case studies to show
+// (Ava). Set to true to show it again.
+const SHOW_WHAT_WE_BUILD = false
 
 // "Our projects" circle: every partner except these
 const NOT_PROJECTS = new Set(['Climate Quilt'])
@@ -141,7 +145,7 @@ export default function Partnerships() {
       </section>
 
       {/* OUR PROJECTS — partners on a circle, click opens a pop-in */}
-      {!loading && !error && (
+      {SHOW_WHAT_WE_BUILD && !loading && !error && (
         <section className={styles.projects}>
           <div className={styles.projectsInner}>
             <span className="section-eyebrow">Our projects</span>
@@ -189,7 +193,9 @@ export default function Partnerships() {
       <section className={styles.cta}>
         <h2>Interested in partnering with OY4C?</h2>
         <p>
-          We're always open to new collaborations. If your organisation shares our values, let's talk.
+          We're always open to new collaborations.
+          <br />
+          If your organisation shares our values, let's talk.
         </p>
         <div className={styles.ctaBtns}>
           <a href="mailto:partnerships@oy4c.org" className={styles.ctaBtn}>

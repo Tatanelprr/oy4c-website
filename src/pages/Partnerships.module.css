@@ -17,19 +17,21 @@
   background-position: center;
 }
 
-/* NOTE strip below the hero */
+/* NOTE strip below the hero: white on --green-dark is 3.44:1, so bold and
+   18.66px or more only */
 .note {
-  background: var(--green);
+  background: var(--green-dark);
   padding: 18px 5vw;
   text-align: center;
 }
 .note p {
-  font-size: 0.9rem;
-  color: var(--dark);
+  font-size: 1.17rem;
+  font-weight: 700;
+  color: var(--white);
   margin: 0;
 }
 .note a {
-  color: var(--dark);
+  color: var(--white);
   font-weight: 700;
   text-decoration: underline;
 }
@@ -328,21 +330,21 @@
 }
 .projectLink:hover { color: var(--teal); }
 
-/* CTA */
+/* CTA: white on --teal-dark 4.65:1 */
 .cta {
   padding: 90px 5vw;
-  background: var(--teal);
+  background: var(--teal-dark);
   text-align: center;
 }
 .cta h2 {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 14px;
 }
 .cta p {
   font-size: 0.95rem;
-  color: rgba(0,0,0,0.8);
+  color: var(--white);
   max-width: 480px;
   margin: 0 auto 36px;
   line-height: 1.75;
