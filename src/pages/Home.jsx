@@ -246,7 +246,8 @@ export default function Home() {
           <div className={styles.seenInTrack}>
             <div className={styles.seenInInner}>
               {[0, 1].map((i) => (
-                <span key={i} className={styles.seenInSet}>
+                // the second copy only makes the marquee loop: hidden from screen readers
+                <span key={i} className={styles.seenInSet} aria-hidden={i === 1 || undefined}>
                   {seenIn.map((item) => {
                     const src = item.logo || LOGO_LOCAL[item.name]
                     if (!src) return null

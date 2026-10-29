@@ -50,7 +50,7 @@ function ArticleCard({ article, priority }) {
             src={imgAtWidth(article.image, 800)}
             srcSet={imgSrcSet(article.image, [400, 800])}
             sizes={CARD_SIZES}
-            alt={article.title}
+            alt="" // the title is the card's text; Notion has no alt for images
             width={1600}
             height={900}
             loading={priority ? undefined : 'lazy'}
@@ -172,7 +172,7 @@ export default function Blog() {
           {error && !loading && (
             <div className={styles.empty}>
               <div className={styles.emptyIcon}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
                 </svg>
               </div>
@@ -216,7 +216,7 @@ export default function Blog() {
               ) : (
                 <div className={styles.empty}>
                   <div className={styles.emptyIcon}>
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
                       <polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
                     </svg>

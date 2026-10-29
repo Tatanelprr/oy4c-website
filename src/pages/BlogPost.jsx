@@ -81,8 +81,9 @@ function groupBlocks(blocks) {
 
 // ── Individual block ───────────────────────────────────────────────────────
 
-// title: the article's title, used as alt text for its images.
-function Block({ block, title }) {
+// Images get an empty alt: Notion has no alt text for them, and the article
+// title (the old alt) is already the page's h1. Captions stay.
+function Block({ block }) {
   const rt = (key) => block[key]?.rich_text ?? []
 
   switch (block.type) {
@@ -130,7 +131,7 @@ function Block({ block, title }) {
             src={imgAtWidth(src, 1200)}
             srcSet={imgSrcSet(src, [800, 1200])}
             sizes={BODY_SIZES}
-            alt={title}
+            alt=""
             width={1200}
             height={800}
             className={styles.blockImg}
@@ -160,7 +161,7 @@ function Block({ block, title }) {
 // ── Grouped block renderer ─────────────────────────────────────────────────
 
 // skipId: body image already shown as the cover.
-function NotionContent({ blocks, title, skipId }) {
+function NotionContent({ blocks, skipId }) {
   const groups = groupBlocks(blocks.filter((b) => b.id !== skipId))
   return (
     <div className={styles.content}>
@@ -187,7 +188,7 @@ function NotionContent({ blocks, title, skipId }) {
             </ol>
           )
         }
-        return <Block key={group.id ?? i} block={group} title={title} />
+        return <Block key={group.id ?? i} block={group} />
       })}
     </div>
   )
@@ -277,7 +278,7 @@ export default function BlogPost() {
               srcSet={imgSrcSet(post.image, [800, 1200])}
               sizes={HERO_SIZES}
               fetchPriority="high"
-              alt={post.title}
+              alt=""
               width={1600}
               height={900}
               className={styles.heroImg}
@@ -319,7 +320,7 @@ export default function BlogPost() {
 
       <hr className={styles.divider} />
 
-      {post.blocks && <NotionContent blocks={post.blocks} title={post.title} skipId={post.coverBlockId} />}
+      {post.blocks && <NotionContent blocks={post.blocks} skipId={post.coverBlockId} />}
     </>
   )
 }
