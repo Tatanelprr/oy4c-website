@@ -43,9 +43,6 @@ const ACCESS_LINK = TIER1_ACCESS_URL
   ? { href: TIER1_ACCESS_URL, target: '_blank', rel: 'noopener noreferrer' }
   : { href: 'mailto:curriculum@oy4c.org' }
 
-// Same link as the header's Donate button.
-const DONATE_HREF = 'https://validaid.org/fundraiser/174'
-
 const CONTACT_EMAIL = 'curriculum@oy4c.org'
 // Turns the contact address inside a text into a mailto link.
 function withMailto(text) {
@@ -221,20 +218,7 @@ function withGreen(text, phrase) {
 // Topic duration, flexibility and FAQ_SASHA entries: Sasha's text, see
 // curriculumConfig.js. Conditional entries are dropped while empty.
 const FAQ = [
-  {
-    q: 'Is it really free?',
-    // Donation sentence added at the site team's request (not Ava's text).
-    a: (
-      <>
-        Yes. There is nothing to pay at any stage. If you would like to support us, donations help
-        us keep developing the OY4CCurriculum:{' '}
-        <a href={DONATE_HREF} target="_blank" rel="noreferrer">
-          Donate
-        </a>
-        .
-      </>
-    ),
-  },
+  { q: 'Is it really free?', a: 'Yes. There is nothing to pay at any stage.' },
   { q: 'What ages is it for?', a: 'Built for 14–18, used successfully with students from 12 to 20.' },
   { q: 'Do we need a specialist educator?', a: 'No. No prior climate knowledge is needed, by educator or student.' },
   FAQ_FLEXIBILITY.question && FAQ_FLEXIBILITY.answer
@@ -248,7 +232,6 @@ const FAQ = [
     q: 'Do you need to come into our school?',
     a: 'No. The OY4CCurriculum is entirely self-serve. CCiC workshops are separate and optional.',
   },
-  { q: 'What data do you collect from students?', a: 'None.' },
   {
     q: 'Can we use your name and logo?',
     a: 'Please email us at curriculum@oy4c.org requesting use of our logo and name, and to clarify usage rights.',
