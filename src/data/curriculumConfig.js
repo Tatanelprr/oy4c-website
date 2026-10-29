@@ -17,12 +17,23 @@ export const COUNTER = { communities: 25, countries: 18, students: '1,200+' }
 // "communities or OY4CCurriculum learners". Provisional.
 export const COUNTER_COMMUNITIES_LABEL = 'Communities'
 
-// TODO: ASK SASHA / AVA. Shortened before / during / after text for the Milan
-// case study (Istituto Leone XIII). Ava asked for it to be shortened: it must
-// not be shortened by us. While empty, the Milan pin shows the place name only.
-// Original text: not included in the brief the site was built from; to be
-// pasted here as a comment once received, next to Ava's shortened version.
+// Milan case study (Istituto Leone XIII). Date: Ava ("just say 2024-2025").
+export const CASE_STUDY_2_DATE = '2024-2025'
+// Before / during / after recap validated by Ava ("The recap is good"), verbatim.
+export const CASE_STUDY_2_RECAP = [
+  'Before: Feeling pessimistic about the climate crisis, worrying about the lack of interest in the matter from my peers',
+  'During: Feeling the magnitude of my voice, noticing curiosity and interest spark amongst my peers',
+  'After: Feeling freshly inspired in my own work, excited to create more change',
+]
+// TODO: ASK SASHA. Quote for the Milan case study, and who said it. Not shown
+// while empty.
 export const CASE_STUDY_2_QUOTE_TEXT = ''
+
+// Case study photos (Ava: "please add pictures to these case studies"). None
+// received yet. To add one: put the file in public/curriculum/case-studies/
+// and set its path here, e.g. '/curriculum/case-studies/milan.webp'. Each
+// photo is shown on its pin's card, and hidden while its path is empty.
+export const CASE_STUDY_PHOTOS = { milano: '', thimphu: '' }
 
 // Answer to "How long does each topic take?" (Sasha).
 export const FAQ_TOPIC_DURATION_ANSWER =

@@ -1,4 +1,4 @@
-import { CASE_STUDY_2_QUOTE_TEXT } from './curriculumConfig'
+import { CASE_STUDY_2_DATE, CASE_STUDY_2_RECAP, CASE_STUDY_2_QUOTE_TEXT, CASE_STUDY_PHOTOS } from './curriculumConfig'
 
 // Places where the OY4CCurriculum has been taught (Ava, Round 2).
 // `name` is Ava's text, unchanged. `label` is a shorter display name, only for
@@ -7,7 +7,7 @@ import { CASE_STUDY_2_QUOTE_TEXT } from './curriculumConfig'
 // TODO: coordinates to be validated.
 //
 // caseStudy fields, shown in this order and only when set:
-// place, venue, date, taughtBy, topic, activity, quote.
+// photo, place, venue, date, taughtBy, topic, activity, recap (lines), quote.
 // `hidden: true` keeps an entry in the file but off the map.
 export const CURRICULUM_LOCATIONS = [
   { id: 'ma-usa', name: 'MA, United States', lat: 42.26, lng: -71.8, approximate: true },
@@ -24,10 +24,14 @@ export const CURRICULUM_LOCATIONS = [
     name: 'Milano, Italy',
     lat: 45.46,
     lng: 9.19,
-    // Hidden until Ava's shortened text is in curriculumConfig.js.
-    caseStudy: CASE_STUDY_2_QUOTE_TEXT
-      ? { place: 'Milan, Italy', venue: 'Istituto Leone XIII', quote: CASE_STUDY_2_QUOTE_TEXT }
-      : null,
+    caseStudy: {
+      photo: CASE_STUDY_PHOTOS.milano,
+      place: 'Milan, Italy',
+      venue: 'Istituto Leone XIII',
+      date: CASE_STUDY_2_DATE,
+      recap: CASE_STUDY_2_RECAP,
+      quote: CASE_STUDY_2_QUOTE_TEXT,
+    },
   },
   { id: 'durham', name: 'Durham, North Carolina, USA', lat: 35.99, lng: -78.9 },
   { id: 'madrid', name: 'Madrid. Spain', lat: 40.42, lng: -3.7 },
@@ -67,6 +71,7 @@ export const CURRICULUM_LOCATIONS = [
     lng: 89.64,
     // Ava's case study 1, line by line. No date and no teacher given: not shown.
     caseStudy: {
+      photo: CASE_STUDY_PHOTOS.thimphu,
       place: 'Bhutan',
       venue: 'At Changjiji Youth Centre',
       topic: 'Taught our Climate Education topic',

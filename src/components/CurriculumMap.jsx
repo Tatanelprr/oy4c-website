@@ -199,10 +199,16 @@ function MapCard({ ids, x, y, wrapW }) {
           <div key={id} className={styles.cardItem}>
             {caseStudy ? (
               <>
+                {caseStudy.photo && <img src={caseStudy.photo} alt="" className={styles.cardPhoto} />}
                 <p className={styles.cardPlace}>{caseStudy.place}</p>
                 {CASE_STUDY_FIELDS.filter((f) => caseStudy[f]).map((f) => (
                   <p key={f} className={styles.cardLine}>
                     {caseStudy[f]}
+                  </p>
+                ))}
+                {caseStudy.recap?.map((line) => (
+                  <p key={line} className={styles.cardLine}>
+                    {line}
                   </p>
                 ))}
                 {caseStudy.quote && <p className={styles.cardQuote}>{caseStudy.quote}</p>}
