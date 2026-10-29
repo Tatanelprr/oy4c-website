@@ -14,8 +14,8 @@
  *   node scripts/sync-team-notion.js --archive  # also archive orphaned pages (trash)
  *
  * Required env vars (auto-loaded from .env.local if present):
- *   NOTION_TOKEN (or the old VITE_NOTION_TOKEN)
- *   NOTION_TEAM_DB_ID (or the old VITE_NOTION_TEAM_DB_ID)
+ *   NOTION_TOKEN
+ *   NOTION_TEAM_DB_ID
  */
 
 import { readFile } from 'fs/promises'
@@ -44,8 +44,8 @@ if (existsSync(envPath)) {
 
 // ── Config ──────────────────────────────────────────────────────────────────
 
-const NOTION_TOKEN   = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
-const TEAM_DB_ID     = process.env.NOTION_TEAM_DB_ID ?? process.env.VITE_NOTION_TEAM_DB_ID
+const NOTION_TOKEN   = process.env.NOTION_TOKEN
+const TEAM_DB_ID     = process.env.NOTION_TEAM_DB_ID
 const NOTION_VERSION = '2022-06-28'
 const SLEEP_MS       = 334 // stay within Notion's ~3 req/s limit
 
@@ -61,7 +61,7 @@ const SECTION_MAP = {
   functions:        'Functions',
 }
 
-const missing = ['NOTION_TOKEN', 'NOTION_TEAM_DB_ID'].filter((k) => !process.env[k] && !process.env[`VITE_${k}`])
+const missing = ['NOTION_TOKEN', 'NOTION_TEAM_DB_ID'].filter((k) => !process.env[k])
 if (missing.length) {
   console.error(`❌ Missing env vars: ${missing.join(', ')}`)
   process.exit(1)

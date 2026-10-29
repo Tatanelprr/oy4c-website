@@ -9,8 +9,8 @@
  *
  * Required env vars:
  *   IMGBB_API_KEY
- *   NOTION_TOKEN (or the old VITE_NOTION_TOKEN)
- *   NOTION_PARTNERS_DB_ID (or the old VITE_NOTION_PARTNERS_DB_ID)
+ *   NOTION_TOKEN
+ *   NOTION_PARTNERS_DB_ID
  */
 
 import { readFile }  from 'fs/promises'
@@ -39,15 +39,15 @@ if (existsSync(envPath)) {
 // ── Config ────────────────────────────────────────────────────────────────────
 
 const IMGBB_KEY      = process.env.IMGBB_API_KEY
-const NOTION_TOKEN   = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
-const PARTNERS_DB_ID = process.env.NOTION_PARTNERS_DB_ID ?? process.env.VITE_NOTION_PARTNERS_DB_ID
+const NOTION_TOKEN   = process.env.NOTION_TOKEN
+const PARTNERS_DB_ID = process.env.NOTION_PARTNERS_DB_ID
 const NOTION_VERSION = '2022-06-28'
 const SLEEP_MS       = 500
 // Tried in this order for each candidate filename
 const LOGO_EXTS      = ['.png', '.webp', '.jpg', '.jpeg', '.avif', '.svg']
 
 const missing = ['IMGBB_API_KEY', 'NOTION_TOKEN', 'NOTION_PARTNERS_DB_ID']
-  .filter((k) => !process.env[k] && !process.env[`VITE_${k}`])
+  .filter((k) => !process.env[k])
 if (missing.length) {
   console.error(`❌ Missing env vars: ${missing.join(', ')}`)
   process.exit(1)

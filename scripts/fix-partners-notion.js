@@ -4,12 +4,12 @@
 //
 // Run with: node --env-file=.env.local scripts/fix-partners-notion.js
 
-const NOTION_TOKEN   = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
-const PARTNERS_DB_ID = process.env.NOTION_PARTNERS_DB_ID ?? process.env.VITE_NOTION_PARTNERS_DB_ID
+const NOTION_TOKEN   = process.env.NOTION_TOKEN
+const PARTNERS_DB_ID = process.env.NOTION_PARTNERS_DB_ID
 const NOTION_VERSION = '2022-06-28'
 
 if (!NOTION_TOKEN || !PARTNERS_DB_ID) {
-  console.error('Error: NOTION_TOKEN and NOTION_PARTNERS_DB_ID (or their old VITE_ names) must be set')
+  console.error('Error: NOTION_TOKEN and NOTION_PARTNERS_DB_ID must be set')
   process.exit(1)
 }
 

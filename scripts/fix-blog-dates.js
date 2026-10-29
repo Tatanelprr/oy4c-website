@@ -5,14 +5,14 @@
 
 import assert from 'node:assert/strict'
 
-const NOTION_TOKEN   = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
-const DATABASE_ID    = process.env.NOTION_DATABASE_ID ?? process.env.VITE_NOTION_DATABASE_ID
+const NOTION_TOKEN   = process.env.NOTION_TOKEN
+const DATABASE_ID    = process.env.NOTION_DATABASE_ID
 const NOTION_VERSION = '2022-06-28'
 const APPLY          = process.argv.includes('--apply')
 const TARGET_YEAR    = 2026
 
 if (!NOTION_TOKEN || !DATABASE_ID) {
-  console.error('Error: NOTION_TOKEN and NOTION_DATABASE_ID (or their old VITE_ names) must be set')
+  console.error('Error: NOTION_TOKEN and NOTION_DATABASE_ID must be set')
   process.exit(1)
 }
 

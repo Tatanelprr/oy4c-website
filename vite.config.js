@@ -146,15 +146,15 @@ function lastModified(root, file) {
 }
 
 // Published articles from the Notion "Blog & Articles" database, with their
-// last edit date. Needs NOTION_TOKEN and NOTION_DATABASE_ID (or their old
-// VITE_ names) at build time (Vercel exposes project env vars to the build).
+// last edit date. Needs NOTION_TOKEN and NOTION_DATABASE_ID at build time
+// (Vercel exposes project env vars to the build).
 // Without them, the sitemap only lists the static routes.
 // TODO: if the build log shows "sitemap: no Notion token", check in Vercel >
 // Settings > Environment Variables that both variables are enabled for the
 // Production (and Preview) environments, then redeploy.
 async function publishedArticles() {
-  const token = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
-  const db = process.env.NOTION_DATABASE_ID ?? process.env.VITE_NOTION_DATABASE_ID
+  const token = process.env.NOTION_TOKEN
+  const db = process.env.NOTION_DATABASE_ID
   if (!token || !db) {
     console.warn('sitemap: no Notion token at build time, articles not listed')
     return []

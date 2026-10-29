@@ -49,10 +49,10 @@ function loadEnvFile(path) {
 }
 loadEnvFile(join(root, '.env.local'))
 
-const NOTION_TOKEN = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
-const AMBASSADORS_DB_ID = process.env.NOTION_AMBASSADORS_DB_ID ?? process.env.VITE_NOTION_AMBASSADORS_DB_ID
+const NOTION_TOKEN = process.env.NOTION_TOKEN
+const AMBASSADORS_DB_ID = process.env.NOTION_AMBASSADORS_DB_ID
 if (!NOTION_TOKEN || !AMBASSADORS_DB_ID) {
-  console.error('Error: NOTION_TOKEN and NOTION_AMBASSADORS_DB_ID (or their old VITE_ names) must be set in .env.local')
+  console.error('Error: NOTION_TOKEN and NOTION_AMBASSADORS_DB_ID must be set in .env.local')
   process.exit(1)
 }
 

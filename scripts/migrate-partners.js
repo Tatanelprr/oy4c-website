@@ -1,9 +1,9 @@
-const NOTION_TOKEN   = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
+const NOTION_TOKEN   = process.env.NOTION_TOKEN
 const NOTION_VERSION = '2022-06-28'
 const PARENT_PAGE_ID = '3adf5206396380e18649c6fc50b9b5ce'
 
 if (!NOTION_TOKEN) {
-  console.error('Error: NOTION_TOKEN (or the old VITE_NOTION_TOKEN) is not set')
+  console.error('Error: NOTION_TOKEN is not set')
   process.exit(1)
 }
 

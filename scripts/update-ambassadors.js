@@ -5,13 +5,13 @@
 // Dry run (default, read only): node --env-file=.env.local scripts/update-ambassadors.js
 // Apply the changes:            node --env-file=.env.local scripts/update-ambassadors.js --apply
 
-const NOTION_TOKEN      = process.env.NOTION_TOKEN ?? process.env.VITE_NOTION_TOKEN
-const AMBASSADORS_DB_ID = process.env.NOTION_AMBASSADORS_DB_ID ?? process.env.VITE_NOTION_AMBASSADORS_DB_ID
+const NOTION_TOKEN      = process.env.NOTION_TOKEN
+const AMBASSADORS_DB_ID = process.env.NOTION_AMBASSADORS_DB_ID
 const NOTION_VERSION    = '2022-06-28'
 const APPLY             = process.argv.includes('--apply')
 
 if (!NOTION_TOKEN || !AMBASSADORS_DB_ID) {
-  console.error('Error: NOTION_TOKEN and NOTION_AMBASSADORS_DB_ID (or their old VITE_ names) must be set')
+  console.error('Error: NOTION_TOKEN and NOTION_AMBASSADORS_DB_ID must be set')
   process.exit(1)
 }
 
