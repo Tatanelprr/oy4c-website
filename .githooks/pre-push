@@ -1,0 +1,22 @@
+#!/bin/sh
+# Refuses any push to main whose commit is not already in origin/dev,
+# so main can never get ahead of dev. Pushes to other branches pass.
+zero=0000000000000000000000000000000000000000
+fetched=
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$remote_ref" = "refs/heads/main" ] || continue
+  if [ "$local_sha" = "$zero" ]; then
+    echo "Suppression de main interdite." >&2
+    exit 1
+  fi
+  if [ -z "$fetched" ]; then
+    git fetch origin --quiet 2>/dev/null
+    fetched=1
+  fi
+  if ! git merge-base --is-ancestor "$local_sha" origin/dev 2>/dev/null; then
+    echo "Push refusé : main serait en avance sur dev ($local_sha n'est pas dans origin/dev)." >&2
+    echo "Pousse d'abord ce travail sur dev." >&2
+    exit 1
+  fi
+done
+exit 0
