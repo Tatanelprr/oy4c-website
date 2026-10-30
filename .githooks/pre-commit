@@ -1,0 +1,7 @@
+#!/bin/sh
+# Blocks any commit made on main: all work happens on dev.
+branch=$(git symbolic-ref --short -q HEAD)
+if [ "$branch" = "main" ]; then
+  echo "Travail interdit sur main : utilise dev (git switch dev)." >&2
+  exit 1
+fi
