@@ -4,7 +4,8 @@ import { PAGE_META } from '../data/pageMeta'
 
 // Cookies policy under the UK Privacy and Electronic Communications Regulations
 // (PECR). The site loads no non-essential trackers automatically, so no consent
-// banner is required; Google Maps can set cookies only after the visitor explicitly
+// banner is required (TODO OY4C: confirm this still holds with the cookieless
+// Vercel Web Analytics); Google Maps can set cookies only after the visitor explicitly
 // clicks to load it, and the Google Forms we link to are off-site (Google's own pages).
 export default function Cookies() {
   usePageMeta(PAGE_META['/cookies'])
@@ -25,6 +26,7 @@ export default function Cookies() {
           Because nothing non-essential loads without your action, there is no
           cookie banner — a banner here would be pointless.
         </div>
+        {/* TODO (OY4C to validate): this sentence says the site uses no analytics, which is no longer true since Vercel Web Analytics was added. Text left unchanged pending OY4C's wording. */}
 
         <h2>What are cookies?</h2>
         <p>
@@ -41,6 +43,14 @@ export default function Cookies() {
           background are served from our own domain, so no external font or CDN
           service receives your data.
         </p>
+        {/* TODO (OY4C to validate): the paragraph above says we use no tool similar to Google Analytics, which is no longer true since Vercel Web Analytics was added. Text left unchanged pending OY4C's wording. */}
+        <p>
+          Visitor statistics (Vercel Web Analytics) are collected without cookies.
+        </p>
+        {/* ============================================================
+            TODO (OY4C TO VALIDATE, LEGAL TEXT): wording of the visitor
+            statistics sentence above to be validated by OY4C.
+            ============================================================ */}
 
         <h2>Third-party cookies (only if you choose)</h2>
         <table className={styles.table}>

@@ -4,9 +4,9 @@ import { PAGE_META } from '../data/pageMeta'
 
 // Privacy notice built from what the site actually does, under the UK GDPR and
 // the Data Protection Act 2018 (regulator: the ICO). The site sets no cookies of
-// its own and runs no analytics; the processing described below is limited to
-// hosting logs, opt-in third-party embeds and off-site tools the visitor chooses
-// to use.
+// its own; the processing described below is limited to hosting logs,
+// cookieless visitor statistics (Vercel Web Analytics), opt-in third-party
+// embeds and off-site tools the visitor chooses to use.
 
 export default function Privacy() {
   usePageMeta(PAGE_META['/privacy'])
@@ -35,6 +35,7 @@ export default function Privacy() {
           data, plus data you actively choose to share (by emailing us, or by using
           the external Google Forms / donation links).
         </div>
+        {/* TODO (OY4C to validate): this sentence says the site uses no analytics, which is no longer true since Vercel Web Analytics was added. Text left unchanged pending OY4C's wording. */}
         {/* TODO: the CCiC page has two forms (report request, waitlist). Describe
             them here once their handling is decided: sentence to be provided. */}
 
@@ -121,7 +122,20 @@ export default function Privacy() {
         {/* TODO: retention period for form answers: to be decided by OY4C */}
         {/* TODO: age rule for under-18s: to be decided by OY4C */}
 
+        <h3>h. Visitor statistics (Vercel Web Analytics)</h3>
+        <p>
+          We measure how the site is used with <strong>Vercel Web Analytics</strong>,
+          provided by Vercel, our host: page views and visitor numbers, seen only in
+          aggregate. It works without cookies and without any persistent identifier.
+        </p>
+        {/* ============================================================
+            TODO (OY4C TO VALIDATE, LEGAL TEXT): this section has no legal
+            basis and no retention period on purpose. OY4C must provide and
+            validate both before this goes live.
+            ============================================================ */}
+
         <h2>3. Cookies and tracking</h2>
+        {/* TODO (OY4C to validate): this sentence says the site uses no analytics, which is no longer true since Vercel Web Analytics was added. Text left unchanged pending OY4C's wording. */}
         <p>
           This website sets <strong>no cookies of its own</strong> and uses no
           analytics or advertising technologies. Google Maps can set cookies, but
